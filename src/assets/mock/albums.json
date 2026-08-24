@@ -1,0 +1,9 @@
+[
+  { "id": "al_aurora_lights", "title": "Lights Over the City", "cover": "https://picsum.photos/seed/album_aurora/800", "artistId": "ar_aurora", "artistName": "Aurora Skies", "year": 2024, "genre": "Electro-Pop", "trackCount": 3, "accentColor": "#3B2E6B" },
+  { "id": "al_aurora_velvet", "title": "Velvet", "cover": "https://picsum.photos/seed/album_aurora2/800", "artistId": "ar_aurora", "artistName": "Aurora Skies", "year": 2022, "genre": "Dream Pop", "trackCount": 2, "accentColor": "#5A2A4D" },
+  { "id": "al_night_neon", "title": "Neon Streets", "cover": "https://picsum.photos/seed/album_neon/800", "artistId": "ar_nightdrive", "artistName": "Night Drive", "year": 2023, "genre": "Synthwave", "trackCount": 3, "accentColor": "#16324F" },
+  { "id": "al_solace_quiet", "title": "Quiet Hours", "cover": "https://picsum.photos/seed/album_solace/800", "artistId": "ar_solace", "artistName": "Solace", "year": 2024, "genre": "Ambient", "trackCount": 2, "accentColor": "#244A45" },
+  { "id": "al_ember_roots", "title": "Roots & Rivers", "cover": "https://picsum.photos/seed/album_ember/800", "artistId": "ar_ember", "artistName": "Ember & Oak", "year": 2023, "genre": "Indie Folk", "trackCount": 2, "accentColor": "#5C3A1E" },
+  { "id": "al_pulse_surge", "title": "Surge", "cover": "https://picsum.photos/seed/album_pulse/800", "artistId": "ar_pulse", "artistName": "Pulsewave", "year": 2025, "genre": "EDM", "trackCount": 2, "accentColor": "#4A1530" },
+  { "id": "al_lowtide_drift", "title": "Drift", "cover": "https://picsum.photos/seed/album_lowtide/800", "artistId": "ar_lowtide", "artistName": "Low Tide", "year": 2024, "genre": "Lo-Fi", "trackCount": 2, "accentColor": "#234E4A" }
+]

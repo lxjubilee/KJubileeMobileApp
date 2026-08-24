@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Speel",
+    "pause": "Onderbreek",
+    "shuffle": "Skommel",
+    "shufflePlay": "Skommel en speel",
+    "download": "Laai af",
+    "seeAll": "Sien alles",
+    "retry": "Probeer weer",
+    "follow": "Volg",
+    "following": "Volg tans",
+    "save": "Stoor",
+    "saved": "Gestoor",
+    "cancel": "Kanselleer",
+    "ok": "OK",
+    "delete": "Vee uit",
+    "done": "Klaar"
+  },
+  "tabs": {
+    "home": "Tuis",
+    "browse": "Blaai",
+    "search": "Soek",
+    "library": "Biblioteek"
+  },
+  "home": {
+    "greetingMorning": "Goeie môre",
+    "greetingAfternoon": "Goeie middag",
+    "greetingEvening": "Goeie aand",
+    "loadError": "Ons kon nie jou musiek laai nie. Trek om te verfris, of probeer weer.",
+    "comingSoon": "Nog geen musiek in {{language}} nie — ons voeg binnekort meer tale by."
+  },
+  "categories": {
+    "home": "Tuis",
+    "inspire_family": "Inspire-familie",
+    "family_friendly": "Gesinsvriendelik",
+    "children": "Kindermusiek",
+    "music_type": "Musiektipe",
+    "christmas": "Kersfees"
+  },
+  "railTitles": {
+    "contemporary": "Kontemporêr",
+    "praise-worship": "Lofprysing en aanbidding",
+    "country": "Country",
+    "pentecostal-shout": "Pinkster-uitroep",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Tale",
+    "search": "Soek tale…",
+    "recentlyUsed": "Onlangs gebruik",
+    "allLanguages": "Alle tale"
+  },
+  "search": {
+    "placeholder": "Kunstenaars, liedjies of albums",
+    "recent": "Onlangse soektogte",
+    "clear": "Maak skoon",
+    "noResults": "Geen resultate vir \"{{query}}\" nie",
+    "sectionAlbums": "Albums",
+    "sectionArtists": "Kunstenaars",
+    "sectionTracks": "Liedjies"
+  },
+  "album": {
+    "tracks": "{{count}} liedjies",
+    "addToLibrary": "Voeg by biblioteek"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} maandelikse luisteraars",
+    "popular": "Gewild",
+    "discography": "Diskografie"
+  },
+  "library": {
+    "title": "Jou biblioteek",
+    "favorites": "Gunsteling-liedjies",
+    "albums": "Albums",
+    "artists": "Kunstenaars",
+    "downloads": "Aflaaie",
+    "playlists": "Speellyste",
+    "empty": "Liedjies en albums wat jy stoor, sal hier verskyn.",
+    "emptyLiked": "Liedjies waarvan jy hou, sal hier verskyn. Tik op die hart by enige snit om dit by te voeg.",
+    "emptyArtists": "Kunstenaars wat jy volg, sal hier verskyn. Tik op volg by enige kunstenaar om dit by te voeg.",
+    "emptyPlaylists": "Speellyste wat jy skep, sal hier verskyn."
+  },
+  "downloads": {
+    "title": "Aflaaie",
+    "empty": "Afgelaaide musiek sal hier verskyn vir aanlyn-vrye luister."
+  },
+  "profile": {
+    "title": "Profiel",
+    "signIn": "Meld aan",
+    "settings": "Instellings",
+    "changePassword": "Verander wagwoord",
+    "privacyPolicy": "Privaatheidsbeleid",
+    "termsOfUse": "Gebruiksvoorwaardes",
+    "deleteAccount": "Vee rekening uit",
+    "signOut": "Meld af",
+    "guest": "Gas",
+    "notSignedIn": "Nie aangemeld nie",
+    "deleteTitle": "Vee rekening uit?",
+    "deleteMessage": "Dit vee jou rekening en al jou data permanent uit. Hierdie aksie kan nie ongedaan gemaak word nie.",
+    "deletedTitle": "Rekening uitgevee",
+    "deletedMessage": "Jou rekening is permanent uitgevee.",
+    "deleteFailedTitle": "Kon nie rekening uitvee nie"
+  },
+  "player": {
+    "queue": "Tou",
+    "upNext": "Volgende",
+    "like": "Hou van",
+    "removeFromLiked": "Verwyder uit gunsteling-liedjies",
+    "goToAlbum": "Gaan na album",
+    "goToArtist": "Gaan na kunstenaar",
+    "share": "Deel",
+    "nothingPlaying": "Niks speel nie.",
+    "queueEmpty": "Die tou is leeg."
+  },
+  "changePassword": {
+    "title": "Verander wagwoord",
+    "instruction": "Voer jou huidige wagwoord in en kies 'n nuwe een (minstens 8 karakters).",
+    "currentPlaceholder": "Huidige wagwoord",
+    "newPlaceholder": "Nuwe wagwoord (min. 8 karakters)",
+    "confirmPlaceholder": "Bevestig nuwe wagwoord",
+    "mismatch": "Wagwoorde stem nie ooreen nie.",
+    "success": "Jou wagwoord is verander. Jy bly hier aangemeld; ander toestelle is afgemeld.",
+    "done": "Klaar",
+    "submit": "Werk wagwoord by",
+    "error": "Kon nie jou wagwoord verander nie. Probeer weer."
+  },
+  "auth": {
+    "signin": {
+      "title": "Gereed om te luister?",
+      "subtitle": "Voer jou e-pos en wagwoord in om aan te meld.",
+      "email": "E-pos",
+      "password": "Wagwoord",
+      "submit": "Meld aan",
+      "forgot": "Wagwoord vergeet?",
+      "newPrompt": "Nuut op KJubilee? ",
+      "signUp": "Registreer",
+      "botNotice": "Hierdie bladsy is beskerm om te bevestig dat jy nie 'n bot is nie."
+    },
+    "signup": {
+      "title": "Skep jou rekening",
+      "subtitle": "Sluit by KJubilee aan om jou musiek te stoor, speellyste te skep en oral te luister.",
+      "firstName": "Naam",
+      "lastName": "Van",
+      "dateOfBirth": "Geboortedatum",
+      "ageError": "Jy moet minstens {{age}} jaar oud wees om 'n rekening te skep.",
+      "email": "E-pos",
+      "password": "Wagwoord (min. 8 karakters)",
+      "confirm": "Bevestig wagwoord",
+      "mismatch": "Wagwoorde stem nie ooreen nie.",
+      "agreePrefix": "Ek stem in tot die ",
+      "and": " en die ",
+      "submit": "Skep rekening",
+      "havePrompt": "Het jy reeds 'n rekening? ",
+      "signIn": "Meld aan",
+      "error": "Kon nie registrasie begin nie. Probeer weer."
+    },
+    "forgot": {
+      "title": "Stel jou wagwoord terug",
+      "instruction": "Voer jou rekening se e-pos in, en ons stuur 'n skakel om jou wagwoord terug te stel.",
+      "email": "E-pos",
+      "submit": "Stuur terugstelskakel",
+      "sentMessage": "As 'n rekening vir {{email}} bestaan, het ons 'n terugstelskakel gestuur. Maak dit op die web oop om 'n nuwe wagwoord te kies, en kom dan terug en meld aan.",
+      "backToSignIn": "Terug na aanmelding"
+    },
+    "twoFactor": {
+      "title": "Bevestig dis jy",
+      "subtitle": "Voer die bevestigingskode in wat ons gestuur het om jou rekening veilig te hou.",
+      "codePlaceholder": "6-syfer-kode",
+      "trustDevice": "Vertrou hierdie toestel",
+      "submit": "Bevestig"
+    },
+    "verify": {
+      "title": "Bevestig jou e-pos",
+      "subtitle": "Voer die 6-syfer-kode in wat ons na {{email}} gestuur het om jou rekening klaar te skep.",
+      "submit": "Bevestig en skep rekening",
+      "noCodePrompt": "Geen kode ontvang nie? ",
+      "resend": "Stuur kode weer",
+      "resendIn": "Stuur weer oor {{seconds}} s",
+      "failed": "Bevestiging het misluk. Probeer weer.",
+      "resendFailed": "Kon nie die kode weer stuur nie."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Album nie gevind nie.",
+    "artistNotFound": "Kunstenaar nie gevind nie.",
+    "generic": "Iets het verkeerd geloop. Probeer weer."
+  },
+  "playlist": {
+    "namePrompt": "Gee jou speellys 'n naam",
+    "namePlaceholder": "Speellys-naam",
+    "create": "Skep",
+    "save": "Stoor",
+    "rename": "Hernoem speellys",
+    "delete": "Vee speellys uit",
+    "deleteConfirm": "Vee \"{{title}}\" uit? Dit kan nie ongedaan gemaak word nie.",
+    "addSongs": "Voeg liedjies by",
+    "addToPlaylist": "Voeg by speellys",
+    "newPlaylist": "Nuwe speellys",
+    "removeFromPlaylist": "Verwyder uit hierdie speellys",
+    "songCount": "{{count}} liedjies",
+    "empty": "Nog geen musiek nie",
+    "emptyHint": "Tik op “Voeg liedjies by” om musiek by hierdie speellys te voeg.",
+    "notFound": "Speellys nie gevind nie."
+  },
+  "stub": {
+    "comingSoon": "Binnekort beskikbaar",
+    "description": "Hierdie area is aan die app se argitektuur gekoppel en gereed om uitgebou te word."
+  }
+}

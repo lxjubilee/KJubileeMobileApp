@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Putar",
+    "pause": "Jeda",
+    "shuffle": "Acak",
+    "shufflePlay": "Putar acak",
+    "download": "Unduh",
+    "seeAll": "Lihat semua",
+    "retry": "Coba lagi",
+    "follow": "Ikuti",
+    "following": "Mengikuti",
+    "save": "Simpan",
+    "saved": "Tersimpan",
+    "cancel": "Batal",
+    "ok": "OK",
+    "delete": "Hapus",
+    "done": "Selesai"
+  },
+  "tabs": {
+    "home": "Beranda",
+    "browse": "Jelajahi",
+    "search": "Cari",
+    "library": "Pustaka"
+  },
+  "home": {
+    "greetingMorning": "Selamat pagi",
+    "greetingAfternoon": "Selamat siang",
+    "greetingEvening": "Selamat malam",
+    "loadError": "Kami tidak dapat memuat musik Anda. Tarik untuk menyegarkan atau coba lagi.",
+    "comingSoon": "Belum ada musik dalam {{language}} — kami segera menambahkan lebih banyak bahasa."
+  },
+  "categories": {
+    "home": "Beranda",
+    "inspire_family": "Keluarga Inspire",
+    "family_friendly": "Ramah Keluarga",
+    "children": "Musik Anak",
+    "music_type": "Jenis Musik",
+    "christmas": "Natal"
+  },
+  "railTitles": {
+    "contemporary": "Kontemporer",
+    "praise-worship": "Pujian dan Penyembahan",
+    "country": "Country",
+    "pentecostal-shout": "Seruan Pentakosta",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Bahasa",
+    "search": "Cari bahasa…",
+    "recentlyUsed": "Baru digunakan",
+    "allLanguages": "Semua bahasa"
+  },
+  "search": {
+    "placeholder": "Artis, lagu, atau album",
+    "recent": "Pencarian terakhir",
+    "clear": "Hapus",
+    "noResults": "Tidak ada hasil untuk \"{{query}}\"",
+    "sectionAlbums": "Album",
+    "sectionArtists": "Artis",
+    "sectionTracks": "Lagu"
+  },
+  "album": {
+    "tracks": "{{count}} lagu",
+    "addToLibrary": "Tambahkan ke pustaka"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} pendengar bulanan",
+    "popular": "Populer",
+    "discography": "Diskografi"
+  },
+  "library": {
+    "title": "Pustaka Anda",
+    "favorites": "Lagu yang Disukai",
+    "albums": "Album",
+    "artists": "Artis",
+    "downloads": "Unduhan",
+    "playlists": "Playlist",
+    "empty": "Lagu dan album yang Anda simpan akan muncul di sini.",
+    "emptyLiked": "Lagu yang Anda sukai akan muncul di sini. Ketuk ikon hati pada lagu mana pun untuk menambahkannya.",
+    "emptyArtists": "Artis yang Anda ikuti akan muncul di sini. Ketuk ikuti pada artis mana pun untuk menambahkannya.",
+    "emptyPlaylists": "Playlist yang Anda buat akan muncul di sini."
+  },
+  "downloads": {
+    "title": "Unduhan",
+    "empty": "Musik yang diunduh akan muncul di sini untuk didengarkan secara offline."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Masuk",
+    "settings": "Pengaturan",
+    "changePassword": "Ubah kata sandi",
+    "privacyPolicy": "Kebijakan Privasi",
+    "termsOfUse": "Ketentuan Penggunaan",
+    "deleteAccount": "Hapus akun",
+    "signOut": "Keluar",
+    "guest": "Tamu",
+    "notSignedIn": "Belum masuk",
+    "deleteTitle": "Hapus akun?",
+    "deleteMessage": "Ini menghapus akun dan semua data Anda secara permanen. Tindakan ini tidak dapat dibatalkan.",
+    "deletedTitle": "Akun dihapus",
+    "deletedMessage": "Akun Anda telah dihapus secara permanen.",
+    "deleteFailedTitle": "Tidak dapat menghapus akun"
+  },
+  "player": {
+    "queue": "Antrean",
+    "upNext": "Berikutnya",
+    "like": "Suka",
+    "removeFromLiked": "Hapus dari Lagu yang Disukai",
+    "goToAlbum": "Ke album",
+    "goToArtist": "Ke artis",
+    "share": "Bagikan",
+    "nothingPlaying": "Tidak ada yang diputar.",
+    "queueEmpty": "Antrean kosong."
+  },
+  "changePassword": {
+    "title": "Ubah kata sandi",
+    "instruction": "Masukkan kata sandi Anda saat ini dan pilih yang baru (minimal 8 karakter).",
+    "currentPlaceholder": "Kata sandi saat ini",
+    "newPlaceholder": "Kata sandi baru (min. 8 karakter)",
+    "confirmPlaceholder": "Konfirmasi kata sandi baru",
+    "mismatch": "Kata sandi tidak cocok.",
+    "success": "Kata sandi Anda telah diubah. Anda tetap masuk di sini; perangkat lain telah dikeluarkan.",
+    "done": "Selesai",
+    "submit": "Perbarui kata sandi",
+    "error": "Tidak dapat mengubah kata sandi Anda. Coba lagi."
+  },
+  "auth": {
+    "signin": {
+      "title": "Siap mendengarkan?",
+      "subtitle": "Masukkan email dan kata sandi Anda untuk masuk.",
+      "email": "Email",
+      "password": "Kata sandi",
+      "submit": "Masuk",
+      "forgot": "Lupa kata sandi?",
+      "newPrompt": "Baru di KJubilee? ",
+      "signUp": "Daftar",
+      "botNotice": "Halaman ini dilindungi untuk memastikan Anda bukan bot."
+    },
+    "signup": {
+      "title": "Buat akun Anda",
+      "subtitle": "Bergabunglah dengan KJubilee untuk menyimpan musik, membuat playlist, dan mendengarkan di mana saja.",
+      "firstName": "Nama depan",
+      "lastName": "Nama belakang",
+      "dateOfBirth": "Tanggal lahir",
+      "ageError": "Anda harus berusia minimal {{age}} tahun untuk membuat akun.",
+      "email": "Email",
+      "password": "Kata sandi (min. 8 karakter)",
+      "confirm": "Konfirmasi kata sandi",
+      "mismatch": "Kata sandi tidak cocok.",
+      "agreePrefix": "Saya menyetujui ",
+      "and": " dan ",
+      "submit": "Buat akun",
+      "havePrompt": "Sudah punya akun? ",
+      "signIn": "Masuk",
+      "error": "Tidak dapat memulai pendaftaran. Coba lagi."
+    },
+    "forgot": {
+      "title": "Atur ulang kata sandi Anda",
+      "instruction": "Masukkan email akun Anda dan kami akan mengirimkan tautan untuk mengatur ulang kata sandi.",
+      "email": "Email",
+      "submit": "Kirim tautan",
+      "sentMessage": "Jika ada akun untuk {{email}}, kami telah mengirimkan tautan pengaturan ulang. Buka di web untuk memilih kata sandi baru, lalu kembali untuk masuk.",
+      "backToSignIn": "Kembali ke Masuk"
+    },
+    "twoFactor": {
+      "title": "Verifikasi bahwa ini Anda",
+      "subtitle": "Masukkan kode verifikasi yang kami kirim untuk menjaga keamanan akun Anda.",
+      "codePlaceholder": "Kode 6 digit",
+      "trustDevice": "Percayai perangkat ini",
+      "submit": "Verifikasi"
+    },
+    "verify": {
+      "title": "Verifikasi email Anda",
+      "subtitle": "Masukkan kode 6 digit yang kami kirim ke {{email}} untuk menyelesaikan pembuatan akun.",
+      "submit": "Verifikasi & Buat Akun",
+      "noCodePrompt": "Tidak menerima kode? ",
+      "resend": "Kirim ulang kode",
+      "resendIn": "Kirim ulang dalam {{seconds}}d",
+      "failed": "Verifikasi gagal. Coba lagi.",
+      "resendFailed": "Tidak dapat mengirim ulang kode."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Album tidak ditemukan.",
+    "artistNotFound": "Artis tidak ditemukan.",
+    "generic": "Terjadi kesalahan. Coba lagi."
+  },
+  "playlist": {
+    "namePrompt": "Beri nama playlist Anda",
+    "namePlaceholder": "Nama playlist",
+    "create": "Buat",
+    "save": "Simpan",
+    "rename": "Ganti nama playlist",
+    "delete": "Hapus playlist",
+    "deleteConfirm": "Hapus \"{{title}}\"? Ini tidak dapat dibatalkan.",
+    "addSongs": "Tambah lagu",
+    "addToPlaylist": "Tambahkan ke playlist",
+    "newPlaylist": "Playlist baru",
+    "removeFromPlaylist": "Hapus dari playlist ini",
+    "songCount": "{{count}} lagu",
+    "empty": "Belum ada musik",
+    "emptyHint": "Ketuk “Tambah lagu” untuk menambahkan musik ke playlist ini.",
+    "notFound": "Playlist tidak ditemukan."
+  },
+  "stub": {
+    "comingSoon": "Segera hadir",
+    "description": "Area ini terhubung ke arsitektur aplikasi dan siap dikembangkan."
+  }
+}

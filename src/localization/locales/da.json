@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Afspil",
+    "pause": "Pause",
+    "shuffle": "Bland",
+    "shufflePlay": "Bland og afspil",
+    "download": "Download",
+    "seeAll": "Se alle",
+    "retry": "Prøv igen",
+    "follow": "Følg",
+    "following": "Følger",
+    "save": "Gem",
+    "saved": "Gemt",
+    "cancel": "Annuller",
+    "ok": "OK",
+    "delete": "Slet",
+    "done": "Færdig"
+  },
+  "tabs": {
+    "home": "Hjem",
+    "browse": "Gennemse",
+    "search": "Søg",
+    "library": "Bibliotek"
+  },
+  "home": {
+    "greetingMorning": "Godmorgen",
+    "greetingAfternoon": "God eftermiddag",
+    "greetingEvening": "Godaften",
+    "loadError": "Vi kunne ikke indlæse din musik. Træk for at opdatere, eller prøv igen.",
+    "comingSoon": "Ingen musik på {{language}} endnu – vi tilføjer snart flere sprog."
+  },
+  "categories": {
+    "home": "Hjem",
+    "inspire_family": "Inspire-familien",
+    "family_friendly": "Familievenligt",
+    "children": "Børnemusik",
+    "music_type": "Musiktype",
+    "christmas": "Jul"
+  },
+  "railTitles": {
+    "contemporary": "Nutidig",
+    "praise-worship": "Lovsang og tilbedelse",
+    "country": "Country",
+    "pentecostal-shout": "Pinsebevægelsens råb",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Sprog",
+    "search": "Søg sprog…",
+    "recentlyUsed": "Senest brugt",
+    "allLanguages": "Alle sprog"
+  },
+  "search": {
+    "placeholder": "Kunstnere, sange eller album",
+    "recent": "Seneste søgninger",
+    "clear": "Ryd",
+    "noResults": "Ingen resultater for \"{{query}}\"",
+    "sectionAlbums": "Album",
+    "sectionArtists": "Kunstnere",
+    "sectionTracks": "Sange"
+  },
+  "album": {
+    "tracks": "{{count}} sange",
+    "addToLibrary": "Tilføj til bibliotek"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} månedlige lyttere",
+    "popular": "Populært",
+    "discography": "Diskografi"
+  },
+  "library": {
+    "title": "Dit bibliotek",
+    "favorites": "Synes godt om-sange",
+    "albums": "Album",
+    "artists": "Kunstnere",
+    "downloads": "Downloads",
+    "playlists": "Afspilningslister",
+    "empty": "Sange og album, du gemmer, vises her.",
+    "emptyLiked": "Sange, du synes godt om, vises her. Tryk på hjertet ved en sang for at tilføje den.",
+    "emptyArtists": "Kunstnere, du følger, vises her. Tryk på følg ved en kunstner for at tilføje den.",
+    "emptyPlaylists": "Afspilningslister, du opretter, vises her."
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "Downloadet musik vises her til offline-lytning."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Log ind",
+    "settings": "Indstillinger",
+    "changePassword": "Skift adgangskode",
+    "privacyPolicy": "Privatlivspolitik",
+    "termsOfUse": "Brugsbetingelser",
+    "deleteAccount": "Slet konto",
+    "signOut": "Log ud",
+    "guest": "Gæst",
+    "notSignedIn": "Ikke logget ind",
+    "deleteTitle": "Slet konto?",
+    "deleteMessage": "Dette sletter din konto og alle dine data permanent. Handlingen kan ikke fortrydes.",
+    "deletedTitle": "Konto slettet",
+    "deletedMessage": "Din konto er blevet slettet permanent.",
+    "deleteFailedTitle": "Kontoen kunne ikke slettes"
+  },
+  "player": {
+    "queue": "Kø",
+    "upNext": "Næste",
+    "like": "Synes godt om",
+    "removeFromLiked": "Fjern fra synes godt om-sange",
+    "goToAlbum": "Gå til album",
+    "goToArtist": "Gå til kunstner",
+    "share": "Del",
+    "nothingPlaying": "Intet afspilles.",
+    "queueEmpty": "Køen er tom."
+  },
+  "changePassword": {
+    "title": "Skift adgangskode",
+    "instruction": "Indtast din nuværende adgangskode, og vælg en ny (mindst 8 tegn).",
+    "currentPlaceholder": "Nuværende adgangskode",
+    "newPlaceholder": "Ny adgangskode (mindst 8 tegn)",
+    "confirmPlaceholder": "Bekræft ny adgangskode",
+    "mismatch": "Adgangskoderne stemmer ikke overens.",
+    "success": "Din adgangskode er blevet ændret. Du forbliver logget ind her; andre enheder er logget ud.",
+    "done": "Færdig",
+    "submit": "Opdater adgangskode",
+    "error": "Din adgangskode kunne ikke ændres. Prøv igen."
+  },
+  "auth": {
+    "signin": {
+      "title": "Klar til at lytte?",
+      "subtitle": "Indtast din e-mail og adgangskode for at logge ind.",
+      "email": "E-mail",
+      "password": "Adgangskode",
+      "submit": "Log ind",
+      "forgot": "Glemt adgangskode?",
+      "newPrompt": "Ny på KJubilee? ",
+      "signUp": "Tilmeld dig",
+      "botNotice": "Denne side er beskyttet for at sikre, at du ikke er en bot."
+    },
+    "signup": {
+      "title": "Opret din konto",
+      "subtitle": "Bliv en del af KJubilee for at gemme din musik, oprette afspilningslister og lytte overalt.",
+      "firstName": "Fornavn",
+      "lastName": "Efternavn",
+      "dateOfBirth": "Fødselsdato",
+      "ageError": "Du skal være mindst {{age}} år for at oprette en konto.",
+      "email": "E-mail",
+      "password": "Adgangskode (mindst 8 tegn)",
+      "confirm": "Bekræft adgangskode",
+      "mismatch": "Adgangskoderne stemmer ikke overens.",
+      "agreePrefix": "Jeg accepterer ",
+      "and": " og ",
+      "submit": "Opret konto",
+      "havePrompt": "Har du allerede en konto? ",
+      "signIn": "Log ind",
+      "error": "Tilmeldingen kunne ikke startes. Prøv igen."
+    },
+    "forgot": {
+      "title": "Nulstil din adgangskode",
+      "instruction": "Indtast e-mailen til din konto, så sender vi et link til at nulstille din adgangskode.",
+      "email": "E-mail",
+      "submit": "Send nulstillingslink",
+      "sentMessage": "Hvis der findes en konto for {{email}}, har vi sendt et nulstillingslink. Åbn det på nettet for at vælge en ny adgangskode, og kom så tilbage og log ind.",
+      "backToSignIn": "Tilbage til log ind"
+    },
+    "twoFactor": {
+      "title": "Bekræft, at det er dig",
+      "subtitle": "Indtast den bekræftelseskode, vi sendte, for at holde din konto sikker.",
+      "codePlaceholder": "6-cifret kode",
+      "trustDevice": "Stol på denne enhed",
+      "submit": "Bekræft"
+    },
+    "verify": {
+      "title": "Bekræft din e-mail",
+      "subtitle": "Indtast den 6-cifrede kode, vi sendte til {{email}}, for at fuldføre oprettelsen af din konto.",
+      "submit": "Bekræft og opret konto",
+      "noCodePrompt": "Fik du ingen kode? ",
+      "resend": "Send koden igen",
+      "resendIn": "Send igen om {{seconds}} s",
+      "failed": "Bekræftelsen mislykkedes. Prøv igen.",
+      "resendFailed": "Koden kunne ikke sendes igen."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Albummet blev ikke fundet.",
+    "artistNotFound": "Kunstneren blev ikke fundet.",
+    "generic": "Noget gik galt. Prøv igen."
+  },
+  "playlist": {
+    "namePrompt": "Navngiv din afspilningsliste",
+    "namePlaceholder": "Afspilningslistens navn",
+    "create": "Opret",
+    "save": "Gem",
+    "rename": "Omdøb afspilningsliste",
+    "delete": "Slet afspilningsliste",
+    "deleteConfirm": "Slet \"{{title}}\"? Dette kan ikke fortrydes.",
+    "addSongs": "Tilføj sange",
+    "addToPlaylist": "Tilføj til afspilningsliste",
+    "newPlaylist": "Ny afspilningsliste",
+    "removeFromPlaylist": "Fjern fra denne afspilningsliste",
+    "songCount": "{{count}} sange",
+    "empty": "Ingen musik endnu",
+    "emptyHint": "Tryk på “Tilføj sange” for at tilføje musik til denne afspilningsliste.",
+    "notFound": "Afspilningslisten blev ikke fundet."
+  },
+  "stub": {
+    "comingSoon": "Kommer snart",
+    "description": "Dette område er koblet til appens arkitektur og klar til at blive bygget ud."
+  }
+}

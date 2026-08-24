@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Afspelen",
+    "pause": "Pauzeren",
+    "shuffle": "Shuffle",
+    "shufflePlay": "Shuffle afspelen",
+    "download": "Downloaden",
+    "seeAll": "Alles bekijken",
+    "retry": "Opnieuw proberen",
+    "follow": "Volgen",
+    "following": "Volgend",
+    "save": "Opslaan",
+    "saved": "Opgeslagen",
+    "cancel": "Annuleren",
+    "ok": "OK",
+    "delete": "Verwijderen",
+    "done": "Klaar"
+  },
+  "tabs": {
+    "home": "Start",
+    "browse": "Ontdekken",
+    "search": "Zoeken",
+    "library": "Bibliotheek"
+  },
+  "home": {
+    "greetingMorning": "Goedemorgen",
+    "greetingAfternoon": "Goedemiddag",
+    "greetingEvening": "Goedenavond",
+    "loadError": "We konden je muziek niet laden. Trek om te vernieuwen of probeer opnieuw.",
+    "comingSoon": "Nog geen muziek in het {{language}} — we voegen binnenkort meer talen toe."
+  },
+  "categories": {
+    "home": "Home",
+    "inspire_family": "Inspire-familie",
+    "family_friendly": "Familievriendelijk",
+    "children": "Kindermuziek",
+    "music_type": "Muzieksoort",
+    "christmas": "Kerstmis"
+  },
+  "railTitles": {
+    "contemporary": "Hedendaags",
+    "praise-worship": "Lofprijzing en aanbidding",
+    "country": "Country",
+    "pentecostal-shout": "Pinksterjubel",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Talen",
+    "search": "Talen zoeken…",
+    "recentlyUsed": "Recent gebruikt",
+    "allLanguages": "Alle talen"
+  },
+  "search": {
+    "placeholder": "Artiesten, nummers of albums",
+    "recent": "Recente zoekopdrachten",
+    "clear": "Wissen",
+    "noResults": "Geen resultaten voor \"{{query}}\"",
+    "sectionAlbums": "Albums",
+    "sectionArtists": "Artiesten",
+    "sectionTracks": "Nummers"
+  },
+  "album": {
+    "tracks": "{{count}} nummers",
+    "addToLibrary": "Aan bibliotheek toevoegen"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} maandelijkse luisteraars",
+    "popular": "Populair",
+    "discography": "Discografie"
+  },
+  "library": {
+    "title": "Je bibliotheek",
+    "favorites": "Leuk gevonden nummers",
+    "albums": "Albums",
+    "artists": "Artiesten",
+    "downloads": "Downloads",
+    "playlists": "Afspeellijsten",
+    "empty": "Opgeslagen nummers en albums verschijnen hier.",
+    "emptyLiked": "Nummers die je leuk vindt, verschijnen hier. Tik op het hartje bij een nummer om het toe te voegen.",
+    "emptyArtists": "Artiesten die je volgt, verschijnen hier. Tik op volgen bij een artiest om die toe te voegen.",
+    "emptyPlaylists": "Afspeellijsten die je maakt, verschijnen hier."
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "Gedownloade muziek verschijnt hier om offline te luisteren."
+  },
+  "profile": {
+    "title": "Profiel",
+    "signIn": "Inloggen",
+    "settings": "Instellingen",
+    "changePassword": "Wachtwoord wijzigen",
+    "privacyPolicy": "Privacybeleid",
+    "termsOfUse": "Gebruiksvoorwaarden",
+    "deleteAccount": "Account verwijderen",
+    "signOut": "Uitloggen",
+    "guest": "Gast",
+    "notSignedIn": "Niet ingelogd",
+    "deleteTitle": "Account verwijderen?",
+    "deleteMessage": "Hiermee worden je account en al je gegevens permanent verwijderd. Deze actie kan niet ongedaan worden gemaakt.",
+    "deletedTitle": "Account verwijderd",
+    "deletedMessage": "Je account is permanent verwijderd.",
+    "deleteFailedTitle": "Account kon niet worden verwijderd"
+  },
+  "player": {
+    "queue": "Wachtrij",
+    "upNext": "Hierna",
+    "like": "Leuk",
+    "removeFromLiked": "Verwijderen uit leuk gevonden nummers",
+    "goToAlbum": "Naar album",
+    "goToArtist": "Naar artiest",
+    "share": "Delen",
+    "nothingPlaying": "Er speelt niets.",
+    "queueEmpty": "De wachtrij is leeg."
+  },
+  "changePassword": {
+    "title": "Wachtwoord wijzigen",
+    "instruction": "Voer je huidige wachtwoord in en kies een nieuw wachtwoord (minstens 8 tekens).",
+    "currentPlaceholder": "Huidig wachtwoord",
+    "newPlaceholder": "Nieuw wachtwoord (min. 8 tekens)",
+    "confirmPlaceholder": "Nieuw wachtwoord bevestigen",
+    "mismatch": "Wachtwoorden komen niet overeen.",
+    "success": "Je wachtwoord is gewijzigd. Je blijft hier ingelogd; andere apparaten zijn uitgelogd.",
+    "done": "Klaar",
+    "submit": "Wachtwoord bijwerken",
+    "error": "Je wachtwoord kon niet worden gewijzigd. Probeer het opnieuw."
+  },
+  "auth": {
+    "signin": {
+      "title": "Klaar om te luisteren?",
+      "subtitle": "Voer je e-mail en wachtwoord in om in te loggen.",
+      "email": "E-mail",
+      "password": "Wachtwoord",
+      "submit": "Inloggen",
+      "forgot": "Wachtwoord vergeten?",
+      "newPrompt": "Nieuw bij KJubilee? ",
+      "signUp": "Registreren",
+      "botNotice": "Deze pagina is beveiligd om te controleren dat je geen bot bent."
+    },
+    "signup": {
+      "title": "Maak je account aan",
+      "subtitle": "Word lid van KJubilee om je muziek op te slaan, afspeellijsten te maken en overal te luisteren.",
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "dateOfBirth": "Geboortedatum",
+      "ageError": "Je moet minstens {{age}} jaar oud zijn om een account aan te maken.",
+      "email": "E-mail",
+      "password": "Wachtwoord (min. 8 tekens)",
+      "confirm": "Wachtwoord bevestigen",
+      "mismatch": "Wachtwoorden komen niet overeen.",
+      "agreePrefix": "Ik ga akkoord met de ",
+      "and": " en het ",
+      "submit": "Account aanmaken",
+      "havePrompt": "Heb je al een account? ",
+      "signIn": "Inloggen",
+      "error": "Registratie kon niet worden gestart. Probeer het opnieuw."
+    },
+    "forgot": {
+      "title": "Wachtwoord opnieuw instellen",
+      "instruction": "Voer het e-mailadres van je account in en we sturen een link om je wachtwoord opnieuw in te stellen.",
+      "email": "E-mail",
+      "submit": "Link versturen",
+      "sentMessage": "Als er een account bestaat voor {{email}}, hebben we een link gestuurd. Open die op het web om een nieuw wachtwoord te kiezen en kom dan terug om in te loggen.",
+      "backToSignIn": "Terug naar inloggen"
+    },
+    "twoFactor": {
+      "title": "Verifieer dat jij het bent",
+      "subtitle": "Voer de verificatiecode in die we hebben gestuurd om je account te beveiligen.",
+      "codePlaceholder": "6-cijferige code",
+      "trustDevice": "Dit apparaat vertrouwen",
+      "submit": "Verifiëren"
+    },
+    "verify": {
+      "title": "Verifieer je e-mail",
+      "subtitle": "Voer de 6-cijferige code in die we naar {{email}} hebben gestuurd om je account aan te maken.",
+      "submit": "Verifiëren en account aanmaken",
+      "noCodePrompt": "Geen code ontvangen? ",
+      "resend": "Code opnieuw versturen",
+      "resendIn": "Opnieuw versturen over {{seconds}} s",
+      "failed": "Verificatie mislukt. Probeer het opnieuw.",
+      "resendFailed": "Code kon niet opnieuw worden verstuurd."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Album niet gevonden.",
+    "artistNotFound": "Artiest niet gevonden.",
+    "generic": "Er is iets misgegaan. Probeer het opnieuw."
+  },
+  "playlist": {
+    "namePrompt": "Geef je afspeellijst een naam",
+    "namePlaceholder": "Naam van afspeellijst",
+    "create": "Maken",
+    "save": "Opslaan",
+    "rename": "Afspeellijst hernoemen",
+    "delete": "Afspeellijst verwijderen",
+    "deleteConfirm": "\"{{title}}\" verwijderen? Dit kan niet ongedaan worden gemaakt.",
+    "addSongs": "Nummers toevoegen",
+    "addToPlaylist": "Aan afspeellijst toevoegen",
+    "newPlaylist": "Nieuwe afspeellijst",
+    "removeFromPlaylist": "Verwijderen uit deze afspeellijst",
+    "songCount": "{{count}} nummers",
+    "empty": "Nog geen muziek",
+    "emptyHint": "Tik op ‘Nummers toevoegen’ om muziek aan deze afspeellijst toe te voegen.",
+    "notFound": "Afspeellijst niet gevonden."
+  },
+  "stub": {
+    "comingSoon": "Binnenkort",
+    "description": "Dit gedeelte is gekoppeld aan de app-architectuur en klaar om te worden uitgebouwd."
+  }
+}

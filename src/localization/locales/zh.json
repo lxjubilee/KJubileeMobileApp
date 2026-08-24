@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "播放",
+    "pause": "暂停",
+    "shuffle": "随机播放",
+    "shufflePlay": "随机播放",
+    "download": "下载",
+    "seeAll": "查看全部",
+    "retry": "重试",
+    "follow": "关注",
+    "following": "已关注",
+    "save": "保存",
+    "saved": "已保存",
+    "cancel": "取消",
+    "ok": "好",
+    "delete": "删除",
+    "done": "完成"
+  },
+  "tabs": {
+    "home": "首页",
+    "browse": "浏览",
+    "search": "搜索",
+    "library": "音乐库"
+  },
+  "home": {
+    "greetingMorning": "早上好",
+    "greetingAfternoon": "下午好",
+    "greetingEvening": "晚上好",
+    "loadError": "无法加载你的音乐。下拉刷新或重试。",
+    "comingSoon": "暂时还没有{{language}}的音乐——我们很快会添加更多语言。"
+  },
+  "categories": {
+    "home": "主页",
+    "inspire_family": "Inspire 家庭",
+    "family_friendly": "适合全家",
+    "children": "儿童音乐",
+    "music_type": "音乐类型",
+    "christmas": "圣诞节"
+  },
+  "railTitles": {
+    "contemporary": "当代",
+    "praise-worship": "赞美与敬拜",
+    "country": "乡村",
+    "pentecostal-shout": "五旬节欢呼",
+    "gospel": "福音"
+  },
+  "language": {
+    "title": "语言",
+    "search": "搜索语言…",
+    "recentlyUsed": "最近使用",
+    "allLanguages": "所有语言"
+  },
+  "search": {
+    "placeholder": "艺人、歌曲或专辑",
+    "recent": "最近搜索",
+    "clear": "清除",
+    "noResults": "没有“{{query}}”的结果",
+    "sectionAlbums": "专辑",
+    "sectionArtists": "艺人",
+    "sectionTracks": "歌曲"
+  },
+  "album": {
+    "tracks": "{{count}} 首歌曲",
+    "addToLibrary": "添加到音乐库"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} 名月度听众",
+    "popular": "热门",
+    "discography": "唱片目录"
+  },
+  "library": {
+    "title": "你的音乐库",
+    "favorites": "喜欢的歌曲",
+    "albums": "专辑",
+    "artists": "艺人",
+    "downloads": "下载",
+    "playlists": "播放列表",
+    "empty": "你保存的歌曲和专辑会显示在这里。",
+    "emptyLiked": "你喜欢的歌曲会显示在这里。点按任意歌曲上的爱心即可添加。",
+    "emptyArtists": "你关注的艺人会显示在这里。点按任意艺人上的关注即可添加。",
+    "emptyPlaylists": "你创建的播放列表会显示在这里。"
+  },
+  "downloads": {
+    "title": "下载",
+    "empty": "下载的音乐会显示在这里以供离线收听。"
+  },
+  "profile": {
+    "title": "个人资料",
+    "signIn": "登录",
+    "settings": "设置",
+    "changePassword": "修改密码",
+    "privacyPolicy": "隐私政策",
+    "termsOfUse": "使用条款",
+    "deleteAccount": "删除账户",
+    "signOut": "退出登录",
+    "guest": "访客",
+    "notSignedIn": "未登录",
+    "deleteTitle": "删除账户？",
+    "deleteMessage": "这将永久删除你的账户和所有数据。此操作无法撤销。",
+    "deletedTitle": "账户已删除",
+    "deletedMessage": "你的账户已被永久删除。",
+    "deleteFailedTitle": "无法删除账户"
+  },
+  "player": {
+    "queue": "队列",
+    "upNext": "即将播放",
+    "like": "喜欢",
+    "removeFromLiked": "从喜欢的歌曲中移除",
+    "goToAlbum": "前往专辑",
+    "goToArtist": "前往艺人",
+    "share": "分享",
+    "nothingPlaying": "当前没有播放内容。",
+    "queueEmpty": "队列为空。"
+  },
+  "changePassword": {
+    "title": "修改密码",
+    "instruction": "输入你的当前密码并设置一个新密码（至少 8 个字符）。",
+    "currentPlaceholder": "当前密码",
+    "newPlaceholder": "新密码（至少 8 个字符）",
+    "confirmPlaceholder": "确认新密码",
+    "mismatch": "两次密码不一致。",
+    "success": "你的密码已修改。你将在此设备保持登录；其他设备已退出登录。",
+    "done": "完成",
+    "submit": "更新密码",
+    "error": "无法修改你的密码。请重试。"
+  },
+  "auth": {
+    "signin": {
+      "title": "准备好聆听了吗？",
+      "subtitle": "输入你的邮箱和密码以登录。",
+      "email": "邮箱",
+      "password": "密码",
+      "submit": "登录",
+      "forgot": "忘记密码？",
+      "newPrompt": "第一次使用 KJubilee？ ",
+      "signUp": "注册",
+      "botNotice": "此页面受保护，以确认你不是机器人。"
+    },
+    "signup": {
+      "title": "创建你的账户",
+      "subtitle": "加入 KJubilee，保存你的音乐、创建播放列表并随时随地收听。",
+      "firstName": "名字",
+      "lastName": "姓氏",
+      "dateOfBirth": "出生日期",
+      "ageError": "你必须年满 {{age}} 岁才能创建账户。",
+      "email": "邮箱",
+      "password": "密码（至少 8 个字符）",
+      "confirm": "确认密码",
+      "mismatch": "两次密码不一致。",
+      "agreePrefix": "我同意",
+      "and": " 和 ",
+      "submit": "创建账户",
+      "havePrompt": "已有账户？ ",
+      "signIn": "登录",
+      "error": "无法开始注册。请重试。"
+    },
+    "forgot": {
+      "title": "重置你的密码",
+      "instruction": "输入你的账户邮箱，我们将发送重置密码的链接。",
+      "email": "邮箱",
+      "submit": "发送重置链接",
+      "sentMessage": "如果 {{email}} 存在账户，我们已发送重置链接。请在网页上打开它以设置新密码，然后返回登录。",
+      "backToSignIn": "返回登录"
+    },
+    "twoFactor": {
+      "title": "验证是你本人",
+      "subtitle": "输入我们发送的验证码以保护你的账户。",
+      "codePlaceholder": "6 位验证码",
+      "trustDevice": "信任此设备",
+      "submit": "验证"
+    },
+    "verify": {
+      "title": "验证你的邮箱",
+      "subtitle": "输入我们发送到 {{email}} 的 6 位验证码以完成账户创建。",
+      "submit": "验证并创建账户",
+      "noCodePrompt": "没有收到验证码？ ",
+      "resend": "重新发送验证码",
+      "resendIn": "{{seconds}} 秒后重新发送",
+      "failed": "验证失败。请重试。",
+      "resendFailed": "无法重新发送验证码。"
+    }
+  },
+  "errors": {
+    "albumNotFound": "未找到专辑。",
+    "artistNotFound": "未找到艺人。",
+    "generic": "出了点问题。请重试。"
+  },
+  "playlist": {
+    "namePrompt": "为你的播放列表命名",
+    "namePlaceholder": "播放列表名称",
+    "create": "创建",
+    "save": "保存",
+    "rename": "重命名播放列表",
+    "delete": "删除播放列表",
+    "deleteConfirm": "删除“{{title}}”？此操作无法撤销。",
+    "addSongs": "添加歌曲",
+    "addToPlaylist": "添加到播放列表",
+    "newPlaylist": "新建播放列表",
+    "removeFromPlaylist": "从此播放列表中移除",
+    "songCount": "{{count}} 首歌曲",
+    "empty": "还没有音乐",
+    "emptyHint": "点按“添加歌曲”，为此播放列表添加音乐。",
+    "notFound": "未找到播放列表。"
+  },
+  "stub": {
+    "comingSoon": "敬请期待",
+    "description": "该区域已接入应用架构，随时可以进一步开发。"
+  }
+}

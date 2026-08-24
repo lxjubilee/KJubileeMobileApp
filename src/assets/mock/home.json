@@ -1,0 +1,29 @@
+{
+  "heroAlbumId": "al_aurora_lights",
+  "rails": [
+    {
+      "id": "rail_recent",
+      "title": "Recently Played",
+      "itemType": "album",
+      "itemIds": ["al_night_neon", "al_pulse_surge", "al_lowtide_drift", "al_solace_quiet"]
+    },
+    {
+      "id": "rail_trending",
+      "title": "Trending Music",
+      "itemType": "album",
+      "itemIds": ["al_pulse_surge", "al_aurora_lights", "al_night_neon", "al_ember_roots", "al_aurora_velvet"]
+    },
+    {
+      "id": "rail_recommended",
+      "title": "Recommended Albums",
+      "itemType": "album",
+      "itemIds": ["al_solace_quiet", "al_ember_roots", "al_aurora_velvet", "al_lowtide_drift"]
+    },
+    {
+      "id": "rail_artists",
+      "title": "Top Artists",
+      "itemType": "artist",
+      "itemIds": ["ar_pulse", "ar_aurora", "ar_ember", "ar_nightdrive", "ar_solace", "ar_lowtide"]
+    }
+  ]
+}

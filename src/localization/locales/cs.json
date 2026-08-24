@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Přehrát",
+    "pause": "Pozastavit",
+    "shuffle": "Náhodně",
+    "shufflePlay": "Náhodné přehrávání",
+    "download": "Stáhnout",
+    "seeAll": "Zobrazit vše",
+    "retry": "Zkusit znovu",
+    "follow": "Sledovat",
+    "following": "Sledujete",
+    "save": "Uložit",
+    "saved": "Uloženo",
+    "cancel": "Zrušit",
+    "ok": "OK",
+    "delete": "Smazat",
+    "done": "Hotovo"
+  },
+  "tabs": {
+    "home": "Domů",
+    "browse": "Procházet",
+    "search": "Hledat",
+    "library": "Knihovna"
+  },
+  "home": {
+    "greetingMorning": "Dobré ráno",
+    "greetingAfternoon": "Dobré odpoledne",
+    "greetingEvening": "Dobrý večer",
+    "loadError": "Nepodařilo se načíst vaši hudbu. Potáhněte pro obnovení nebo to zkuste znovu.",
+    "comingSoon": "Hudba v jazyce {{language}} zatím není – brzy přidáme další jazyky."
+  },
+  "categories": {
+    "home": "Domů",
+    "inspire_family": "Rodina Inspire",
+    "family_friendly": "Vhodné pro rodiny",
+    "children": "Hudba pro děti",
+    "music_type": "Typ hudby",
+    "christmas": "Vánoce"
+  },
+  "railTitles": {
+    "contemporary": "Současná",
+    "praise-worship": "Chvála a uctívání",
+    "country": "Country",
+    "pentecostal-shout": "Letniční volání",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Jazyky",
+    "search": "Hledat jazyky…",
+    "recentlyUsed": "Naposledy použité",
+    "allLanguages": "Všechny jazyky"
+  },
+  "search": {
+    "placeholder": "Interpreti, skladby nebo alba",
+    "recent": "Nedávná hledání",
+    "clear": "Vymazat",
+    "noResults": "Žádné výsledky pro \"{{query}}\"",
+    "sectionAlbums": "Alba",
+    "sectionArtists": "Interpreti",
+    "sectionTracks": "Skladby"
+  },
+  "album": {
+    "tracks": "{{count}} skladeb",
+    "addToLibrary": "Přidat do knihovny"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} měsíčních posluchačů",
+    "popular": "Populární",
+    "discography": "Diskografie"
+  },
+  "library": {
+    "title": "Vaše knihovna",
+    "favorites": "Oblíbené skladby",
+    "albums": "Alba",
+    "artists": "Interpreti",
+    "downloads": "Stažené",
+    "playlists": "Playlisty",
+    "empty": "Uložené skladby a alba se zobrazí zde.",
+    "emptyLiked": "Skladby, které se vám líbí, se zobrazí zde. Klepnutím na srdíčko u skladby ji přidáte.",
+    "emptyArtists": "Interpreti, které sledujete, se zobrazí zde. Klepnutím na sledovat u interpreta ho přidáte.",
+    "emptyPlaylists": "Playlisty, které vytvoříte, se zobrazí zde."
+  },
+  "downloads": {
+    "title": "Stažené",
+    "empty": "Stažená hudba se zobrazí zde pro offline poslech."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Přihlásit se",
+    "settings": "Nastavení",
+    "changePassword": "Změnit heslo",
+    "privacyPolicy": "Zásady ochrany soukromí",
+    "termsOfUse": "Podmínky použití",
+    "deleteAccount": "Smazat účet",
+    "signOut": "Odhlásit se",
+    "guest": "Host",
+    "notSignedIn": "Nepřihlášen",
+    "deleteTitle": "Smazat účet?",
+    "deleteMessage": "Tímto trvale smažete svůj účet a všechna svá data. Tuto akci nelze vrátit zpět.",
+    "deletedTitle": "Účet smazán",
+    "deletedMessage": "Váš účet byl trvale smazán.",
+    "deleteFailedTitle": "Účet se nepodařilo smazat"
+  },
+  "player": {
+    "queue": "Fronta",
+    "upNext": "Další na řadě",
+    "like": "To se mi líbí",
+    "removeFromLiked": "Odebrat z oblíbených skladeb",
+    "goToAlbum": "Přejít na album",
+    "goToArtist": "Přejít na interpreta",
+    "share": "Sdílet",
+    "nothingPlaying": "Nic se nepřehrává.",
+    "queueEmpty": "Fronta je prázdná."
+  },
+  "changePassword": {
+    "title": "Změnit heslo",
+    "instruction": "Zadejte své současné heslo a zvolte nové (alespoň 8 znaků).",
+    "currentPlaceholder": "Současné heslo",
+    "newPlaceholder": "Nové heslo (min. 8 znaků)",
+    "confirmPlaceholder": "Potvrďte nové heslo",
+    "mismatch": "Hesla se neshodují.",
+    "success": "Vaše heslo bylo změněno. Zde zůstanete přihlášeni; ostatní zařízení byla odhlášena.",
+    "done": "Hotovo",
+    "submit": "Aktualizovat heslo",
+    "error": "Heslo se nepodařilo změnit. Zkuste to znovu."
+  },
+  "auth": {
+    "signin": {
+      "title": "Připraveni poslouchat?",
+      "subtitle": "Zadejte e-mail a heslo pro přihlášení.",
+      "email": "E-mail",
+      "password": "Heslo",
+      "submit": "Přihlásit se",
+      "forgot": "Zapomněli jste heslo?",
+      "newPrompt": "Nováček v KJubilee? ",
+      "signUp": "Registrovat se",
+      "botNotice": "Tato stránka je chráněna, abychom ověřili, že nejste robot."
+    },
+    "signup": {
+      "title": "Vytvořte si účet",
+      "subtitle": "Připojte se k KJubilee, ukládejte si hudbu, vytvářejte playlisty a poslouchejte kdekoli.",
+      "firstName": "Jméno",
+      "lastName": "Příjmení",
+      "dateOfBirth": "Datum narození",
+      "ageError": "Pro vytvoření účtu vám musí být alespoň {{age}} let.",
+      "email": "E-mail",
+      "password": "Heslo (min. 8 znaků)",
+      "confirm": "Potvrďte heslo",
+      "mismatch": "Hesla se neshodují.",
+      "agreePrefix": "Souhlasím s ",
+      "and": " a ",
+      "submit": "Vytvořit účet",
+      "havePrompt": "Už máte účet? ",
+      "signIn": "Přihlásit se",
+      "error": "Registraci se nepodařilo spustit. Zkuste to znovu."
+    },
+    "forgot": {
+      "title": "Obnovit heslo",
+      "instruction": "Zadejte e-mail svého účtu a my vám pošleme odkaz pro obnovení hesla.",
+      "email": "E-mail",
+      "submit": "Odeslat odkaz",
+      "sentMessage": "Pokud pro {{email}} existuje účet, poslali jsme odkaz pro obnovení. Otevřete jej na webu, zvolte nové heslo a poté se vraťte a přihlaste se.",
+      "backToSignIn": "Zpět na přihlášení"
+    },
+    "twoFactor": {
+      "title": "Ověřte, že jste to vy",
+      "subtitle": "Zadejte ověřovací kód, který jsme poslali, abychom udrželi váš účet v bezpečí.",
+      "codePlaceholder": "6místný kód",
+      "trustDevice": "Důvěřovat tomuto zařízení",
+      "submit": "Ověřit"
+    },
+    "verify": {
+      "title": "Ověřte svůj e-mail",
+      "subtitle": "Zadejte 6místný kód, který jsme poslali na {{email}}, abyste dokončili vytvoření účtu.",
+      "submit": "Ověřit a vytvořit účet",
+      "noCodePrompt": "Nedorazil vám kód? ",
+      "resend": "Poslat kód znovu",
+      "resendIn": "Znovu odeslat za {{seconds}} s",
+      "failed": "Ověření selhalo. Zkuste to znovu.",
+      "resendFailed": "Kód se nepodařilo odeslat znovu."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Album nebylo nalezeno.",
+    "artistNotFound": "Interpret nebyl nalezen.",
+    "generic": "Něco se pokazilo. Zkuste to znovu."
+  },
+  "playlist": {
+    "namePrompt": "Pojmenujte svůj playlist",
+    "namePlaceholder": "Název playlistu",
+    "create": "Vytvořit",
+    "save": "Uložit",
+    "rename": "Přejmenovat playlist",
+    "delete": "Smazat playlist",
+    "deleteConfirm": "Smazat \"{{title}}\"? Tuto akci nelze vrátit zpět.",
+    "addSongs": "Přidat skladby",
+    "addToPlaylist": "Přidat do playlistu",
+    "newPlaylist": "Nový playlist",
+    "removeFromPlaylist": "Odebrat z tohoto playlistu",
+    "songCount": "{{count}} skladeb",
+    "empty": "Zatím žádná hudba",
+    "emptyHint": "Klepnutím na „Přidat skladby“ přidáte hudbu do tohoto playlistu.",
+    "notFound": "Playlist nebyl nalezen."
+  },
+  "stub": {
+    "comingSoon": "Již brzy",
+    "description": "Tato oblast je propojena s architekturou aplikace a připravena k rozšíření."
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Lire",
+    "pause": "Pause",
+    "shuffle": "Aléatoire",
+    "shufflePlay": "Lecture aléatoire",
+    "download": "Télécharger",
+    "seeAll": "Tout voir",
+    "retry": "Réessayer",
+    "follow": "Suivre",
+    "following": "Suivi",
+    "save": "Enregistrer",
+    "saved": "Enregistré",
+    "cancel": "Annuler",
+    "ok": "OK",
+    "delete": "Supprimer",
+    "done": "Terminé"
+  },
+  "tabs": {
+    "home": "Accueil",
+    "browse": "Parcourir",
+    "search": "Rechercher",
+    "library": "Bibliothèque"
+  },
+  "home": {
+    "greetingMorning": "Bonjour",
+    "greetingAfternoon": "Bon après-midi",
+    "greetingEvening": "Bonsoir",
+    "loadError": "Impossible de charger votre musique. Tirez pour actualiser ou réessayez.",
+    "comingSoon": "Pas encore de musique en {{language}} : d'autres langues arrivent bientôt."
+  },
+  "categories": {
+    "home": "Accueil",
+    "inspire_family": "Famille Inspire",
+    "family_friendly": "Pour toute la famille",
+    "children": "Musique pour enfants",
+    "music_type": "Type de musique",
+    "christmas": "Noël"
+  },
+  "railTitles": {
+    "contemporary": "Contemporain",
+    "praise-worship": "Louange et adoration",
+    "country": "Country",
+    "pentecostal-shout": "Cri pentecôtiste",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Langues",
+    "search": "Rechercher des langues…",
+    "recentlyUsed": "Récemment utilisées",
+    "allLanguages": "Toutes les langues"
+  },
+  "search": {
+    "placeholder": "Artistes, titres ou albums",
+    "recent": "Recherches récentes",
+    "clear": "Effacer",
+    "noResults": "Aucun résultat pour \"{{query}}\"",
+    "sectionAlbums": "Albums",
+    "sectionArtists": "Artistes",
+    "sectionTracks": "Titres"
+  },
+  "album": {
+    "tracks": "{{count}} titres",
+    "addToLibrary": "Ajouter à la bibliothèque"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} auditeurs mensuels",
+    "popular": "Populaires",
+    "discography": "Discographie"
+  },
+  "library": {
+    "title": "Votre bibliothèque",
+    "favorites": "Titres aimés",
+    "albums": "Albums",
+    "artists": "Artistes",
+    "downloads": "Téléchargements",
+    "playlists": "Playlists",
+    "empty": "Les titres et albums que vous enregistrez apparaîtront ici.",
+    "emptyLiked": "Les titres que vous aimez apparaîtront ici. Touchez le cœur sur un titre pour l'ajouter.",
+    "emptyArtists": "Les artistes que vous suivez apparaîtront ici. Touchez suivre pour les ajouter.",
+    "emptyPlaylists": "Les playlists que vous créez apparaîtront ici."
+  },
+  "downloads": {
+    "title": "Téléchargements",
+    "empty": "La musique téléchargée apparaîtra ici pour une écoute hors connexion."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Se connecter",
+    "settings": "Paramètres",
+    "changePassword": "Changer le mot de passe",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfUse": "Conditions d'utilisation",
+    "deleteAccount": "Supprimer le compte",
+    "signOut": "Se déconnecter",
+    "guest": "Invité",
+    "notSignedIn": "Non connecté",
+    "deleteTitle": "Supprimer le compte ?",
+    "deleteMessage": "Cela supprime définitivement votre compte et toutes vos données. Cette action est irréversible.",
+    "deletedTitle": "Compte supprimé",
+    "deletedMessage": "Votre compte a été définitivement supprimé.",
+    "deleteFailedTitle": "Impossible de supprimer le compte"
+  },
+  "player": {
+    "queue": "File d'attente",
+    "upNext": "À suivre",
+    "like": "J'aime",
+    "removeFromLiked": "Retirer des titres aimés",
+    "goToAlbum": "Aller à l'album",
+    "goToArtist": "Aller à l'artiste",
+    "share": "Partager",
+    "nothingPlaying": "Aucune lecture en cours.",
+    "queueEmpty": "La file d'attente est vide."
+  },
+  "changePassword": {
+    "title": "Changer le mot de passe",
+    "instruction": "Saisissez votre mot de passe actuel et choisissez-en un nouveau (au moins 8 caractères).",
+    "currentPlaceholder": "Mot de passe actuel",
+    "newPlaceholder": "Nouveau mot de passe (min. 8 caractères)",
+    "confirmPlaceholder": "Confirmer le nouveau mot de passe",
+    "mismatch": "Les mots de passe ne correspondent pas.",
+    "success": "Votre mot de passe a été changé. Vous restez connecté ici ; les autres appareils ont été déconnectés.",
+    "done": "Terminé",
+    "submit": "Mettre à jour le mot de passe",
+    "error": "Impossible de changer votre mot de passe. Réessayez."
+  },
+  "auth": {
+    "signin": {
+      "title": "Prêt à écouter ?",
+      "subtitle": "Saisissez votre e-mail et votre mot de passe pour vous connecter.",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "forgot": "Mot de passe oublié ?",
+      "newPrompt": "Nouveau sur KJubilee ? ",
+      "signUp": "S'inscrire",
+      "botNotice": "Cette page est protégée pour vérifier que vous n'êtes pas un robot."
+    },
+    "signup": {
+      "title": "Créez votre compte",
+      "subtitle": "Rejoignez KJubilee pour enregistrer votre musique, créer des playlists et écouter partout.",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "dateOfBirth": "Date de naissance",
+      "ageError": "Vous devez avoir au moins {{age}} ans pour créer un compte.",
+      "email": "E-mail",
+      "password": "Mot de passe (min. 8 caractères)",
+      "confirm": "Confirmer le mot de passe",
+      "mismatch": "Les mots de passe ne correspondent pas.",
+      "agreePrefix": "J'accepte les ",
+      "and": " et la ",
+      "submit": "Créer un compte",
+      "havePrompt": "Vous avez déjà un compte ? ",
+      "signIn": "Se connecter",
+      "error": "Impossible de démarrer l'inscription. Réessayez."
+    },
+    "forgot": {
+      "title": "Réinitialiser votre mot de passe",
+      "instruction": "Saisissez l'e-mail de votre compte et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+      "email": "E-mail",
+      "submit": "Envoyer le lien",
+      "sentMessage": "Si un compte existe pour {{email}}, nous avons envoyé un lien de réinitialisation. Ouvrez-le sur le web pour choisir un nouveau mot de passe, puis revenez vous connecter.",
+      "backToSignIn": "Retour à la connexion"
+    },
+    "twoFactor": {
+      "title": "Vérifiez votre identité",
+      "subtitle": "Saisissez le code de vérification que nous avons envoyé pour sécuriser votre compte.",
+      "codePlaceholder": "Code à 6 chiffres",
+      "trustDevice": "Faire confiance à cet appareil",
+      "submit": "Vérifier"
+    },
+    "verify": {
+      "title": "Vérifiez votre e-mail",
+      "subtitle": "Saisissez le code à 6 chiffres envoyé à {{email}} pour finaliser la création de votre compte.",
+      "submit": "Vérifier et créer le compte",
+      "noCodePrompt": "Vous n'avez pas reçu de code ? ",
+      "resend": "Renvoyer le code",
+      "resendIn": "Renvoyer dans {{seconds}} s",
+      "failed": "La vérification a échoué. Réessayez.",
+      "resendFailed": "Impossible de renvoyer le code."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Album introuvable.",
+    "artistNotFound": "Artiste introuvable.",
+    "generic": "Une erreur s'est produite. Réessayez."
+  },
+  "playlist": {
+    "namePrompt": "Nommez votre playlist",
+    "namePlaceholder": "Nom de la playlist",
+    "create": "Créer",
+    "save": "Enregistrer",
+    "rename": "Renommer la playlist",
+    "delete": "Supprimer la playlist",
+    "deleteConfirm": "Supprimer \"{{title}}\" ? Cette action est irréversible.",
+    "addSongs": "Ajouter des titres",
+    "addToPlaylist": "Ajouter à la playlist",
+    "newPlaylist": "Nouvelle playlist",
+    "removeFromPlaylist": "Retirer de cette playlist",
+    "songCount": "{{count}} titres",
+    "empty": "Pas encore de musique",
+    "emptyHint": "Touchez « Ajouter des titres » pour ajouter de la musique à cette playlist.",
+    "notFound": "Playlist introuvable."
+  },
+  "stub": {
+    "comingSoon": "Bientôt disponible",
+    "description": "Cette zone est intégrée à l'architecture de l'app et prête à être développée."
+  }
+}

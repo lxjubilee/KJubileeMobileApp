@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Spill av",
+    "pause": "Pause",
+    "shuffle": "Bland",
+    "shufflePlay": "Bland og spill av",
+    "download": "Last ned",
+    "seeAll": "Se alle",
+    "retry": "Prøv igjen",
+    "follow": "Følg",
+    "following": "Følger",
+    "save": "Lagre",
+    "saved": "Lagret",
+    "cancel": "Avbryt",
+    "ok": "OK",
+    "delete": "Slett",
+    "done": "Ferdig"
+  },
+  "tabs": {
+    "home": "Hjem",
+    "browse": "Utforsk",
+    "search": "Søk",
+    "library": "Bibliotek"
+  },
+  "home": {
+    "greetingMorning": "God morgen",
+    "greetingAfternoon": "God ettermiddag",
+    "greetingEvening": "God kveld",
+    "loadError": "Vi kunne ikke laste inn musikken din. Dra for å oppdatere, eller prøv igjen.",
+    "comingSoon": "Ingen musikk på {{language}} ennå – vi legger snart til flere språk."
+  },
+  "categories": {
+    "home": "Hjem",
+    "inspire_family": "Inspire-familien",
+    "family_friendly": "Familievennlig",
+    "children": "Barnemusikk",
+    "music_type": "Musikktype",
+    "christmas": "Jul"
+  },
+  "railTitles": {
+    "contemporary": "Samtidig",
+    "praise-worship": "Lovsang og tilbedelse",
+    "country": "Country",
+    "pentecostal-shout": "Pinsevekkelsens rop",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Språk",
+    "search": "Søk etter språk…",
+    "recentlyUsed": "Nylig brukt",
+    "allLanguages": "Alle språk"
+  },
+  "search": {
+    "placeholder": "Artister, sanger eller album",
+    "recent": "Nylige søk",
+    "clear": "Tøm",
+    "noResults": "Ingen resultater for \"{{query}}\"",
+    "sectionAlbums": "Album",
+    "sectionArtists": "Artister",
+    "sectionTracks": "Sanger"
+  },
+  "album": {
+    "tracks": "{{count}} sanger",
+    "addToLibrary": "Legg til i biblioteket"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} månedlige lyttere",
+    "popular": "Populært",
+    "discography": "Diskografi"
+  },
+  "library": {
+    "title": "Biblioteket ditt",
+    "favorites": "Likte sanger",
+    "albums": "Album",
+    "artists": "Artister",
+    "downloads": "Nedlastinger",
+    "playlists": "Spillelister",
+    "empty": "Sanger og album du lagrer, vises her.",
+    "emptyLiked": "Sanger du liker, vises her. Trykk på hjertet på en sang for å legge den til.",
+    "emptyArtists": "Artister du følger, vises her. Trykk på følg på en artist for å legge den til.",
+    "emptyPlaylists": "Spillelister du lager, vises her."
+  },
+  "downloads": {
+    "title": "Nedlastinger",
+    "empty": "Nedlastet musikk vises her for lytting uten nett."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Logg inn",
+    "settings": "Innstillinger",
+    "changePassword": "Endre passord",
+    "privacyPolicy": "Personvernerklæring",
+    "termsOfUse": "Bruksvilkår",
+    "deleteAccount": "Slett konto",
+    "signOut": "Logg ut",
+    "guest": "Gjest",
+    "notSignedIn": "Ikke logget inn",
+    "deleteTitle": "Slette kontoen?",
+    "deleteMessage": "Dette sletter kontoen din og alle dataene dine permanent. Handlingen kan ikke angres.",
+    "deletedTitle": "Konto slettet",
+    "deletedMessage": "Kontoen din er slettet permanent.",
+    "deleteFailedTitle": "Kunne ikke slette kontoen"
+  },
+  "player": {
+    "queue": "Kø",
+    "upNext": "Neste",
+    "like": "Lik",
+    "removeFromLiked": "Fjern fra likte sanger",
+    "goToAlbum": "Gå til album",
+    "goToArtist": "Gå til artist",
+    "share": "Del",
+    "nothingPlaying": "Ingenting spilles av.",
+    "queueEmpty": "Køen er tom."
+  },
+  "changePassword": {
+    "title": "Endre passord",
+    "instruction": "Skriv inn nåværende passord og velg et nytt (minst 8 tegn).",
+    "currentPlaceholder": "Nåværende passord",
+    "newPlaceholder": "Nytt passord (minst 8 tegn)",
+    "confirmPlaceholder": "Bekreft nytt passord",
+    "mismatch": "Passordene samsvarer ikke.",
+    "success": "Passordet ditt er endret. Du forblir innlogget her; andre enheter er logget ut.",
+    "done": "Ferdig",
+    "submit": "Oppdater passord",
+    "error": "Kunne ikke endre passordet ditt. Prøv igjen."
+  },
+  "auth": {
+    "signin": {
+      "title": "Klar til å lytte?",
+      "subtitle": "Skriv inn e-post og passord for å logge inn.",
+      "email": "E-post",
+      "password": "Passord",
+      "submit": "Logg inn",
+      "forgot": "Glemt passord?",
+      "newPrompt": "Ny på KJubilee? ",
+      "signUp": "Registrer deg",
+      "botNotice": "Denne siden er beskyttet for å bekrefte at du ikke er en bot."
+    },
+    "signup": {
+      "title": "Opprett kontoen din",
+      "subtitle": "Bli med i KJubilee for å lagre musikken din, lage spillelister og lytte hvor som helst.",
+      "firstName": "Fornavn",
+      "lastName": "Etternavn",
+      "dateOfBirth": "Fødselsdato",
+      "ageError": "Du må være minst {{age}} år for å opprette en konto.",
+      "email": "E-post",
+      "password": "Passord (minst 8 tegn)",
+      "confirm": "Bekreft passord",
+      "mismatch": "Passordene samsvarer ikke.",
+      "agreePrefix": "Jeg godtar ",
+      "and": " og ",
+      "submit": "Opprett konto",
+      "havePrompt": "Har du allerede en konto? ",
+      "signIn": "Logg inn",
+      "error": "Kunne ikke starte registreringen. Prøv igjen."
+    },
+    "forgot": {
+      "title": "Tilbakestill passordet ditt",
+      "instruction": "Skriv inn e-postadressen til kontoen din, så sender vi en lenke for å tilbakestille passordet.",
+      "email": "E-post",
+      "submit": "Send tilbakestillingslenke",
+      "sentMessage": "Hvis det finnes en konto for {{email}}, har vi sendt en tilbakestillingslenke. Åpne den på nettet for å velge et nytt passord, og kom så tilbake og logg inn.",
+      "backToSignIn": "Tilbake til innlogging"
+    },
+    "twoFactor": {
+      "title": "Bekreft at det er deg",
+      "subtitle": "Skriv inn bekreftelseskoden vi sendte for å holde kontoen din trygg.",
+      "codePlaceholder": "6-sifret kode",
+      "trustDevice": "Stol på denne enheten",
+      "submit": "Bekreft"
+    },
+    "verify": {
+      "title": "Bekreft e-posten din",
+      "subtitle": "Skriv inn den 6-sifrede koden vi sendte til {{email}} for å fullføre opprettelsen av kontoen din.",
+      "submit": "Bekreft og opprett konto",
+      "noCodePrompt": "Fikk du ingen kode? ",
+      "resend": "Send koden på nytt",
+      "resendIn": "Send på nytt om {{seconds}} s",
+      "failed": "Bekreftelsen mislyktes. Prøv igjen.",
+      "resendFailed": "Kunne ikke sende koden på nytt."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Fant ikke albumet.",
+    "artistNotFound": "Fant ikke artisten.",
+    "generic": "Noe gikk galt. Prøv igjen."
+  },
+  "playlist": {
+    "namePrompt": "Gi spillelisten din et navn",
+    "namePlaceholder": "Navn på spilleliste",
+    "create": "Opprett",
+    "save": "Lagre",
+    "rename": "Gi nytt navn til spilleliste",
+    "delete": "Slett spilleliste",
+    "deleteConfirm": "Slette \"{{title}}\"? Dette kan ikke angres.",
+    "addSongs": "Legg til sanger",
+    "addToPlaylist": "Legg til i spilleliste",
+    "newPlaylist": "Ny spilleliste",
+    "removeFromPlaylist": "Fjern fra denne spillelisten",
+    "songCount": "{{count}} sanger",
+    "empty": "Ingen musikk ennå",
+    "emptyHint": "Trykk på «Legg til sanger» for å legge til musikk i denne spillelisten.",
+    "notFound": "Fant ikke spillelisten."
+  },
+  "stub": {
+    "comingSoon": "Kommer snart",
+    "description": "Dette området er koblet til appens arkitektur og klart til å bygges ut."
+  }
+}

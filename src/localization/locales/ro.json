@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Redă",
+    "pause": "Pauză",
+    "shuffle": "Amestecă",
+    "shufflePlay": "Redare amestecată",
+    "download": "Descarcă",
+    "seeAll": "Vezi tot",
+    "retry": "Reîncearcă",
+    "follow": "Urmărește",
+    "following": "Urmărești",
+    "save": "Salvează",
+    "saved": "Salvat",
+    "cancel": "Anulează",
+    "ok": "OK",
+    "delete": "Șterge",
+    "done": "Gata"
+  },
+  "tabs": {
+    "home": "Acasă",
+    "browse": "Explorează",
+    "search": "Caută",
+    "library": "Bibliotecă"
+  },
+  "home": {
+    "greetingMorning": "Bună dimineața",
+    "greetingAfternoon": "Bună ziua",
+    "greetingEvening": "Bună seara",
+    "loadError": "Nu am putut încărca muzica ta. Trage pentru a reîmprospăta sau încearcă din nou.",
+    "comingSoon": "Încă nu există muzică în {{language}} — vom adăuga în curând mai multe limbi."
+  },
+  "categories": {
+    "home": "Acasă",
+    "inspire_family": "Familia Inspire",
+    "family_friendly": "Potrivit pentru familie",
+    "children": "Muzică pentru copii",
+    "music_type": "Tip de muzică",
+    "christmas": "Crăciun"
+  },
+  "railTitles": {
+    "contemporary": "Contemporană",
+    "praise-worship": "Laudă și închinare",
+    "country": "Country",
+    "pentecostal-shout": "Strigăt penticostal",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Limbi",
+    "search": "Caută limbi…",
+    "recentlyUsed": "Utilizate recent",
+    "allLanguages": "Toate limbile"
+  },
+  "search": {
+    "placeholder": "Artiști, melodii sau albume",
+    "recent": "Căutări recente",
+    "clear": "Șterge",
+    "noResults": "Niciun rezultat pentru \"{{query}}\"",
+    "sectionAlbums": "Albume",
+    "sectionArtists": "Artiști",
+    "sectionTracks": "Melodii"
+  },
+  "album": {
+    "tracks": "{{count}} melodii",
+    "addToLibrary": "Adaugă în bibliotecă"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} ascultători lunari",
+    "popular": "Populare",
+    "discography": "Discografie"
+  },
+  "library": {
+    "title": "Biblioteca ta",
+    "favorites": "Melodii apreciate",
+    "albums": "Albume",
+    "artists": "Artiști",
+    "downloads": "Descărcări",
+    "playlists": "Playlisturi",
+    "empty": "Melodiile și albumele pe care le salvezi vor apărea aici.",
+    "emptyLiked": "Melodiile care îți plac vor apărea aici. Atinge inima de la orice piesă pentru a o adăuga.",
+    "emptyArtists": "Artiștii pe care îi urmărești vor apărea aici. Atinge urmărește la orice artist pentru a-l adăuga.",
+    "emptyPlaylists": "Playlisturile pe care le creezi vor apărea aici."
+  },
+  "downloads": {
+    "title": "Descărcări",
+    "empty": "Muzica descărcată va apărea aici pentru ascultare offline."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Autentificare",
+    "settings": "Setări",
+    "changePassword": "Schimbă parola",
+    "privacyPolicy": "Politica de confidențialitate",
+    "termsOfUse": "Termeni de utilizare",
+    "deleteAccount": "Șterge contul",
+    "signOut": "Deconectare",
+    "guest": "Invitat",
+    "notSignedIn": "Neautentificat",
+    "deleteTitle": "Ștergi contul?",
+    "deleteMessage": "Aceasta îți șterge definitiv contul și toate datele. Această acțiune nu poate fi anulată.",
+    "deletedTitle": "Cont șters",
+    "deletedMessage": "Contul tău a fost șters definitiv.",
+    "deleteFailedTitle": "Contul nu a putut fi șters"
+  },
+  "player": {
+    "queue": "Coadă",
+    "upNext": "Urmează",
+    "like": "Apreciază",
+    "removeFromLiked": "Elimină din melodiile apreciate",
+    "goToAlbum": "Mergi la album",
+    "goToArtist": "Mergi la artist",
+    "share": "Distribuie",
+    "nothingPlaying": "Nu se redă nimic.",
+    "queueEmpty": "Coada este goală."
+  },
+  "changePassword": {
+    "title": "Schimbă parola",
+    "instruction": "Introdu parola actuală și alege una nouă (cel puțin 8 caractere).",
+    "currentPlaceholder": "Parola actuală",
+    "newPlaceholder": "Parolă nouă (min. 8 caractere)",
+    "confirmPlaceholder": "Confirmă parola nouă",
+    "mismatch": "Parolele nu se potrivesc.",
+    "success": "Parola ta a fost schimbată. Vei rămâne autentificat aici; celelalte dispozitive au fost deconectate.",
+    "done": "Gata",
+    "submit": "Actualizează parola",
+    "error": "Nu am putut schimba parola. Încearcă din nou."
+  },
+  "auth": {
+    "signin": {
+      "title": "Gata de ascultat?",
+      "subtitle": "Introdu adresa de e-mail și parola pentru a te autentifica.",
+      "email": "E-mail",
+      "password": "Parolă",
+      "submit": "Autentificare",
+      "forgot": "Ai uitat parola?",
+      "newPrompt": "Nou pe KJubilee? ",
+      "signUp": "Înregistrează-te",
+      "botNotice": "Această pagină este protejată pentru a confirma că nu ești un bot."
+    },
+    "signup": {
+      "title": "Creează-ți contul",
+      "subtitle": "Alătură-te KJubilee pentru a-ți salva muzica, a crea playlisturi și a asculta oriunde.",
+      "firstName": "Prenume",
+      "lastName": "Nume",
+      "dateOfBirth": "Data nașterii",
+      "ageError": "Trebuie să ai cel puțin {{age}} ani pentru a crea un cont.",
+      "email": "E-mail",
+      "password": "Parolă (min. 8 caractere)",
+      "confirm": "Confirmă parola",
+      "mismatch": "Parolele nu se potrivesc.",
+      "agreePrefix": "Sunt de acord cu ",
+      "and": " și ",
+      "submit": "Creează cont",
+      "havePrompt": "Ai deja un cont? ",
+      "signIn": "Autentificare",
+      "error": "Nu am putut începe înregistrarea. Încearcă din nou."
+    },
+    "forgot": {
+      "title": "Resetează-ți parola",
+      "instruction": "Introdu adresa de e-mail a contului și îți vom trimite un link pentru resetarea parolei.",
+      "email": "E-mail",
+      "submit": "Trimite linkul de resetare",
+      "sentMessage": "Dacă există un cont pentru {{email}}, am trimis un link de resetare. Deschide-l pe web pentru a alege o parolă nouă, apoi revino și autentifică-te.",
+      "backToSignIn": "Înapoi la autentificare"
+    },
+    "twoFactor": {
+      "title": "Confirmă că ești tu",
+      "subtitle": "Introdu codul de verificare pe care l-am trimis pentru a-ți păstra contul în siguranță.",
+      "codePlaceholder": "Cod din 6 cifre",
+      "trustDevice": "Ai încredere în acest dispozitiv",
+      "submit": "Verifică"
+    },
+    "verify": {
+      "title": "Verifică-ți e-mailul",
+      "subtitle": "Introdu codul din 6 cifre pe care l-am trimis la {{email}} pentru a finaliza crearea contului.",
+      "submit": "Verifică și creează cont",
+      "noCodePrompt": "Nu ai primit un cod? ",
+      "resend": "Retrimite codul",
+      "resendIn": "Retrimite în {{seconds}} s",
+      "failed": "Verificarea a eșuat. Încearcă din nou.",
+      "resendFailed": "Codul nu a putut fi retrimis."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Albumul nu a fost găsit.",
+    "artistNotFound": "Artistul nu a fost găsit.",
+    "generic": "Ceva nu a mers bine. Încearcă din nou."
+  },
+  "playlist": {
+    "namePrompt": "Denumește-ți playlistul",
+    "namePlaceholder": "Numele playlistului",
+    "create": "Creează",
+    "save": "Salvează",
+    "rename": "Redenumește playlistul",
+    "delete": "Șterge playlistul",
+    "deleteConfirm": "Ștergi \"{{title}}\"? Această acțiune nu poate fi anulată.",
+    "addSongs": "Adaugă melodii",
+    "addToPlaylist": "Adaugă în playlist",
+    "newPlaylist": "Playlist nou",
+    "removeFromPlaylist": "Elimină din acest playlist",
+    "songCount": "{{count}} melodii",
+    "empty": "Încă nu există muzică",
+    "emptyHint": "Atinge „Adaugă melodii” pentru a adăuga muzică în acest playlist.",
+    "notFound": "Playlistul nu a fost găsit."
+  },
+  "stub": {
+    "comingSoon": "În curând",
+    "description": "Această zonă este conectată la arhitectura aplicației și gata să fie dezvoltată."
+  }
+}

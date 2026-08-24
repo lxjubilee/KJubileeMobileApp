@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Reproduciraj",
+    "pause": "Pauziraj",
+    "shuffle": "Nasumično",
+    "shufflePlay": "Nasumična reprodukcija",
+    "download": "Preuzmi",
+    "seeAll": "Prikaži sve",
+    "retry": "Pokušaj ponovno",
+    "follow": "Prati",
+    "following": "Pratiš",
+    "save": "Spremi",
+    "saved": "Spremljeno",
+    "cancel": "Odustani",
+    "ok": "U redu",
+    "delete": "Izbriši",
+    "done": "Gotovo"
+  },
+  "tabs": {
+    "home": "Početna",
+    "browse": "Pregledaj",
+    "search": "Pretraži",
+    "library": "Knjižnica"
+  },
+  "home": {
+    "greetingMorning": "Dobro jutro",
+    "greetingAfternoon": "Dobar dan",
+    "greetingEvening": "Dobra večer",
+    "loadError": "Nismo mogli učitati tvoju glazbu. Povuci za osvježavanje ili pokušaj ponovno.",
+    "comingSoon": "Još nema glazbe na jeziku {{language}} — uskoro dodajemo više jezika."
+  },
+  "categories": {
+    "home": "Početna",
+    "inspire_family": "Inspire obitelj",
+    "family_friendly": "Prilagođeno obitelji",
+    "children": "Dječja glazba",
+    "music_type": "Vrsta glazbe",
+    "christmas": "Božić"
+  },
+  "railTitles": {
+    "contemporary": "Suvremena",
+    "praise-worship": "Hvala i štovanje",
+    "country": "Country",
+    "pentecostal-shout": "Pentekostni poklik",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Jezici",
+    "search": "Pretraži jezike…",
+    "recentlyUsed": "Nedavno korišteno",
+    "allLanguages": "Svi jezici"
+  },
+  "search": {
+    "placeholder": "Izvođači, pjesme ili albumi",
+    "recent": "Nedavna pretraživanja",
+    "clear": "Očisti",
+    "noResults": "Nema rezultata za \"{{query}}\"",
+    "sectionAlbums": "Albumi",
+    "sectionArtists": "Izvođači",
+    "sectionTracks": "Pjesme"
+  },
+  "album": {
+    "tracks": "{{count}} pjesama",
+    "addToLibrary": "Dodaj u knjižnicu"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} mjesečnih slušatelja",
+    "popular": "Popularno",
+    "discography": "Diskografija"
+  },
+  "library": {
+    "title": "Tvoja knjižnica",
+    "favorites": "Pjesme koje ti se sviđaju",
+    "albums": "Albumi",
+    "artists": "Izvođači",
+    "downloads": "Preuzimanja",
+    "playlists": "Popisi za reprodukciju",
+    "empty": "Spremljene pjesme i albumi pojavit će se ovdje.",
+    "emptyLiked": "Pjesme koje ti se sviđaju pojavit će se ovdje. Dodirni srce na bilo kojoj pjesmi da je dodaš.",
+    "emptyArtists": "Izvođači koje pratiš pojavit će se ovdje. Dodirni prati na bilo kojem izvođaču da ga dodaš.",
+    "emptyPlaylists": "Popisi za reprodukciju koje izradiš pojavit će se ovdje."
+  },
+  "downloads": {
+    "title": "Preuzimanja",
+    "empty": "Preuzeta glazba pojavit će se ovdje za slušanje izvan mreže."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Prijava",
+    "settings": "Postavke",
+    "changePassword": "Promijeni lozinku",
+    "privacyPolicy": "Pravila privatnosti",
+    "termsOfUse": "Uvjeti korištenja",
+    "deleteAccount": "Izbriši račun",
+    "signOut": "Odjava",
+    "guest": "Gost",
+    "notSignedIn": "Niste prijavljeni",
+    "deleteTitle": "Izbrisati račun?",
+    "deleteMessage": "Time se trajno brišu tvoj račun i svi tvoji podaci. Ovu radnju nije moguće poništiti.",
+    "deletedTitle": "Račun izbrisan",
+    "deletedMessage": "Tvoj je račun trajno izbrisan.",
+    "deleteFailedTitle": "Račun nije moguće izbrisati"
+  },
+  "player": {
+    "queue": "Red",
+    "upNext": "Slijedi",
+    "like": "Sviđa mi se",
+    "removeFromLiked": "Ukloni iz pjesama koje ti se sviđaju",
+    "goToAlbum": "Idi na album",
+    "goToArtist": "Idi na izvođača",
+    "share": "Podijeli",
+    "nothingPlaying": "Ništa se ne reproducira.",
+    "queueEmpty": "Red je prazan."
+  },
+  "changePassword": {
+    "title": "Promijeni lozinku",
+    "instruction": "Unesi trenutnu lozinku i odaberi novu (najmanje 8 znakova).",
+    "currentPlaceholder": "Trenutna lozinka",
+    "newPlaceholder": "Nova lozinka (min. 8 znakova)",
+    "confirmPlaceholder": "Potvrdi novu lozinku",
+    "mismatch": "Lozinke se ne podudaraju.",
+    "success": "Tvoja je lozinka promijenjena. Ovdje ćeš ostati prijavljen; ostali uređaji su odjavljeni.",
+    "done": "Gotovo",
+    "submit": "Ažuriraj lozinku",
+    "error": "Lozinku nije moguće promijeniti. Pokušaj ponovno."
+  },
+  "auth": {
+    "signin": {
+      "title": "Spreman za slušanje?",
+      "subtitle": "Unesi e-poštu i lozinku za prijavu.",
+      "email": "E-pošta",
+      "password": "Lozinka",
+      "submit": "Prijava",
+      "forgot": "Zaboravljena lozinka?",
+      "newPrompt": "Nov na KJubilee? ",
+      "signUp": "Registracija",
+      "botNotice": "Ova je stranica zaštićena kako bismo potvrdili da nisi bot."
+    },
+    "signup": {
+      "title": "Izradi svoj račun",
+      "subtitle": "Pridruži se KJubilee da spremaš glazbu, izrađuješ popise za reprodukciju i slušaš bilo gdje.",
+      "firstName": "Ime",
+      "lastName": "Prezime",
+      "dateOfBirth": "Datum rođenja",
+      "ageError": "Moraš imati najmanje {{age}} godina za izradu računa.",
+      "email": "E-pošta",
+      "password": "Lozinka (min. 8 znakova)",
+      "confirm": "Potvrdi lozinku",
+      "mismatch": "Lozinke se ne podudaraju.",
+      "agreePrefix": "Prihvaćam ",
+      "and": " i ",
+      "submit": "Izradi račun",
+      "havePrompt": "Već imaš račun? ",
+      "signIn": "Prijava",
+      "error": "Registraciju nije moguće pokrenuti. Pokušaj ponovno."
+    },
+    "forgot": {
+      "title": "Ponovno postavi lozinku",
+      "instruction": "Unesi e-poštu svog računa i poslat ćemo poveznicu za ponovno postavljanje lozinke.",
+      "email": "E-pošta",
+      "submit": "Pošalji poveznicu",
+      "sentMessage": "Ako postoji račun za {{email}}, poslali smo poveznicu za ponovno postavljanje. Otvori je na webu da odabereš novu lozinku, zatim se vrati i prijavi.",
+      "backToSignIn": "Natrag na prijavu"
+    },
+    "twoFactor": {
+      "title": "Potvrdi da si to ti",
+      "subtitle": "Unesi kôd za potvrdu koji smo poslali kako bismo zaštitili tvoj račun.",
+      "codePlaceholder": "6-znamenkasti kôd",
+      "trustDevice": "Vjeruj ovom uređaju",
+      "submit": "Potvrdi"
+    },
+    "verify": {
+      "title": "Potvrdi svoju e-poštu",
+      "subtitle": "Unesi 6-znamenkasti kôd koji smo poslali na {{email}} da dovršiš izradu računa.",
+      "submit": "Potvrdi i izradi račun",
+      "noCodePrompt": "Nisi dobio kôd? ",
+      "resend": "Pošalji kôd ponovno",
+      "resendIn": "Ponovno pošalji za {{seconds}} s",
+      "failed": "Potvrda nije uspjela. Pokušaj ponovno.",
+      "resendFailed": "Kôd nije moguće ponovno poslati."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Album nije pronađen.",
+    "artistNotFound": "Izvođač nije pronađen.",
+    "generic": "Nešto je pošlo po zlu. Pokušaj ponovno."
+  },
+  "playlist": {
+    "namePrompt": "Imenuj svoj popis za reprodukciju",
+    "namePlaceholder": "Naziv popisa za reprodukciju",
+    "create": "Izradi",
+    "save": "Spremi",
+    "rename": "Preimenuj popis za reprodukciju",
+    "delete": "Izbriši popis za reprodukciju",
+    "deleteConfirm": "Izbrisati \"{{title}}\"? Ovo nije moguće poništiti.",
+    "addSongs": "Dodaj pjesme",
+    "addToPlaylist": "Dodaj na popis za reprodukciju",
+    "newPlaylist": "Novi popis za reprodukciju",
+    "removeFromPlaylist": "Ukloni s ovog popisa za reprodukciju",
+    "songCount": "{{count}} pjesama",
+    "empty": "Još nema glazbe",
+    "emptyHint": "Dodirni „Dodaj pjesme“ da dodaš glazbu na ovaj popis za reprodukciju.",
+    "notFound": "Popis za reprodukciju nije pronađen."
+  },
+  "stub": {
+    "comingSoon": "Uskoro",
+    "description": "Ovo je područje povezano s arhitekturom aplikacije i spremno za daljnji razvoj."
+  }
+}

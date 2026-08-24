@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Toista",
+    "pause": "Keskeytä",
+    "shuffle": "Sekoita",
+    "shufflePlay": "Sekoitettu toisto",
+    "download": "Lataa",
+    "seeAll": "Näytä kaikki",
+    "retry": "Yritä uudelleen",
+    "follow": "Seuraa",
+    "following": "Seurataan",
+    "save": "Tallenna",
+    "saved": "Tallennettu",
+    "cancel": "Peruuta",
+    "ok": "OK",
+    "delete": "Poista",
+    "done": "Valmis"
+  },
+  "tabs": {
+    "home": "Etusivu",
+    "browse": "Selaa",
+    "search": "Haku",
+    "library": "Kirjasto"
+  },
+  "home": {
+    "greetingMorning": "Hyvää huomenta",
+    "greetingAfternoon": "Hyvää iltapäivää",
+    "greetingEvening": "Hyvää iltaa",
+    "loadError": "Musiikkiasi ei voitu ladata. Päivitä vetämällä tai yritä uudelleen.",
+    "comingSoon": "Ei vielä musiikkia kielellä {{language}} – lisäämme pian uusia kieliä."
+  },
+  "categories": {
+    "home": "Etusivu",
+    "inspire_family": "Inspire-perhe",
+    "family_friendly": "Perheystävällinen",
+    "children": "Lastenmusiikki",
+    "music_type": "Musiikkityyppi",
+    "christmas": "Joulu"
+  },
+  "railTitles": {
+    "contemporary": "Nykyaikainen",
+    "praise-worship": "Ylistys ja palvonta",
+    "country": "Country",
+    "pentecostal-shout": "Helluntailainen huuto",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Kielet",
+    "search": "Hae kieliä…",
+    "recentlyUsed": "Viimeksi käytetyt",
+    "allLanguages": "Kaikki kielet"
+  },
+  "search": {
+    "placeholder": "Artistit, kappaleet tai albumit",
+    "recent": "Viimeisimmät haut",
+    "clear": "Tyhjennä",
+    "noResults": "Ei tuloksia haulle \"{{query}}\"",
+    "sectionAlbums": "Albumit",
+    "sectionArtists": "Artistit",
+    "sectionTracks": "Kappaleet"
+  },
+  "album": {
+    "tracks": "{{count}} kappaletta",
+    "addToLibrary": "Lisää kirjastoon"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} kuukausikuuntelijaa",
+    "popular": "Suosittua",
+    "discography": "Diskografia"
+  },
+  "library": {
+    "title": "Kirjastosi",
+    "favorites": "Tykätyt kappaleet",
+    "albums": "Albumit",
+    "artists": "Artistit",
+    "downloads": "Lataukset",
+    "playlists": "Soittolistat",
+    "empty": "Tallentamasi kappaleet ja albumit näkyvät täällä.",
+    "emptyLiked": "Tykkäämäsi kappaleet näkyvät täällä. Lisää kappale napauttamalla sen sydäntä.",
+    "emptyArtists": "Seuraamasi artistit näkyvät täällä. Lisää artisti napauttamalla seuraa.",
+    "emptyPlaylists": "Luomasi soittolistat näkyvät täällä."
+  },
+  "downloads": {
+    "title": "Lataukset",
+    "empty": "Ladattu musiikki näkyy täällä offline-kuuntelua varten."
+  },
+  "profile": {
+    "title": "Profiili",
+    "signIn": "Kirjaudu sisään",
+    "settings": "Asetukset",
+    "changePassword": "Vaihda salasana",
+    "privacyPolicy": "Tietosuojakäytäntö",
+    "termsOfUse": "Käyttöehdot",
+    "deleteAccount": "Poista tili",
+    "signOut": "Kirjaudu ulos",
+    "guest": "Vieras",
+    "notSignedIn": "Ei kirjautunut",
+    "deleteTitle": "Poistetaanko tili?",
+    "deleteMessage": "Tämä poistaa tilisi ja kaikki tietosi pysyvästi. Toimintoa ei voi peruuttaa.",
+    "deletedTitle": "Tili poistettu",
+    "deletedMessage": "Tilisi on poistettu pysyvästi.",
+    "deleteFailedTitle": "Tiliä ei voitu poistaa"
+  },
+  "player": {
+    "queue": "Jono",
+    "upNext": "Seuraavaksi",
+    "like": "Tykkää",
+    "removeFromLiked": "Poista tykätyistä kappaleista",
+    "goToAlbum": "Siirry albumiin",
+    "goToArtist": "Siirry artistiin",
+    "share": "Jaa",
+    "nothingPlaying": "Mitään ei toisteta.",
+    "queueEmpty": "Jono on tyhjä."
+  },
+  "changePassword": {
+    "title": "Vaihda salasana",
+    "instruction": "Anna nykyinen salasanasi ja valitse uusi (vähintään 8 merkkiä).",
+    "currentPlaceholder": "Nykyinen salasana",
+    "newPlaceholder": "Uusi salasana (väh. 8 merkkiä)",
+    "confirmPlaceholder": "Vahvista uusi salasana",
+    "mismatch": "Salasanat eivät täsmää.",
+    "success": "Salasanasi on vaihdettu. Pysyt kirjautuneena täällä; muut laitteet on kirjattu ulos.",
+    "done": "Valmis",
+    "submit": "Päivitä salasana",
+    "error": "Salasanaasi ei voitu vaihtaa. Yritä uudelleen."
+  },
+  "auth": {
+    "signin": {
+      "title": "Valmiina kuuntelemaan?",
+      "subtitle": "Kirjaudu sisään antamalla sähköpostiosoitteesi ja salasanasi.",
+      "email": "Sähköposti",
+      "password": "Salasana",
+      "submit": "Kirjaudu sisään",
+      "forgot": "Unohditko salasanan?",
+      "newPrompt": "Uusi KJubileeissa? ",
+      "signUp": "Rekisteröidy",
+      "botNotice": "Tämä sivu on suojattu sen varmistamiseksi, ettet ole botti."
+    },
+    "signup": {
+      "title": "Luo tilisi",
+      "subtitle": "Liity KJubileeiin, tallenna musiikkisi, luo soittolistoja ja kuuntele missä tahansa.",
+      "firstName": "Etunimi",
+      "lastName": "Sukunimi",
+      "dateOfBirth": "Syntymäaika",
+      "ageError": "Sinun on oltava vähintään {{age}}-vuotias luodaksesi tilin.",
+      "email": "Sähköposti",
+      "password": "Salasana (väh. 8 merkkiä)",
+      "confirm": "Vahvista salasana",
+      "mismatch": "Salasanat eivät täsmää.",
+      "agreePrefix": "Hyväksyn ",
+      "and": " ja ",
+      "submit": "Luo tili",
+      "havePrompt": "Onko sinulla jo tili? ",
+      "signIn": "Kirjaudu sisään",
+      "error": "Rekisteröintiä ei voitu aloittaa. Yritä uudelleen."
+    },
+    "forgot": {
+      "title": "Nollaa salasanasi",
+      "instruction": "Anna tilisi sähköpostiosoite, niin lähetämme linkin salasanan nollaamiseen.",
+      "email": "Sähköposti",
+      "submit": "Lähetä nollauslinkki",
+      "sentMessage": "Jos tili osoitteelle {{email}} on olemassa, lähetimme nollauslinkin. Avaa se verkossa valitaksesi uuden salasanan, ja palaa sitten kirjautumaan sisään.",
+      "backToSignIn": "Takaisin kirjautumiseen"
+    },
+    "twoFactor": {
+      "title": "Vahvista, että se olet sinä",
+      "subtitle": "Anna lähettämämme vahvistuskoodi pitääksesi tilisi turvassa.",
+      "codePlaceholder": "6-numeroinen koodi",
+      "trustDevice": "Luota tähän laitteeseen",
+      "submit": "Vahvista"
+    },
+    "verify": {
+      "title": "Vahvista sähköpostisi",
+      "subtitle": "Anna osoitteeseen {{email}} lähettämämme 6-numeroinen koodi viimeistelläksesi tilisi luonnin.",
+      "submit": "Vahvista ja luo tili",
+      "noCodePrompt": "Etkö saanut koodia? ",
+      "resend": "Lähetä koodi uudelleen",
+      "resendIn": "Lähetä uudelleen {{seconds}} s kuluttua",
+      "failed": "Vahvistus epäonnistui. Yritä uudelleen.",
+      "resendFailed": "Koodia ei voitu lähettää uudelleen."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Albumia ei löytynyt.",
+    "artistNotFound": "Artistia ei löytynyt.",
+    "generic": "Jokin meni pieleen. Yritä uudelleen."
+  },
+  "playlist": {
+    "namePrompt": "Nimeä soittolistasi",
+    "namePlaceholder": "Soittolistan nimi",
+    "create": "Luo",
+    "save": "Tallenna",
+    "rename": "Nimeä soittolista uudelleen",
+    "delete": "Poista soittolista",
+    "deleteConfirm": "Poistetaanko \"{{title}}\"? Tätä ei voi peruuttaa.",
+    "addSongs": "Lisää kappaleita",
+    "addToPlaylist": "Lisää soittolistaan",
+    "newPlaylist": "Uusi soittolista",
+    "removeFromPlaylist": "Poista tästä soittolistasta",
+    "songCount": "{{count}} kappaletta",
+    "empty": "Ei vielä musiikkia",
+    "emptyHint": "Lisää musiikkia tähän soittolistaan napauttamalla ”Lisää kappaleita”.",
+    "notFound": "Soittolistaa ei löytynyt."
+  },
+  "stub": {
+    "comingSoon": "Tulossa pian",
+    "description": "Tämä alue on kytketty sovelluksen arkkitehtuuriin ja valmis rakennettavaksi."
+  }
+}

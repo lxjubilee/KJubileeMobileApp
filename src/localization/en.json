@@ -1,0 +1,402 @@
+{
+  "common": {
+    "play": "Play",
+    "pause": "Pause",
+    "shuffle": "Shuffle",
+    "shufflePlay": "Shuffle Play",
+    "download": "Download",
+    "seeAll": "See All",
+    "retry": "Retry",
+    "follow": "Follow",
+    "following": "Following",
+    "save": "Save",
+    "saved": "Saved",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "delete": "Delete",
+    "done": "Done",
+    "open": "Open"
+  },
+  "tabs": {
+    "home": "Home",
+    "browse": "Browse",
+    "search": "Search",
+    "playlists": "Playlists"
+  },
+  "home": {
+    "greetingMorning": "Good morning",
+    "greetingAfternoon": "Good afternoon",
+    "greetingEvening": "Good evening",
+    "loadError": "We couldn't load your music. Pull to refresh or try again.",
+    "comingSoon": "No music in {{language}} yet — we're adding more languages soon.",
+    "emptyCategory": "Nothing here yet — new music for this category is on the way."
+  },
+  "categories": {
+    "home": "Home",
+    "inspire_family": "Inspire Family",
+    "family_friendly": "Family Friendly",
+    "children": "Children Music",
+    "music_type": "Music Type",
+    "christmas": "Christmas"
+  },
+  "railTitles": {
+    "contemporary": "Contemporary",
+    "praise-worship": "Praise & Worship",
+    "country": "Country",
+    "pentecostal-shout": "Pentecostal Shout",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Languages",
+    "search": "Search languages…",
+    "recentlyUsed": "Recently Used",
+    "allLanguages": "All Languages"
+  },
+  "update": {
+    "title": "Update available",
+    "requiredTitle": "Update required",
+    "message": "A new version of KJubilee is available. Update for the latest features and improvements.",
+    "requiredMessage": "A new version of KJubilee is required to continue. Please update to keep using the app.",
+    "update": "Update",
+    "later": "Later",
+    "currentVersion": "Current version",
+    "latestVersion": "Latest version"
+  },
+  "browse": {
+    "searchPlaceholder": "Search albums"
+  },
+  "search": {
+    "placeholder": "Artists, songs, or albums",
+    "recent": "Recent searches",
+    "clear": "Clear",
+    "noResults": "No results for \"{{query}}\"",
+    "sectionAlbums": "Albums",
+    "sectionArtists": "Artists",
+    "sectionTracks": "Songs"
+  },
+  "album": {
+    "tracks": "{{count}} songs",
+    "addToLibrary": "Add to Library",
+    "moreFrom": "More from {{name}}",
+    "similarMusic": "Similar Music"
+  },
+  "playbackLimit": {
+    "title": "Daily Limit Reached",
+    "message": "You've reached your daily listening limit. It will reset tomorrow — please try again later.",
+    "ok": "OK"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} monthly listeners",
+    "popularAlbums": "Popular Albums",
+    "similarMusic": "Similar Music",
+    "personaSummary": "Persona Summary",
+    "albumsAnchoring": "{{n}} albums anchoring the {{category}} catalog",
+    "albumCount": "{{n}} albums",
+    "statAlbums": "Albums",
+    "statTracks": "Tracks",
+    "noAlbums": "No albums available yet — new music from this artist is on the way."
+  },
+  "library": {
+    "title": "Library",
+    "favorites": "Liked Songs",
+    "albums": "Albums",
+    "artists": "Artists",
+    "downloads": "Downloads",
+    "playlists": "Playlists",
+    "empty": "Songs and albums you save will appear here.",
+    "emptyLiked": "Songs you like will appear here. Tap the heart on any track to add it.",
+    "emptyArtists": "Artists you follow will appear here. Tap follow on any artist to add them.",
+    "emptyPlaylists": "Playlists you create will appear here."
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "Downloaded music will appear here for offline listening."
+  },
+  "profile": {
+    "title": "Profile",
+    "signIn": "Sign in",
+    "settings": "Settings",
+    "changePassword": "Change Password",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "deleteAccount": "Delete Account",
+    "signOut": "Sign Out",
+    "guest": "Guest",
+    "notSignedIn": "Not signed in",
+    "deleteTitle": "Delete account?",
+    "deleteMessage": "This permanently deletes your account and all your data. This action cannot be undone.",
+    "deletedTitle": "Account deleted",
+    "deletedMessage": "Your account has been permanently deleted.",
+    "deleteFailedTitle": "Couldn't delete account"
+  },
+  "player": {
+    "queue": "Queue",
+    "upNext": "Up next",
+    "like": "Like",
+    "removeFromLiked": "Remove from Liked Songs",
+    "goToAlbum": "Go to album",
+    "goToArtist": "Go to artist",
+    "share": "Share",
+    "nothingPlaying": "Nothing playing.",
+    "queueEmpty": "The queue is empty."
+  },
+  "changePassword": {
+    "title": "Change Password",
+    "instruction": "Enter your current password and choose a new one (at least 8 characters).",
+    "currentPlaceholder": "Current password",
+    "newPlaceholder": "New password (min 8 characters)",
+    "confirmPlaceholder": "Confirm new password",
+    "mismatch": "Passwords don’t match.",
+    "success": "Your password has been changed. You'll stay signed in here; other devices have been signed out.",
+    "done": "Done",
+    "submit": "Update Password",
+    "error": "Could not change your password. Please try again."
+  },
+  "auth": {
+    "signin": {
+      "title": "Ready to listen?",
+      "subtitle": "Enter your email and password to sign in.",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign In",
+      "forgot": "Forgot password?",
+      "newPrompt": "New to KJubilee? ",
+      "signUp": "Sign up",
+      "botNotice": "This page is protected to ensure you're not a bot."
+    },
+    "signup": {
+      "title": "Create your account",
+      "subtitle": "Join KJubilee to save your music, build playlists, and listen anywhere.",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "dateOfBirth": "Date of birth",
+      "ageError": "You must be at least {{age}} years old to create an account.",
+      "email": "Email",
+      "password": "Password (min 8 characters)",
+      "confirm": "Confirm password",
+      "mismatch": "Passwords don’t match.",
+      "agreePrefix": "I agree to the ",
+      "and": " and ",
+      "submit": "Create Account",
+      "havePrompt": "Already have an account? ",
+      "signIn": "Sign in",
+      "error": "Could not start sign up. Please try again."
+    },
+    "forgot": {
+      "title": "Reset your password",
+      "instruction": "Enter your account email and we'll send a link to reset your password.",
+      "email": "Email",
+      "submit": "Send Reset Link",
+      "sentMessage": "If an account exists for {{email}}, we've sent a reset link. Open it on the web to choose a new password, then come back and sign in.",
+      "backToSignIn": "Back to Sign In"
+    },
+    "twoFactor": {
+      "title": "Verify it's you",
+      "subtitle": "Enter the verification code we sent to keep your account secure.",
+      "codePlaceholder": "6-digit code",
+      "trustDevice": "Trust this device",
+      "submit": "Verify"
+    },
+    "verify": {
+      "title": "Verify your email",
+      "subtitle": "Enter the 6-digit code we sent to {{email}} to finish creating your account.",
+      "submit": "Verify & Create Account",
+      "noCodePrompt": "Didn't get a code? ",
+      "resend": "Resend code",
+      "resendIn": "Resend in {{seconds}}s",
+      "failed": "Verification failed. Please try again.",
+      "resendFailed": "Could not resend the code."
+    },
+    "captcha": {
+      "retry": "Couldn't load verification. Tap to retry."
+    },
+    "door": {
+      "email": {
+        "title": "Sign in with your Jubilee ID",
+        "help": "One Jubilee ID works across all our sites.",
+        "emailLabel": "Email Address",
+        "submit": "Continue",
+        "submitting": "Checking…",
+        "disclaimer": "No account yet? We'll set one up for you."
+      },
+      "welcome": {
+        "title": "Welcome back",
+        "passwordLabel": "Password",
+        "forgot": "Forgot your password?",
+        "rememberMe": "Keep me signed in on this device",
+        "submit": "Continue",
+        "submitting": "Signing in…"
+      },
+      "confirm": {
+        "title": "Confirm it's you",
+        "subtitle": "This email already has a Jubilee ID. Enter your password to continue and create your account on {{site}}.",
+        "passwordLabel": "Jubilee ID password",
+        "forgot": "Forgot your password?",
+        "submit": "Continue",
+        "submitting": "Checking…"
+      },
+      "createLinked": {
+        "title": "Create your {{site}} account",
+        "subtitle": "Your Jubilee ID is confirmed. Add a few details to finish creating your account here.",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "dateOfBirth": "Date of Birth",
+        "rememberMe": "Keep me signed in on this device",
+        "submit": "Create Account",
+        "submitting": "Creating…"
+      },
+      "create": {
+        "title": "Let's create your Jubilee ID",
+        "subtitle": "One account gives you access to {{site}} and everything else across Jubilee. It only takes a moment.",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "dateOfBirth": "Date of Birth",
+        "emailLabel": "Email Address",
+        "passwordLabel": "Create a Password",
+        "confirmLabel": "Confirm Password",
+        "rememberMe": "Keep me signed in on this device",
+        "agreePrefix": "I agree to the ",
+        "and": " and ",
+        "submit": "Create my Jubilee ID",
+        "submitting": "Sending code…"
+      },
+      "code": {
+        "title": "Check your email",
+        "subtitle": "Enter the 6-digit code we sent to {{email}}.",
+        "codeLabel": "6-digit code",
+        "submitLogin": "Verify & sign in",
+        "submitSignup": "Verify & create account",
+        "submitting": "Verifying…",
+        "resend": "Resend code",
+        "resendIn": "Resend in {{seconds}}s",
+        "useDifferentAccount": "Use a different account",
+        "editDetails": "Edit details"
+      },
+      "account": {
+        "useDifferentEmail": "Use a different email"
+      },
+      "match": {
+        "ok": "Passwords matched",
+        "no": "Passwords don't match"
+      },
+      "errors": {
+        "emailRequired": "Please enter your email address to continue.",
+        "emailInvalid": "That does not look like a complete email address. Please check it.",
+        "captchaRequired": "Please complete the human verification.",
+        "passwordRequired": "Please enter your password.",
+        "nameRequired": "Please enter your first and last name.",
+        "passwordTooShort": "Password must be at least {{count}} characters.",
+        "passwordsDoNotMatch": "Passwords do not match.",
+        "termsRequired": "Please agree to the Terms of Service and Privacy Policy.",
+        "ageMin": "You must be at least {{age}} years old to create an account.",
+        "dobRequired": "Please enter your date of birth.",
+        "lookupFailed": "We are having trouble reaching your account right now. Please try again in a moment.",
+        "accountExists": "You already have an account — enter your email to sign in.",
+        "passwordIncorrect": "That password does not match. Try again, or reset it below.",
+        "createFailed": "Could not create your account. Please try again.",
+        "signupFailed": "Sign up failed.",
+        "verifyFailed": "Could not verify the code.",
+        "resendFailed": "Could not resend the code.",
+        "accountLocked": "Too many attempts. Your account is locked for a while — try again later.",
+        "rateLimited": "Too many attempts from this network. Please wait a few minutes and try again.",
+        "generic": "Something went wrong. Please try again."
+      },
+      "info": {
+        "loginCodeSent": "We emailed you a 6-digit code. Enter it below to finish signing in.",
+        "signupCodeSent": "We emailed a 6-digit code to verify your email. Enter it below to finish creating your account.",
+        "resent": "A new code is on its way.",
+        "resentWithCount_one": "A new code is on its way ({{count}} left).",
+        "resentWithCount_other": "A new code is on its way ({{count}} left)."
+      },
+      "a11y": {
+        "back": "Back",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "dobDay": "Day",
+        "dobMonth": "Month",
+        "dobYear": "Year",
+        "openTerms": "Open Terms of Use",
+        "openPrivacy": "Open Privacy Policy"
+      }
+    }
+  },
+  "errors": {
+    "albumNotFound": "Album not found.",
+    "artistNotFound": "Artist not found.",
+    "generic": "Something went wrong. Please try again."
+  },
+  "playlist": {
+    "namePrompt": "Name your playlist",
+    "namePlaceholder": "Playlist name",
+    "create": "Create",
+    "save": "Save",
+    "rename": "Rename playlist",
+    "reorder": "Reorder",
+    "delete": "Delete playlist",
+    "deleteConfirm": "Delete \"{{title}}\"? This can't be undone.",
+    "addSongs": "Add songs",
+    "addToPlaylist": "Add to playlist",
+    "inPlaylist": "In a playlist",
+    "newPlaylist": "New playlist",
+    "removeFromPlaylist": "Remove from this playlist",
+    "songCount": "{{count}} songs",
+    "empty": "There is no music yet",
+    "emptyHint": "Tap “Add songs” to add music to this playlist.",
+    "notFound": "Playlist not found."
+  },
+  "contributions": {
+    "title": "My Contributions",
+    "albumsRated": "Albums rated",
+    "songsRated": "Songs rated",
+    "reviewsWritten": "Reviews written",
+    "helpfulReceived": "Helpful votes received",
+    "total": "Total contributions",
+    "yourReviews": "Your reviews",
+    "empty": "You haven't written any reviews yet.",
+    "target_album": "Album",
+    "target_song": "Song",
+    "status_published": "Published",
+    "status_pending": "Pending",
+    "status_hidden": "Hidden",
+    "status_rejected": "Rejected"
+  },
+  "reviews": {
+    "screenTitle": "Ratings & Reviews",
+    "rateTitle": "Rate",
+    "editTitle": "Edit your review",
+    "yourRating": "Your rating",
+    "titleLabel": "Review title (optional)",
+    "titlePlaceholder": "Sum it up in a few words",
+    "reviewLabel": "Your review (optional)",
+    "reviewPlaceholder": "What did you think of it?",
+    "submit": "Submit",
+    "chooseStars": "Please choose a star rating.",
+    "saveError": "Could not save your review.",
+    "deleteError": "Could not delete your review.",
+    "rateThisAlbum": "Rate this Album",
+    "editYourRating": "Edit your rating",
+    "communityRating": "Community rating",
+    "tapToChange": "tap to change",
+    "ratedConfirm": "You rated {{stars}}",
+    "averageSecondary": "Average {{avg}} · {{count}}",
+    "writeReview": "Write a review",
+    "editReview": "Edit review",
+    "basedOn": "Based on {{count}} ratings",
+    "noRatingsYet": "No ratings yet — be the first",
+    "seeAllReviews": "Ratings & Reviews",
+    "seeAllReviewsCount": "Ratings & Reviews ({{count}})",
+    "rate": "Rate",
+    "yourRatingShort": "★ Your rating",
+    "noReviews": "No reviews yet — be the first to write one.",
+    "you": "You",
+    "anonymous": "Anonymous",
+    "edited": "edited",
+    "sort_recent": "Most recent",
+    "sort_highest": "Highest rated",
+    "sort_lowest": "Lowest rated"
+  },
+  "stub": {
+    "comingSoon": "Coming soon",
+    "description": "This area is wired into the app architecture and ready to be built out."
+  }
+}

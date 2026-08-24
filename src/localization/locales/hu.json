@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Lejátszás",
+    "pause": "Szünet",
+    "shuffle": "Keverés",
+    "shufflePlay": "Kevert lejátszás",
+    "download": "Letöltés",
+    "seeAll": "Összes megtekintése",
+    "retry": "Újra",
+    "follow": "Követés",
+    "following": "Követed",
+    "save": "Mentés",
+    "saved": "Mentve",
+    "cancel": "Mégse",
+    "ok": "OK",
+    "delete": "Törlés",
+    "done": "Kész"
+  },
+  "tabs": {
+    "home": "Kezdőlap",
+    "browse": "Felfedezés",
+    "search": "Keresés",
+    "library": "Könyvtár"
+  },
+  "home": {
+    "greetingMorning": "Jó reggelt",
+    "greetingAfternoon": "Jó napot",
+    "greetingEvening": "Jó estét",
+    "loadError": "Nem sikerült betölteni a zenédet. Húzd le a frissítéshez, vagy próbáld újra.",
+    "comingSoon": "Még nincs zene {{language}} nyelven – hamarosan további nyelveket adunk hozzá."
+  },
+  "categories": {
+    "home": "Kezdőlap",
+    "inspire_family": "Inspire család",
+    "family_friendly": "Családbarát",
+    "children": "Gyerekzene",
+    "music_type": "Zenetípus",
+    "christmas": "Karácsony"
+  },
+  "railTitles": {
+    "contemporary": "Kortárs",
+    "praise-worship": "Dicséret és imádat",
+    "country": "Country",
+    "pentecostal-shout": "Pünkösdi kiáltás",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Nyelvek",
+    "search": "Nyelvek keresése…",
+    "recentlyUsed": "Nemrég használt",
+    "allLanguages": "Összes nyelv"
+  },
+  "search": {
+    "placeholder": "Előadók, dalok vagy albumok",
+    "recent": "Legutóbbi keresések",
+    "clear": "Törlés",
+    "noResults": "Nincs találat erre: \"{{query}}\"",
+    "sectionAlbums": "Albumok",
+    "sectionArtists": "Előadók",
+    "sectionTracks": "Dalok"
+  },
+  "album": {
+    "tracks": "{{count}} dal",
+    "addToLibrary": "Hozzáadás a könyvtárhoz"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} havi hallgató",
+    "popular": "Népszerű",
+    "discography": "Diszkográfia"
+  },
+  "library": {
+    "title": "A könyvtárad",
+    "favorites": "Kedvelt dalok",
+    "albums": "Albumok",
+    "artists": "Előadók",
+    "downloads": "Letöltések",
+    "playlists": "Lejátszási listák",
+    "empty": "Az elmentett dalok és albumok itt jelennek meg.",
+    "emptyLiked": "A kedvelt dalok itt jelennek meg. Koppints a szívre bármelyik dalnál a hozzáadáshoz.",
+    "emptyArtists": "A követett előadók itt jelennek meg. Koppints a követésre bármelyik előadónál a hozzáadáshoz.",
+    "emptyPlaylists": "Az általad létrehozott lejátszási listák itt jelennek meg."
+  },
+  "downloads": {
+    "title": "Letöltések",
+    "empty": "A letöltött zene itt jelenik meg az offline hallgatáshoz."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Bejelentkezés",
+    "settings": "Beállítások",
+    "changePassword": "Jelszó módosítása",
+    "privacyPolicy": "Adatvédelmi szabályzat",
+    "termsOfUse": "Felhasználási feltételek",
+    "deleteAccount": "Fiók törlése",
+    "signOut": "Kijelentkezés",
+    "guest": "Vendég",
+    "notSignedIn": "Nincs bejelentkezve",
+    "deleteTitle": "Törlöd a fiókot?",
+    "deleteMessage": "Ez véglegesen törli a fiókodat és minden adatodat. A művelet nem vonható vissza.",
+    "deletedTitle": "Fiók törölve",
+    "deletedMessage": "A fiókodat véglegesen töröltük.",
+    "deleteFailedTitle": "A fiók törlése nem sikerült"
+  },
+  "player": {
+    "queue": "Várólista",
+    "upNext": "Következik",
+    "like": "Tetszik",
+    "removeFromLiked": "Eltávolítás a kedvelt dalok közül",
+    "goToAlbum": "Ugrás az albumhoz",
+    "goToArtist": "Ugrás az előadóhoz",
+    "share": "Megosztás",
+    "nothingPlaying": "Semmi sem szól.",
+    "queueEmpty": "A várólista üres."
+  },
+  "changePassword": {
+    "title": "Jelszó módosítása",
+    "instruction": "Add meg a jelenlegi jelszavadat, és válassz egy újat (legalább 8 karakter).",
+    "currentPlaceholder": "Jelenlegi jelszó",
+    "newPlaceholder": "Új jelszó (min. 8 karakter)",
+    "confirmPlaceholder": "Új jelszó megerősítése",
+    "mismatch": "A jelszavak nem egyeznek.",
+    "success": "A jelszavad megváltozott. Itt bejelentkezve maradsz; a többi eszközről kijelentkeztünk.",
+    "done": "Kész",
+    "submit": "Jelszó frissítése",
+    "error": "Nem sikerült módosítani a jelszavadat. Próbáld újra."
+  },
+  "auth": {
+    "signin": {
+      "title": "Készen állsz a hallgatásra?",
+      "subtitle": "Add meg az e-mail-címedet és jelszavadat a bejelentkezéshez.",
+      "email": "E-mail",
+      "password": "Jelszó",
+      "submit": "Bejelentkezés",
+      "forgot": "Elfelejtetted a jelszót?",
+      "newPrompt": "Új vagy a KJubilee-on? ",
+      "signUp": "Regisztráció",
+      "botNotice": "Ez az oldal védett, hogy megbizonyosodjunk arról, hogy nem vagy robot."
+    },
+    "signup": {
+      "title": "Hozd létre a fiókodat",
+      "subtitle": "Csatlakozz a KJubilee-hoz, hogy elmentsd a zenédet, lejátszási listákat hozz létre, és bárhol hallgass.",
+      "firstName": "Keresztnév",
+      "lastName": "Vezetéknév",
+      "dateOfBirth": "Születési dátum",
+      "ageError": "A fiók létrehozásához legalább {{age}} évesnek kell lenned.",
+      "email": "E-mail",
+      "password": "Jelszó (min. 8 karakter)",
+      "confirm": "Jelszó megerősítése",
+      "mismatch": "A jelszavak nem egyeznek.",
+      "agreePrefix": "Elfogadom a ",
+      "and": " és a ",
+      "submit": "Fiók létrehozása",
+      "havePrompt": "Már van fiókod? ",
+      "signIn": "Bejelentkezés",
+      "error": "A regisztrációt nem sikerült elindítani. Próbáld újra."
+    },
+    "forgot": {
+      "title": "Jelszó visszaállítása",
+      "instruction": "Add meg a fiókod e-mail-címét, és küldünk egy linket a jelszó visszaállításához.",
+      "email": "E-mail",
+      "submit": "Visszaállítási link küldése",
+      "sentMessage": "Ha létezik fiók a(z) {{email}} címhez, küldtünk egy visszaállítási linket. Nyisd meg a weben egy új jelszó kiválasztásához, majd térj vissza és jelentkezz be.",
+      "backToSignIn": "Vissza a bejelentkezéshez"
+    },
+    "twoFactor": {
+      "title": "Igazold, hogy te vagy az",
+      "subtitle": "Add meg az általunk küldött ellenőrző kódot a fiókod biztonsága érdekében.",
+      "codePlaceholder": "6 jegyű kód",
+      "trustDevice": "Megbízom ebben az eszközben",
+      "submit": "Ellenőrzés"
+    },
+    "verify": {
+      "title": "Erősítsd meg az e-mail-címed",
+      "subtitle": "Add meg a(z) {{email}} címre küldött 6 jegyű kódot a fiók létrehozásának befejezéséhez.",
+      "submit": "Ellenőrzés és fiók létrehozása",
+      "noCodePrompt": "Nem kaptál kódot? ",
+      "resend": "Kód újraküldése",
+      "resendIn": "Újraküldés {{seconds}} mp múlva",
+      "failed": "Az ellenőrzés sikertelen. Próbáld újra.",
+      "resendFailed": "A kódot nem sikerült újraküldeni."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Az album nem található.",
+    "artistNotFound": "Az előadó nem található.",
+    "generic": "Valami hiba történt. Próbáld újra."
+  },
+  "playlist": {
+    "namePrompt": "Nevezd el a lejátszási listádat",
+    "namePlaceholder": "Lejátszási lista neve",
+    "create": "Létrehozás",
+    "save": "Mentés",
+    "rename": "Lejátszási lista átnevezése",
+    "delete": "Lejátszási lista törlése",
+    "deleteConfirm": "Törlöd ezt: \"{{title}}\"? Ez nem vonható vissza.",
+    "addSongs": "Dalok hozzáadása",
+    "addToPlaylist": "Hozzáadás lejátszási listához",
+    "newPlaylist": "Új lejátszási lista",
+    "removeFromPlaylist": "Eltávolítás erről a lejátszási listáról",
+    "songCount": "{{count}} dal",
+    "empty": "Még nincs zene",
+    "emptyHint": "Koppints a „Dalok hozzáadása” gombra, hogy zenét adj ehhez a lejátszási listához.",
+    "notFound": "A lejátszási lista nem található."
+  },
+  "stub": {
+    "comingSoon": "Hamarosan",
+    "description": "Ez a terület az alkalmazás architektúrájához kapcsolódik, és készen áll a továbbfejlesztésre."
+  }
+}

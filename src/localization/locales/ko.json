@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "재생",
+    "pause": "일시정지",
+    "shuffle": "셔플",
+    "shufflePlay": "셔플 재생",
+    "download": "다운로드",
+    "seeAll": "모두 보기",
+    "retry": "다시 시도",
+    "follow": "팔로우",
+    "following": "팔로잉",
+    "save": "저장",
+    "saved": "저장됨",
+    "cancel": "취소",
+    "ok": "확인",
+    "delete": "삭제",
+    "done": "완료"
+  },
+  "tabs": {
+    "home": "홈",
+    "browse": "둘러보기",
+    "search": "검색",
+    "library": "라이브러리"
+  },
+  "home": {
+    "greetingMorning": "좋은 아침이에요",
+    "greetingAfternoon": "안녕하세요",
+    "greetingEvening": "좋은 저녁이에요",
+    "loadError": "음악을 불러올 수 없습니다. 당겨서 새로고침하거나 다시 시도하세요.",
+    "comingSoon": "아직 {{language}} 음악이 없습니다. 곧 더 많은 언어를 추가할 예정입니다."
+  },
+  "categories": {
+    "home": "홈",
+    "inspire_family": "Inspire 패밀리",
+    "family_friendly": "가족용",
+    "children": "어린이 음악",
+    "music_type": "음악 장르",
+    "christmas": "크리스마스"
+  },
+  "railTitles": {
+    "contemporary": "컨템포러리",
+    "praise-worship": "찬양과 경배",
+    "country": "컨트리",
+    "pentecostal-shout": "오순절 외침",
+    "gospel": "가스펠"
+  },
+  "language": {
+    "title": "언어",
+    "search": "언어 검색…",
+    "recentlyUsed": "최근 사용",
+    "allLanguages": "모든 언어"
+  },
+  "search": {
+    "placeholder": "아티스트, 곡 또는 앨범",
+    "recent": "최근 검색",
+    "clear": "지우기",
+    "noResults": "\"{{query}}\"에 대한 결과가 없습니다",
+    "sectionAlbums": "앨범",
+    "sectionArtists": "아티스트",
+    "sectionTracks": "곡"
+  },
+  "album": {
+    "tracks": "{{count}}곡",
+    "addToLibrary": "라이브러리에 추가"
+  },
+  "artist": {
+    "monthlyListeners": "월간 청취자 {{listeners}}명",
+    "popular": "인기",
+    "discography": "디스코그래피"
+  },
+  "library": {
+    "title": "내 라이브러리",
+    "favorites": "좋아요 표시한 곡",
+    "albums": "앨범",
+    "artists": "아티스트",
+    "downloads": "다운로드",
+    "playlists": "플레이리스트",
+    "empty": "저장한 곡과 앨범이 여기에 표시됩니다.",
+    "emptyLiked": "좋아요 표시한 곡이 여기에 표시됩니다. 곡의 하트를 눌러 추가하세요.",
+    "emptyArtists": "팔로우하는 아티스트가 여기에 표시됩니다. 아티스트의 팔로우를 눌러 추가하세요.",
+    "emptyPlaylists": "만든 플레이리스트가 여기에 표시됩니다."
+  },
+  "downloads": {
+    "title": "다운로드",
+    "empty": "다운로드한 음악이 오프라인 재생을 위해 여기에 표시됩니다."
+  },
+  "profile": {
+    "title": "프로필",
+    "signIn": "로그인",
+    "settings": "설정",
+    "changePassword": "비밀번호 변경",
+    "privacyPolicy": "개인정보 처리방침",
+    "termsOfUse": "이용약관",
+    "deleteAccount": "계정 삭제",
+    "signOut": "로그아웃",
+    "guest": "게스트",
+    "notSignedIn": "로그인되지 않음",
+    "deleteTitle": "계정을 삭제할까요?",
+    "deleteMessage": "계정과 모든 데이터가 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
+    "deletedTitle": "계정이 삭제되었습니다",
+    "deletedMessage": "계정이 영구적으로 삭제되었습니다.",
+    "deleteFailedTitle": "계정을 삭제할 수 없습니다"
+  },
+  "player": {
+    "queue": "대기열",
+    "upNext": "다음 곡",
+    "like": "좋아요",
+    "removeFromLiked": "좋아요 표시한 곡에서 제거",
+    "goToAlbum": "앨범으로 이동",
+    "goToArtist": "아티스트로 이동",
+    "share": "공유",
+    "nothingPlaying": "재생 중인 항목이 없습니다.",
+    "queueEmpty": "대기열이 비어 있습니다."
+  },
+  "changePassword": {
+    "title": "비밀번호 변경",
+    "instruction": "현재 비밀번호를 입력하고 새 비밀번호(8자 이상)를 선택하세요.",
+    "currentPlaceholder": "현재 비밀번호",
+    "newPlaceholder": "새 비밀번호(8자 이상)",
+    "confirmPlaceholder": "새 비밀번호 확인",
+    "mismatch": "비밀번호가 일치하지 않습니다.",
+    "success": "비밀번호가 변경되었습니다. 이 기기에서는 로그인 상태가 유지되며, 다른 기기는 로그아웃됩니다.",
+    "done": "완료",
+    "submit": "비밀번호 업데이트",
+    "error": "비밀번호를 변경할 수 없습니다. 다시 시도하세요."
+  },
+  "auth": {
+    "signin": {
+      "title": "들을 준비가 되셨나요?",
+      "subtitle": "로그인하려면 이메일과 비밀번호를 입력하세요.",
+      "email": "이메일",
+      "password": "비밀번호",
+      "submit": "로그인",
+      "forgot": "비밀번호를 잊으셨나요?",
+      "newPrompt": "KJubilee가 처음이신가요? ",
+      "signUp": "회원가입",
+      "botNotice": "이 페이지는 봇이 아닌지 확인하기 위해 보호됩니다."
+    },
+    "signup": {
+      "title": "계정 만들기",
+      "subtitle": "KJubilee에 가입하여 음악을 저장하고 플레이리스트를 만들고 어디서나 들어보세요.",
+      "firstName": "이름",
+      "lastName": "성",
+      "dateOfBirth": "생년월일",
+      "ageError": "계정을 만들려면 만 {{age}}세 이상이어야 합니다.",
+      "email": "이메일",
+      "password": "비밀번호(8자 이상)",
+      "confirm": "비밀번호 확인",
+      "mismatch": "비밀번호가 일치하지 않습니다.",
+      "agreePrefix": "다음에 동의합니다: ",
+      "and": " 및 ",
+      "submit": "계정 만들기",
+      "havePrompt": "이미 계정이 있으신가요? ",
+      "signIn": "로그인",
+      "error": "회원가입을 시작할 수 없습니다. 다시 시도하세요."
+    },
+    "forgot": {
+      "title": "비밀번호 재설정",
+      "instruction": "계정 이메일을 입력하면 비밀번호를 재설정할 수 있는 링크를 보내드립니다.",
+      "email": "이메일",
+      "submit": "재설정 링크 보내기",
+      "sentMessage": "{{email}}에 대한 계정이 있으면 재설정 링크를 보냈습니다. 웹에서 열어 새 비밀번호를 선택한 후 돌아와 로그인하세요.",
+      "backToSignIn": "로그인으로 돌아가기"
+    },
+    "twoFactor": {
+      "title": "본인 확인",
+      "subtitle": "계정을 안전하게 유지하기 위해 보낸 인증 코드를 입력하세요.",
+      "codePlaceholder": "6자리 코드",
+      "trustDevice": "이 기기 신뢰",
+      "submit": "인증"
+    },
+    "verify": {
+      "title": "이메일 인증",
+      "subtitle": "계정 생성을 완료하려면 {{email}}으로 보낸 6자리 코드를 입력하세요.",
+      "submit": "인증하고 계정 만들기",
+      "noCodePrompt": "코드를 받지 못하셨나요? ",
+      "resend": "코드 다시 보내기",
+      "resendIn": "{{seconds}}초 후 다시 보내기",
+      "failed": "인증에 실패했습니다. 다시 시도하세요.",
+      "resendFailed": "코드를 다시 보낼 수 없습니다."
+    }
+  },
+  "errors": {
+    "albumNotFound": "앨범을 찾을 수 없습니다.",
+    "artistNotFound": "아티스트를 찾을 수 없습니다.",
+    "generic": "문제가 발생했습니다. 다시 시도하세요."
+  },
+  "playlist": {
+    "namePrompt": "플레이리스트 이름 지정",
+    "namePlaceholder": "플레이리스트 이름",
+    "create": "만들기",
+    "save": "저장",
+    "rename": "플레이리스트 이름 바꾸기",
+    "delete": "플레이리스트 삭제",
+    "deleteConfirm": "\"{{title}}\"을(를) 삭제할까요? 되돌릴 수 없습니다.",
+    "addSongs": "곡 추가",
+    "addToPlaylist": "플레이리스트에 추가",
+    "newPlaylist": "새 플레이리스트",
+    "removeFromPlaylist": "이 플레이리스트에서 제거",
+    "songCount": "{{count}}곡",
+    "empty": "아직 음악이 없습니다",
+    "emptyHint": "“곡 추가”를 눌러 이 플레이리스트에 음악을 추가하세요.",
+    "notFound": "플레이리스트를 찾을 수 없습니다."
+  },
+  "stub": {
+    "comingSoon": "곧 출시",
+    "description": "이 영역은 앱 아키텍처에 연결되어 있으며 개발할 준비가 되어 있습니다."
+  }
+}

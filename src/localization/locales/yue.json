@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "播放",
+    "pause": "暫停",
+    "shuffle": "隨機播放",
+    "shufflePlay": "隨機播放",
+    "download": "下載",
+    "seeAll": "查看全部",
+    "retry": "重試",
+    "follow": "追蹤",
+    "following": "已追蹤",
+    "save": "儲存",
+    "saved": "已儲存",
+    "cancel": "取消",
+    "ok": "好",
+    "delete": "刪除",
+    "done": "完成"
+  },
+  "tabs": {
+    "home": "主頁",
+    "browse": "瀏覽",
+    "search": "搜尋",
+    "library": "媒體庫"
+  },
+  "home": {
+    "greetingMorning": "早晨",
+    "greetingAfternoon": "午安",
+    "greetingEvening": "晚上好",
+    "loadError": "無法載入你嘅音樂。下拉重新整理或者再試一次。",
+    "comingSoon": "暫時未有{{language}}嘅音樂——我哋好快會加多啲語言。"
+  },
+  "categories": {
+    "home": "主頁",
+    "inspire_family": "Inspire 家庭",
+    "family_friendly": "啱全家",
+    "children": "兒童音樂",
+    "music_type": "音樂類型",
+    "christmas": "聖誕節"
+  },
+  "railTitles": {
+    "contemporary": "當代",
+    "praise-worship": "讚美與敬拜",
+    "country": "鄉村",
+    "pentecostal-shout": "五旬節歡呼",
+    "gospel": "福音"
+  },
+  "language": {
+    "title": "語言",
+    "search": "搜尋語言…",
+    "recentlyUsed": "最近使用",
+    "allLanguages": "所有語言"
+  },
+  "search": {
+    "placeholder": "歌手、歌曲或專輯",
+    "recent": "最近搜尋",
+    "clear": "清除",
+    "noResults": "搵唔到「{{query}}」嘅結果",
+    "sectionAlbums": "專輯",
+    "sectionArtists": "歌手",
+    "sectionTracks": "歌曲"
+  },
+  "album": {
+    "tracks": "{{count}} 首歌",
+    "addToLibrary": "加入媒體庫"
+  },
+  "artist": {
+    "monthlyListeners": "每月 {{listeners}} 位聽眾",
+    "popular": "熱門",
+    "discography": "唱片目錄"
+  },
+  "library": {
+    "title": "你嘅媒體庫",
+    "favorites": "鍾意嘅歌曲",
+    "albums": "專輯",
+    "artists": "歌手",
+    "downloads": "下載",
+    "playlists": "播放清單",
+    "empty": "你儲存嘅歌曲同專輯會喺度顯示。",
+    "emptyLiked": "你鍾意嘅歌曲會喺度顯示。撳任何一首歌嘅心心就可以加入。",
+    "emptyArtists": "你追蹤嘅歌手會喺度顯示。撳任何歌手嘅追蹤就可以加入。",
+    "emptyPlaylists": "你建立嘅播放清單會喺度顯示。"
+  },
+  "downloads": {
+    "title": "下載",
+    "empty": "已下載嘅音樂會喺度顯示，方便離線收聽。"
+  },
+  "profile": {
+    "title": "個人檔案",
+    "signIn": "登入",
+    "settings": "設定",
+    "changePassword": "更改密碼",
+    "privacyPolicy": "私隱政策",
+    "termsOfUse": "使用條款",
+    "deleteAccount": "刪除帳戶",
+    "signOut": "登出",
+    "guest": "訪客",
+    "notSignedIn": "尚未登入",
+    "deleteTitle": "刪除帳戶？",
+    "deleteMessage": "此舉會永久刪除你嘅帳戶同所有資料。呢個動作無法復原。",
+    "deletedTitle": "帳戶已刪除",
+    "deletedMessage": "你嘅帳戶已被永久刪除。",
+    "deleteFailedTitle": "無法刪除帳戶"
+  },
+  "player": {
+    "queue": "佇列",
+    "upNext": "下一首",
+    "like": "讚好",
+    "removeFromLiked": "由鍾意嘅歌曲移除",
+    "goToAlbum": "前往專輯",
+    "goToArtist": "前往歌手",
+    "share": "分享",
+    "nothingPlaying": "而家無播放緊任何嘢。",
+    "queueEmpty": "佇列係空嘅。"
+  },
+  "changePassword": {
+    "title": "更改密碼",
+    "instruction": "輸入你嘅現有密碼並設定一個新密碼（最少 8 個字元）。",
+    "currentPlaceholder": "現有密碼",
+    "newPlaceholder": "新密碼（最少 8 個字元）",
+    "confirmPlaceholder": "確認新密碼",
+    "mismatch": "兩次密碼唔一致。",
+    "success": "你嘅密碼已更改。你喺呢部裝置會保持登入；其他裝置已登出。",
+    "done": "完成",
+    "submit": "更新密碼",
+    "error": "無法更改你嘅密碼。請再試一次。"
+  },
+  "auth": {
+    "signin": {
+      "title": "準備好聽歌未？",
+      "subtitle": "輸入你嘅電郵同密碼以登入。",
+      "email": "電郵",
+      "password": "密碼",
+      "submit": "登入",
+      "forgot": "唔記得密碼？",
+      "newPrompt": "第一次用 KJubilee？ ",
+      "signUp": "註冊",
+      "botNotice": "呢個頁面受保護，以確認你唔係機械人。"
+    },
+    "signup": {
+      "title": "建立你嘅帳戶",
+      "subtitle": "加入 KJubilee，儲存你嘅音樂、建立播放清單，隨時隨地收聽。",
+      "firstName": "名",
+      "lastName": "姓",
+      "dateOfBirth": "出生日期",
+      "ageError": "你必須年滿 {{age}} 歲先可以建立帳戶。",
+      "email": "電郵",
+      "password": "密碼（最少 8 個字元）",
+      "confirm": "確認密碼",
+      "mismatch": "兩次密碼唔一致。",
+      "agreePrefix": "我同意",
+      "and": " 同 ",
+      "submit": "建立帳戶",
+      "havePrompt": "已經有帳戶？ ",
+      "signIn": "登入",
+      "error": "無法開始註冊。請再試一次。"
+    },
+    "forgot": {
+      "title": "重設你嘅密碼",
+      "instruction": "輸入你帳戶嘅電郵，我哋會寄一條連結俾你重設密碼。",
+      "email": "電郵",
+      "submit": "傳送重設連結",
+      "sentMessage": "如果 {{email}} 有帳戶，我哋已寄出重設連結。喺網頁開啟以設定新密碼，然後返嚟登入。",
+      "backToSignIn": "返回登入"
+    },
+    "twoFactor": {
+      "title": "驗證係你本人",
+      "subtitle": "輸入我哋寄出嘅驗證碼，以保障你嘅帳戶安全。",
+      "codePlaceholder": "6 位數字驗證碼",
+      "trustDevice": "信任呢部裝置",
+      "submit": "驗證"
+    },
+    "verify": {
+      "title": "驗證你嘅電郵",
+      "subtitle": "輸入我哋寄去 {{email}} 嘅 6 位數字驗證碼，以完成建立帳戶。",
+      "submit": "驗證並建立帳戶",
+      "noCodePrompt": "收唔到驗證碼？ ",
+      "resend": "重新傳送驗證碼",
+      "resendIn": "{{seconds}} 秒後重新傳送",
+      "failed": "驗證失敗。請再試一次。",
+      "resendFailed": "無法重新傳送驗證碼。"
+    }
+  },
+  "errors": {
+    "albumNotFound": "搵唔到專輯。",
+    "artistNotFound": "搵唔到歌手。",
+    "generic": "出咗啲問題。請再試一次。"
+  },
+  "playlist": {
+    "namePrompt": "為你嘅播放清單改名",
+    "namePlaceholder": "播放清單名稱",
+    "create": "建立",
+    "save": "儲存",
+    "rename": "重新命名播放清單",
+    "delete": "刪除播放清單",
+    "deleteConfirm": "刪除「{{title}}」？此動作無法復原。",
+    "addSongs": "加入歌曲",
+    "addToPlaylist": "加入播放清單",
+    "newPlaylist": "新播放清單",
+    "removeFromPlaylist": "由呢個播放清單移除",
+    "songCount": "{{count}} 首歌",
+    "empty": "暫時未有音樂",
+    "emptyHint": "撳「加入歌曲」就可以為呢個播放清單加歌。",
+    "notFound": "搵唔到播放清單。"
+  },
+  "stub": {
+    "comingSoon": "即將推出",
+    "description": "呢個範圍已接駁到應用程式架構，可以隨時繼續開發。"
+  }
+}

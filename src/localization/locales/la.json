@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Reproducere",
+    "pause": "Intermittere",
+    "shuffle": "Permiscere",
+    "shufflePlay": "Reproducere permixta",
+    "download": "Detrahere",
+    "seeAll": "Omnia videre",
+    "retry": "Iterum conari",
+    "follow": "Sequi",
+    "following": "Sequeris",
+    "save": "Servare",
+    "saved": "Servatum",
+    "cancel": "Abrogare",
+    "ok": "OK",
+    "delete": "Delere",
+    "done": "Factum"
+  },
+  "tabs": {
+    "home": "Principium",
+    "browse": "Perlustrare",
+    "search": "Quaerere",
+    "library": "Bibliotheca"
+  },
+  "home": {
+    "greetingMorning": "Bonum mane",
+    "greetingAfternoon": "Bonum meridiem",
+    "greetingEvening": "Bonum vesperum",
+    "loadError": "Musicam tuam onerare non potuimus. Trahe ut renoves vel iterum conare.",
+    "comingSoon": "Nulla adhuc musica in lingua {{language}} — mox plures linguas addemus."
+  },
+  "categories": {
+    "home": "Domus",
+    "inspire_family": "Familia Inspire",
+    "family_friendly": "Familiae aptum",
+    "children": "Musica puerorum",
+    "music_type": "Genus musicae",
+    "christmas": "Nativitas"
+  },
+  "railTitles": {
+    "contemporary": "Recens",
+    "praise-worship": "Laus et adoratio",
+    "country": "Country",
+    "pentecostal-shout": "Clamor Pentecostalis",
+    "gospel": "Evangelium"
+  },
+  "language": {
+    "title": "Linguae",
+    "search": "Quaerere linguas…",
+    "recentlyUsed": "Nuper adhibitae",
+    "allLanguages": "Omnes linguae"
+  },
+  "search": {
+    "placeholder": "Artifices, cantus vel albums",
+    "recent": "Quaesita recentia",
+    "clear": "Purgare",
+    "noResults": "Nulli eventus pro \"{{query}}\"",
+    "sectionAlbums": "Albums",
+    "sectionArtists": "Artifices",
+    "sectionTracks": "Cantus"
+  },
+  "album": {
+    "tracks": "{{count}} cantus",
+    "addToLibrary": "Addere bibliothecae"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} auditores menstrui",
+    "popular": "Popularia",
+    "discography": "Discographia"
+  },
+  "library": {
+    "title": "Bibliotheca tua",
+    "favorites": "Cantus dilecti",
+    "albums": "Albums",
+    "artists": "Artifices",
+    "downloads": "Detractiones",
+    "playlists": "Indices cantuum",
+    "empty": "Cantus et albums quae servas hic apparebunt.",
+    "emptyLiked": "Cantus qui tibi placent hic apparebunt. Tange cor in quovis cantu ut eum addas.",
+    "emptyArtists": "Artifices quos sequeris hic apparebunt. Tange sequi in quovis artifice ut eum addas.",
+    "emptyPlaylists": "Indices cantuum quos creas hic apparebunt."
+  },
+  "downloads": {
+    "title": "Detractiones",
+    "empty": "Musica detracta hic apparebit ut sine rete audiatur."
+  },
+  "profile": {
+    "title": "Profilum",
+    "signIn": "Inire",
+    "settings": "Optiones",
+    "changePassword": "Mutare tesseram",
+    "privacyPolicy": "Consilium privatatis",
+    "termsOfUse": "Condiciones usus",
+    "deleteAccount": "Delere rationem",
+    "signOut": "Exire",
+    "guest": "Hospes",
+    "notSignedIn": "Non initus",
+    "deleteTitle": "Rationem delere?",
+    "deleteMessage": "Hoc rationem tuam et omnes data tua perpetuo delet. Hoc factum revocari non potest.",
+    "deletedTitle": "Ratio deleta",
+    "deletedMessage": "Ratio tua perpetuo deleta est.",
+    "deleteFailedTitle": "Ratio deleri non potuit"
+  },
+  "player": {
+    "queue": "Ordo",
+    "upNext": "Proximum",
+    "like": "Placet",
+    "removeFromLiked": "Removere e cantibus dilectis",
+    "goToAlbum": "Ad album ire",
+    "goToArtist": "Ad artificem ire",
+    "share": "Communicare",
+    "nothingPlaying": "Nihil reproducitur.",
+    "queueEmpty": "Ordo vacuus est."
+  },
+  "changePassword": {
+    "title": "Mutare tesseram",
+    "instruction": "Insere tesseram praesentem et novam elige (saltem 8 litterae).",
+    "currentPlaceholder": "Tessera praesens",
+    "newPlaceholder": "Nova tessera (min. 8 litterae)",
+    "confirmPlaceholder": "Confirmare novam tesseram",
+    "mismatch": "Tesserae non congruunt.",
+    "success": "Tessera tua mutata est. Hic initus manebis; alia instrumenta exierunt.",
+    "done": "Factum",
+    "submit": "Renovare tesseram",
+    "error": "Tessera tua mutari non potuit. Iterum conare."
+  },
+  "auth": {
+    "signin": {
+      "title": "Paratusne ad audiendum?",
+      "subtitle": "Insere electronicam et tesseram tuam ut ineas.",
+      "email": "Electronica",
+      "password": "Tessera",
+      "submit": "Inire",
+      "forgot": "Tesseram oblitus es?",
+      "newPrompt": "Novus in KJubilee? ",
+      "signUp": "Subscribere",
+      "botNotice": "Haec pagina munita est ut confirmetur te automaton non esse."
+    },
+    "signup": {
+      "title": "Crea rationem tuam",
+      "subtitle": "Iunge te KJubilee ut musicam tuam serves, indices cantuum creas et ubique audias.",
+      "firstName": "Praenomen",
+      "lastName": "Cognomen",
+      "dateOfBirth": "Dies natalis",
+      "ageError": "Saltem {{age}} annos natus esse debes ut rationem creas.",
+      "email": "Electronica",
+      "password": "Tessera (min. 8 litterae)",
+      "confirm": "Confirmare tesseram",
+      "mismatch": "Tesserae non congruunt.",
+      "agreePrefix": "Assentior ",
+      "and": " et ",
+      "submit": "Creare rationem",
+      "havePrompt": "Iamne rationem habes? ",
+      "signIn": "Inire",
+      "error": "Subscriptio incipi non potuit. Iterum conare."
+    },
+    "forgot": {
+      "title": "Reconstituere tesseram tuam",
+      "instruction": "Insere electronicam rationis tuae et nexum mittemus ut tesseram tuam reconstituas.",
+      "email": "Electronica",
+      "submit": "Mittere nexum",
+      "sentMessage": "Si ratio pro {{email}} exstat, nexum reconstitutionis misimus. Aperi eum in rete ut novam tesseram elige, deinde redi et ini.",
+      "backToSignIn": "Redire ad initum"
+    },
+    "twoFactor": {
+      "title": "Confirma te ipsum esse",
+      "subtitle": "Insere codicem confirmationis quem misimus ut rationem tuam tutam serves.",
+      "codePlaceholder": "Codex 6 cifrarum",
+      "trustDevice": "Confidere huic instrumento",
+      "submit": "Confirmare"
+    },
+    "verify": {
+      "title": "Confirma electronicam tuam",
+      "subtitle": "Insere codicem 6 cifrarum quem ad {{email}} misimus ut creationem rationis perficias.",
+      "submit": "Confirmare et rationem creare",
+      "noCodePrompt": "Codicem non accepisti? ",
+      "resend": "Codicem iterum mittere",
+      "resendIn": "Iterum mittere post {{seconds}} s",
+      "failed": "Confirmatio defecit. Iterum conare.",
+      "resendFailed": "Codex iterum mitti non potuit."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Album non inventum.",
+    "artistNotFound": "Artifex non inventus.",
+    "generic": "Aliquid erravit. Iterum conare."
+  },
+  "playlist": {
+    "namePrompt": "Nomina indicem cantuum tuum",
+    "namePlaceholder": "Nomen indicis cantuum",
+    "create": "Creare",
+    "save": "Servare",
+    "rename": "Renominare indicem cantuum",
+    "delete": "Delere indicem cantuum",
+    "deleteConfirm": "Delere \"{{title}}\"? Hoc revocari non potest.",
+    "addSongs": "Addere cantus",
+    "addToPlaylist": "Addere indici cantuum",
+    "newPlaylist": "Novus index cantuum",
+    "removeFromPlaylist": "Removere ab hoc indice cantuum",
+    "songCount": "{{count}} cantus",
+    "empty": "Nulla adhuc musica",
+    "emptyHint": "Tange “Addere cantus” ut musicam huic indici cantuum addas.",
+    "notFound": "Index cantuum non inventus."
+  },
+  "stub": {
+    "comingSoon": "Mox veniet",
+    "description": "Haec area cum architectura applicationis coniuncta est et parata ad augendum."
+  }
+}

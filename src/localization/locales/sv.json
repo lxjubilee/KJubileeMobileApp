@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Spela",
+    "pause": "Pausa",
+    "shuffle": "Blanda",
+    "shufflePlay": "Blanda och spela",
+    "download": "Ladda ner",
+    "seeAll": "Visa alla",
+    "retry": "Försök igen",
+    "follow": "Följ",
+    "following": "Följer",
+    "save": "Spara",
+    "saved": "Sparad",
+    "cancel": "Avbryt",
+    "ok": "OK",
+    "delete": "Ta bort",
+    "done": "Klar"
+  },
+  "tabs": {
+    "home": "Hem",
+    "browse": "Utforska",
+    "search": "Sök",
+    "library": "Bibliotek"
+  },
+  "home": {
+    "greetingMorning": "God morgon",
+    "greetingAfternoon": "God eftermiddag",
+    "greetingEvening": "God kväll",
+    "loadError": "Vi kunde inte ladda din musik. Dra för att uppdatera eller försök igen.",
+    "comingSoon": "Ingen musik på {{language}} ännu – vi lägger snart till fler språk."
+  },
+  "categories": {
+    "home": "Hem",
+    "inspire_family": "Inspire-familjen",
+    "family_friendly": "Familjevänligt",
+    "children": "Barnmusik",
+    "music_type": "Musiktyp",
+    "christmas": "Jul"
+  },
+  "railTitles": {
+    "contemporary": "Samtida",
+    "praise-worship": "Lovsång och tillbedjan",
+    "country": "Country",
+    "pentecostal-shout": "Pingströrelsens rop",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Språk",
+    "search": "Sök språk…",
+    "recentlyUsed": "Senast använda",
+    "allLanguages": "Alla språk"
+  },
+  "search": {
+    "placeholder": "Artister, låtar eller album",
+    "recent": "Senaste sökningar",
+    "clear": "Rensa",
+    "noResults": "Inga resultat för \"{{query}}\"",
+    "sectionAlbums": "Album",
+    "sectionArtists": "Artister",
+    "sectionTracks": "Låtar"
+  },
+  "album": {
+    "tracks": "{{count}} låtar",
+    "addToLibrary": "Lägg till i biblioteket"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} månadslyssnare",
+    "popular": "Populärt",
+    "discography": "Diskografi"
+  },
+  "library": {
+    "title": "Ditt bibliotek",
+    "favorites": "Gillade låtar",
+    "albums": "Album",
+    "artists": "Artister",
+    "downloads": "Nedladdningar",
+    "playlists": "Spellistor",
+    "empty": "Låtar och album du sparar visas här.",
+    "emptyLiked": "Låtar du gillar visas här. Tryck på hjärtat på en låt för att lägga till den.",
+    "emptyArtists": "Artister du följer visas här. Tryck på följ på en artist för att lägga till den.",
+    "emptyPlaylists": "Spellistor du skapar visas här."
+  },
+  "downloads": {
+    "title": "Nedladdningar",
+    "empty": "Nedladdad musik visas här för offlinelyssning."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Logga in",
+    "settings": "Inställningar",
+    "changePassword": "Ändra lösenord",
+    "privacyPolicy": "Integritetspolicy",
+    "termsOfUse": "Användarvillkor",
+    "deleteAccount": "Ta bort konto",
+    "signOut": "Logga ut",
+    "guest": "Gäst",
+    "notSignedIn": "Inte inloggad",
+    "deleteTitle": "Ta bort kontot?",
+    "deleteMessage": "Detta tar bort ditt konto och all din data permanent. Åtgärden kan inte ångras.",
+    "deletedTitle": "Kontot borttaget",
+    "deletedMessage": "Ditt konto har tagits bort permanent.",
+    "deleteFailedTitle": "Kunde inte ta bort kontot"
+  },
+  "player": {
+    "queue": "Kö",
+    "upNext": "Härnäst",
+    "like": "Gilla",
+    "removeFromLiked": "Ta bort från gillade låtar",
+    "goToAlbum": "Gå till album",
+    "goToArtist": "Gå till artist",
+    "share": "Dela",
+    "nothingPlaying": "Inget spelas.",
+    "queueEmpty": "Kön är tom."
+  },
+  "changePassword": {
+    "title": "Ändra lösenord",
+    "instruction": "Ange ditt nuvarande lösenord och välj ett nytt (minst 8 tecken).",
+    "currentPlaceholder": "Nuvarande lösenord",
+    "newPlaceholder": "Nytt lösenord (minst 8 tecken)",
+    "confirmPlaceholder": "Bekräfta nytt lösenord",
+    "mismatch": "Lösenorden matchar inte.",
+    "success": "Ditt lösenord har ändrats. Du förblir inloggad här; andra enheter har loggats ut.",
+    "done": "Klar",
+    "submit": "Uppdatera lösenord",
+    "error": "Det gick inte att ändra ditt lösenord. Försök igen."
+  },
+  "auth": {
+    "signin": {
+      "title": "Redo att lyssna?",
+      "subtitle": "Ange din e-post och ditt lösenord för att logga in.",
+      "email": "E-post",
+      "password": "Lösenord",
+      "submit": "Logga in",
+      "forgot": "Glömt lösenord?",
+      "newPrompt": "Ny på KJubilee? ",
+      "signUp": "Registrera dig",
+      "botNotice": "Den här sidan är skyddad för att säkerställa att du inte är en bot."
+    },
+    "signup": {
+      "title": "Skapa ditt konto",
+      "subtitle": "Gå med i KJubilee för att spara din musik, skapa spellistor och lyssna var som helst.",
+      "firstName": "Förnamn",
+      "lastName": "Efternamn",
+      "dateOfBirth": "Födelsedatum",
+      "ageError": "Du måste vara minst {{age}} år för att skapa ett konto.",
+      "email": "E-post",
+      "password": "Lösenord (minst 8 tecken)",
+      "confirm": "Bekräfta lösenord",
+      "mismatch": "Lösenorden matchar inte.",
+      "agreePrefix": "Jag godkänner ",
+      "and": " och ",
+      "submit": "Skapa konto",
+      "havePrompt": "Har du redan ett konto? ",
+      "signIn": "Logga in",
+      "error": "Det gick inte att starta registreringen. Försök igen."
+    },
+    "forgot": {
+      "title": "Återställ ditt lösenord",
+      "instruction": "Ange e-postadressen till ditt konto så skickar vi en länk för att återställa ditt lösenord.",
+      "email": "E-post",
+      "submit": "Skicka återställningslänk",
+      "sentMessage": "Om ett konto finns för {{email}} har vi skickat en återställningslänk. Öppna den på webben för att välja ett nytt lösenord och kom sedan tillbaka och logga in.",
+      "backToSignIn": "Tillbaka till inloggning"
+    },
+    "twoFactor": {
+      "title": "Bekräfta att det är du",
+      "subtitle": "Ange verifieringskoden vi skickade för att hålla ditt konto säkert.",
+      "codePlaceholder": "6-siffrig kod",
+      "trustDevice": "Lita på den här enheten",
+      "submit": "Verifiera"
+    },
+    "verify": {
+      "title": "Verifiera din e-post",
+      "subtitle": "Ange den 6-siffriga koden vi skickade till {{email}} för att slutföra skapandet av ditt konto.",
+      "submit": "Verifiera och skapa konto",
+      "noCodePrompt": "Fick du ingen kod? ",
+      "resend": "Skicka koden igen",
+      "resendIn": "Skicka igen om {{seconds}} s",
+      "failed": "Verifieringen misslyckades. Försök igen.",
+      "resendFailed": "Det gick inte att skicka koden igen."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Albumet hittades inte.",
+    "artistNotFound": "Artisten hittades inte.",
+    "generic": "Något gick fel. Försök igen."
+  },
+  "playlist": {
+    "namePrompt": "Namnge din spellista",
+    "namePlaceholder": "Spellistans namn",
+    "create": "Skapa",
+    "save": "Spara",
+    "rename": "Byt namn på spellista",
+    "delete": "Ta bort spellista",
+    "deleteConfirm": "Ta bort \"{{title}}\"? Detta kan inte ångras.",
+    "addSongs": "Lägg till låtar",
+    "addToPlaylist": "Lägg till i spellista",
+    "newPlaylist": "Ny spellista",
+    "removeFromPlaylist": "Ta bort från denna spellista",
+    "songCount": "{{count}} låtar",
+    "empty": "Ingen musik ännu",
+    "emptyHint": "Tryck på ”Lägg till låtar” för att lägga till musik i den här spellistan.",
+    "notFound": "Spellistan hittades inte."
+  },
+  "stub": {
+    "comingSoon": "Kommer snart",
+    "description": "Det här området är kopplat till appens arkitektur och redo att byggas ut."
+  }
+}

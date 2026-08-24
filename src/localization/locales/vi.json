@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Phát",
+    "pause": "Tạm dừng",
+    "shuffle": "Phát ngẫu nhiên",
+    "shufflePlay": "Phát ngẫu nhiên",
+    "download": "Tải xuống",
+    "seeAll": "Xem tất cả",
+    "retry": "Thử lại",
+    "follow": "Theo dõi",
+    "following": "Đang theo dõi",
+    "save": "Lưu",
+    "saved": "Đã lưu",
+    "cancel": "Hủy",
+    "ok": "OK",
+    "delete": "Xóa",
+    "done": "Xong"
+  },
+  "tabs": {
+    "home": "Trang chủ",
+    "browse": "Khám phá",
+    "search": "Tìm kiếm",
+    "library": "Thư viện"
+  },
+  "home": {
+    "greetingMorning": "Chào buổi sáng",
+    "greetingAfternoon": "Chào buổi chiều",
+    "greetingEvening": "Chào buổi tối",
+    "loadError": "Không thể tải nhạc của bạn. Kéo để làm mới hoặc thử lại.",
+    "comingSoon": "Chưa có nhạc bằng {{language}} — chúng tôi sẽ sớm thêm nhiều ngôn ngữ hơn."
+  },
+  "categories": {
+    "home": "Trang chủ",
+    "inspire_family": "Gia đình Inspire",
+    "family_friendly": "Phù hợp với gia đình",
+    "children": "Nhạc thiếu nhi",
+    "music_type": "Thể loại nhạc",
+    "christmas": "Giáng sinh"
+  },
+  "railTitles": {
+    "contemporary": "Đương đại",
+    "praise-worship": "Ngợi khen và thờ phượng",
+    "country": "Country",
+    "pentecostal-shout": "Tiếng reo Ngũ Tuần",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Ngôn ngữ",
+    "search": "Tìm ngôn ngữ…",
+    "recentlyUsed": "Dùng gần đây",
+    "allLanguages": "Tất cả ngôn ngữ"
+  },
+  "search": {
+    "placeholder": "Nghệ sĩ, bài hát hoặc album",
+    "recent": "Tìm kiếm gần đây",
+    "clear": "Xóa",
+    "noResults": "Không có kết quả cho \"{{query}}\"",
+    "sectionAlbums": "Album",
+    "sectionArtists": "Nghệ sĩ",
+    "sectionTracks": "Bài hát"
+  },
+  "album": {
+    "tracks": "{{count}} bài hát",
+    "addToLibrary": "Thêm vào thư viện"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} người nghe hàng tháng",
+    "popular": "Phổ biến",
+    "discography": "Danh sách đĩa nhạc"
+  },
+  "library": {
+    "title": "Thư viện của bạn",
+    "favorites": "Bài hát đã thích",
+    "albums": "Album",
+    "artists": "Nghệ sĩ",
+    "downloads": "Tải xuống",
+    "playlists": "Danh sách phát",
+    "empty": "Các bài hát và album bạn lưu sẽ xuất hiện ở đây.",
+    "emptyLiked": "Các bài hát bạn thích sẽ xuất hiện ở đây. Chạm vào trái tim trên bất kỳ bài hát nào để thêm.",
+    "emptyArtists": "Các nghệ sĩ bạn theo dõi sẽ xuất hiện ở đây. Chạm theo dõi trên bất kỳ nghệ sĩ nào để thêm.",
+    "emptyPlaylists": "Các danh sách phát bạn tạo sẽ xuất hiện ở đây."
+  },
+  "downloads": {
+    "title": "Tải xuống",
+    "empty": "Nhạc đã tải xuống sẽ xuất hiện ở đây để nghe ngoại tuyến."
+  },
+  "profile": {
+    "title": "Hồ sơ",
+    "signIn": "Đăng nhập",
+    "settings": "Cài đặt",
+    "changePassword": "Đổi mật khẩu",
+    "privacyPolicy": "Chính sách quyền riêng tư",
+    "termsOfUse": "Điều khoản sử dụng",
+    "deleteAccount": "Xóa tài khoản",
+    "signOut": "Đăng xuất",
+    "guest": "Khách",
+    "notSignedIn": "Chưa đăng nhập",
+    "deleteTitle": "Xóa tài khoản?",
+    "deleteMessage": "Thao tác này sẽ xóa vĩnh viễn tài khoản và toàn bộ dữ liệu của bạn. Không thể hoàn tác.",
+    "deletedTitle": "Đã xóa tài khoản",
+    "deletedMessage": "Tài khoản của bạn đã bị xóa vĩnh viễn.",
+    "deleteFailedTitle": "Không thể xóa tài khoản"
+  },
+  "player": {
+    "queue": "Hàng đợi",
+    "upNext": "Tiếp theo",
+    "like": "Thích",
+    "removeFromLiked": "Xóa khỏi bài hát đã thích",
+    "goToAlbum": "Đến album",
+    "goToArtist": "Đến nghệ sĩ",
+    "share": "Chia sẻ",
+    "nothingPlaying": "Không có gì đang phát.",
+    "queueEmpty": "Hàng đợi trống."
+  },
+  "changePassword": {
+    "title": "Đổi mật khẩu",
+    "instruction": "Nhập mật khẩu hiện tại và chọn mật khẩu mới (ít nhất 8 ký tự).",
+    "currentPlaceholder": "Mật khẩu hiện tại",
+    "newPlaceholder": "Mật khẩu mới (tối thiểu 8 ký tự)",
+    "confirmPlaceholder": "Xác nhận mật khẩu mới",
+    "mismatch": "Mật khẩu không khớp.",
+    "success": "Mật khẩu của bạn đã được thay đổi. Bạn vẫn đăng nhập ở đây; các thiết bị khác đã bị đăng xuất.",
+    "done": "Xong",
+    "submit": "Cập nhật mật khẩu",
+    "error": "Không thể đổi mật khẩu của bạn. Vui lòng thử lại."
+  },
+  "auth": {
+    "signin": {
+      "title": "Sẵn sàng nghe chưa?",
+      "subtitle": "Nhập email và mật khẩu để đăng nhập.",
+      "email": "Email",
+      "password": "Mật khẩu",
+      "submit": "Đăng nhập",
+      "forgot": "Quên mật khẩu?",
+      "newPrompt": "Mới đến với KJubilee? ",
+      "signUp": "Đăng ký",
+      "botNotice": "Trang này được bảo vệ để đảm bảo bạn không phải là bot."
+    },
+    "signup": {
+      "title": "Tạo tài khoản của bạn",
+      "subtitle": "Tham gia KJubilee để lưu nhạc, tạo danh sách phát và nghe ở mọi nơi.",
+      "firstName": "Tên",
+      "lastName": "Họ",
+      "dateOfBirth": "Ngày sinh",
+      "ageError": "Bạn phải đủ {{age}} tuổi để tạo tài khoản.",
+      "email": "Email",
+      "password": "Mật khẩu (tối thiểu 8 ký tự)",
+      "confirm": "Xác nhận mật khẩu",
+      "mismatch": "Mật khẩu không khớp.",
+      "agreePrefix": "Tôi đồng ý với ",
+      "and": " và ",
+      "submit": "Tạo tài khoản",
+      "havePrompt": "Đã có tài khoản? ",
+      "signIn": "Đăng nhập",
+      "error": "Không thể bắt đầu đăng ký. Vui lòng thử lại."
+    },
+    "forgot": {
+      "title": "Đặt lại mật khẩu",
+      "instruction": "Nhập email tài khoản của bạn và chúng tôi sẽ gửi liên kết để đặt lại mật khẩu.",
+      "email": "Email",
+      "submit": "Gửi liên kết đặt lại",
+      "sentMessage": "Nếu tài khoản cho {{email}} tồn tại, chúng tôi đã gửi liên kết đặt lại. Mở trên web để chọn mật khẩu mới, rồi quay lại đăng nhập.",
+      "backToSignIn": "Quay lại đăng nhập"
+    },
+    "twoFactor": {
+      "title": "Xác minh đó là bạn",
+      "subtitle": "Nhập mã xác minh chúng tôi đã gửi để giữ an toàn cho tài khoản của bạn.",
+      "codePlaceholder": "Mã 6 chữ số",
+      "trustDevice": "Tin cậy thiết bị này",
+      "submit": "Xác minh"
+    },
+    "verify": {
+      "title": "Xác minh email của bạn",
+      "subtitle": "Nhập mã 6 chữ số chúng tôi đã gửi đến {{email}} để hoàn tất việc tạo tài khoản.",
+      "submit": "Xác minh và tạo tài khoản",
+      "noCodePrompt": "Chưa nhận được mã? ",
+      "resend": "Gửi lại mã",
+      "resendIn": "Gửi lại sau {{seconds}} giây",
+      "failed": "Xác minh thất bại. Vui lòng thử lại.",
+      "resendFailed": "Không thể gửi lại mã."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Không tìm thấy album.",
+    "artistNotFound": "Không tìm thấy nghệ sĩ.",
+    "generic": "Đã xảy ra lỗi. Vui lòng thử lại."
+  },
+  "playlist": {
+    "namePrompt": "Đặt tên cho danh sách phát của bạn",
+    "namePlaceholder": "Tên danh sách phát",
+    "create": "Tạo",
+    "save": "Lưu",
+    "rename": "Đổi tên danh sách phát",
+    "delete": "Xóa danh sách phát",
+    "deleteConfirm": "Xóa \"{{title}}\"? Không thể hoàn tác.",
+    "addSongs": "Thêm bài hát",
+    "addToPlaylist": "Thêm vào danh sách phát",
+    "newPlaylist": "Danh sách phát mới",
+    "removeFromPlaylist": "Xóa khỏi danh sách phát này",
+    "songCount": "{{count}} bài hát",
+    "empty": "Chưa có nhạc",
+    "emptyHint": "Chạm “Thêm bài hát” để thêm nhạc vào danh sách phát này.",
+    "notFound": "Không tìm thấy danh sách phát."
+  },
+  "stub": {
+    "comingSoon": "Sắp ra mắt",
+    "description": "Khu vực này đã được kết nối với kiến trúc ứng dụng và sẵn sàng để phát triển."
+  }
+}

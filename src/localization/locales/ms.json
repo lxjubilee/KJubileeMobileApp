@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Main",
+    "pause": "Jeda",
+    "shuffle": "Kocok",
+    "shufflePlay": "Main secara kocok",
+    "download": "Muat turun",
+    "seeAll": "Lihat semua",
+    "retry": "Cuba lagi",
+    "follow": "Ikut",
+    "following": "Mengikuti",
+    "save": "Simpan",
+    "saved": "Disimpan",
+    "cancel": "Batal",
+    "ok": "OK",
+    "delete": "Padam",
+    "done": "Selesai"
+  },
+  "tabs": {
+    "home": "Laman utama",
+    "browse": "Layari",
+    "search": "Cari",
+    "library": "Pustaka"
+  },
+  "home": {
+    "greetingMorning": "Selamat pagi",
+    "greetingAfternoon": "Selamat tengah hari",
+    "greetingEvening": "Selamat petang",
+    "loadError": "Kami tidak dapat memuatkan muzik anda. Tarik untuk muat semula atau cuba lagi.",
+    "comingSoon": "Belum ada muzik dalam {{language}} — kami akan menambah lebih banyak bahasa tidak lama lagi."
+  },
+  "categories": {
+    "home": "Laman Utama",
+    "inspire_family": "Keluarga Inspire",
+    "family_friendly": "Mesra Keluarga",
+    "children": "Muzik Kanak-kanak",
+    "music_type": "Jenis Muzik",
+    "christmas": "Krismas"
+  },
+  "railTitles": {
+    "contemporary": "Kontemporari",
+    "praise-worship": "Pujian dan Penyembahan",
+    "country": "Country",
+    "pentecostal-shout": "Seruan Pentakosta",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Bahasa",
+    "search": "Cari bahasa…",
+    "recentlyUsed": "Baru digunakan",
+    "allLanguages": "Semua bahasa"
+  },
+  "search": {
+    "placeholder": "Artis, lagu atau album",
+    "recent": "Carian terkini",
+    "clear": "Kosongkan",
+    "noResults": "Tiada hasil untuk \"{{query}}\"",
+    "sectionAlbums": "Album",
+    "sectionArtists": "Artis",
+    "sectionTracks": "Lagu"
+  },
+  "album": {
+    "tracks": "{{count}} lagu",
+    "addToLibrary": "Tambah ke pustaka"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} pendengar bulanan",
+    "popular": "Popular",
+    "discography": "Diskografi"
+  },
+  "library": {
+    "title": "Pustaka anda",
+    "favorites": "Lagu disukai",
+    "albums": "Album",
+    "artists": "Artis",
+    "downloads": "Muat turun",
+    "playlists": "Senarai main",
+    "empty": "Lagu dan album yang anda simpan akan muncul di sini.",
+    "emptyLiked": "Lagu yang anda suka akan muncul di sini. Ketik hati pada mana-mana lagu untuk menambahnya.",
+    "emptyArtists": "Artis yang anda ikuti akan muncul di sini. Ketik ikut pada mana-mana artis untuk menambahnya.",
+    "emptyPlaylists": "Senarai main yang anda cipta akan muncul di sini."
+  },
+  "downloads": {
+    "title": "Muat turun",
+    "empty": "Muzik yang dimuat turun akan muncul di sini untuk didengar di luar talian."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Log masuk",
+    "settings": "Tetapan",
+    "changePassword": "Tukar kata laluan",
+    "privacyPolicy": "Dasar Privasi",
+    "termsOfUse": "Terma Penggunaan",
+    "deleteAccount": "Padam akaun",
+    "signOut": "Log keluar",
+    "guest": "Tetamu",
+    "notSignedIn": "Belum log masuk",
+    "deleteTitle": "Padam akaun?",
+    "deleteMessage": "Ini memadam akaun dan semua data anda secara kekal. Tindakan ini tidak boleh dibatalkan.",
+    "deletedTitle": "Akaun dipadam",
+    "deletedMessage": "Akaun anda telah dipadam secara kekal.",
+    "deleteFailedTitle": "Tidak dapat memadam akaun"
+  },
+  "player": {
+    "queue": "Baris gilir",
+    "upNext": "Seterusnya",
+    "like": "Suka",
+    "removeFromLiked": "Alih keluar daripada lagu disukai",
+    "goToAlbum": "Ke album",
+    "goToArtist": "Ke artis",
+    "share": "Kongsi",
+    "nothingPlaying": "Tiada apa-apa dimainkan.",
+    "queueEmpty": "Baris gilir kosong."
+  },
+  "changePassword": {
+    "title": "Tukar kata laluan",
+    "instruction": "Masukkan kata laluan semasa anda dan pilih yang baharu (sekurang-kurangnya 8 aksara).",
+    "currentPlaceholder": "Kata laluan semasa",
+    "newPlaceholder": "Kata laluan baharu (min. 8 aksara)",
+    "confirmPlaceholder": "Sahkan kata laluan baharu",
+    "mismatch": "Kata laluan tidak sepadan.",
+    "success": "Kata laluan anda telah ditukar. Anda kekal log masuk di sini; peranti lain telah dilog keluar.",
+    "done": "Selesai",
+    "submit": "Kemas kini kata laluan",
+    "error": "Tidak dapat menukar kata laluan anda. Cuba lagi."
+  },
+  "auth": {
+    "signin": {
+      "title": "Sedia untuk mendengar?",
+      "subtitle": "Masukkan e-mel dan kata laluan anda untuk log masuk.",
+      "email": "E-mel",
+      "password": "Kata laluan",
+      "submit": "Log masuk",
+      "forgot": "Lupa kata laluan?",
+      "newPrompt": "Baharu di KJubilee? ",
+      "signUp": "Daftar",
+      "botNotice": "Halaman ini dilindungi untuk memastikan anda bukan bot."
+    },
+    "signup": {
+      "title": "Cipta akaun anda",
+      "subtitle": "Sertai KJubilee untuk menyimpan muzik anda, mencipta senarai main dan mendengar di mana-mana.",
+      "firstName": "Nama pertama",
+      "lastName": "Nama akhir",
+      "dateOfBirth": "Tarikh lahir",
+      "ageError": "Anda mesti berumur sekurang-kurangnya {{age}} tahun untuk mencipta akaun.",
+      "email": "E-mel",
+      "password": "Kata laluan (min. 8 aksara)",
+      "confirm": "Sahkan kata laluan",
+      "mismatch": "Kata laluan tidak sepadan.",
+      "agreePrefix": "Saya bersetuju dengan ",
+      "and": " dan ",
+      "submit": "Cipta akaun",
+      "havePrompt": "Sudah ada akaun? ",
+      "signIn": "Log masuk",
+      "error": "Tidak dapat memulakan pendaftaran. Cuba lagi."
+    },
+    "forgot": {
+      "title": "Tetapkan semula kata laluan anda",
+      "instruction": "Masukkan e-mel akaun anda dan kami akan menghantar pautan untuk menetapkan semula kata laluan anda.",
+      "email": "E-mel",
+      "submit": "Hantar pautan tetap semula",
+      "sentMessage": "Jika akaun untuk {{email}} wujud, kami telah menghantar pautan tetap semula. Buka pada web untuk memilih kata laluan baharu, kemudian kembali dan log masuk.",
+      "backToSignIn": "Kembali ke log masuk"
+    },
+    "twoFactor": {
+      "title": "Sahkan ia anda",
+      "subtitle": "Masukkan kod pengesahan yang kami hantar untuk memastikan akaun anda selamat.",
+      "codePlaceholder": "Kod 6 digit",
+      "trustDevice": "Percayai peranti ini",
+      "submit": "Sahkan"
+    },
+    "verify": {
+      "title": "Sahkan e-mel anda",
+      "subtitle": "Masukkan kod 6 digit yang kami hantar ke {{email}} untuk menyelesaikan penciptaan akaun anda.",
+      "submit": "Sahkan & Cipta Akaun",
+      "noCodePrompt": "Tidak menerima kod? ",
+      "resend": "Hantar semula kod",
+      "resendIn": "Hantar semula dalam {{seconds}}s",
+      "failed": "Pengesahan gagal. Cuba lagi.",
+      "resendFailed": "Tidak dapat menghantar semula kod."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Album tidak dijumpai.",
+    "artistNotFound": "Artis tidak dijumpai.",
+    "generic": "Ada sesuatu yang tidak kena. Cuba lagi."
+  },
+  "playlist": {
+    "namePrompt": "Namakan senarai main anda",
+    "namePlaceholder": "Nama senarai main",
+    "create": "Cipta",
+    "save": "Simpan",
+    "rename": "Namakan semula senarai main",
+    "delete": "Padam senarai main",
+    "deleteConfirm": "Padam \"{{title}}\"? Ini tidak boleh dibatalkan.",
+    "addSongs": "Tambah lagu",
+    "addToPlaylist": "Tambah ke senarai main",
+    "newPlaylist": "Senarai main baharu",
+    "removeFromPlaylist": "Alih keluar daripada senarai main ini",
+    "songCount": "{{count}} lagu",
+    "empty": "Belum ada muzik",
+    "emptyHint": "Ketik “Tambah lagu” untuk menambah muzik ke senarai main ini.",
+    "notFound": "Senarai main tidak dijumpai."
+  },
+  "stub": {
+    "comingSoon": "Akan datang",
+    "description": "Kawasan ini disambungkan ke seni bina apl dan sedia untuk dibangunkan."
+  }
+}

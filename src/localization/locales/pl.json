@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Odtwórz",
+    "pause": "Wstrzymaj",
+    "shuffle": "Losowo",
+    "shufflePlay": "Odtwarzanie losowe",
+    "download": "Pobierz",
+    "seeAll": "Zobacz wszystko",
+    "retry": "Spróbuj ponownie",
+    "follow": "Obserwuj",
+    "following": "Obserwujesz",
+    "save": "Zapisz",
+    "saved": "Zapisano",
+    "cancel": "Anuluj",
+    "ok": "OK",
+    "delete": "Usuń",
+    "done": "Gotowe"
+  },
+  "tabs": {
+    "home": "Główna",
+    "browse": "Przeglądaj",
+    "search": "Szukaj",
+    "library": "Biblioteka"
+  },
+  "home": {
+    "greetingMorning": "Dzień dobry",
+    "greetingAfternoon": "Dzień dobry",
+    "greetingEvening": "Dobry wieczór",
+    "loadError": "Nie udało się załadować Twojej muzyki. Pociągnij, aby odświeżyć, lub spróbuj ponownie.",
+    "comingSoon": "Nie ma jeszcze muzyki w języku {{language}} — wkrótce dodamy więcej języków."
+  },
+  "categories": {
+    "home": "Główna",
+    "inspire_family": "Rodzina Inspire",
+    "family_friendly": "Dla całej rodziny",
+    "children": "Muzyka dla dzieci",
+    "music_type": "Rodzaj muzyki",
+    "christmas": "Boże Narodzenie"
+  },
+  "railTitles": {
+    "contemporary": "Współczesna",
+    "praise-worship": "Uwielbienie i chwała",
+    "country": "Country",
+    "pentecostal-shout": "Zielonoświątkowy okrzyk",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Języki",
+    "search": "Szukaj języków…",
+    "recentlyUsed": "Ostatnio używane",
+    "allLanguages": "Wszystkie języki"
+  },
+  "search": {
+    "placeholder": "Wykonawcy, utwory lub albumy",
+    "recent": "Ostatnie wyszukiwania",
+    "clear": "Wyczyść",
+    "noResults": "Brak wyników dla \"{{query}}\"",
+    "sectionAlbums": "Albumy",
+    "sectionArtists": "Wykonawcy",
+    "sectionTracks": "Utwory"
+  },
+  "album": {
+    "tracks": "{{count}} utworów",
+    "addToLibrary": "Dodaj do biblioteki"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} słuchaczy miesięcznie",
+    "popular": "Popularne",
+    "discography": "Dyskografia"
+  },
+  "library": {
+    "title": "Twoja biblioteka",
+    "favorites": "Polubione utwory",
+    "albums": "Albumy",
+    "artists": "Wykonawcy",
+    "downloads": "Pobrane",
+    "playlists": "Playlisty",
+    "empty": "Zapisane utwory i albumy pojawią się tutaj.",
+    "emptyLiked": "Utwory, które polubisz, pojawią się tutaj. Dotknij serca przy dowolnym utworze, aby go dodać.",
+    "emptyArtists": "Obserwowani wykonawcy pojawią się tutaj. Dotknij „Obserwuj” przy dowolnym wykonawcy.",
+    "emptyPlaylists": "Utworzone przez Ciebie playlisty pojawią się tutaj."
+  },
+  "downloads": {
+    "title": "Pobrane",
+    "empty": "Pobrana muzyka pojawi się tutaj do słuchania offline."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Zaloguj się",
+    "settings": "Ustawienia",
+    "changePassword": "Zmień hasło",
+    "privacyPolicy": "Polityka prywatności",
+    "termsOfUse": "Warunki użytkowania",
+    "deleteAccount": "Usuń konto",
+    "signOut": "Wyloguj się",
+    "guest": "Gość",
+    "notSignedIn": "Niezalogowany",
+    "deleteTitle": "Usunąć konto?",
+    "deleteMessage": "Spowoduje to trwałe usunięcie Twojego konta i wszystkich danych. Tej operacji nie można cofnąć.",
+    "deletedTitle": "Konto usunięte",
+    "deletedMessage": "Twoje konto zostało trwale usunięte.",
+    "deleteFailedTitle": "Nie udało się usunąć konta"
+  },
+  "player": {
+    "queue": "Kolejka",
+    "upNext": "Następny",
+    "like": "Polub",
+    "removeFromLiked": "Usuń z polubionych utworów",
+    "goToAlbum": "Przejdź do albumu",
+    "goToArtist": "Przejdź do wykonawcy",
+    "share": "Udostępnij",
+    "nothingPlaying": "Nic nie jest odtwarzane.",
+    "queueEmpty": "Kolejka jest pusta."
+  },
+  "changePassword": {
+    "title": "Zmień hasło",
+    "instruction": "Wprowadź obecne hasło i wybierz nowe (co najmniej 8 znaków).",
+    "currentPlaceholder": "Obecne hasło",
+    "newPlaceholder": "Nowe hasło (min. 8 znaków)",
+    "confirmPlaceholder": "Potwierdź nowe hasło",
+    "mismatch": "Hasła nie są takie same.",
+    "success": "Twoje hasło zostało zmienione. Pozostaniesz zalogowany tutaj; inne urządzenia zostały wylogowane.",
+    "done": "Gotowe",
+    "submit": "Zaktualizuj hasło",
+    "error": "Nie udało się zmienić hasła. Spróbuj ponownie."
+  },
+  "auth": {
+    "signin": {
+      "title": "Gotowy do słuchania?",
+      "subtitle": "Wprowadź e-mail i hasło, aby się zalogować.",
+      "email": "E-mail",
+      "password": "Hasło",
+      "submit": "Zaloguj się",
+      "forgot": "Nie pamiętasz hasła?",
+      "newPrompt": "Nowy w KJubilee? ",
+      "signUp": "Zarejestruj się",
+      "botNotice": "Ta strona jest chroniona, aby upewnić się, że nie jesteś botem."
+    },
+    "signup": {
+      "title": "Utwórz konto",
+      "subtitle": "Dołącz do KJubilee, aby zapisywać muzykę, tworzyć playlisty i słuchać wszędzie.",
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "dateOfBirth": "Data urodzenia",
+      "ageError": "Aby utworzyć konto, musisz mieć co najmniej {{age}} lat.",
+      "email": "E-mail",
+      "password": "Hasło (min. 8 znaków)",
+      "confirm": "Potwierdź hasło",
+      "mismatch": "Hasła nie są takie same.",
+      "agreePrefix": "Akceptuję ",
+      "and": " i ",
+      "submit": "Utwórz konto",
+      "havePrompt": "Masz już konto? ",
+      "signIn": "Zaloguj się",
+      "error": "Nie udało się rozpocząć rejestracji. Spróbuj ponownie."
+    },
+    "forgot": {
+      "title": "Zresetuj hasło",
+      "instruction": "Wprowadź e-mail swojego konta, a wyślemy link do zresetowania hasła.",
+      "email": "E-mail",
+      "submit": "Wyślij link",
+      "sentMessage": "Jeśli konto dla {{email}} istnieje, wysłaliśmy link do resetu. Otwórz go w przeglądarce, aby wybrać nowe hasło, a następnie wróć i zaloguj się.",
+      "backToSignIn": "Powrót do logowania"
+    },
+    "twoFactor": {
+      "title": "Potwierdź, że to Ty",
+      "subtitle": "Wprowadź kod weryfikacyjny, który wysłaliśmy, aby zabezpieczyć Twoje konto.",
+      "codePlaceholder": "6-cyfrowy kod",
+      "trustDevice": "Zaufaj temu urządzeniu",
+      "submit": "Zweryfikuj"
+    },
+    "verify": {
+      "title": "Zweryfikuj e-mail",
+      "subtitle": "Wprowadź 6-cyfrowy kod wysłany na {{email}}, aby dokończyć tworzenie konta.",
+      "submit": "Zweryfikuj i utwórz konto",
+      "noCodePrompt": "Nie otrzymałeś kodu? ",
+      "resend": "Wyślij kod ponownie",
+      "resendIn": "Wyślij ponownie za {{seconds}} s",
+      "failed": "Weryfikacja nie powiodła się. Spróbuj ponownie.",
+      "resendFailed": "Nie udało się ponownie wysłać kodu."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Nie znaleziono albumu.",
+    "artistNotFound": "Nie znaleziono wykonawcy.",
+    "generic": "Coś poszło nie tak. Spróbuj ponownie."
+  },
+  "playlist": {
+    "namePrompt": "Nazwij swoją playlistę",
+    "namePlaceholder": "Nazwa playlisty",
+    "create": "Utwórz",
+    "save": "Zapisz",
+    "rename": "Zmień nazwę playlisty",
+    "delete": "Usuń playlistę",
+    "deleteConfirm": "Usunąć \"{{title}}\"? Tej operacji nie można cofnąć.",
+    "addSongs": "Dodaj utwory",
+    "addToPlaylist": "Dodaj do playlisty",
+    "newPlaylist": "Nowa playlista",
+    "removeFromPlaylist": "Usuń z tej playlisty",
+    "songCount": "{{count}} utworów",
+    "empty": "Nie ma jeszcze muzyki",
+    "emptyHint": "Dotknij „Dodaj utwory”, aby dodać muzykę do tej playlisty.",
+    "notFound": "Nie znaleziono playlisty."
+  },
+  "stub": {
+    "comingSoon": "Wkrótce",
+    "description": "Ten obszar jest podłączony do architektury aplikacji i gotowy do rozbudowy."
+  }
+}

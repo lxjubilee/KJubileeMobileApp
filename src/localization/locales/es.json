@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "shuffle": "Aleatorio",
+    "shufflePlay": "Reproducción aleatoria",
+    "download": "Descargar",
+    "seeAll": "Ver todo",
+    "retry": "Reintentar",
+    "follow": "Seguir",
+    "following": "Siguiendo",
+    "save": "Guardar",
+    "saved": "Guardado",
+    "cancel": "Cancelar",
+    "ok": "Aceptar",
+    "delete": "Eliminar",
+    "done": "Listo"
+  },
+  "tabs": {
+    "home": "Inicio",
+    "browse": "Explorar",
+    "search": "Buscar",
+    "library": "Biblioteca"
+  },
+  "home": {
+    "greetingMorning": "Buenos días",
+    "greetingAfternoon": "Buenas tardes",
+    "greetingEvening": "Buenas noches",
+    "loadError": "No pudimos cargar tu música. Desliza para actualizar o inténtalo de nuevo.",
+    "comingSoon": "Aún no hay música en {{language}}: pronto añadiremos más idiomas."
+  },
+  "categories": {
+    "home": "Inicio",
+    "inspire_family": "Familia Inspire",
+    "family_friendly": "Para toda la familia",
+    "children": "Música infantil",
+    "music_type": "Tipo de música",
+    "christmas": "Navidad"
+  },
+  "railTitles": {
+    "contemporary": "Contemporáneo",
+    "praise-worship": "Alabanza y adoración",
+    "country": "Country",
+    "pentecostal-shout": "Grito pentecostal",
+    "gospel": "Góspel"
+  },
+  "language": {
+    "title": "Idiomas",
+    "search": "Buscar idiomas…",
+    "recentlyUsed": "Usados recientemente",
+    "allLanguages": "Todos los idiomas"
+  },
+  "search": {
+    "placeholder": "Artistas, canciones o álbumes",
+    "recent": "Búsquedas recientes",
+    "clear": "Borrar",
+    "noResults": "Sin resultados para \"{{query}}\"",
+    "sectionAlbums": "Álbumes",
+    "sectionArtists": "Artistas",
+    "sectionTracks": "Canciones"
+  },
+  "album": {
+    "tracks": "{{count}} canciones",
+    "addToLibrary": "Añadir a la biblioteca"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} oyentes mensuales",
+    "popular": "Populares",
+    "discography": "Discografía"
+  },
+  "library": {
+    "title": "Tu biblioteca",
+    "favorites": "Canciones que te gustan",
+    "albums": "Álbumes",
+    "artists": "Artistas",
+    "downloads": "Descargas",
+    "playlists": "Listas",
+    "empty": "Las canciones y álbumes que guardes aparecerán aquí.",
+    "emptyLiked": "Las canciones que te gusten aparecerán aquí. Toca el corazón en cualquier pista para añadirla.",
+    "emptyArtists": "Los artistas que sigas aparecerán aquí. Toca seguir en cualquier artista para añadirlo.",
+    "emptyPlaylists": "Las listas que crees aparecerán aquí."
+  },
+  "downloads": {
+    "title": "Descargas",
+    "empty": "La música descargada aparecerá aquí para escucharla sin conexión."
+  },
+  "profile": {
+    "title": "Perfil",
+    "signIn": "Iniciar sesión",
+    "settings": "Ajustes",
+    "changePassword": "Cambiar contraseña",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfUse": "Términos de uso",
+    "deleteAccount": "Eliminar cuenta",
+    "signOut": "Cerrar sesión",
+    "guest": "Invitado",
+    "notSignedIn": "Sesión no iniciada",
+    "deleteTitle": "¿Eliminar cuenta?",
+    "deleteMessage": "Esto elimina permanentemente tu cuenta y todos tus datos. Esta acción no se puede deshacer.",
+    "deletedTitle": "Cuenta eliminada",
+    "deletedMessage": "Tu cuenta ha sido eliminada permanentemente.",
+    "deleteFailedTitle": "No se pudo eliminar la cuenta"
+  },
+  "player": {
+    "queue": "Cola",
+    "upNext": "A continuación",
+    "like": "Me gusta",
+    "removeFromLiked": "Quitar de canciones que te gustan",
+    "goToAlbum": "Ir al álbum",
+    "goToArtist": "Ir al artista",
+    "share": "Compartir",
+    "nothingPlaying": "No se reproduce nada.",
+    "queueEmpty": "La cola está vacía."
+  },
+  "changePassword": {
+    "title": "Cambiar contraseña",
+    "instruction": "Introduce tu contraseña actual y elige una nueva (al menos 8 caracteres).",
+    "currentPlaceholder": "Contraseña actual",
+    "newPlaceholder": "Nueva contraseña (mín. 8 caracteres)",
+    "confirmPlaceholder": "Confirmar nueva contraseña",
+    "mismatch": "Las contraseñas no coinciden.",
+    "success": "Tu contraseña ha sido cambiada. Seguirás con la sesión iniciada aquí; las demás sesiones se han cerrado.",
+    "done": "Listo",
+    "submit": "Actualizar contraseña",
+    "error": "No se pudo cambiar tu contraseña. Inténtalo de nuevo."
+  },
+  "auth": {
+    "signin": {
+      "title": "¿Listo para escuchar?",
+      "subtitle": "Introduce tu correo y contraseña para iniciar sesión.",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "submit": "Iniciar sesión",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "newPrompt": "¿Nuevo en KJubilee? ",
+      "signUp": "Regístrate",
+      "botNotice": "Esta página está protegida para asegurar que no eres un bot."
+    },
+    "signup": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Únete a KJubilee para guardar tu música, crear listas y escuchar donde sea.",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "dateOfBirth": "Fecha de nacimiento",
+      "ageError": "Debes tener al menos {{age}} años para crear una cuenta.",
+      "email": "Correo electrónico",
+      "password": "Contraseña (mín. 8 caracteres)",
+      "confirm": "Confirmar contraseña",
+      "mismatch": "Las contraseñas no coinciden.",
+      "agreePrefix": "Acepto los ",
+      "and": " y la ",
+      "submit": "Crear cuenta",
+      "havePrompt": "¿Ya tienes una cuenta? ",
+      "signIn": "Inicia sesión",
+      "error": "No se pudo iniciar el registro. Inténtalo de nuevo."
+    },
+    "forgot": {
+      "title": "Restablece tu contraseña",
+      "instruction": "Introduce el correo de tu cuenta y te enviaremos un enlace para restablecer la contraseña.",
+      "email": "Correo electrónico",
+      "submit": "Enviar enlace",
+      "sentMessage": "Si existe una cuenta para {{email}}, te hemos enviado un enlace. Ábrelo en la web para elegir una nueva contraseña y luego vuelve para iniciar sesión.",
+      "backToSignIn": "Volver a iniciar sesión"
+    },
+    "twoFactor": {
+      "title": "Verifica que eres tú",
+      "subtitle": "Introduce el código de verificación que enviamos para mantener tu cuenta segura.",
+      "codePlaceholder": "Código de 6 dígitos",
+      "trustDevice": "Confiar en este dispositivo",
+      "submit": "Verificar"
+    },
+    "verify": {
+      "title": "Verifica tu correo",
+      "subtitle": "Introduce el código de 6 dígitos que enviamos a {{email}} para terminar de crear tu cuenta.",
+      "submit": "Verificar y crear cuenta",
+      "noCodePrompt": "¿No recibiste el código? ",
+      "resend": "Reenviar código",
+      "resendIn": "Reenviar en {{seconds}}s",
+      "failed": "La verificación falló. Inténtalo de nuevo.",
+      "resendFailed": "No se pudo reenviar el código."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Álbum no encontrado.",
+    "artistNotFound": "Artista no encontrado.",
+    "generic": "Algo salió mal. Inténtalo de nuevo."
+  },
+  "playlist": {
+    "namePrompt": "Nombra tu lista",
+    "namePlaceholder": "Nombre de la lista",
+    "create": "Crear",
+    "save": "Guardar",
+    "rename": "Renombrar lista",
+    "delete": "Eliminar lista",
+    "deleteConfirm": "¿Eliminar \"{{title}}\"? Esto no se puede deshacer.",
+    "addSongs": "Añadir canciones",
+    "addToPlaylist": "Añadir a la lista",
+    "newPlaylist": "Nueva lista",
+    "removeFromPlaylist": "Quitar de esta lista",
+    "songCount": "{{count}} canciones",
+    "empty": "Aún no hay música",
+    "emptyHint": "Toca «Añadir canciones» para añadir música a esta lista.",
+    "notFound": "Lista no encontrada."
+  },
+  "stub": {
+    "comingSoon": "Próximamente",
+    "description": "Esta área está integrada en la arquitectura de la app y lista para desarrollarse."
+  }
+}

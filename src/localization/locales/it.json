@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Riproduci",
+    "pause": "Pausa",
+    "shuffle": "Casuale",
+    "shufflePlay": "Riproduzione casuale",
+    "download": "Scarica",
+    "seeAll": "Vedi tutto",
+    "retry": "Riprova",
+    "follow": "Segui",
+    "following": "Segui già",
+    "save": "Salva",
+    "saved": "Salvato",
+    "cancel": "Annulla",
+    "ok": "OK",
+    "delete": "Elimina",
+    "done": "Fatto"
+  },
+  "tabs": {
+    "home": "Home",
+    "browse": "Esplora",
+    "search": "Cerca",
+    "library": "Libreria"
+  },
+  "home": {
+    "greetingMorning": "Buongiorno",
+    "greetingAfternoon": "Buon pomeriggio",
+    "greetingEvening": "Buonasera",
+    "loadError": "Impossibile caricare la tua musica. Trascina per aggiornare o riprova.",
+    "comingSoon": "Ancora nessuna musica in {{language}}: presto aggiungeremo altre lingue."
+  },
+  "categories": {
+    "home": "Home",
+    "inspire_family": "Famiglia Inspire",
+    "family_friendly": "Per tutta la famiglia",
+    "children": "Musica per bambini",
+    "music_type": "Tipo di musica",
+    "christmas": "Natale"
+  },
+  "railTitles": {
+    "contemporary": "Contemporaneo",
+    "praise-worship": "Lode e adorazione",
+    "country": "Country",
+    "pentecostal-shout": "Grido pentecostale",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Lingue",
+    "search": "Cerca lingue…",
+    "recentlyUsed": "Usate di recente",
+    "allLanguages": "Tutte le lingue"
+  },
+  "search": {
+    "placeholder": "Artisti, brani o album",
+    "recent": "Ricerche recenti",
+    "clear": "Cancella",
+    "noResults": "Nessun risultato per \"{{query}}\"",
+    "sectionAlbums": "Album",
+    "sectionArtists": "Artisti",
+    "sectionTracks": "Brani"
+  },
+  "album": {
+    "tracks": "{{count}} brani",
+    "addToLibrary": "Aggiungi alla libreria"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} ascoltatori mensili",
+    "popular": "Popolari",
+    "discography": "Discografia"
+  },
+  "library": {
+    "title": "La tua libreria",
+    "favorites": "Brani che ti piacciono",
+    "albums": "Album",
+    "artists": "Artisti",
+    "downloads": "Download",
+    "playlists": "Playlist",
+    "empty": "I brani e gli album che salvi appariranno qui.",
+    "emptyLiked": "I brani che ti piacciono appariranno qui. Tocca il cuore su un brano per aggiungerlo.",
+    "emptyArtists": "Gli artisti che segui appariranno qui. Tocca segui su un artista per aggiungerlo.",
+    "emptyPlaylists": "Le playlist che crei appariranno qui."
+  },
+  "downloads": {
+    "title": "Download",
+    "empty": "La musica scaricata apparirà qui per l'ascolto offline."
+  },
+  "profile": {
+    "title": "Profilo",
+    "signIn": "Accedi",
+    "settings": "Impostazioni",
+    "changePassword": "Cambia password",
+    "privacyPolicy": "Informativa sulla privacy",
+    "termsOfUse": "Termini di utilizzo",
+    "deleteAccount": "Elimina account",
+    "signOut": "Esci",
+    "guest": "Ospite",
+    "notSignedIn": "Non hai effettuato l'accesso",
+    "deleteTitle": "Eliminare l'account?",
+    "deleteMessage": "Questa azione elimina definitivamente il tuo account e tutti i tuoi dati. Non può essere annullata.",
+    "deletedTitle": "Account eliminato",
+    "deletedMessage": "Il tuo account è stato eliminato definitivamente.",
+    "deleteFailedTitle": "Impossibile eliminare l'account"
+  },
+  "player": {
+    "queue": "Coda",
+    "upNext": "In coda",
+    "like": "Mi piace",
+    "removeFromLiked": "Rimuovi dai brani che ti piacciono",
+    "goToAlbum": "Vai all'album",
+    "goToArtist": "Vai all'artista",
+    "share": "Condividi",
+    "nothingPlaying": "Nessuna riproduzione in corso.",
+    "queueEmpty": "La coda è vuota."
+  },
+  "changePassword": {
+    "title": "Cambia password",
+    "instruction": "Inserisci la password attuale e scegline una nuova (almeno 8 caratteri).",
+    "currentPlaceholder": "Password attuale",
+    "newPlaceholder": "Nuova password (min. 8 caratteri)",
+    "confirmPlaceholder": "Conferma nuova password",
+    "mismatch": "Le password non corrispondono.",
+    "success": "La tua password è stata cambiata. Resterai connesso qui; gli altri dispositivi sono stati disconnessi.",
+    "done": "Fatto",
+    "submit": "Aggiorna password",
+    "error": "Impossibile cambiare la password. Riprova."
+  },
+  "auth": {
+    "signin": {
+      "title": "Pronto ad ascoltare?",
+      "subtitle": "Inserisci email e password per accedere.",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Accedi",
+      "forgot": "Password dimenticata?",
+      "newPrompt": "Nuovo su KJubilee? ",
+      "signUp": "Registrati",
+      "botNotice": "Questa pagina è protetta per assicurarci che tu non sia un bot."
+    },
+    "signup": {
+      "title": "Crea il tuo account",
+      "subtitle": "Unisciti a KJubilee per salvare la tua musica, creare playlist e ascoltare ovunque.",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "dateOfBirth": "Data di nascita",
+      "ageError": "Devi avere almeno {{age}} anni per creare un account.",
+      "email": "Email",
+      "password": "Password (min. 8 caratteri)",
+      "confirm": "Conferma password",
+      "mismatch": "Le password non corrispondono.",
+      "agreePrefix": "Accetto i ",
+      "and": " e l'",
+      "submit": "Crea account",
+      "havePrompt": "Hai già un account? ",
+      "signIn": "Accedi",
+      "error": "Impossibile avviare la registrazione. Riprova."
+    },
+    "forgot": {
+      "title": "Reimposta la password",
+      "instruction": "Inserisci l'email del tuo account e ti invieremo un link per reimpostare la password.",
+      "email": "Email",
+      "submit": "Invia link",
+      "sentMessage": "Se esiste un account per {{email}}, abbiamo inviato un link di reimpostazione. Aprilo sul web per scegliere una nuova password, poi torna ad accedere.",
+      "backToSignIn": "Torna all'accesso"
+    },
+    "twoFactor": {
+      "title": "Verifica che sei tu",
+      "subtitle": "Inserisci il codice di verifica che abbiamo inviato per proteggere il tuo account.",
+      "codePlaceholder": "Codice a 6 cifre",
+      "trustDevice": "Fidati di questo dispositivo",
+      "submit": "Verifica"
+    },
+    "verify": {
+      "title": "Verifica la tua email",
+      "subtitle": "Inserisci il codice a 6 cifre inviato a {{email}} per completare la creazione del tuo account.",
+      "submit": "Verifica e crea account",
+      "noCodePrompt": "Non hai ricevuto un codice? ",
+      "resend": "Invia di nuovo il codice",
+      "resendIn": "Reinvia tra {{seconds}} s",
+      "failed": "Verifica non riuscita. Riprova.",
+      "resendFailed": "Impossibile inviare di nuovo il codice."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Album non trovato.",
+    "artistNotFound": "Artista non trovato.",
+    "generic": "Qualcosa è andato storto. Riprova."
+  },
+  "playlist": {
+    "namePrompt": "Dai un nome alla tua playlist",
+    "namePlaceholder": "Nome della playlist",
+    "create": "Crea",
+    "save": "Salva",
+    "rename": "Rinomina playlist",
+    "delete": "Elimina playlist",
+    "deleteConfirm": "Eliminare \"{{title}}\"? Non può essere annullato.",
+    "addSongs": "Aggiungi brani",
+    "addToPlaylist": "Aggiungi alla playlist",
+    "newPlaylist": "Nuova playlist",
+    "removeFromPlaylist": "Rimuovi da questa playlist",
+    "songCount": "{{count}} brani",
+    "empty": "Ancora nessuna musica",
+    "emptyHint": "Tocca «Aggiungi brani» per aggiungere musica a questa playlist.",
+    "notFound": "Playlist non trovata."
+  },
+  "stub": {
+    "comingSoon": "Prossimamente",
+    "description": "Quest'area è integrata nell'architettura dell'app e pronta per essere sviluppata."
+  }
+}

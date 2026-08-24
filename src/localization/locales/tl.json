@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "I-play",
+    "pause": "I-pause",
+    "shuffle": "Shuffle",
+    "shufflePlay": "Shuffle play",
+    "download": "I-download",
+    "seeAll": "Tingnan lahat",
+    "retry": "Subukan ulit",
+    "follow": "Sundan",
+    "following": "Sinusundan",
+    "save": "I-save",
+    "saved": "Naka-save",
+    "cancel": "Kanselahin",
+    "ok": "OK",
+    "delete": "Tanggalin",
+    "done": "Tapos na"
+  },
+  "tabs": {
+    "home": "Home",
+    "browse": "Mag-browse",
+    "search": "Maghanap",
+    "library": "Library"
+  },
+  "home": {
+    "greetingMorning": "Magandang umaga",
+    "greetingAfternoon": "Magandang hapon",
+    "greetingEvening": "Magandang gabi",
+    "loadError": "Hindi ma-load ang iyong musika. Hilahin para mag-refresh o subukan ulit.",
+    "comingSoon": "Wala pang musika sa {{language}} — magdadagdag kami ng mga wika sa lalong madaling panahon."
+  },
+  "categories": {
+    "home": "Home",
+    "inspire_family": "Pamilya Inspire",
+    "family_friendly": "Pang-pamilya",
+    "children": "Musika para sa Bata",
+    "music_type": "Uri ng Musika",
+    "christmas": "Pasko"
+  },
+  "railTitles": {
+    "contemporary": "Kontemporaryo",
+    "praise-worship": "Papuri at Pagsamba",
+    "country": "Country",
+    "pentecostal-shout": "Sigaw Pentecostal",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Mga Wika",
+    "search": "Maghanap ng mga wika…",
+    "recentlyUsed": "Kamakailang Ginamit",
+    "allLanguages": "Lahat ng Wika"
+  },
+  "search": {
+    "placeholder": "Mga artist, kanta, o album",
+    "recent": "Mga kamakailang paghahanap",
+    "clear": "I-clear",
+    "noResults": "Walang resulta para sa \"{{query}}\"",
+    "sectionAlbums": "Mga Album",
+    "sectionArtists": "Mga Artist",
+    "sectionTracks": "Mga Kanta"
+  },
+  "album": {
+    "tracks": "{{count}} na kanta",
+    "addToLibrary": "Idagdag sa library"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} buwanang tagapakinig",
+    "popular": "Popular",
+    "discography": "Discography"
+  },
+  "library": {
+    "title": "Iyong Library",
+    "favorites": "Mga Na-like na Kanta",
+    "albums": "Mga Album",
+    "artists": "Mga Artist",
+    "downloads": "Mga Download",
+    "playlists": "Mga Playlist",
+    "empty": "Lalabas dito ang mga kanta at album na iyong na-save.",
+    "emptyLiked": "Lalabas dito ang mga kantang gusto mo. I-tap ang puso sa anumang track para idagdag ito.",
+    "emptyArtists": "Lalabas dito ang mga artist na sinusundan mo. I-tap ang sundan sa anumang artist para idagdag.",
+    "emptyPlaylists": "Lalabas dito ang mga playlist na iyong ginawa."
+  },
+  "downloads": {
+    "title": "Mga Download",
+    "empty": "Lalabas dito ang na-download na musika para sa offline na pakikinig."
+  },
+  "profile": {
+    "title": "Profile",
+    "signIn": "Mag-sign in",
+    "settings": "Mga Setting",
+    "changePassword": "Palitan ang password",
+    "privacyPolicy": "Patakaran sa Privacy",
+    "termsOfUse": "Mga Tuntunin ng Paggamit",
+    "deleteAccount": "Tanggalin ang account",
+    "signOut": "Mag-sign out",
+    "guest": "Bisita",
+    "notSignedIn": "Hindi naka-sign in",
+    "deleteTitle": "Tanggalin ang account?",
+    "deleteMessage": "Permanenteng tatanggalin nito ang iyong account at lahat ng iyong data. Hindi ito maaaring bawiin.",
+    "deletedTitle": "Natanggal ang account",
+    "deletedMessage": "Permanenteng natanggal ang iyong account.",
+    "deleteFailedTitle": "Hindi matanggal ang account"
+  },
+  "player": {
+    "queue": "Queue",
+    "upNext": "Susunod",
+    "like": "I-like",
+    "removeFromLiked": "Alisin sa mga na-like na kanta",
+    "goToAlbum": "Pumunta sa album",
+    "goToArtist": "Pumunta sa artist",
+    "share": "Ibahagi",
+    "nothingPlaying": "Walang nagpe-play.",
+    "queueEmpty": "Walang laman ang queue."
+  },
+  "changePassword": {
+    "title": "Palitan ang password",
+    "instruction": "Ilagay ang iyong kasalukuyang password at pumili ng bago (hindi bababa sa 8 character).",
+    "currentPlaceholder": "Kasalukuyang password",
+    "newPlaceholder": "Bagong password (min. 8 character)",
+    "confirmPlaceholder": "Kumpirmahin ang bagong password",
+    "mismatch": "Hindi tugma ang mga password.",
+    "success": "Napalitan ang iyong password. Mananatili kang naka-sign in dito; na-sign out na ang iba pang device.",
+    "done": "Tapos na",
+    "submit": "I-update ang password",
+    "error": "Hindi mapalitan ang iyong password. Pakisubukan ulit."
+  },
+  "auth": {
+    "signin": {
+      "title": "Handa nang makinig?",
+      "subtitle": "Ilagay ang iyong email at password para mag-sign in.",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Mag-sign in",
+      "forgot": "Nakalimutan ang password?",
+      "newPrompt": "Bago sa KJubilee? ",
+      "signUp": "Mag-sign up",
+      "botNotice": "Protektado ang page na ito para matiyak na hindi ka bot."
+    },
+    "signup": {
+      "title": "Gumawa ng iyong account",
+      "subtitle": "Sumali sa KJubilee para i-save ang iyong musika, gumawa ng mga playlist, at makinig kahit saan.",
+      "firstName": "Pangalan",
+      "lastName": "Apelyido",
+      "dateOfBirth": "Petsa ng kapanganakan",
+      "ageError": "Dapat kang hindi bababa sa {{age}} taong gulang para gumawa ng account.",
+      "email": "Email",
+      "password": "Password (min. 8 character)",
+      "confirm": "Kumpirmahin ang password",
+      "mismatch": "Hindi tugma ang mga password.",
+      "agreePrefix": "Sumasang-ayon ako sa ",
+      "and": " at ",
+      "submit": "Gumawa ng account",
+      "havePrompt": "May account ka na? ",
+      "signIn": "Mag-sign in",
+      "error": "Hindi masimulan ang pag-sign up. Pakisubukan ulit."
+    },
+    "forgot": {
+      "title": "I-reset ang iyong password",
+      "instruction": "Ilagay ang email ng iyong account at magpapadala kami ng link para i-reset ang iyong password.",
+      "email": "Email",
+      "submit": "Magpadala ng reset link",
+      "sentMessage": "Kung may account para sa {{email}}, nagpadala kami ng reset link. Buksan ito sa web para pumili ng bagong password, pagkatapos ay bumalik at mag-sign in.",
+      "backToSignIn": "Bumalik sa pag-sign in"
+    },
+    "twoFactor": {
+      "title": "I-verify na ikaw ito",
+      "subtitle": "Ilagay ang verification code na ipinadala namin para panatilihing secure ang iyong account.",
+      "codePlaceholder": "6-digit na code",
+      "trustDevice": "Pagkatiwalaan ang device na ito",
+      "submit": "I-verify"
+    },
+    "verify": {
+      "title": "I-verify ang iyong email",
+      "subtitle": "Ilagay ang 6-digit na code na ipinadala namin sa {{email}} para tapusin ang paggawa ng iyong account.",
+      "submit": "I-verify at gumawa ng account",
+      "noCodePrompt": "Walang natanggap na code? ",
+      "resend": "Ipadala ulit ang code",
+      "resendIn": "Ipadala ulit sa {{seconds}}s",
+      "failed": "Nabigo ang pag-verify. Pakisubukan ulit.",
+      "resendFailed": "Hindi maipadala ulit ang code."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Hindi nahanap ang album.",
+    "artistNotFound": "Hindi nahanap ang artist.",
+    "generic": "May nangyaring mali. Pakisubukan ulit."
+  },
+  "playlist": {
+    "namePrompt": "Pangalanan ang iyong playlist",
+    "namePlaceholder": "Pangalan ng playlist",
+    "create": "Gumawa",
+    "save": "I-save",
+    "rename": "Palitan ang pangalan ng playlist",
+    "delete": "Tanggalin ang playlist",
+    "deleteConfirm": "Tanggalin ang \"{{title}}\"? Hindi ito maaaring bawiin.",
+    "addSongs": "Magdagdag ng mga kanta",
+    "addToPlaylist": "Idagdag sa playlist",
+    "newPlaylist": "Bagong playlist",
+    "removeFromPlaylist": "Alisin sa playlist na ito",
+    "songCount": "{{count}} na kanta",
+    "empty": "Wala pang musika",
+    "emptyHint": "I-tap ang “Magdagdag ng mga kanta” para magdagdag ng musika sa playlist na ito.",
+    "notFound": "Hindi nahanap ang playlist."
+  },
+  "stub": {
+    "comingSoon": "Malapit nang dumating",
+    "description": "Naka-konekta ang lugar na ito sa arkitektura ng app at handa nang paunlarin."
+  }
+}

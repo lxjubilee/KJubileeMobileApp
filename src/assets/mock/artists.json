@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ar_aurora",
+    "name": "Aurora Skies",
+    "image": "https://picsum.photos/seed/aurora/800",
+    "bio": "Ethereal electro-pop built on shimmering synths and wide, cinematic choruses.",
+    "monthlyListeners": 3840000,
+    "genres": ["Electro-Pop", "Dream Pop"]
+  },
+  {
+    "id": "ar_nightdrive",
+    "name": "Night Drive",
+    "image": "https://picsum.photos/seed/nightdrive/800",
+    "bio": "Retro synthwave for empty highways and neon skylines.",
+    "monthlyListeners": 1220000,
+    "genres": ["Synthwave", "Retrowave"]
+  },
+  {
+    "id": "ar_solace",
+    "name": "Solace",
+    "image": "https://picsum.photos/seed/solace/800",
+    "bio": "Minimal piano and ambient textures for focus and calm.",
+    "monthlyListeners": 980000,
+    "genres": ["Ambient", "Neo-Classical"]
+  },
+  {
+    "id": "ar_ember",
+    "name": "Ember & Oak",
+    "image": "https://picsum.photos/seed/ember/800",
+    "bio": "Warm indie-folk harmonies with acoustic grit.",
+    "monthlyListeners": 2110000,
+    "genres": ["Indie Folk", "Acoustic"]
+  },
+  {
+    "id": "ar_pulse",
+    "name": "Pulsewave",
+    "image": "https://picsum.photos/seed/pulse/800",
+    "bio": "High-energy electronic dance built for the main stage.",
+    "monthlyListeners": 5400000,
+    "genres": ["EDM", "House"]
+  },
+  {
+    "id": "ar_lowtide",
+    "name": "Low Tide",
+    "image": "https://picsum.photos/seed/lowtide/800",
+    "bio": "Lo-fi grooves and mellow beats to drift along to.",
+    "monthlyListeners": 760000,
+    "genres": ["Lo-Fi", "Chillhop"]
+  }
+]

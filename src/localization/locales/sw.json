@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Cheza",
+    "pause": "Sitisha",
+    "shuffle": "Changanya",
+    "shufflePlay": "Cheza kwa kuchanganya",
+    "download": "Pakua",
+    "seeAll": "Ona vyote",
+    "retry": "Jaribu tena",
+    "follow": "Fuata",
+    "following": "Unafuata",
+    "save": "Hifadhi",
+    "saved": "Imehifadhiwa",
+    "cancel": "Ghairi",
+    "ok": "Sawa",
+    "delete": "Futa",
+    "done": "Imekamilika"
+  },
+  "tabs": {
+    "home": "Nyumbani",
+    "browse": "Vinjari",
+    "search": "Tafuta",
+    "library": "Maktaba"
+  },
+  "home": {
+    "greetingMorning": "Habari za asubuhi",
+    "greetingAfternoon": "Habari za mchana",
+    "greetingEvening": "Habari za jioni",
+    "loadError": "Hatukuweza kupakia muziki wako. Vuta ili kuonyesha upya au jaribu tena.",
+    "comingSoon": "Bado hakuna muziki kwa {{language}} — tutaongeza lugha zaidi hivi karibuni."
+  },
+  "categories": {
+    "home": "Nyumbani",
+    "inspire_family": "Familia ya Inspire",
+    "family_friendly": "Inayofaa Familia",
+    "children": "Muziki wa Watoto",
+    "music_type": "Aina ya Muziki",
+    "christmas": "Krismasi"
+  },
+  "railTitles": {
+    "contemporary": "Ya Kisasa",
+    "praise-worship": "Sifa na Ibada",
+    "country": "Country",
+    "pentecostal-shout": "Kelele za Kipentekoste",
+    "gospel": "Gospeli"
+  },
+  "language": {
+    "title": "Lugha",
+    "search": "Tafuta lugha…",
+    "recentlyUsed": "Zilizotumika hivi karibuni",
+    "allLanguages": "Lugha zote"
+  },
+  "search": {
+    "placeholder": "Wasanii, nyimbo au albamu",
+    "recent": "Utafutaji wa hivi karibuni",
+    "clear": "Futa",
+    "noResults": "Hakuna matokeo ya \"{{query}}\"",
+    "sectionAlbums": "Albamu",
+    "sectionArtists": "Wasanii",
+    "sectionTracks": "Nyimbo"
+  },
+  "album": {
+    "tracks": "Nyimbo {{count}}",
+    "addToLibrary": "Ongeza kwenye maktaba"
+  },
+  "artist": {
+    "monthlyListeners": "Wasikilizaji {{listeners}} kwa mwezi",
+    "popular": "Maarufu",
+    "discography": "Diskografia"
+  },
+  "library": {
+    "title": "Maktaba yako",
+    "favorites": "Nyimbo ulizopenda",
+    "albums": "Albamu",
+    "artists": "Wasanii",
+    "downloads": "Vilivyopakuliwa",
+    "playlists": "Orodha za kucheza",
+    "empty": "Nyimbo na albamu unazohifadhi zitaonekana hapa.",
+    "emptyLiked": "Nyimbo unazopenda zitaonekana hapa. Gusa moyo kwenye wimbo wowote ili kuuongeza.",
+    "emptyArtists": "Wasanii unaowafuata wataonekana hapa. Gusa fuata kwenye msanii yeyote ili kumuongeza.",
+    "emptyPlaylists": "Orodha za kucheza unazounda zitaonekana hapa."
+  },
+  "downloads": {
+    "title": "Vilivyopakuliwa",
+    "empty": "Muziki uliopakuliwa utaonekana hapa kwa kusikiliza nje ya mtandao."
+  },
+  "profile": {
+    "title": "Wasifu",
+    "signIn": "Ingia",
+    "settings": "Mipangilio",
+    "changePassword": "Badilisha nenosiri",
+    "privacyPolicy": "Sera ya Faragha",
+    "termsOfUse": "Masharti ya Matumizi",
+    "deleteAccount": "Futa akaunti",
+    "signOut": "Toka",
+    "guest": "Mgeni",
+    "notSignedIn": "Hujaingia",
+    "deleteTitle": "Futa akaunti?",
+    "deleteMessage": "Hii inafuta akaunti yako na data yako yote kabisa. Kitendo hiki hakiwezi kutenduliwa.",
+    "deletedTitle": "Akaunti imefutwa",
+    "deletedMessage": "Akaunti yako imefutwa kabisa.",
+    "deleteFailedTitle": "Imeshindwa kufuta akaunti"
+  },
+  "player": {
+    "queue": "Foleni",
+    "upNext": "Inayofuata",
+    "like": "Penda",
+    "removeFromLiked": "Ondoa kwenye nyimbo ulizopenda",
+    "goToAlbum": "Nenda kwenye albamu",
+    "goToArtist": "Nenda kwa msanii",
+    "share": "Shiriki",
+    "nothingPlaying": "Hakuna kinachochezwa.",
+    "queueEmpty": "Foleni haina kitu."
+  },
+  "changePassword": {
+    "title": "Badilisha nenosiri",
+    "instruction": "Weka nenosiri lako la sasa na uchague jipya (angalau herufi 8).",
+    "currentPlaceholder": "Nenosiri la sasa",
+    "newPlaceholder": "Nenosiri jipya (angalau herufi 8)",
+    "confirmPlaceholder": "Thibitisha nenosiri jipya",
+    "mismatch": "Manenosiri hayalingani.",
+    "success": "Nenosiri lako limebadilishwa. Utabaki umeingia hapa; vifaa vingine vimetolewa.",
+    "done": "Imekamilika",
+    "submit": "Sasisha nenosiri",
+    "error": "Imeshindwa kubadilisha nenosiri lako. Jaribu tena."
+  },
+  "auth": {
+    "signin": {
+      "title": "Uko tayari kusikiliza?",
+      "subtitle": "Weka barua pepe na nenosiri lako ili kuingia.",
+      "email": "Barua pepe",
+      "password": "Nenosiri",
+      "submit": "Ingia",
+      "forgot": "Umesahau nenosiri?",
+      "newPrompt": "Mgeni kwenye KJubilee? ",
+      "signUp": "Jisajili",
+      "botNotice": "Ukurasa huu umelindwa ili kuhakikisha wewe si roboti."
+    },
+    "signup": {
+      "title": "Fungua akaunti yako",
+      "subtitle": "Jiunge na KJubilee ili kuhifadhi muziki wako, kuunda orodha za kucheza na kusikiliza popote.",
+      "firstName": "Jina la kwanza",
+      "lastName": "Jina la mwisho",
+      "dateOfBirth": "Tarehe ya kuzaliwa",
+      "ageError": "Lazima uwe na umri wa angalau miaka {{age}} ili kufungua akaunti.",
+      "email": "Barua pepe",
+      "password": "Nenosiri (angalau herufi 8)",
+      "confirm": "Thibitisha nenosiri",
+      "mismatch": "Manenosiri hayalingani.",
+      "agreePrefix": "Ninakubali ",
+      "and": " na ",
+      "submit": "Fungua akaunti",
+      "havePrompt": "Tayari una akaunti? ",
+      "signIn": "Ingia",
+      "error": "Imeshindwa kuanza usajili. Jaribu tena."
+    },
+    "forgot": {
+      "title": "Weka upya nenosiri lako",
+      "instruction": "Weka barua pepe ya akaunti yako na tutakutumia kiungo cha kuweka upya nenosiri lako.",
+      "email": "Barua pepe",
+      "submit": "Tuma kiungo cha kuweka upya",
+      "sentMessage": "Ikiwa akaunti ya {{email}} ipo, tumetuma kiungo cha kuweka upya. Kifungue kwenye wavuti ili kuchagua nenosiri jipya, kisha rudi na uingie.",
+      "backToSignIn": "Rudi kwenye kuingia"
+    },
+    "twoFactor": {
+      "title": "Thibitisha ni wewe",
+      "subtitle": "Weka msimbo wa uthibitisho tuliotuma ili kuweka akaunti yako salama.",
+      "codePlaceholder": "Msimbo wa tarakimu 6",
+      "trustDevice": "Amini kifaa hiki",
+      "submit": "Thibitisha"
+    },
+    "verify": {
+      "title": "Thibitisha barua pepe yako",
+      "subtitle": "Weka msimbo wa tarakimu 6 tuliotuma kwa {{email}} ili kukamilisha kufungua akaunti yako.",
+      "submit": "Thibitisha na Fungua Akaunti",
+      "noCodePrompt": "Hukupata msimbo? ",
+      "resend": "Tuma msimbo tena",
+      "resendIn": "Tuma tena baada ya sekunde {{seconds}}",
+      "failed": "Uthibitisho umeshindwa. Jaribu tena.",
+      "resendFailed": "Imeshindwa kutuma msimbo tena."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Albamu haijapatikana.",
+    "artistNotFound": "Msanii hajapatikana.",
+    "generic": "Hitilafu imetokea. Jaribu tena."
+  },
+  "playlist": {
+    "namePrompt": "Ipe jina orodha yako ya kucheza",
+    "namePlaceholder": "Jina la orodha ya kucheza",
+    "create": "Unda",
+    "save": "Hifadhi",
+    "rename": "Badilisha jina la orodha ya kucheza",
+    "delete": "Futa orodha ya kucheza",
+    "deleteConfirm": "Futa \"{{title}}\"? Hili haliwezi kutenduliwa.",
+    "addSongs": "Ongeza nyimbo",
+    "addToPlaylist": "Ongeza kwenye orodha ya kucheza",
+    "newPlaylist": "Orodha mpya ya kucheza",
+    "removeFromPlaylist": "Ondoa kwenye orodha hii ya kucheza",
+    "songCount": "Nyimbo {{count}}",
+    "empty": "Bado hakuna muziki",
+    "emptyHint": "Gusa “Ongeza nyimbo” ili kuongeza muziki kwenye orodha hii ya kucheza.",
+    "notFound": "Orodha ya kucheza haijapatikana."
+  },
+  "stub": {
+    "comingSoon": "Inakuja hivi karibuni",
+    "description": "Eneo hili limeunganishwa na muundo wa programu na liko tayari kuendelezwa."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "expo": {
+    "name": "KJubilee",
+    "slug": "kjubilee",
+    "scheme": "kjubilee",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/KJubilee-App-Icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B0B0F",
+    "newArchEnabled": false,
+    "splash": {
+      "image": "./assets/KJubilee-App-Icon.png",
+      "backgroundColor": "#000000",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kjubilee.app",
+      "associatedDomains": [
+        "applinks:kjubilee.com",
+        "applinks:www.kjubilee.com"
+      ],
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.kjubilee.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#000000",
+        "foregroundImage": "./assets/KJubilee-App-Icon.png"
+      },
+      "permissions": [
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+        "android.permission.WAKE_LOCK"
+      ],
+      "predictiveBackGestureEnabled": false,
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            { "scheme": "https", "host": "kjubilee.com", "pathPrefix": "/album" },
+            { "scheme": "https", "host": "www.kjubilee.com", "pathPrefix": "/album" }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-dev-client",
+      "expo-localization",
+      "expo-asset",
+      "expo-font",
+      "expo-secure-store"
+    ],
+    "extra": {
+      "cdnBaseUrl": "https://cdn.kjubilee.com",
+      "apiBaseUrl": "https://api.kjubilee.com/v1",
+      "useMock": false,
+      "dataSource": "manifest",
+      "authBaseUrl": "https://api.kjubilee.com",
+      "mobileConfigBaseUrl": "https://api.kjubilee.com",
+      "turnstileSiteKey": "0x4AAAAAADJah9FpwSaEzlLP",
+      "turnstileBaseUrl": "https://jubileeinspire.com"
+    },
+    "owner": "gabeungureanu"
+  }
+}

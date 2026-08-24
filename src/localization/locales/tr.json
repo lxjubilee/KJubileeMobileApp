@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "Çal",
+    "pause": "Duraklat",
+    "shuffle": "Karıştır",
+    "shufflePlay": "Karışık çal",
+    "download": "İndir",
+    "seeAll": "Tümünü gör",
+    "retry": "Tekrar dene",
+    "follow": "Takip et",
+    "following": "Takip ediliyor",
+    "save": "Kaydet",
+    "saved": "Kaydedildi",
+    "cancel": "İptal",
+    "ok": "Tamam",
+    "delete": "Sil",
+    "done": "Bitti"
+  },
+  "tabs": {
+    "home": "Ana Sayfa",
+    "browse": "Keşfet",
+    "search": "Ara",
+    "library": "Kitaplık"
+  },
+  "home": {
+    "greetingMorning": "Günaydın",
+    "greetingAfternoon": "İyi günler",
+    "greetingEvening": "İyi akşamlar",
+    "loadError": "Müziğiniz yüklenemedi. Yenilemek için çekin veya tekrar deneyin.",
+    "comingSoon": "Henüz {{language}} dilinde müzik yok — yakında daha fazla dil ekliyoruz."
+  },
+  "categories": {
+    "home": "Ana Sayfa",
+    "inspire_family": "Inspire Ailesi",
+    "family_friendly": "Aileye Uygun",
+    "children": "Çocuk Müziği",
+    "music_type": "Müzik Türü",
+    "christmas": "Noel"
+  },
+  "railTitles": {
+    "contemporary": "Çağdaş",
+    "praise-worship": "Övgü ve Tapınma",
+    "country": "Country",
+    "pentecostal-shout": "Pentikostal Haykırış",
+    "gospel": "Gospel"
+  },
+  "language": {
+    "title": "Diller",
+    "search": "Dil ara…",
+    "recentlyUsed": "Son kullanılanlar",
+    "allLanguages": "Tüm diller"
+  },
+  "search": {
+    "placeholder": "Sanatçılar, şarkılar veya albümler",
+    "recent": "Son aramalar",
+    "clear": "Temizle",
+    "noResults": "\"{{query}}\" için sonuç yok",
+    "sectionAlbums": "Albümler",
+    "sectionArtists": "Sanatçılar",
+    "sectionTracks": "Şarkılar"
+  },
+  "album": {
+    "tracks": "{{count}} şarkı",
+    "addToLibrary": "Kitaplığa ekle"
+  },
+  "artist": {
+    "monthlyListeners": "Aylık {{listeners}} dinleyici",
+    "popular": "Popüler",
+    "discography": "Diskografi"
+  },
+  "library": {
+    "title": "Kitaplığınız",
+    "favorites": "Beğenilen Şarkılar",
+    "albums": "Albümler",
+    "artists": "Sanatçılar",
+    "downloads": "İndirilenler",
+    "playlists": "Çalma listeleri",
+    "empty": "Kaydettiğiniz şarkılar ve albümler burada görünür.",
+    "emptyLiked": "Beğendiğiniz şarkılar burada görünür. Eklemek için herhangi bir parçadaki kalbe dokunun.",
+    "emptyArtists": "Takip ettiğiniz sanatçılar burada görünür. Eklemek için herhangi bir sanatçıda takip et'e dokunun.",
+    "emptyPlaylists": "Oluşturduğunuz çalma listeleri burada görünür."
+  },
+  "downloads": {
+    "title": "İndirilenler",
+    "empty": "İndirilen müzikler çevrimdışı dinlemek için burada görünür."
+  },
+  "profile": {
+    "title": "Profil",
+    "signIn": "Giriş yap",
+    "settings": "Ayarlar",
+    "changePassword": "Şifreyi değiştir",
+    "privacyPolicy": "Gizlilik Politikası",
+    "termsOfUse": "Kullanım Koşulları",
+    "deleteAccount": "Hesabı sil",
+    "signOut": "Çıkış yap",
+    "guest": "Misafir",
+    "notSignedIn": "Giriş yapılmadı",
+    "deleteTitle": "Hesap silinsin mi?",
+    "deleteMessage": "Bu, hesabınızı ve tüm verilerinizi kalıcı olarak siler. Bu işlem geri alınamaz.",
+    "deletedTitle": "Hesap silindi",
+    "deletedMessage": "Hesabınız kalıcı olarak silindi.",
+    "deleteFailedTitle": "Hesap silinemedi"
+  },
+  "player": {
+    "queue": "Sıra",
+    "upNext": "Sıradaki",
+    "like": "Beğen",
+    "removeFromLiked": "Beğenilen Şarkılar'dan kaldır",
+    "goToAlbum": "Albüme git",
+    "goToArtist": "Sanatçıya git",
+    "share": "Paylaş",
+    "nothingPlaying": "Şu anda bir şey çalmıyor.",
+    "queueEmpty": "Sıra boş."
+  },
+  "changePassword": {
+    "title": "Şifreyi değiştir",
+    "instruction": "Mevcut şifrenizi girin ve yeni bir tane seçin (en az 8 karakter).",
+    "currentPlaceholder": "Mevcut şifre",
+    "newPlaceholder": "Yeni şifre (en az 8 karakter)",
+    "confirmPlaceholder": "Yeni şifreyi onayla",
+    "mismatch": "Şifreler eşleşmiyor.",
+    "success": "Şifreniz değiştirildi. Burada oturumunuz açık kalır; diğer cihazların oturumu kapatıldı.",
+    "done": "Bitti",
+    "submit": "Şifreyi güncelle",
+    "error": "Şifreniz değiştirilemedi. Lütfen tekrar deneyin."
+  },
+  "auth": {
+    "signin": {
+      "title": "Dinlemeye hazır mısınız?",
+      "subtitle": "Giriş yapmak için e-postanızı ve şifrenizi girin.",
+      "email": "E-posta",
+      "password": "Şifre",
+      "submit": "Giriş yap",
+      "forgot": "Şifrenizi mi unuttunuz?",
+      "newPrompt": "KJubilee'ta yeni misiniz? ",
+      "signUp": "Kaydol",
+      "botNotice": "Bu sayfa, bot olmadığınızdan emin olmak için korunmaktadır."
+    },
+    "signup": {
+      "title": "Hesabınızı oluşturun",
+      "subtitle": "Müziğinizi kaydetmek, çalma listeleri oluşturmak ve her yerde dinlemek için KJubilee'a katılın.",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "dateOfBirth": "Doğum tarihi",
+      "ageError": "Hesap oluşturmak için en az {{age}} yaşında olmalısınız.",
+      "email": "E-posta",
+      "password": "Şifre (en az 8 karakter)",
+      "confirm": "Şifreyi onayla",
+      "mismatch": "Şifreler eşleşmiyor.",
+      "agreePrefix": "Şunları kabul ediyorum: ",
+      "and": " ve ",
+      "submit": "Hesap oluştur",
+      "havePrompt": "Zaten bir hesabınız var mı? ",
+      "signIn": "Giriş yap",
+      "error": "Kayıt başlatılamadı. Lütfen tekrar deneyin."
+    },
+    "forgot": {
+      "title": "Şifrenizi sıfırlayın",
+      "instruction": "Hesabınızın e-postasını girin, şifrenizi sıfırlamanız için bir bağlantı gönderelim.",
+      "email": "E-posta",
+      "submit": "Sıfırlama bağlantısı gönder",
+      "sentMessage": "{{email}} için bir hesap varsa, sıfırlama bağlantısı gönderdik. Yeni bir şifre seçmek için web'de açın, ardından geri dönüp giriş yapın.",
+      "backToSignIn": "Girişe geri dön"
+    },
+    "twoFactor": {
+      "title": "Kimliğinizi doğrulayın",
+      "subtitle": "Hesabınızı güvende tutmak için gönderdiğimiz doğrulama kodunu girin.",
+      "codePlaceholder": "6 haneli kod",
+      "trustDevice": "Bu cihaza güven",
+      "submit": "Doğrula"
+    },
+    "verify": {
+      "title": "E-postanızı doğrulayın",
+      "subtitle": "Hesabınızı oluşturmayı tamamlamak için {{email}} adresine gönderdiğimiz 6 haneli kodu girin.",
+      "submit": "Doğrula ve Hesap Oluştur",
+      "noCodePrompt": "Kod almadınız mı? ",
+      "resend": "Kodu tekrar gönder",
+      "resendIn": "{{seconds}} sn içinde tekrar gönder",
+      "failed": "Doğrulama başarısız oldu. Lütfen tekrar deneyin.",
+      "resendFailed": "Kod tekrar gönderilemedi."
+    }
+  },
+  "errors": {
+    "albumNotFound": "Albüm bulunamadı.",
+    "artistNotFound": "Sanatçı bulunamadı.",
+    "generic": "Bir şeyler ters gitti. Lütfen tekrar deneyin."
+  },
+  "playlist": {
+    "namePrompt": "Çalma listenize ad verin",
+    "namePlaceholder": "Çalma listesi adı",
+    "create": "Oluştur",
+    "save": "Kaydet",
+    "rename": "Çalma listesini yeniden adlandır",
+    "delete": "Çalma listesini sil",
+    "deleteConfirm": "\"{{title}}\" silinsin mi? Bu geri alınamaz.",
+    "addSongs": "Şarkı ekle",
+    "addToPlaylist": "Çalma listesine ekle",
+    "newPlaylist": "Yeni çalma listesi",
+    "removeFromPlaylist": "Bu çalma listesinden kaldır",
+    "songCount": "{{count}} şarkı",
+    "empty": "Henüz müzik yok",
+    "emptyHint": "Bu çalma listesine müzik eklemek için “Şarkı ekle”ye dokunun.",
+    "notFound": "Çalma listesi bulunamadı."
+  },
+  "stub": {
+    "comingSoon": "Yakında",
+    "description": "Bu alan uygulama mimarisine bağlıdır ve geliştirilmeye hazırdır."
+  }
+}

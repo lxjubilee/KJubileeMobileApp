@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "再生",
+    "pause": "一時停止",
+    "shuffle": "シャッフル",
+    "shufflePlay": "シャッフル再生",
+    "download": "ダウンロード",
+    "seeAll": "すべて見る",
+    "retry": "再試行",
+    "follow": "フォロー",
+    "following": "フォロー中",
+    "save": "保存",
+    "saved": "保存済み",
+    "cancel": "キャンセル",
+    "ok": "OK",
+    "delete": "削除",
+    "done": "完了"
+  },
+  "tabs": {
+    "home": "ホーム",
+    "browse": "見つける",
+    "search": "検索",
+    "library": "ライブラリ"
+  },
+  "home": {
+    "greetingMorning": "おはようございます",
+    "greetingAfternoon": "こんにちは",
+    "greetingEvening": "こんばんは",
+    "loadError": "音楽を読み込めませんでした。引っ張って更新するか、もう一度お試しください。",
+    "comingSoon": "{{language}}の音楽はまだありません。近日中に対応言語を増やします。"
+  },
+  "categories": {
+    "home": "ホーム",
+    "inspire_family": "Inspire ファミリー",
+    "family_friendly": "ファミリー向け",
+    "children": "子ども向け音楽",
+    "music_type": "音楽ジャンル",
+    "christmas": "クリスマス"
+  },
+  "railTitles": {
+    "contemporary": "コンテンポラリー",
+    "praise-worship": "賛美と礼拝",
+    "country": "カントリー",
+    "pentecostal-shout": "ペンテコステの叫び",
+    "gospel": "ゴスペル"
+  },
+  "language": {
+    "title": "言語",
+    "search": "言語を検索…",
+    "recentlyUsed": "最近使用",
+    "allLanguages": "すべての言語"
+  },
+  "search": {
+    "placeholder": "アーティスト、曲、アルバム",
+    "recent": "最近の検索",
+    "clear": "クリア",
+    "noResults": "「{{query}}」の結果はありません",
+    "sectionAlbums": "アルバム",
+    "sectionArtists": "アーティスト",
+    "sectionTracks": "曲"
+  },
+  "album": {
+    "tracks": "{{count}} 曲",
+    "addToLibrary": "ライブラリに追加"
+  },
+  "artist": {
+    "monthlyListeners": "月間リスナー {{listeners}} 人",
+    "popular": "人気",
+    "discography": "ディスコグラフィー"
+  },
+  "library": {
+    "title": "あなたのライブラリ",
+    "favorites": "お気に入りの曲",
+    "albums": "アルバム",
+    "artists": "アーティスト",
+    "downloads": "ダウンロード",
+    "playlists": "プレイリスト",
+    "empty": "保存した曲やアルバムがここに表示されます。",
+    "emptyLiked": "気に入った曲がここに表示されます。曲のハートをタップして追加してください。",
+    "emptyArtists": "フォロー中のアーティストがここに表示されます。アーティストのフォローをタップして追加してください。",
+    "emptyPlaylists": "作成したプレイリストがここに表示されます。"
+  },
+  "downloads": {
+    "title": "ダウンロード",
+    "empty": "ダウンロードした音楽がオフライン再生用にここに表示されます。"
+  },
+  "profile": {
+    "title": "プロフィール",
+    "signIn": "サインイン",
+    "settings": "設定",
+    "changePassword": "パスワードを変更",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfUse": "利用規約",
+    "deleteAccount": "アカウントを削除",
+    "signOut": "サインアウト",
+    "guest": "ゲスト",
+    "notSignedIn": "サインインしていません",
+    "deleteTitle": "アカウントを削除しますか？",
+    "deleteMessage": "アカウントとすべてのデータが完全に削除されます。この操作は元に戻せません。",
+    "deletedTitle": "アカウントを削除しました",
+    "deletedMessage": "あなたのアカウントは完全に削除されました。",
+    "deleteFailedTitle": "アカウントを削除できませんでした"
+  },
+  "player": {
+    "queue": "再生キュー",
+    "upNext": "次に再生",
+    "like": "いいね",
+    "removeFromLiked": "お気に入りの曲から削除",
+    "goToAlbum": "アルバムへ",
+    "goToArtist": "アーティストへ",
+    "share": "共有",
+    "nothingPlaying": "再生中の項目はありません。",
+    "queueEmpty": "再生キューは空です。"
+  },
+  "changePassword": {
+    "title": "パスワードを変更",
+    "instruction": "現在のパスワードを入力し、新しいパスワード（8文字以上）を設定してください。",
+    "currentPlaceholder": "現在のパスワード",
+    "newPlaceholder": "新しいパスワード（8文字以上）",
+    "confirmPlaceholder": "新しいパスワードを確認",
+    "mismatch": "パスワードが一致しません。",
+    "success": "パスワードを変更しました。このデバイスではサインインしたままになり、他のデバイスはサインアウトされます。",
+    "done": "完了",
+    "submit": "パスワードを更新",
+    "error": "パスワードを変更できませんでした。もう一度お試しください。"
+  },
+  "auth": {
+    "signin": {
+      "title": "聴く準備はできましたか？",
+      "subtitle": "メールアドレスとパスワードを入力してサインインしてください。",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "submit": "サインイン",
+      "forgot": "パスワードをお忘れですか？",
+      "newPrompt": "KJubilee は初めてですか？ ",
+      "signUp": "登録",
+      "botNotice": "このページは、あなたがボットでないことを確認するために保護されています。"
+    },
+    "signup": {
+      "title": "アカウントを作成",
+      "subtitle": "KJubilee に参加して、音楽を保存し、プレイリストを作成し、どこでも聴きましょう。",
+      "firstName": "名",
+      "lastName": "姓",
+      "dateOfBirth": "生年月日",
+      "ageError": "アカウントを作成するには{{age}}歳以上である必要があります。",
+      "email": "メールアドレス",
+      "password": "パスワード（8文字以上）",
+      "confirm": "パスワードを確認",
+      "mismatch": "パスワードが一致しません。",
+      "agreePrefix": "次に同意します：",
+      "and": " および ",
+      "submit": "アカウントを作成",
+      "havePrompt": "すでにアカウントをお持ちですか？ ",
+      "signIn": "サインイン",
+      "error": "登録を開始できませんでした。もう一度お試しください。"
+    },
+    "forgot": {
+      "title": "パスワードをリセット",
+      "instruction": "アカウントのメールアドレスを入力すると、パスワードをリセットするためのリンクをお送りします。",
+      "email": "メールアドレス",
+      "submit": "リセットリンクを送信",
+      "sentMessage": "{{email}} のアカウントが存在する場合、リセットリンクを送信しました。ウェブで開いて新しいパスワードを設定し、戻ってサインインしてください。",
+      "backToSignIn": "サインインに戻る"
+    },
+    "twoFactor": {
+      "title": "本人確認",
+      "subtitle": "アカウントを保護するために送信した確認コードを入力してください。",
+      "codePlaceholder": "6桁のコード",
+      "trustDevice": "このデバイスを信頼する",
+      "submit": "確認"
+    },
+    "verify": {
+      "title": "メールアドレスを確認",
+      "subtitle": "アカウント作成を完了するため、{{email}} に送信した6桁のコードを入力してください。",
+      "submit": "確認してアカウントを作成",
+      "noCodePrompt": "コードが届きませんでしたか？ ",
+      "resend": "コードを再送信",
+      "resendIn": "{{seconds}}秒後に再送信",
+      "failed": "確認に失敗しました。もう一度お試しください。",
+      "resendFailed": "コードを再送信できませんでした。"
+    }
+  },
+  "errors": {
+    "albumNotFound": "アルバムが見つかりません。",
+    "artistNotFound": "アーティストが見つかりません。",
+    "generic": "問題が発生しました。もう一度お試しください。"
+  },
+  "playlist": {
+    "namePrompt": "プレイリストに名前を付ける",
+    "namePlaceholder": "プレイリスト名",
+    "create": "作成",
+    "save": "保存",
+    "rename": "プレイリストの名前を変更",
+    "delete": "プレイリストを削除",
+    "deleteConfirm": "「{{title}}」を削除しますか？元に戻せません。",
+    "addSongs": "曲を追加",
+    "addToPlaylist": "プレイリストに追加",
+    "newPlaylist": "新しいプレイリスト",
+    "removeFromPlaylist": "このプレイリストから削除",
+    "songCount": "{{count}} 曲",
+    "empty": "まだ音楽がありません",
+    "emptyHint": "「曲を追加」をタップして、このプレイリストに音楽を追加してください。",
+    "notFound": "プレイリストが見つかりません。"
+  },
+  "stub": {
+    "comingSoon": "近日公開",
+    "description": "このエリアはアプリのアーキテクチャに接続されており、開発の準備が整っています。"
+  }
+}

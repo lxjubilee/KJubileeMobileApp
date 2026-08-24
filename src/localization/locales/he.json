@@ -1,0 +1,209 @@
+{
+  "common": {
+    "play": "נגן",
+    "pause": "השהה",
+    "shuffle": "ערבוב",
+    "shufflePlay": "נגינה בערבוב",
+    "download": "הורד",
+    "seeAll": "הצג הכול",
+    "retry": "נסה שוב",
+    "follow": "עקוב",
+    "following": "עוקב",
+    "save": "שמור",
+    "saved": "נשמר",
+    "cancel": "ביטול",
+    "ok": "אישור",
+    "delete": "מחק",
+    "done": "סיום"
+  },
+  "tabs": {
+    "home": "בית",
+    "browse": "עיון",
+    "search": "חיפוש",
+    "library": "ספרייה"
+  },
+  "home": {
+    "greetingMorning": "בוקר טוב",
+    "greetingAfternoon": "צהריים טובים",
+    "greetingEvening": "ערב טוב",
+    "loadError": "לא הצלחנו לטעון את המוזיקה שלך. משוך לרענון או נסה שוב.",
+    "comingSoon": "אין עדיין מוזיקה ב{{language}} — נוסיף בקרוב שפות נוספות."
+  },
+  "categories": {
+    "home": "בית",
+    "inspire_family": "משפחת Inspire",
+    "family_friendly": "מתאים למשפחה",
+    "children": "מוזיקה לילדים",
+    "music_type": "סוג מוזיקה",
+    "christmas": "חג המולד"
+  },
+  "railTitles": {
+    "contemporary": "עכשווי",
+    "praise-worship": "הלל וסגידה",
+    "country": "קאנטרי",
+    "pentecostal-shout": "תרועה פנטקוסטלית",
+    "gospel": "גוספל"
+  },
+  "language": {
+    "title": "שפות",
+    "search": "חפש שפות…",
+    "recentlyUsed": "בשימוש לאחרונה",
+    "allLanguages": "כל השפות"
+  },
+  "search": {
+    "placeholder": "אמנים, שירים או אלבומים",
+    "recent": "חיפושים אחרונים",
+    "clear": "נקה",
+    "noResults": "אין תוצאות עבור \"{{query}}\"",
+    "sectionAlbums": "אלבומים",
+    "sectionArtists": "אמנים",
+    "sectionTracks": "שירים"
+  },
+  "album": {
+    "tracks": "{{count}} שירים",
+    "addToLibrary": "הוסף לספרייה"
+  },
+  "artist": {
+    "monthlyListeners": "{{listeners}} מאזינים חודשיים",
+    "popular": "פופולרי",
+    "discography": "דיסקוגרפיה"
+  },
+  "library": {
+    "title": "הספרייה שלך",
+    "favorites": "שירים שאהבת",
+    "albums": "אלבומים",
+    "artists": "אמנים",
+    "downloads": "הורדות",
+    "playlists": "פלייליסטים",
+    "empty": "שירים ואלבומים שתשמור יופיעו כאן.",
+    "emptyLiked": "שירים שתאהב יופיעו כאן. הקש על הלב בכל שיר כדי להוסיף אותו.",
+    "emptyArtists": "אמנים שתעקוב אחריהם יופיעו כאן. הקש על עקוב בכל אמן כדי להוסיף אותו.",
+    "emptyPlaylists": "פלייליסטים שתיצור יופיעו כאן."
+  },
+  "downloads": {
+    "title": "הורדות",
+    "empty": "מוזיקה שהורדת תופיע כאן להאזנה לא מקוונת."
+  },
+  "profile": {
+    "title": "פרופיל",
+    "signIn": "התחבר",
+    "settings": "הגדרות",
+    "changePassword": "שנה סיסמה",
+    "privacyPolicy": "מדיניות פרטיות",
+    "termsOfUse": "תנאי שימוש",
+    "deleteAccount": "מחק חשבון",
+    "signOut": "התנתק",
+    "guest": "אורח",
+    "notSignedIn": "לא מחובר",
+    "deleteTitle": "למחוק את החשבון?",
+    "deleteMessage": "פעולה זו מוחקת לצמיתות את החשבון שלך ואת כל הנתונים שלך. לא ניתן לבטל אותה.",
+    "deletedTitle": "החשבון נמחק",
+    "deletedMessage": "החשבון שלך נמחק לצמיתות.",
+    "deleteFailedTitle": "לא ניתן היה למחוק את החשבון"
+  },
+  "player": {
+    "queue": "תור",
+    "upNext": "הבא בתור",
+    "like": "אהבתי",
+    "removeFromLiked": "הסר משירים שאהבת",
+    "goToAlbum": "עבור לאלבום",
+    "goToArtist": "עבור לאמן",
+    "share": "שתף",
+    "nothingPlaying": "שום דבר לא מתנגן.",
+    "queueEmpty": "התור ריק."
+  },
+  "changePassword": {
+    "title": "שנה סיסמה",
+    "instruction": "הזן את הסיסמה הנוכחית שלך ובחר סיסמה חדשה (לפחות 8 תווים).",
+    "currentPlaceholder": "סיסמה נוכחית",
+    "newPlaceholder": "סיסמה חדשה (לפחות 8 תווים)",
+    "confirmPlaceholder": "אשר סיסמה חדשה",
+    "mismatch": "הסיסמאות אינן תואמות.",
+    "success": "הסיסמה שלך שונתה. תישאר מחובר כאן; מכשירים אחרים נותקו.",
+    "done": "סיום",
+    "submit": "עדכן סיסמה",
+    "error": "לא ניתן היה לשנות את הסיסמה שלך. נסה שוב."
+  },
+  "auth": {
+    "signin": {
+      "title": "מוכן להאזין?",
+      "subtitle": "הזן את האימייל והסיסמה שלך כדי להתחבר.",
+      "email": "אימייל",
+      "password": "סיסמה",
+      "submit": "התחבר",
+      "forgot": "שכחת סיסמה?",
+      "newPrompt": "חדש ב-KJubilee? ",
+      "signUp": "הרשמה",
+      "botNotice": "דף זה מוגן כדי לוודא שאינך בוט."
+    },
+    "signup": {
+      "title": "צור את החשבון שלך",
+      "subtitle": "הצטרף ל-KJubilee כדי לשמור את המוזיקה שלך, ליצור פלייליסטים ולהאזין בכל מקום.",
+      "firstName": "שם פרטי",
+      "lastName": "שם משפחה",
+      "dateOfBirth": "תאריך לידה",
+      "ageError": "עליך להיות בן {{age}} לפחות כדי ליצור חשבון.",
+      "email": "אימייל",
+      "password": "סיסמה (לפחות 8 תווים)",
+      "confirm": "אשר סיסמה",
+      "mismatch": "הסיסמאות אינן תואמות.",
+      "agreePrefix": "אני מסכים ל",
+      "and": " ו",
+      "submit": "צור חשבון",
+      "havePrompt": "כבר יש לך חשבון? ",
+      "signIn": "התחבר",
+      "error": "לא ניתן היה להתחיל בהרשמה. נסה שוב."
+    },
+    "forgot": {
+      "title": "אפס את הסיסמה שלך",
+      "instruction": "הזן את האימייל של החשבון שלך ונשלח קישור לאיפוס הסיסמה.",
+      "email": "אימייל",
+      "submit": "שלח קישור איפוס",
+      "sentMessage": "אם קיים חשבון עבור {{email}}, שלחנו קישור איפוס. פתח אותו באינטרנט כדי לבחור סיסמה חדשה, ואז חזור והתחבר.",
+      "backToSignIn": "חזרה להתחברות"
+    },
+    "twoFactor": {
+      "title": "ודא שזה אתה",
+      "subtitle": "הזן את קוד האימות ששלחנו כדי לשמור על אבטחת החשבון שלך.",
+      "codePlaceholder": "קוד בן 6 ספרות",
+      "trustDevice": "בטח במכשיר זה",
+      "submit": "אמת"
+    },
+    "verify": {
+      "title": "אמת את האימייל שלך",
+      "subtitle": "הזן את הקוד בן 6 הספרות ששלחנו ל-{{email}} כדי לסיים את יצירת החשבון.",
+      "submit": "אמת וצור חשבון",
+      "noCodePrompt": "לא קיבלת קוד? ",
+      "resend": "שלח קוד שוב",
+      "resendIn": "שלח שוב בעוד {{seconds}} שניות",
+      "failed": "האימות נכשל. נסה שוב.",
+      "resendFailed": "לא ניתן היה לשלוח את הקוד שוב."
+    }
+  },
+  "errors": {
+    "albumNotFound": "האלבום לא נמצא.",
+    "artistNotFound": "האמן לא נמצא.",
+    "generic": "משהו השתבש. נסה שוב."
+  },
+  "playlist": {
+    "namePrompt": "תן שם לפלייליסט שלך",
+    "namePlaceholder": "שם הפלייליסט",
+    "create": "צור",
+    "save": "שמור",
+    "rename": "שנה שם פלייליסט",
+    "delete": "מחק פלייליסט",
+    "deleteConfirm": "למחוק את \"{{title}}\"? לא ניתן לבטל זאת.",
+    "addSongs": "הוסף שירים",
+    "addToPlaylist": "הוסף לפלייליסט",
+    "newPlaylist": "פלייליסט חדש",
+    "removeFromPlaylist": "הסר מפלייליסט זה",
+    "songCount": "{{count}} שירים",
+    "empty": "אין עדיין מוזיקה",
+    "emptyHint": "הקש על \"הוסף שירים\" כדי להוסיף מוזיקה לפלייליסט זה.",
+    "notFound": "הפלייליסט לא נמצא."
+  },
+  "stub": {
+    "comingSoon": "בקרוב",
+    "description": "אזור זה מחובר לארכיטקטורת האפליקציה ומוכן לפיתוח."
+  }
+}
