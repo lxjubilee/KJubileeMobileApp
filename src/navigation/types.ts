@@ -43,7 +43,7 @@ export type RootStackParamList = {
 };
 
 /**
- * Unauthenticated flow: welcome slides → the Jubilee Door.
+ * Unauthenticated flow, rooted at the Jubilee Door.
  *
  * Sign in, sign up, the 2FA challenge and the sign-up verification are all
  * steps INSIDE JubileeDoor rather than routes, so the flow cannot be entered
@@ -51,7 +51,6 @@ export type RootStackParamList = {
  * pushed screen.
  */
 export type AuthStackParamList = {
-  Welcome: undefined;
   /** The email-first Jubilee Door. `email` pre-fills the first step. */
   JubileeDoor: { email?: string } | undefined;
   /** `email` pre-fills the field when the door hands off a typed address. */

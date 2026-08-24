@@ -93,8 +93,8 @@ export const JubileeDoorScreen: React.FC = () => {
   const goBack = useCallback(() => {
     const target = backTargetFor(state);
     if (!target) {
+      // The door is the root of the auth stack, so there may be nowhere to go.
       if (navigation.canGoBack()) navigation.goBack();
-      else navigation.navigate('Welcome');
       return;
     }
     Keyboard.dismiss();

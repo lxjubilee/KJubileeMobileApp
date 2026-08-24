@@ -32,7 +32,6 @@ import { SplashScreen } from '@/components/SplashScreen';
 import { PlaybackLimitGate } from '@/components/PlaybackLimitGate';
 import { AppUpdateGate } from '@/components/AppUpdateGate';
 import { PlaylistMenuProvider } from '@/components/playlists';
-import { storage, STORAGE_KEYS } from '@/services/storage';
 import { i18n } from '@/localization'; // initialize i18next
 
 /** Apply the persisted language to i18next once redux-persist has rehydrated. */
@@ -63,28 +62,21 @@ const PlayerSyncGate: React.FC = () => {
 
 /**
  * Chooses between the unauthenticated flow and the main app, based on the
- * restored session and the first-launch onboarding flag. Renders nothing while
- * either is still resolving (the splash overlay covers that window).
+ * restored session. Renders nothing while that is still resolving (the splash
+ * overlay covers that window).
  */
 const RootGate: React.FC = () => {
   const status = useAppSelector((s) => s.auth.status);
   const isAuthenticated = useAppSelector((s) => s.auth.user != null);
-  const [hasOnboarded, setHasOnboarded] = useState<boolean | null>(null);
 
-  useEffect(() => {
-    void storage
-      .getItem<boolean>(STORAGE_KEYS.ONBOARDING_DONE)
-      .then((done) => setHasOnboarded(Boolean(done)));
-  }, []);
-
-  if (status === 'restoring' || hasOnboarded === null) return null;
+  if (status === 'restoring') return null;
 
   if (isAuthenticated) {
     return <RootNavigator />;
   }
 
-  // Signed out / never signed in: the Jubilee Door (or first-run Welcome slides).
-  return <AuthNavigator initialRoute={hasOnboarded ? 'JubileeDoor' : 'Welcome'} />;
+  // Signed out / never signed in: straight to the Jubilee Door.
+  return <AuthNavigator />;
 };
 
 export default function App() {
