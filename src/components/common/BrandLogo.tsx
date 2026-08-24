@@ -11,10 +11,11 @@ import {
 
 /**
  * Wordmark span colors, mirrored from the KJubilee.com web header: the outer
- * words are white and the middle highlight is gold.
+ * spans are white and the middle highlight is the brand azure blue (kept in
+ * sync with `theme.colors.accent`).
  */
 const WHITE = '#FFFFFF';
-const GOLD = '#ffbd59';
+const BLUE = '#007FFF';
 
 interface BrandLogoProps {
   /** Diameter of the circular logo image. Defaults to 28. */
@@ -28,7 +29,7 @@ interface BrandLogoProps {
 /**
  * App wordmark: the circular KJubilee logo followed by the "KJubilee.com"
  * text in the Orbitron brand font (loaded in App.tsx, matching the web header)
- * — "Jubi" + ".com" white, "Lujah" gold.
+ * — "K" + ".com" white, "Jubilee" blue.
  *
  * Pass `textStyle` to control the size per header; `fontWeight` and `color`
  * from it are stripped because the Orbitron_600SemiBold family already encodes
@@ -47,8 +48,8 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ size = 28, textStyle, styl
         resizeMode="contain"
       />
       <Text allowFontScaling={false} numberOfLines={1} style={[textRest, styles.wordmark]}>
-        <Text style={styles.white}>Jubi</Text>
-        <Text style={styles.gold}>Lujah</Text>
+        <Text style={styles.white}>K</Text>
+        <Text style={styles.blue}>Jubilee</Text>
         <Text style={styles.white}>.com</Text>
       </Text>
     </View>
@@ -64,5 +65,5 @@ const styles = StyleSheet.create({
   // Android drop the custom font and fall back to the system sans-serif).
   wordmark: { fontFamily: 'Orbitron_600SemiBold', flexShrink: 1 },
   white: { color: WHITE },
-  gold: { color: GOLD },
+  blue: { color: BLUE },
 });

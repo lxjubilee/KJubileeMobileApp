@@ -7,9 +7,9 @@ interface SplashScreenProps {
   onFinish: () => void;
 }
 
-/** Wordmark span colors — "Jubi" + ".com" white, "Lujah" gold (matches header). */
+/** Wordmark span colors — "K" + ".com" white, "Jubilee" blue (matches header). */
 const WHITE = '#FFFFFF';
-const GOLD = '#ffbd59';
+const BLUE = '#007FFF';
 
 /**
  * Netflix-style intro splash: the KJubilee logo and "KJubilee.com" wordmark
@@ -92,8 +92,8 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
         />
         {ready ? (
           <Text style={styles.wordmark} allowFontScaling={false}>
-            <Text style={styles.white}>Jubi</Text>
-            <Text style={styles.gold}>Lujah</Text>
+            <Text style={styles.white}>K</Text>
+            <Text style={styles.blue}>Jubilee</Text>
             <Text style={styles.white}>.com</Text>
           </Text>
         ) : null}
@@ -118,10 +118,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Orbitron_600SemiBold',
     fontSize: 30,
     letterSpacing: 1,
-    textShadowColor: 'rgba(255,189,89,0.35)',
+    // Glow tracks the wordmark highlight (BLUE) so the halo isn't off-brand.
+    textShadowColor: 'rgba(0,127,255,0.35)',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 18,
   },
   white: { color: WHITE },
-  gold: { color: GOLD },
+  blue: { color: BLUE },
 });

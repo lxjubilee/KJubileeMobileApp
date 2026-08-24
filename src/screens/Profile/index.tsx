@@ -18,7 +18,7 @@ type Nav = NativeStackNavigationProp<PlaylistsStackParamList & RootStackParamLis
 const { width } = Dimensions.get('window');
 const CARD_W = (width - 48) / 2;
 
-// Brand yellow/gold (matches the "Lujah" wordmark) used for the profile avatar.
+// Brand yellow/gold used for the profile avatar.
 const AVATAR_YELLOW = '#ffbd59';
 
 export const ProfileScreen: React.FC = () => {

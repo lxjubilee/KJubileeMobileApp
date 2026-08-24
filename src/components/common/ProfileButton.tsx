@@ -5,7 +5,7 @@ import { userInitials } from '@/utils';
 import { AppText } from './AppText';
 import { IconButton } from './IconButton';
 
-// Brand yellow/gold (matches the "Lujah" wordmark and the Profile avatar).
+// Brand yellow/gold, shared with the Profile avatar.
 const AVATAR_YELLOW = '#ffbd59';
 
 interface ProfileButtonProps {
