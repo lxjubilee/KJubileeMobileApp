@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Nyumbani",
     "browse": "Vinjari",
-    "search": "Tafuta",
     "library": "Maktaba"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Tafuta lugha…",
     "recentlyUsed": "Zilizotumika hivi karibuni",
     "allLanguages": "Lugha zote"
-  },
-  "search": {
-    "placeholder": "Wasanii, nyimbo au albamu",
-    "recent": "Utafutaji wa hivi karibuni",
-    "clear": "Futa",
-    "noResults": "Hakuna matokeo ya \"{{query}}\"",
-    "sectionAlbums": "Albamu",
-    "sectionArtists": "Wasanii",
-    "sectionTracks": "Nyimbo"
   },
   "album": {
     "tracks": "Nyimbo {{count}}",

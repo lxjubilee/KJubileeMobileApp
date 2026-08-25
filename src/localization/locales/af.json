@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Tuis",
     "browse": "Blaai",
-    "search": "Soek",
     "library": "Biblioteek"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Soek tale…",
     "recentlyUsed": "Onlangs gebruik",
     "allLanguages": "Alle tale"
-  },
-  "search": {
-    "placeholder": "Kunstenaars, liedjies of albums",
-    "recent": "Onlangse soektogte",
-    "clear": "Maak skoon",
-    "noResults": "Geen resultate vir \"{{query}}\" nie",
-    "sectionAlbums": "Albums",
-    "sectionArtists": "Kunstenaars",
-    "sectionTracks": "Liedjies"
   },
   "album": {
     "tracks": "{{count}} liedjies",

@@ -19,7 +19,6 @@
   "tabs": {
     "home": "首页",
     "browse": "浏览",
-    "search": "搜索",
     "library": "音乐库"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "搜索语言…",
     "recentlyUsed": "最近使用",
     "allLanguages": "所有语言"
-  },
-  "search": {
-    "placeholder": "艺人、歌曲或专辑",
-    "recent": "最近搜索",
-    "clear": "清除",
-    "noResults": "没有“{{query}}”的结果",
-    "sectionAlbums": "专辑",
-    "sectionArtists": "艺人",
-    "sectionTracks": "歌曲"
   },
   "album": {
     "tracks": "{{count}} 首歌曲",

@@ -19,7 +19,6 @@
   "tabs": {
     "home": "หน้าแรก",
     "browse": "เรียกดู",
-    "search": "ค้นหา",
     "library": "คลัง"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "ค้นหาภาษา…",
     "recentlyUsed": "ใช้ล่าสุด",
     "allLanguages": "ทุกภาษา"
-  },
-  "search": {
-    "placeholder": "ศิลปิน เพลง หรืออัลบั้ม",
-    "recent": "การค้นหาล่าสุด",
-    "clear": "ล้าง",
-    "noResults": "ไม่พบผลลัพธ์สำหรับ \"{{query}}\"",
-    "sectionAlbums": "อัลบั้ม",
-    "sectionArtists": "ศิลปิน",
-    "sectionTracks": "เพลง"
   },
   "album": {
     "tracks": "{{count}} เพลง",

@@ -12,7 +12,6 @@ export const ROUTES = {
   // Bottom tabs
   HOME_TAB: 'HomeTab',
   BROWSE_TAB: 'BrowseTab',
-  SEARCH_TAB: 'SearchTab',
   PROFILE_TAB: 'ProfileTab',
 
   // Screens within stacks

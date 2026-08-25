@@ -19,7 +19,6 @@
   "tabs": {
     "home": "হোম",
     "browse": "ব্রাউজ",
-    "search": "অনুসন্ধান",
     "library": "লাইব্রেরি"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "ভাষা অনুসন্ধান করুন…",
     "recentlyUsed": "সম্প্রতি ব্যবহৃত",
     "allLanguages": "সব ভাষা"
-  },
-  "search": {
-    "placeholder": "শিল্পী, গান বা অ্যালবাম",
-    "recent": "সাম্প্রতিক অনুসন্ধান",
-    "clear": "মুছুন",
-    "noResults": "\"{{query}}\"-এর জন্য কোনো ফলাফল নেই",
-    "sectionAlbums": "অ্যালবাম",
-    "sectionArtists": "শিল্পী",
-    "sectionTracks": "গান"
   },
   "album": {
     "tracks": "{{count}}টি গান",

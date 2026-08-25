@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Главная",
     "browse": "Обзор",
-    "search": "Поиск",
     "library": "Медиатека"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Поиск языков…",
     "recentlyUsed": "Недавно использованные",
     "allLanguages": "Все языки"
-  },
-  "search": {
-    "placeholder": "Исполнители, песни или альбомы",
-    "recent": "Недавние запросы",
-    "clear": "Очистить",
-    "noResults": "Нет результатов по запросу \"{{query}}\"",
-    "sectionAlbums": "Альбомы",
-    "sectionArtists": "Исполнители",
-    "sectionTracks": "Песни"
   },
   "album": {
     "tracks": "{{count}} песен",

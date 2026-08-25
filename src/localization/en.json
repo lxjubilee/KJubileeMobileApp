@@ -21,7 +21,6 @@
     "home": "Home",
     "dial": "Dial",
     "browse": "Browse",
-    "search": "Search",
     "profile": "Profile"
   },
   "home": {
@@ -65,15 +64,6 @@
   },
   "browse": {
     "searchPlaceholder": "Search albums"
-  },
-  "search": {
-    "placeholder": "Artists, songs, or albums",
-    "recent": "Recent searches",
-    "clear": "Clear",
-    "noResults": "No results for \"{{query}}\"",
-    "sectionAlbums": "Albums",
-    "sectionArtists": "Artists",
-    "sectionTracks": "Songs"
   },
   "album": {
     "tracks": "{{count}} songs",

@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Inicio",
     "browse": "Explorar",
-    "search": "Buscar",
     "library": "Biblioteca"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Buscar idiomas…",
     "recentlyUsed": "Usados recientemente",
     "allLanguages": "Todos los idiomas"
-  },
-  "search": {
-    "placeholder": "Artistas, canciones o álbumes",
-    "recent": "Búsquedas recientes",
-    "clear": "Borrar",
-    "noResults": "Sin resultados para \"{{query}}\"",
-    "sectionAlbums": "Álbumes",
-    "sectionArtists": "Artistas",
-    "sectionTracks": "Canciones"
   },
   "album": {
     "tracks": "{{count}} canciones",

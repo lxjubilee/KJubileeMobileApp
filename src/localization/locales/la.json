@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Principium",
     "browse": "Perlustrare",
-    "search": "Quaerere",
     "library": "Bibliotheca"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Quaerere linguas…",
     "recentlyUsed": "Nuper adhibitae",
     "allLanguages": "Omnes linguae"
-  },
-  "search": {
-    "placeholder": "Artifices, cantus vel albums",
-    "recent": "Quaesita recentia",
-    "clear": "Purgare",
-    "noResults": "Nulli eventus pro \"{{query}}\"",
-    "sectionAlbums": "Albums",
-    "sectionArtists": "Artifices",
-    "sectionTracks": "Cantus"
   },
   "album": {
     "tracks": "{{count}} cantus",

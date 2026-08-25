@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Hem",
     "browse": "Utforska",
-    "search": "Sök",
     "library": "Bibliotek"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Sök språk…",
     "recentlyUsed": "Senast använda",
     "allLanguages": "Alla språk"
-  },
-  "search": {
-    "placeholder": "Artister, låtar eller album",
-    "recent": "Senaste sökningar",
-    "clear": "Rensa",
-    "noResults": "Inga resultat för \"{{query}}\"",
-    "sectionAlbums": "Album",
-    "sectionArtists": "Artister",
-    "sectionTracks": "Låtar"
   },
   "album": {
     "tracks": "{{count}} låtar",

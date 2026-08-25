@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Ana Sayfa",
     "browse": "Keşfet",
-    "search": "Ara",
     "library": "Kitaplık"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Dil ara…",
     "recentlyUsed": "Son kullanılanlar",
     "allLanguages": "Tüm diller"
-  },
-  "search": {
-    "placeholder": "Sanatçılar, şarkılar veya albümler",
-    "recent": "Son aramalar",
-    "clear": "Temizle",
-    "noResults": "\"{{query}}\" için sonuç yok",
-    "sectionAlbums": "Albümler",
-    "sectionArtists": "Sanatçılar",
-    "sectionTracks": "Şarkılar"
   },
   "album": {
     "tracks": "{{count}} şarkı",

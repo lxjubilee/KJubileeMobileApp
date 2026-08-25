@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Αρχική",
     "browse": "Περιήγηση",
-    "search": "Αναζήτηση",
     "library": "Βιβλιοθήκη"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Αναζήτηση γλωσσών…",
     "recentlyUsed": "Πρόσφατα",
     "allLanguages": "Όλες οι γλώσσες"
-  },
-  "search": {
-    "placeholder": "Καλλιτέχνες, τραγούδια ή άλμπουμ",
-    "recent": "Πρόσφατες αναζητήσεις",
-    "clear": "Καθαρισμός",
-    "noResults": "Δεν υπάρχουν αποτελέσματα για \"{{query}}\"",
-    "sectionAlbums": "Άλμπουμ",
-    "sectionArtists": "Καλλιτέχνες",
-    "sectionTracks": "Τραγούδια"
   },
   "album": {
     "tracks": "{{count}} τραγούδια",

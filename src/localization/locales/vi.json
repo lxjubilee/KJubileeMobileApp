@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Trang chủ",
     "browse": "Khám phá",
-    "search": "Tìm kiếm",
     "library": "Thư viện"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Tìm ngôn ngữ…",
     "recentlyUsed": "Dùng gần đây",
     "allLanguages": "Tất cả ngôn ngữ"
-  },
-  "search": {
-    "placeholder": "Nghệ sĩ, bài hát hoặc album",
-    "recent": "Tìm kiếm gần đây",
-    "clear": "Xóa",
-    "noResults": "Không có kết quả cho \"{{query}}\"",
-    "sectionAlbums": "Album",
-    "sectionArtists": "Nghệ sĩ",
-    "sectionTracks": "Bài hát"
   },
   "album": {
     "tracks": "{{count}} bài hát",

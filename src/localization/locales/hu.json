@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Kezdőlap",
     "browse": "Felfedezés",
-    "search": "Keresés",
     "library": "Könyvtár"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Nyelvek keresése…",
     "recentlyUsed": "Nemrég használt",
     "allLanguages": "Összes nyelv"
-  },
-  "search": {
-    "placeholder": "Előadók, dalok vagy albumok",
-    "recent": "Legutóbbi keresések",
-    "clear": "Törlés",
-    "noResults": "Nincs találat erre: \"{{query}}\"",
-    "sectionAlbums": "Albumok",
-    "sectionArtists": "Előadók",
-    "sectionTracks": "Dalok"
   },
   "album": {
     "tracks": "{{count}} dal",

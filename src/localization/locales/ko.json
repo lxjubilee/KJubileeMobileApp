@@ -19,7 +19,6 @@
   "tabs": {
     "home": "홈",
     "browse": "둘러보기",
-    "search": "검색",
     "library": "라이브러리"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "언어 검색…",
     "recentlyUsed": "최근 사용",
     "allLanguages": "모든 언어"
-  },
-  "search": {
-    "placeholder": "아티스트, 곡 또는 앨범",
-    "recent": "최근 검색",
-    "clear": "지우기",
-    "noResults": "\"{{query}}\"에 대한 결과가 없습니다",
-    "sectionAlbums": "앨범",
-    "sectionArtists": "아티스트",
-    "sectionTracks": "곡"
   },
   "album": {
     "tracks": "{{count}}곡",

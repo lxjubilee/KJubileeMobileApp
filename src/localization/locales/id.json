@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Beranda",
     "browse": "Jelajahi",
-    "search": "Cari",
     "library": "Pustaka"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Cari bahasa…",
     "recentlyUsed": "Baru digunakan",
     "allLanguages": "Semua bahasa"
-  },
-  "search": {
-    "placeholder": "Artis, lagu, atau album",
-    "recent": "Pencarian terakhir",
-    "clear": "Hapus",
-    "noResults": "Tidak ada hasil untuk \"{{query}}\"",
-    "sectionAlbums": "Album",
-    "sectionArtists": "Artis",
-    "sectionTracks": "Lagu"
   },
   "album": {
     "tracks": "{{count}} lagu",

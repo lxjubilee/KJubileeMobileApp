@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Hjem",
     "browse": "Utforsk",
-    "search": "Søk",
     "library": "Bibliotek"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Søk etter språk…",
     "recentlyUsed": "Nylig brukt",
     "allLanguages": "Alle språk"
-  },
-  "search": {
-    "placeholder": "Artister, sanger eller album",
-    "recent": "Nylige søk",
-    "clear": "Tøm",
-    "noResults": "Ingen resultater for \"{{query}}\"",
-    "sectionAlbums": "Album",
-    "sectionArtists": "Artister",
-    "sectionTracks": "Sanger"
   },
   "album": {
     "tracks": "{{count}} sanger",

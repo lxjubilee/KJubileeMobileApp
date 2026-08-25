@@ -19,7 +19,6 @@
   "tabs": {
     "home": "ホーム",
     "browse": "見つける",
-    "search": "検索",
     "library": "ライブラリ"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "言語を検索…",
     "recentlyUsed": "最近使用",
     "allLanguages": "すべての言語"
-  },
-  "search": {
-    "placeholder": "アーティスト、曲、アルバム",
-    "recent": "最近の検索",
-    "clear": "クリア",
-    "noResults": "「{{query}}」の結果はありません",
-    "sectionAlbums": "アルバム",
-    "sectionArtists": "アーティスト",
-    "sectionTracks": "曲"
   },
   "album": {
     "tracks": "{{count}} 曲",

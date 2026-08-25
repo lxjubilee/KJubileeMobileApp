@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Home",
     "browse": "Mag-browse",
-    "search": "Maghanap",
     "library": "Library"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Maghanap ng mga wika…",
     "recentlyUsed": "Kamakailang Ginamit",
     "allLanguages": "Lahat ng Wika"
-  },
-  "search": {
-    "placeholder": "Mga artist, kanta, o album",
-    "recent": "Mga kamakailang paghahanap",
-    "clear": "I-clear",
-    "noResults": "Walang resulta para sa \"{{query}}\"",
-    "sectionAlbums": "Mga Album",
-    "sectionArtists": "Mga Artist",
-    "sectionTracks": "Mga Kanta"
   },
   "album": {
     "tracks": "{{count}} na kanta",

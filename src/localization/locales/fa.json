@@ -19,7 +19,6 @@
   "tabs": {
     "home": "خانه",
     "browse": "مرور",
-    "search": "جستجو",
     "library": "کتابخانه"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "جستجوی زبان‌ها…",
     "recentlyUsed": "اخیراً استفاده‌شده",
     "allLanguages": "همه زبان‌ها"
-  },
-  "search": {
-    "placeholder": "هنرمندان، آهنگ‌ها یا آلبوم‌ها",
-    "recent": "جستجوهای اخیر",
-    "clear": "پاک کردن",
-    "noResults": "نتیجه‌ای برای \"{{query}}\" یافت نشد",
-    "sectionAlbums": "آلبوم‌ها",
-    "sectionArtists": "هنرمندان",
-    "sectionTracks": "آهنگ‌ها"
   },
   "album": {
     "tracks": "{{count}} آهنگ",

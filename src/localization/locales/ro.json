@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Acasă",
     "browse": "Explorează",
-    "search": "Caută",
     "library": "Bibliotecă"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Caută limbi…",
     "recentlyUsed": "Utilizate recent",
     "allLanguages": "Toate limbile"
-  },
-  "search": {
-    "placeholder": "Artiști, melodii sau albume",
-    "recent": "Căutări recente",
-    "clear": "Șterge",
-    "noResults": "Niciun rezultat pentru \"{{query}}\"",
-    "sectionAlbums": "Albume",
-    "sectionArtists": "Artiști",
-    "sectionTracks": "Melodii"
   },
   "album": {
     "tracks": "{{count}} melodii",

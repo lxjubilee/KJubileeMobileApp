@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Domů",
     "browse": "Procházet",
-    "search": "Hledat",
     "library": "Knihovna"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Hledat jazyky…",
     "recentlyUsed": "Naposledy použité",
     "allLanguages": "Všechny jazyky"
-  },
-  "search": {
-    "placeholder": "Interpreti, skladby nebo alba",
-    "recent": "Nedávná hledání",
-    "clear": "Vymazat",
-    "noResults": "Žádné výsledky pro \"{{query}}\"",
-    "sectionAlbums": "Alba",
-    "sectionArtists": "Interpreti",
-    "sectionTracks": "Skladby"
   },
   "album": {
     "tracks": "{{count}} skladeb",

@@ -19,7 +19,6 @@
   "tabs": {
     "home": "בית",
     "browse": "עיון",
-    "search": "חיפוש",
     "library": "ספרייה"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "חפש שפות…",
     "recentlyUsed": "בשימוש לאחרונה",
     "allLanguages": "כל השפות"
-  },
-  "search": {
-    "placeholder": "אמנים, שירים או אלבומים",
-    "recent": "חיפושים אחרונים",
-    "clear": "נקה",
-    "noResults": "אין תוצאות עבור \"{{query}}\"",
-    "sectionAlbums": "אלבומים",
-    "sectionArtists": "אמנים",
-    "sectionTracks": "שירים"
   },
   "album": {
     "tracks": "{{count}} שירים",

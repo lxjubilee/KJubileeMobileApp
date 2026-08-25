@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Početna",
     "browse": "Pregledaj",
-    "search": "Pretraži",
     "library": "Knjižnica"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Pretraži jezike…",
     "recentlyUsed": "Nedavno korišteno",
     "allLanguages": "Svi jezici"
-  },
-  "search": {
-    "placeholder": "Izvođači, pjesme ili albumi",
-    "recent": "Nedavna pretraživanja",
-    "clear": "Očisti",
-    "noResults": "Nema rezultata za \"{{query}}\"",
-    "sectionAlbums": "Albumi",
-    "sectionArtists": "Izvođači",
-    "sectionTracks": "Pjesme"
   },
   "album": {
     "tracks": "{{count}} pjesama",

@@ -19,7 +19,6 @@
   "tabs": {
     "home": "主頁",
     "browse": "瀏覽",
-    "search": "搜尋",
     "library": "媒體庫"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "搜尋語言…",
     "recentlyUsed": "最近使用",
     "allLanguages": "所有語言"
-  },
-  "search": {
-    "placeholder": "歌手、歌曲或專輯",
-    "recent": "最近搜尋",
-    "clear": "清除",
-    "noResults": "搵唔到「{{query}}」嘅結果",
-    "sectionAlbums": "專輯",
-    "sectionArtists": "歌手",
-    "sectionTracks": "歌曲"
   },
   "album": {
     "tracks": "{{count}} 首歌",

@@ -9,7 +9,6 @@ export type MainTabParamList = {
   /** The Dial — the tuner surface, and radio's signature screen. */
   DialTab: undefined;
   BrowseTab: undefined;
-  SearchTab: undefined;
   ProfileTab: NavigatorScreenParams<ProfileStackParamList>;
 };
 

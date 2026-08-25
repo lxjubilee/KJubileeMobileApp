@@ -19,7 +19,6 @@
   "tabs": {
     "home": "முகப்பு",
     "browse": "உலாவு",
-    "search": "தேடு",
     "library": "நூலகம்"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "மொழிகளைத் தேடு…",
     "recentlyUsed": "சமீபத்தில் பயன்படுத்தியவை",
     "allLanguages": "அனைத்து மொழிகள்"
-  },
-  "search": {
-    "placeholder": "கலைஞர்கள், பாடல்கள் அல்லது ஆல்பங்கள்",
-    "recent": "சமீபத்திய தேடல்கள்",
-    "clear": "அழி",
-    "noResults": "\"{{query}}\" க்கான முடிவுகள் இல்லை",
-    "sectionAlbums": "ஆல்பங்கள்",
-    "sectionArtists": "கலைஞர்கள்",
-    "sectionTracks": "பாடல்கள்"
   },
   "album": {
     "tracks": "{{count}} பாடல்கள்",

@@ -19,7 +19,6 @@
   "tabs": {
     "home": "الرئيسية",
     "browse": "تصفّح",
-    "search": "بحث",
     "library": "المكتبة"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "ابحث عن اللغات…",
     "recentlyUsed": "المستخدمة مؤخرًا",
     "allLanguages": "جميع اللغات"
-  },
-  "search": {
-    "placeholder": "فنانون أو أغانٍ أو ألبومات",
-    "recent": "عمليات البحث الأخيرة",
-    "clear": "مسح",
-    "noResults": "لا نتائج لـ \"{{query}}\"",
-    "sectionAlbums": "الألبومات",
-    "sectionArtists": "الفنانون",
-    "sectionTracks": "الأغاني"
   },
   "album": {
     "tracks": "{{count}} أغانٍ",

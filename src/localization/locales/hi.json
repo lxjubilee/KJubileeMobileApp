@@ -19,7 +19,6 @@
   "tabs": {
     "home": "होम",
     "browse": "ब्राउज़ करें",
-    "search": "खोजें",
     "library": "लाइब्रेरी"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "भाषाएँ खोजें…",
     "recentlyUsed": "हाल ही में उपयोग की गई",
     "allLanguages": "सभी भाषाएँ"
-  },
-  "search": {
-    "placeholder": "कलाकार, गाने या एल्बम",
-    "recent": "हाल की खोजें",
-    "clear": "साफ़ करें",
-    "noResults": "\"{{query}}\" के लिए कोई परिणाम नहीं",
-    "sectionAlbums": "एल्बम",
-    "sectionArtists": "कलाकार",
-    "sectionTracks": "गाने"
   },
   "album": {
     "tracks": "{{count}} गाने",

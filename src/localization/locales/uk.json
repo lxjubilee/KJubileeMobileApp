@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Головна",
     "browse": "Огляд",
-    "search": "Пошук",
     "library": "Медіатека"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Пошук мов…",
     "recentlyUsed": "Нещодавно використані",
     "allLanguages": "Усі мови"
-  },
-  "search": {
-    "placeholder": "Виконавці, пісні чи альбоми",
-    "recent": "Нещодавні запити",
-    "clear": "Очистити",
-    "noResults": "Немає результатів для \"{{query}}\"",
-    "sectionAlbums": "Альбоми",
-    "sectionArtists": "Виконавці",
-    "sectionTracks": "Пісні"
   },
   "album": {
     "tracks": "{{count}} пісень",

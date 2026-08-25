@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Start",
     "browse": "Ontdekken",
-    "search": "Zoeken",
     "library": "Bibliotheek"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Talen zoeken…",
     "recentlyUsed": "Recent gebruikt",
     "allLanguages": "Alle talen"
-  },
-  "search": {
-    "placeholder": "Artiesten, nummers of albums",
-    "recent": "Recente zoekopdrachten",
-    "clear": "Wissen",
-    "noResults": "Geen resultaten voor \"{{query}}\"",
-    "sectionAlbums": "Albums",
-    "sectionArtists": "Artiesten",
-    "sectionTracks": "Nummers"
   },
   "album": {
     "tracks": "{{count}} nummers",

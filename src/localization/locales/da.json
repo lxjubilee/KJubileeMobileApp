@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Hjem",
     "browse": "Gennemse",
-    "search": "Søg",
     "library": "Bibliotek"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Søg sprog…",
     "recentlyUsed": "Senest brugt",
     "allLanguages": "Alle sprog"
-  },
-  "search": {
-    "placeholder": "Kunstnere, sange eller album",
-    "recent": "Seneste søgninger",
-    "clear": "Ryd",
-    "noResults": "Ingen resultater for \"{{query}}\"",
-    "sectionAlbums": "Album",
-    "sectionArtists": "Kunstnere",
-    "sectionTracks": "Sange"
   },
   "album": {
     "tracks": "{{count}} sange",

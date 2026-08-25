@@ -19,7 +19,6 @@
   "tabs": {
     "home": "Etusivu",
     "browse": "Selaa",
-    "search": "Haku",
     "library": "Kirjasto"
   },
   "home": {
@@ -49,15 +48,6 @@
     "search": "Hae kieliä…",
     "recentlyUsed": "Viimeksi käytetyt",
     "allLanguages": "Kaikki kielet"
-  },
-  "search": {
-    "placeholder": "Artistit, kappaleet tai albumit",
-    "recent": "Viimeisimmät haut",
-    "clear": "Tyhjennä",
-    "noResults": "Ei tuloksia haulle \"{{query}}\"",
-    "sectionAlbums": "Albumit",
-    "sectionArtists": "Artistit",
-    "sectionTracks": "Kappaleet"
   },
   "album": {
     "tracks": "{{count}} kappaletta",
