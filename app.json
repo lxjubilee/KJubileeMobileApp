@@ -79,7 +79,7 @@
       "dataSource": "manifest",
       "authBaseUrl": "https://api.kjubilee.com",
       "mobileConfigBaseUrl": "https://api.kjubilee.com",
-      "turnstileSiteKey": "0x4AAAAAADJah9FpwSaEzlLP",
+      "turnstileSiteKey": "0x4AAAAAAEP1RePvfYIIioIf",
       "turnstileBaseUrl": "https://jubileeinspire.com",
       "devSkipAuth": true
     },
