@@ -9,6 +9,8 @@ export type MainTabParamList = {
   /** The Dial — the tuner surface, and radio's signature screen. */
   DialTab: undefined;
   BrowseTab: undefined;
+  /** The broadcast map — every HM transmit city on earth. */
+  MapTab: undefined;
   ProfileTab: NavigatorScreenParams<ProfileStackParamList>;
 };
 
@@ -33,6 +35,8 @@ export type RootStackParamList = {
     genreByItem?: Record<string, string>;
     showAlbumGenre?: boolean;
   };
+  /** A station's own page: story, host, and the day's programme guide. */
+  StationDetail: { slug: string };
   /** Full grid behind a Home shelf's "See all". Slugs are carried in shelf order
    *  and re-resolved against the catalog by the screen, so the params stay small. */
   StationList: {

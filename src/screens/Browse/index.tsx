@@ -82,7 +82,7 @@ export const BrowseScreen: React.FC = () => {
     (station: RadioStation) => {
       if (!station.live) return;
       void tune(station.slug);
-      navigation.navigate('MainTabs', { screen: 'DialTab' });
+      navigation.navigate('StationDetail', { slug: station.slug });
     },
     [navigation],
   );

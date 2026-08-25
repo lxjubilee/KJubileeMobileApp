@@ -15,6 +15,7 @@ export const linking: LinkingOptions<RootStackParamList> = {
         screens: {
           HomeTab: 'home',
           BrowseTab: 'browse',
+          MapTab: 'map',
           ProfileTab: 'profile',
         },
       },

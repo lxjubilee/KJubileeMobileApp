@@ -77,10 +77,11 @@ export const HomeScreen: React.FC = () => {
   const onPickStation = useCallback(
     (station: RadioStation) => {
       if (!station.live) return;
+      // The spec's rule for a tile: open the station's page AND start playback.
+      // It used to jump to the Dial, which plays a station but says nothing
+      // about it — the page is where the story, host and schedule live.
       void tune(station.slug);
-      // Send the listener to the tuner, so what is playing and what the dial
-      // shows are never two different stations.
-      navigation.navigate('MainTabs', { screen: 'DialTab' });
+      navigation.navigate('StationDetail', { slug: station.slug });
     },
     [navigation],
   );

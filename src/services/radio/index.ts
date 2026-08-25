@@ -11,6 +11,8 @@ export {
 } from './stationCatalog';
 export { tune, pause, toggle, subscribe, getState, initRadio } from './radioPlayer';
 export { now, isClockSynced, MissingDayError } from './dayFile';
+export { getSchedule, invalidateSchedule } from './schedule';
+export type { Schedule, ScheduleEntry } from './schedule';
 export type {
   RadioStation,
   StationHost,

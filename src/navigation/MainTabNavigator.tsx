@@ -10,7 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context';
 import { MiniPlayer } from '@/components/player';
-import { HomeScreen, BrowseScreen, DialScreen } from '@/screens';
+import { HomeScreen, BrowseScreen, DialScreen, MapScreen } from '@/screens';
 import { ProfileStackNavigator } from './ProfileStackNavigator';
 import type { MainTabParamList } from './types';
 
@@ -20,6 +20,7 @@ const ICONS: Record<keyof MainTabParamList, React.ComponentProps<typeof Ionicons
   HomeTab: 'home',
   DialTab: 'radio',
   BrowseTab: 'grid',
+  MapTab: 'globe-outline',
   ProfileTab: 'person-circle',
 };
 
@@ -68,6 +69,7 @@ export const MainTabNavigator: React.FC = () => {
       <Tab.Screen name="HomeTab" component={HomeScreen} options={{ title: t('tabs.home') }} />
       <Tab.Screen name="DialTab" component={DialScreen} options={{ title: t('tabs.dial') }} />
       <Tab.Screen name="BrowseTab" component={BrowseScreen} options={{ title: t('tabs.browse') }} />
+      <Tab.Screen name="MapTab" component={MapScreen} options={{ title: t('tabs.map') }} />
       <Tab.Screen
         name="ProfileTab"
         component={ProfileStackNavigator}
