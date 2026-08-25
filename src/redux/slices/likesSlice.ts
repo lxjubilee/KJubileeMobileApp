@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Album, RequestStatus, Track } from '@/types';
 import { likesApi, songLikeKey, type LikeType } from '@/services/likes';
-import { albumUuid, trackSongUuid } from '@/services/playlists';
+import { albumUuid, trackSongUuid } from '@/services/catalogIds';
 import type { AppDispatch } from '../store/store';
 import type { RootState } from '../store/rootReducer';
 import { clearSession, signOut } from './authSlice';

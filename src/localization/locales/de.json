@@ -185,23 +185,6 @@
     "artistNotFound": "Künstler nicht gefunden.",
     "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
   },
-  "playlist": {
-    "namePrompt": "Benenne deine Playlist",
-    "namePlaceholder": "Playlist-Name",
-    "create": "Erstellen",
-    "save": "Speichern",
-    "rename": "Playlist umbenennen",
-    "delete": "Playlist löschen",
-    "deleteConfirm": "\"{{title}}\" löschen? Das kann nicht rückgängig gemacht werden.",
-    "addSongs": "Songs hinzufügen",
-    "addToPlaylist": "Zur Playlist hinzufügen",
-    "newPlaylist": "Neue Playlist",
-    "removeFromPlaylist": "Aus dieser Playlist entfernen",
-    "songCount": "{{count}} Songs",
-    "empty": "Noch keine Musik",
-    "emptyHint": "Tippe auf „Songs hinzufügen“, um Musik zu dieser Playlist hinzuzufügen.",
-    "notFound": "Playlist nicht gefunden."
-  },
   "stub": {
     "comingSoon": "Demnächst",
     "description": "Dieser Bereich ist in die App-Architektur eingebunden und bereit für den Ausbau."

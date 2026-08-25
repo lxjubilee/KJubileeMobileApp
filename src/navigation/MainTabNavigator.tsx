@@ -10,27 +10,31 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context';
 import { MiniPlayer } from '@/components/player';
-import { HomeScreen, BrowseScreen, SearchScreen } from '@/screens';
-import { PlaylistsStackNavigator } from './PlaylistsStackNavigator';
+import { HomeScreen, BrowseScreen, SearchScreen, DialScreen } from '@/screens';
+import { ProfileStackNavigator } from './ProfileStackNavigator';
 import type { MainTabParamList } from './types';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 const ICONS: Record<keyof MainTabParamList, React.ComponentProps<typeof Ionicons>['name']> = {
   HomeTab: 'home',
+  DialTab: 'radio',
   BrowseTab: 'grid',
   SearchTab: 'search',
-  PlaylistsTab: 'musical-notes',
+  ProfileTab: 'person-circle',
 };
-
-/** Routes (nested in a tab's stack) where the MiniPlayer should be hidden. */
-const HIDE_MINI_PLAYER_ON = ['Profile'];
 
 /** Custom tab bar that stacks the persistent MiniPlayer above the real tab bar. */
 const TabBarWithMiniPlayer: React.FC<BottomTabBarProps> = (props) => {
   const activeRoute = props.state.routes[props.state.index];
   const focusedNested = getFocusedRouteNameFromRoute(activeRoute);
-  const hideMiniPlayer = focusedNested != null && HIDE_MINI_PLAYER_ON.includes(focusedNested);
+  // Hidden on the Profile screen itself, as before — but Profile is now the
+  // ROOT of its tab rather than a pushed screen, and
+  // `getFocusedRouteNameFromRoute` reports undefined for a stack sitting on its
+  // initial route. Matching the name alone would therefore have quietly stopped
+  // hiding it; the tab has to be checked too.
+  const hideMiniPlayer =
+    activeRoute.name === 'ProfileTab' && (focusedNested == null || focusedNested === 'Profile');
 
   return (
     <View>
@@ -63,20 +67,21 @@ export const MainTabNavigator: React.FC = () => {
       })}
     >
       <Tab.Screen name="HomeTab" component={HomeScreen} options={{ title: t('tabs.home') }} />
+      <Tab.Screen name="DialTab" component={DialScreen} options={{ title: t('tabs.dial') }} />
       <Tab.Screen name="BrowseTab" component={BrowseScreen} options={{ title: t('tabs.browse') }} />
       <Tab.Screen name="SearchTab" component={SearchScreen} options={{ title: t('tabs.search') }} />
       <Tab.Screen
-        name="PlaylistsTab"
-        component={PlaylistsStackNavigator}
-        options={{ title: t('tabs.playlists') }}
+        name="ProfileTab"
+        component={ProfileStackNavigator}
+        options={{ title: t('tabs.profile') }}
         listeners={({ navigation }) => ({
-          // Tapping the Playlists tab always returns to the Playlists root. Without
-          // this, a sub-screen left over from a previous visit (e.g. Profile,
-          // reached here or deep-linked from Home) would re-appear instead of
-          // the playlists — wrong, since the user tapped "Playlists".
+          // Tapping the Profile tab always returns to its root. Without this, a
+          // sub-screen left over from a previous visit (e.g. Change Password)
+          // would re-appear instead of the profile — wrong, since the user
+          // tapped "Profile".
           tabPress: (e) => {
             e.preventDefault();
-            navigation.navigate('PlaylistsTab', { screen: 'Playlists' });
+            navigation.navigate('ProfileTab', { screen: 'Profile' });
           },
         })}
       />

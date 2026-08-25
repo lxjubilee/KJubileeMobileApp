@@ -185,23 +185,6 @@
     "artistNotFound": "Msanii hajapatikana.",
     "generic": "Hitilafu imetokea. Jaribu tena."
   },
-  "playlist": {
-    "namePrompt": "Ipe jina orodha yako ya kucheza",
-    "namePlaceholder": "Jina la orodha ya kucheza",
-    "create": "Unda",
-    "save": "Hifadhi",
-    "rename": "Badilisha jina la orodha ya kucheza",
-    "delete": "Futa orodha ya kucheza",
-    "deleteConfirm": "Futa \"{{title}}\"? Hili haliwezi kutenduliwa.",
-    "addSongs": "Ongeza nyimbo",
-    "addToPlaylist": "Ongeza kwenye orodha ya kucheza",
-    "newPlaylist": "Orodha mpya ya kucheza",
-    "removeFromPlaylist": "Ondoa kwenye orodha hii ya kucheza",
-    "songCount": "Nyimbo {{count}}",
-    "empty": "Bado hakuna muziki",
-    "emptyHint": "Gusa “Ongeza nyimbo” ili kuongeza muziki kwenye orodha hii ya kucheza.",
-    "notFound": "Orodha ya kucheza haijapatikana."
-  },
   "stub": {
     "comingSoon": "Inakuja hivi karibuni",
     "description": "Eneo hili limeunganishwa na muundo wa programu na liko tayari kuendelezwa."

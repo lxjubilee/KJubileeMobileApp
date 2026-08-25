@@ -185,23 +185,6 @@
     "artistNotFound": "Az előadó nem található.",
     "generic": "Valami hiba történt. Próbáld újra."
   },
-  "playlist": {
-    "namePrompt": "Nevezd el a lejátszási listádat",
-    "namePlaceholder": "Lejátszási lista neve",
-    "create": "Létrehozás",
-    "save": "Mentés",
-    "rename": "Lejátszási lista átnevezése",
-    "delete": "Lejátszási lista törlése",
-    "deleteConfirm": "Törlöd ezt: \"{{title}}\"? Ez nem vonható vissza.",
-    "addSongs": "Dalok hozzáadása",
-    "addToPlaylist": "Hozzáadás lejátszási listához",
-    "newPlaylist": "Új lejátszási lista",
-    "removeFromPlaylist": "Eltávolítás erről a lejátszási listáról",
-    "songCount": "{{count}} dal",
-    "empty": "Még nincs zene",
-    "emptyHint": "Koppints a „Dalok hozzáadása” gombra, hogy zenét adj ehhez a lejátszási listához.",
-    "notFound": "A lejátszási lista nem található."
-  },
   "stub": {
     "comingSoon": "Hamarosan",
     "description": "Ez a terület az alkalmazás architektúrájához kapcsolódik, és készen áll a továbbfejlesztésre."

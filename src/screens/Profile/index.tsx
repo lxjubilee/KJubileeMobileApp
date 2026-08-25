@@ -11,10 +11,10 @@ import { MyContributions } from '@/components/reviews';
 import { useAppDispatch, useAppSelector, useLikedAlbums, useLikedSongCount } from '@/hooks';
 import { userInitials } from '@/utils';
 import { signOut, deleteAccount, clearSession } from '@/redux';
-import type { PlaylistsStackParamList, RootStackParamList } from '@/navigation/types';
+import type { ProfileStackParamList, RootStackParamList } from '@/navigation/types';
 
-// Pushes within the Playlists stack; opens AlbumDetails on the root stack.
-type Nav = NativeStackNavigationProp<PlaylistsStackParamList & RootStackParamList>;
+// Pushes within the Profile stack; opens AlbumDetails on the root stack.
+type Nav = NativeStackNavigationProp<ProfileStackParamList & RootStackParamList>;
 const { width } = Dimensions.get('window');
 const CARD_W = (width - 48) / 2;
 
@@ -88,9 +88,8 @@ export const ProfileScreen: React.FC = () => {
           </AppText>
         </View>
 
-        {/* Liked Songs / Followed Artists. These moved here from the old Library
-            screen, which the playlists-only tab replaced — Profile is now their
-            only entry point. */}
+        {/* Liked Songs / Followed Artists. Profile is their only entry point,
+            and Profile is now the root of its own tab. */}
         <View style={styles.shortcuts}>
           <Shortcut
             icon="heart"

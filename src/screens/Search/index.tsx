@@ -17,7 +17,7 @@ import {
   useVisibleTracks,
 } from '@/hooks';
 import { runSearch, setQuery, addRecentSearch, clearRecentSearches } from '@/redux';
-import { usePlaylistMenu } from '@/components/playlists';
+import { useTrackMenu } from '@/components/TrackMenuProvider';
 import type { RootStackParamList } from '@/navigation/types';
 
 type Nav = NativeStackNavigationProp<RootStackParamList>;
@@ -28,7 +28,7 @@ export const SearchScreen: React.FC = () => {
   const navigation = useNavigation<Nav>();
   const dispatch = useAppDispatch();
   const { playTracks } = usePlayer();
-  const { openTrackOptions } = usePlaylistMenu();
+  const { openTrackOptions } = useTrackMenu();
 
   const { query, results, recent, status } = useAppSelector((s) => s.search);
   const [input, setInput] = useState(query);

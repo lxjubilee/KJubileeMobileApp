@@ -51,16 +51,9 @@ export interface Album {
   accentColor?: string;
 }
 
-export interface Playlist {
-  id: ID;
-  title: string;
-  cover: string;
-  description?: string;
-  trackIds: ID[];
-  curated?: boolean;
-}
-
-/** A horizontally-scrolling row on the Home screen (Netflix-style rail). */
+/** A horizontally-scrolling row on the Home screen (Netflix-style rail).
+ *  'playlist' stays in the union because the server can still send it; the app
+ *  has no playlists, so such a rail resolves to no items and is not rendered. */
 export type RailItemType = 'album' | 'artist' | 'playlist';
 
 export interface HomeRail {

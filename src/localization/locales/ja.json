@@ -185,23 +185,6 @@
     "artistNotFound": "アーティストが見つかりません。",
     "generic": "問題が発生しました。もう一度お試しください。"
   },
-  "playlist": {
-    "namePrompt": "プレイリストに名前を付ける",
-    "namePlaceholder": "プレイリスト名",
-    "create": "作成",
-    "save": "保存",
-    "rename": "プレイリストの名前を変更",
-    "delete": "プレイリストを削除",
-    "deleteConfirm": "「{{title}}」を削除しますか？元に戻せません。",
-    "addSongs": "曲を追加",
-    "addToPlaylist": "プレイリストに追加",
-    "newPlaylist": "新しいプレイリスト",
-    "removeFromPlaylist": "このプレイリストから削除",
-    "songCount": "{{count}} 曲",
-    "empty": "まだ音楽がありません",
-    "emptyHint": "「曲を追加」をタップして、このプレイリストに音楽を追加してください。",
-    "notFound": "プレイリストが見つかりません。"
-  },
   "stub": {
     "comingSoon": "近日公開",
     "description": "このエリアはアプリのアーキテクチャに接続されており、開発の準備が整っています。"

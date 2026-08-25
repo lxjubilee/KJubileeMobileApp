@@ -6,7 +6,6 @@ import homeReducer from '../slices/homeSlice';
 import searchReducer from '../slices/searchSlice';
 import libraryReducer from '../slices/librarySlice';
 import likesReducer from '../slices/likesSlice';
-import playlistsReducer from '../slices/playlistsSlice';
 import downloadsReducer from '../slices/downloadsSlice';
 import playerReducer from '../slices/playerSlice';
 import authReducer from '../slices/authSlice';
@@ -73,8 +72,6 @@ export const rootReducer = combineReducers({
   search: persistedSearch,
   library: persistedLibrary,
   likes: persistedLikes,
-  // Playlists are server-backed (/api/me/playlists) — fetched on demand, not persisted.
-  playlists: playlistsReducer,
   downloads: persistedDownloads,
   player: persistedPlayer,
   auth: authReducer,

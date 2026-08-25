@@ -8,7 +8,7 @@ import { AppText, IconButton, Screen } from '@/components/common';
 import { AlbumRatingSummary, ReviewComposer, ReviewItem, StarRating } from '@/components/reviews';
 import { useReviews } from '@/hooks';
 import { reviewsApi } from '@/services/reviews';
-import { albumUuid } from '@/services/playlists';
+import { albumUuid } from '@/services/catalogIds';
 import type { RatingDistribution, ReviewListItem, ReviewSort } from '@/types';
 import type { RootStackParamList, RootStackScreenProps } from '@/navigation/types';
 

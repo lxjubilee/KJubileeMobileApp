@@ -185,23 +185,6 @@
     "artistNotFound": "搵唔到歌手。",
     "generic": "出咗啲問題。請再試一次。"
   },
-  "playlist": {
-    "namePrompt": "為你嘅播放清單改名",
-    "namePlaceholder": "播放清單名稱",
-    "create": "建立",
-    "save": "儲存",
-    "rename": "重新命名播放清單",
-    "delete": "刪除播放清單",
-    "deleteConfirm": "刪除「{{title}}」？此動作無法復原。",
-    "addSongs": "加入歌曲",
-    "addToPlaylist": "加入播放清單",
-    "newPlaylist": "新播放清單",
-    "removeFromPlaylist": "由呢個播放清單移除",
-    "songCount": "{{count}} 首歌",
-    "empty": "暫時未有音樂",
-    "emptyHint": "撳「加入歌曲」就可以為呢個播放清單加歌。",
-    "notFound": "搵唔到播放清單。"
-  },
   "stub": {
     "comingSoon": "即將推出",
     "description": "呢個範圍已接駁到應用程式架構，可以隨時繼續開發。"

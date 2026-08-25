@@ -1,12 +1,12 @@
 import { Album, Track } from '@/types';
 import { getCatalogIndex, peekCatalogIndex } from '@/services/catalog';
 import type { CatalogIndex } from '@/services/catalog';
-import { albumUuid, trackSongUuid } from '@/services/playlists';
+import { albumUuid, trackSongUuid } from '@/services/catalogIds';
 
 /**
  * Membership keys for the likes API. The backend's `GET /api/me/likes/ids`
  * returns `"<type>:<uuid>"` strings (e.g. `"song:<uuid>"`, `"album:<uuid>"`),
- * where the uuid is the SAME deterministic uuid-v5 the playlist/review endpoints
+ * where the uuid is the SAME deterministic uuid-v5 the review endpoints
  * use. We build the identical key locally to check "is this liked?" in O(1) and
  * to know which uuid to POST/DELETE. See [[catalog-codes-vs-backend-uuids]].
  */
@@ -23,7 +23,7 @@ export function albumLikeKey(album: Pick<Album, 'id'>): string {
 }
 
 // --- Reverse map: server album uuid -> local Album ---------------------------
-// Mirrors getSongUuidMap() in playlists/songId.ts. Built lazily from the catalog
+// Mirrors getSongUuidMap() in catalogIds/songId.ts. Built lazily from the catalog
 // index and cached; lets the Library resolve liked album uuids back to Albums.
 
 let albumMap: Map<string, Album> | null = null;

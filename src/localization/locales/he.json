@@ -185,23 +185,6 @@
     "artistNotFound": "האמן לא נמצא.",
     "generic": "משהו השתבש. נסה שוב."
   },
-  "playlist": {
-    "namePrompt": "תן שם לפלייליסט שלך",
-    "namePlaceholder": "שם הפלייליסט",
-    "create": "צור",
-    "save": "שמור",
-    "rename": "שנה שם פלייליסט",
-    "delete": "מחק פלייליסט",
-    "deleteConfirm": "למחוק את \"{{title}}\"? לא ניתן לבטל זאת.",
-    "addSongs": "הוסף שירים",
-    "addToPlaylist": "הוסף לפלייליסט",
-    "newPlaylist": "פלייליסט חדש",
-    "removeFromPlaylist": "הסר מפלייליסט זה",
-    "songCount": "{{count}} שירים",
-    "empty": "אין עדיין מוזיקה",
-    "emptyHint": "הקש על \"הוסף שירים\" כדי להוסיף מוזיקה לפלייליסט זה.",
-    "notFound": "הפלייליסט לא נמצא."
-  },
   "stub": {
     "comingSoon": "בקרוב",
     "description": "אזור זה מחובר לארכיטקטורת האפליקציה ומוכן לפיתוח."

@@ -185,23 +185,6 @@
     "artistNotFound": "Artista não encontrado.",
     "generic": "Algo deu errado. Tente novamente."
   },
-  "playlist": {
-    "namePrompt": "Dê um nome à sua playlist",
-    "namePlaceholder": "Nome da playlist",
-    "create": "Criar",
-    "save": "Salvar",
-    "rename": "Renomear playlist",
-    "delete": "Excluir playlist",
-    "deleteConfirm": "Excluir \"{{title}}\"? Isso não pode ser desfeito.",
-    "addSongs": "Adicionar músicas",
-    "addToPlaylist": "Adicionar à playlist",
-    "newPlaylist": "Nova playlist",
-    "removeFromPlaylist": "Remover desta playlist",
-    "songCount": "{{count}} músicas",
-    "empty": "Ainda não há música",
-    "emptyHint": "Toque em “Adicionar músicas” para adicionar música a esta playlist.",
-    "notFound": "Playlist não encontrada."
-  },
   "stub": {
     "comingSoon": "Em breve",
     "description": "Esta área está integrada à arquitetura do app e pronta para ser desenvolvida."

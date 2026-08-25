@@ -185,23 +185,6 @@
     "artistNotFound": "Artistul nu a fost găsit.",
     "generic": "Ceva nu a mers bine. Încearcă din nou."
   },
-  "playlist": {
-    "namePrompt": "Denumește-ți playlistul",
-    "namePlaceholder": "Numele playlistului",
-    "create": "Creează",
-    "save": "Salvează",
-    "rename": "Redenumește playlistul",
-    "delete": "Șterge playlistul",
-    "deleteConfirm": "Ștergi \"{{title}}\"? Această acțiune nu poate fi anulată.",
-    "addSongs": "Adaugă melodii",
-    "addToPlaylist": "Adaugă în playlist",
-    "newPlaylist": "Playlist nou",
-    "removeFromPlaylist": "Elimină din acest playlist",
-    "songCount": "{{count}} melodii",
-    "empty": "Încă nu există muzică",
-    "emptyHint": "Atinge „Adaugă melodii” pentru a adăuga muzică în acest playlist.",
-    "notFound": "Playlistul nu a fost găsit."
-  },
   "stub": {
     "comingSoon": "În curând",
     "description": "Această zonă este conectată la arhitectura aplicației și gata să fie dezvoltată."

@@ -185,23 +185,6 @@
     "artistNotFound": "Izvođač nije pronađen.",
     "generic": "Nešto je pošlo po zlu. Pokušaj ponovno."
   },
-  "playlist": {
-    "namePrompt": "Imenuj svoj popis za reprodukciju",
-    "namePlaceholder": "Naziv popisa za reprodukciju",
-    "create": "Izradi",
-    "save": "Spremi",
-    "rename": "Preimenuj popis za reprodukciju",
-    "delete": "Izbriši popis za reprodukciju",
-    "deleteConfirm": "Izbrisati \"{{title}}\"? Ovo nije moguće poništiti.",
-    "addSongs": "Dodaj pjesme",
-    "addToPlaylist": "Dodaj na popis za reprodukciju",
-    "newPlaylist": "Novi popis za reprodukciju",
-    "removeFromPlaylist": "Ukloni s ovog popisa za reprodukciju",
-    "songCount": "{{count}} pjesama",
-    "empty": "Još nema glazbe",
-    "emptyHint": "Dodirni „Dodaj pjesme“ da dodaš glazbu na ovaj popis za reprodukciju.",
-    "notFound": "Popis za reprodukciju nije pronađen."
-  },
   "stub": {
     "comingSoon": "Uskoro",
     "description": "Ovo je područje povezano s arhitekturom aplikacije i spremno za daljnji razvoj."

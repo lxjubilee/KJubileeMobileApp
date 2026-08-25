@@ -185,23 +185,6 @@
     "artistNotFound": "Sanatçı bulunamadı.",
     "generic": "Bir şeyler ters gitti. Lütfen tekrar deneyin."
   },
-  "playlist": {
-    "namePrompt": "Çalma listenize ad verin",
-    "namePlaceholder": "Çalma listesi adı",
-    "create": "Oluştur",
-    "save": "Kaydet",
-    "rename": "Çalma listesini yeniden adlandır",
-    "delete": "Çalma listesini sil",
-    "deleteConfirm": "\"{{title}}\" silinsin mi? Bu geri alınamaz.",
-    "addSongs": "Şarkı ekle",
-    "addToPlaylist": "Çalma listesine ekle",
-    "newPlaylist": "Yeni çalma listesi",
-    "removeFromPlaylist": "Bu çalma listesinden kaldır",
-    "songCount": "{{count}} şarkı",
-    "empty": "Henüz müzik yok",
-    "emptyHint": "Bu çalma listesine müzik eklemek için “Şarkı ekle”ye dokunun.",
-    "notFound": "Çalma listesi bulunamadı."
-  },
   "stub": {
     "comingSoon": "Yakında",
     "description": "Bu alan uygulama mimarisine bağlıdır ve geliştirilmeye hazırdır."

@@ -185,23 +185,6 @@
     "artistNotFound": "Fant ikke artisten.",
     "generic": "Noe gikk galt. Prøv igjen."
   },
-  "playlist": {
-    "namePrompt": "Gi spillelisten din et navn",
-    "namePlaceholder": "Navn på spilleliste",
-    "create": "Opprett",
-    "save": "Lagre",
-    "rename": "Gi nytt navn til spilleliste",
-    "delete": "Slett spilleliste",
-    "deleteConfirm": "Slette \"{{title}}\"? Dette kan ikke angres.",
-    "addSongs": "Legg til sanger",
-    "addToPlaylist": "Legg til i spilleliste",
-    "newPlaylist": "Ny spilleliste",
-    "removeFromPlaylist": "Fjern fra denne spillelisten",
-    "songCount": "{{count}} sanger",
-    "empty": "Ingen musikk ennå",
-    "emptyHint": "Trykk på «Legg til sanger» for å legge til musikk i denne spillelisten.",
-    "notFound": "Fant ikke spillelisten."
-  },
   "stub": {
     "comingSoon": "Kommer snart",
     "description": "Dette området er koblet til appens arkitektur og klart til å bygges ut."

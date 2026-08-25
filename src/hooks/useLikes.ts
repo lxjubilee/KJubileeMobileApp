@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useAppSelector } from '@/redux';
 import { Album, Track } from '@/types';
 import { songLikeKey, albumLikeKey, getAlbumUuidMap } from '@/services/likes';
-import { getSongUuidMap } from '@/services/playlists';
+import { getSongUuidMap } from '@/services/catalogIds';
 import { useVisibleTracks, useVisibleAlbums } from './useVisibleCatalog';
 
 /** Is this track liked? (false for tracks with no track number.) */

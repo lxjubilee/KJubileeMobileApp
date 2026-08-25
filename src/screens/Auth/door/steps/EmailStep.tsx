@@ -52,7 +52,6 @@ export const EmailStep: React.FC<EmailStepProps> = ({
         textContentType="emailAddress"
         returnKeyType="go"
         onSubmitEditing={onSubmit}
-        autoFocus
         containerStyle={styles.field}
       />
 

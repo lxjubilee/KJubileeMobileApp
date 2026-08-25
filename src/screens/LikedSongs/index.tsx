@@ -7,10 +7,10 @@ import { Screen, Loader, AppText, Placeholder, IconButton } from '@/components/c
 import { TrackRow } from '@/components/cards';
 import { useAppDispatch, useLikedTracks, usePlayer } from '@/hooks';
 import { toggleSongLike } from '@/redux';
-import { usePlaylistMenu } from '@/components/playlists';
-import type { PlaylistsStackParamList } from '@/navigation/types';
+import { useTrackMenu } from '@/components/TrackMenuProvider';
+import type { ProfileStackParamList } from '@/navigation/types';
 
-type Nav = NativeStackNavigationProp<PlaylistsStackParamList>;
+type Nav = NativeStackNavigationProp<ProfileStackParamList>;
 
 /**
  * The full list of liked songs (reached from the Library "Liked Songs"
@@ -23,7 +23,7 @@ export const LikedSongsScreen: React.FC = () => {
   const navigation = useNavigation<Nav>();
   const dispatch = useAppDispatch();
   const { playFrom, currentTrack } = usePlayer();
-  const { openTrackOptions } = usePlaylistMenu();
+  const { openTrackOptions } = useTrackMenu();
 
   // Server-backed likes, resolved to playable catalog tracks (never hidden by
   // the active catalog language — a personal collection).

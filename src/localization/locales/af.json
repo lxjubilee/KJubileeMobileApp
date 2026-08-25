@@ -185,23 +185,6 @@
     "artistNotFound": "Kunstenaar nie gevind nie.",
     "generic": "Iets het verkeerd geloop. Probeer weer."
   },
-  "playlist": {
-    "namePrompt": "Gee jou speellys 'n naam",
-    "namePlaceholder": "Speellys-naam",
-    "create": "Skep",
-    "save": "Stoor",
-    "rename": "Hernoem speellys",
-    "delete": "Vee speellys uit",
-    "deleteConfirm": "Vee \"{{title}}\" uit? Dit kan nie ongedaan gemaak word nie.",
-    "addSongs": "Voeg liedjies by",
-    "addToPlaylist": "Voeg by speellys",
-    "newPlaylist": "Nuwe speellys",
-    "removeFromPlaylist": "Verwyder uit hierdie speellys",
-    "songCount": "{{count}} liedjies",
-    "empty": "Nog geen musiek nie",
-    "emptyHint": "Tik op “Voeg liedjies by” om musiek by hierdie speellys te voeg.",
-    "notFound": "Speellys nie gevind nie."
-  },
   "stub": {
     "comingSoon": "Binnekort beskikbaar",
     "description": "Hierdie area is aan die app se argitektuur gekoppel en gereed om uitgebou te word."

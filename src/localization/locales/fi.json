@@ -185,23 +185,6 @@
     "artistNotFound": "Artistia ei löytynyt.",
     "generic": "Jokin meni pieleen. Yritä uudelleen."
   },
-  "playlist": {
-    "namePrompt": "Nimeä soittolistasi",
-    "namePlaceholder": "Soittolistan nimi",
-    "create": "Luo",
-    "save": "Tallenna",
-    "rename": "Nimeä soittolista uudelleen",
-    "delete": "Poista soittolista",
-    "deleteConfirm": "Poistetaanko \"{{title}}\"? Tätä ei voi peruuttaa.",
-    "addSongs": "Lisää kappaleita",
-    "addToPlaylist": "Lisää soittolistaan",
-    "newPlaylist": "Uusi soittolista",
-    "removeFromPlaylist": "Poista tästä soittolistasta",
-    "songCount": "{{count}} kappaletta",
-    "empty": "Ei vielä musiikkia",
-    "emptyHint": "Lisää musiikkia tähän soittolistaan napauttamalla ”Lisää kappaleita”.",
-    "notFound": "Soittolistaa ei löytynyt."
-  },
   "stub": {
     "comingSoon": "Tulossa pian",
     "description": "Tämä alue on kytketty sovelluksen arkkitehtuuriin ja valmis rakennettavaksi."

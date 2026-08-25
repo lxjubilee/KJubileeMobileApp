@@ -185,23 +185,6 @@
     "artistNotFound": "Artifex non inventus.",
     "generic": "Aliquid erravit. Iterum conare."
   },
-  "playlist": {
-    "namePrompt": "Nomina indicem cantuum tuum",
-    "namePlaceholder": "Nomen indicis cantuum",
-    "create": "Creare",
-    "save": "Servare",
-    "rename": "Renominare indicem cantuum",
-    "delete": "Delere indicem cantuum",
-    "deleteConfirm": "Delere \"{{title}}\"? Hoc revocari non potest.",
-    "addSongs": "Addere cantus",
-    "addToPlaylist": "Addere indici cantuum",
-    "newPlaylist": "Novus index cantuum",
-    "removeFromPlaylist": "Removere ab hoc indice cantuum",
-    "songCount": "{{count}} cantus",
-    "empty": "Nulla adhuc musica",
-    "emptyHint": "Tange “Addere cantus” ut musicam huic indici cantuum addas.",
-    "notFound": "Index cantuum non inventus."
-  },
   "stub": {
     "comingSoon": "Mox veniet",
     "description": "Haec area cum architectura applicationis coniuncta est et parata ad augendum."

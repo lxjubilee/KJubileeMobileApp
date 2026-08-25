@@ -185,23 +185,6 @@
     "artistNotFound": "Artiste introuvable.",
     "generic": "Une erreur s'est produite. Réessayez."
   },
-  "playlist": {
-    "namePrompt": "Nommez votre playlist",
-    "namePlaceholder": "Nom de la playlist",
-    "create": "Créer",
-    "save": "Enregistrer",
-    "rename": "Renommer la playlist",
-    "delete": "Supprimer la playlist",
-    "deleteConfirm": "Supprimer \"{{title}}\" ? Cette action est irréversible.",
-    "addSongs": "Ajouter des titres",
-    "addToPlaylist": "Ajouter à la playlist",
-    "newPlaylist": "Nouvelle playlist",
-    "removeFromPlaylist": "Retirer de cette playlist",
-    "songCount": "{{count}} titres",
-    "empty": "Pas encore de musique",
-    "emptyHint": "Touchez « Ajouter des titres » pour ajouter de la musique à cette playlist.",
-    "notFound": "Playlist introuvable."
-  },
   "stub": {
     "comingSoon": "Bientôt disponible",
     "description": "Cette zone est intégrée à l'architecture de l'app et prête à être développée."

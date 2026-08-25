@@ -13,13 +13,12 @@ export const ROUTES = {
   HOME_TAB: 'HomeTab',
   BROWSE_TAB: 'BrowseTab',
   SEARCH_TAB: 'SearchTab',
-  PLAYLISTS_TAB: 'PlaylistsTab',
+  PROFILE_TAB: 'ProfileTab',
 
   // Screens within stacks
   HOME: 'Home',
   BROWSE: 'Browse',
   SEARCH: 'Search',
-  PLAYLISTS: 'Playlists',
   DOWNLOADS: 'Downloads',
   PROFILE: 'Profile',
 } as const;

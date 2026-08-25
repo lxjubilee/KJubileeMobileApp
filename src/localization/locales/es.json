@@ -185,23 +185,6 @@
     "artistNotFound": "Artista no encontrado.",
     "generic": "Algo salió mal. Inténtalo de nuevo."
   },
-  "playlist": {
-    "namePrompt": "Nombra tu lista",
-    "namePlaceholder": "Nombre de la lista",
-    "create": "Crear",
-    "save": "Guardar",
-    "rename": "Renombrar lista",
-    "delete": "Eliminar lista",
-    "deleteConfirm": "¿Eliminar \"{{title}}\"? Esto no se puede deshacer.",
-    "addSongs": "Añadir canciones",
-    "addToPlaylist": "Añadir a la lista",
-    "newPlaylist": "Nueva lista",
-    "removeFromPlaylist": "Quitar de esta lista",
-    "songCount": "{{count}} canciones",
-    "empty": "Aún no hay música",
-    "emptyHint": "Toca «Añadir canciones» para añadir música a esta lista.",
-    "notFound": "Lista no encontrada."
-  },
   "stub": {
     "comingSoon": "Próximamente",
     "description": "Esta área está integrada en la arquitectura de la app y lista para desarrollarse."

@@ -185,23 +185,6 @@
     "artistNotFound": "Interpret nebyl nalezen.",
     "generic": "Něco se pokazilo. Zkuste to znovu."
   },
-  "playlist": {
-    "namePrompt": "Pojmenujte svůj playlist",
-    "namePlaceholder": "Název playlistu",
-    "create": "Vytvořit",
-    "save": "Uložit",
-    "rename": "Přejmenovat playlist",
-    "delete": "Smazat playlist",
-    "deleteConfirm": "Smazat \"{{title}}\"? Tuto akci nelze vrátit zpět.",
-    "addSongs": "Přidat skladby",
-    "addToPlaylist": "Přidat do playlistu",
-    "newPlaylist": "Nový playlist",
-    "removeFromPlaylist": "Odebrat z tohoto playlistu",
-    "songCount": "{{count}} skladeb",
-    "empty": "Zatím žádná hudba",
-    "emptyHint": "Klepnutím na „Přidat skladby“ přidáte hudbu do tohoto playlistu.",
-    "notFound": "Playlist nebyl nalezen."
-  },
   "stub": {
     "comingSoon": "Již brzy",
     "description": "Tato oblast je propojena s architekturou aplikace a připravena k rozšíření."

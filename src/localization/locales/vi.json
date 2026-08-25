@@ -185,23 +185,6 @@
     "artistNotFound": "Không tìm thấy nghệ sĩ.",
     "generic": "Đã xảy ra lỗi. Vui lòng thử lại."
   },
-  "playlist": {
-    "namePrompt": "Đặt tên cho danh sách phát của bạn",
-    "namePlaceholder": "Tên danh sách phát",
-    "create": "Tạo",
-    "save": "Lưu",
-    "rename": "Đổi tên danh sách phát",
-    "delete": "Xóa danh sách phát",
-    "deleteConfirm": "Xóa \"{{title}}\"? Không thể hoàn tác.",
-    "addSongs": "Thêm bài hát",
-    "addToPlaylist": "Thêm vào danh sách phát",
-    "newPlaylist": "Danh sách phát mới",
-    "removeFromPlaylist": "Xóa khỏi danh sách phát này",
-    "songCount": "{{count}} bài hát",
-    "empty": "Chưa có nhạc",
-    "emptyHint": "Chạm “Thêm bài hát” để thêm nhạc vào danh sách phát này.",
-    "notFound": "Không tìm thấy danh sách phát."
-  },
   "stub": {
     "comingSoon": "Sắp ra mắt",
     "description": "Khu vực này đã được kết nối với kiến trúc ứng dụng và sẵn sàng để phát triển."

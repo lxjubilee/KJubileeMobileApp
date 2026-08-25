@@ -7,18 +7,6 @@ export { fetchHomeFeed } from './slices/homeSlice';
 export { runSearch, setQuery, addRecentSearch, clearRecentSearches } from './slices/searchSlice';
 export { toggleFollowArtist } from './slices/librarySlice';
 export {
-  fetchPlaylists,
-  fetchMembership,
-  fetchPlaylistDetail,
-  createPlaylist,
-  renamePlaylist,
-  deletePlaylist,
-  addTrackToPlaylist,
-  addAlbumToPlaylist,
-  removeItemFromPlaylist,
-  reorderPlaylistItems,
-} from './slices/playlistsSlice';
-export {
   fetchLikes,
   toggleSongLike,
   toggleAlbumLike,

@@ -13,8 +13,7 @@ import {
   ArtistDetailsScreen,
   AlbumListScreen,
   ArtistListScreen,
-  PlaylistDetailsScreen,
-  PlaylistAddSongsScreen,
+  StationListScreen,
   MusicPlayerScreen,
 } from '@/screens';
 import { MainTabNavigator } from './MainTabNavigator';
@@ -50,11 +49,10 @@ export const RootNavigator: React.FC = () => {
         <Stack.Screen name="ArtistDetails" component={ArtistDetailsScreen} />
         <Stack.Screen name="AlbumList" component={AlbumListScreen} />
         <Stack.Screen name="ArtistList" component={ArtistListScreen} />
-        <Stack.Screen name="PlaylistDetails" component={PlaylistDetailsScreen} />
+        <Stack.Screen name="StationList" component={StationListScreen} />
         {/* Player + the song picker slide up as modals. */}
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
           <Stack.Screen name="MusicPlayer" component={MusicPlayerScreen} />
-          <Stack.Screen name="PlaylistAddSongs" component={PlaylistAddSongsScreen} />
         </Stack.Group>
       </Stack.Navigator>
       {/* Resolves incoming share/deep links -> play the shared track. */}

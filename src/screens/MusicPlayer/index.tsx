@@ -19,7 +19,6 @@ import { AppText, Artwork, IconButton } from '@/components/common';
 import { ProgressBar } from '@/components/player';
 import { TrackRow } from '@/components/cards';
 import { TrackOptionsModal, TrackOption } from '@/components/modals';
-import { usePlaylistMenu } from '@/components/playlists';
 import { useAppDispatch, useIsSongLiked, usePlayer, useSafeProgress } from '@/hooks';
 import { shareAlbum } from '@/services/share';
 import { toggleSongLike } from '@/redux';
@@ -50,7 +49,6 @@ export const MusicPlayerScreen: React.FC = () => {
     toggleShuffle,
     playFrom,
   } = usePlayer();
-  const { addToPlaylist } = usePlaylistMenu();
   const { position, duration } = useSafeProgress(250);
   const isFavorite = useIsSongLiked(currentTrack ?? { albumId: '', trackNumber: undefined });
   const [queueOpen, setQueueOpen] = useState(false);
@@ -147,9 +145,6 @@ export const MusicPlayerScreen: React.FC = () => {
             </Pressable>
           </View>
           <View style={styles.titleActions}>
-            <Pressable onPress={() => addToPlaylist(currentTrack)} hitSlop={10} style={styles.titleAction}>
-              <MaterialCommunityIcons name="playlist-plus" size={30} color={theme.colors.icon} />
-            </Pressable>
             <IconButton
               name={isFavorite ? 'heart' : 'heart-outline'}
               size={28}

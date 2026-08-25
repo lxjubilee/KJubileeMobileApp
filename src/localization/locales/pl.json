@@ -185,23 +185,6 @@
     "artistNotFound": "Nie znaleziono wykonawcy.",
     "generic": "Coś poszło nie tak. Spróbuj ponownie."
   },
-  "playlist": {
-    "namePrompt": "Nazwij swoją playlistę",
-    "namePlaceholder": "Nazwa playlisty",
-    "create": "Utwórz",
-    "save": "Zapisz",
-    "rename": "Zmień nazwę playlisty",
-    "delete": "Usuń playlistę",
-    "deleteConfirm": "Usunąć \"{{title}}\"? Tej operacji nie można cofnąć.",
-    "addSongs": "Dodaj utwory",
-    "addToPlaylist": "Dodaj do playlisty",
-    "newPlaylist": "Nowa playlista",
-    "removeFromPlaylist": "Usuń z tej playlisty",
-    "songCount": "{{count}} utworów",
-    "empty": "Nie ma jeszcze muzyki",
-    "emptyHint": "Dotknij „Dodaj utwory”, aby dodać muzykę do tej playlisty.",
-    "notFound": "Nie znaleziono playlisty."
-  },
   "stub": {
     "comingSoon": "Wkrótce",
     "description": "Ten obszar jest podłączony do architektury aplikacji i gotowy do rozbudowy."

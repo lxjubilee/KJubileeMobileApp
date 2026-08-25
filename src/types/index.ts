@@ -25,7 +25,6 @@ export interface ResolvedRail {
   itemType: import('./models').RailItemType;
   albums?: import('./models').Album[];
   artists?: import('./models').Artist[];
-  playlists?: import('./models').Playlist[];
   /** When set, the rail shows a "See all" action targeting this artist's full album list. */
   seeAllArtistId?: string;
   /** Catalog category label this rail belongs to, used by the Home filter chips. */

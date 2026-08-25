@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector, setLimitReached } from '@/redux';
 import type { Track } from '@/types';
-import { trackSongUuid } from '@/services/playlists';
+import { trackSongUuid } from '@/services/catalogIds';
 import { listeningApi } from '@/services/listening';
 import { isExpoGo, Event, TrackPlayer, useTrackPlayerEvents } from '@/services/music';
 

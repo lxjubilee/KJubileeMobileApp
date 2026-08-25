@@ -19,9 +19,8 @@ import {
   useSongSummaries,
   useVisibleAlbums,
 } from '@/hooks';
-import { usePlaylistMenu } from '@/components/playlists';
 import { shareAlbum } from '@/services/share';
-import { albumUuid, trackSongUuid } from '@/services/playlists';
+import { albumUuid, trackSongUuid } from '@/services/catalogIds';
 import { songLikeKey } from '@/services/likes';
 import { toggleAlbumLike, toggleSongLike } from '@/redux';
 import { AlbumRepository, ArtistRepository } from '@/repositories';
@@ -86,7 +85,6 @@ export const AlbumDetailsScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
   const { playTracks, playFrom, currentTrack, isPlaying, toggle } = usePlayer();
-  const { addToPlaylist, addAlbumToPlaylist } = usePlaylistMenu();
 
   const [album, setAlbum] = useState<Album | null>(null);
   const [loading, setLoading] = useState(true);
@@ -166,23 +164,13 @@ export const AlbumDetailsScreen: React.FC = () => {
     [navigation],
   );
 
-  // "Added to a playlist" state for the album: true once every playable track is
-  // in at least one playlist. `membership` (song uuid -> playlist count) is kept
-  // live by the add/remove thunks, so this flips the icon the moment an add
-  // succeeds — and stays flipped on return visits.
-  const membership = useAppSelector((s) => s.playlists.membership);
-  const albumInPlaylist = useMemo(() => {
-    const ids = tracks.map((tr) => trackSongUuid(tr)).filter((x): x is string => !!x);
-    return ids.length > 0 && ids.every((id) => (membership[id] ?? 0) > 0);
-  }, [tracks, membership]);
-
   // Same footprint as the Home hero image: full content width, height driven by
   // the cover's aspect ratio (learned on load) so nothing is cropped.
   const artSize = { width: POSTER_W, height: posterH };
 
   // Ratings: the reviews API keys by the backend's deterministic uuids, while
   // the mobile catalog uses codes — so convert album code -> albumUuid and each
-  // track -> its song uuid (same scheme playlists use). See songId.ts.
+  // track -> its song uuid. See catalogIds/songId.ts.
   const albumTargetId = useMemo(() => (album ? albumUuid(album.id) : undefined), [album]);
   const { summary: albumSummary, applySummary: applyAlbumSummary } = useReviews(
     'album',
@@ -321,20 +309,6 @@ export const AlbumDetailsScreen: React.FC = () => {
               onPress={() => dispatch(toggleAlbumLike(album))}
             />
             <IconButton name="share-outline" size={26} onPress={onShare} style={styles.share} />
-            <Pressable
-              onPress={() => addAlbumToPlaylist(tracks)}
-              hitSlop={10}
-              disabled={!tracks.length}
-              style={[styles.share, { opacity: tracks.length ? 1 : 0.4 }]}
-              accessibilityRole="button"
-              accessibilityLabel={albumInPlaylist ? t('playlist.inPlaylist') : t('playlist.addToPlaylist')}
-            >
-              <MaterialCommunityIcons
-                name={albumInPlaylist ? 'playlist-check' : 'playlist-plus'}
-                size={28}
-                color={albumInPlaylist ? theme.colors.accent : '#FFFFFF'}
-              />
-            </Pressable>
           </View>
           <View style={styles.actionsRight}>
             <IconButton name="shuffle" size={26} onPress={onShuffle} style={styles.dl} />
@@ -380,8 +354,6 @@ export const AlbumDetailsScreen: React.FC = () => {
                   songLikeKey(track) ? (tr) => dispatch(toggleSongLike(tr)) : undefined
                 }
                 onPress={() => playFrom(tracks, track.id)}
-                onAddToPlaylist={addToPlaylist}
-                isInPlaylist={(membership[trackSongUuid(track) ?? ''] ?? 0) > 0}
                 showDuration
                 ratingSlot={
                   trackSongUuid(track) ? (

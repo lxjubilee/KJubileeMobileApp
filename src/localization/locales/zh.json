@@ -185,23 +185,6 @@
     "artistNotFound": "未找到艺人。",
     "generic": "出了点问题。请重试。"
   },
-  "playlist": {
-    "namePrompt": "为你的播放列表命名",
-    "namePlaceholder": "播放列表名称",
-    "create": "创建",
-    "save": "保存",
-    "rename": "重命名播放列表",
-    "delete": "删除播放列表",
-    "deleteConfirm": "删除“{{title}}”？此操作无法撤销。",
-    "addSongs": "添加歌曲",
-    "addToPlaylist": "添加到播放列表",
-    "newPlaylist": "新建播放列表",
-    "removeFromPlaylist": "从此播放列表中移除",
-    "songCount": "{{count}} 首歌曲",
-    "empty": "还没有音乐",
-    "emptyHint": "点按“添加歌曲”，为此播放列表添加音乐。",
-    "notFound": "未找到播放列表。"
-  },
   "stub": {
     "comingSoon": "敬请期待",
     "description": "该区域已接入应用架构，随时可以进一步开发。"

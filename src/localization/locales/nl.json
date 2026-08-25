@@ -185,23 +185,6 @@
     "artistNotFound": "Artiest niet gevonden.",
     "generic": "Er is iets misgegaan. Probeer het opnieuw."
   },
-  "playlist": {
-    "namePrompt": "Geef je afspeellijst een naam",
-    "namePlaceholder": "Naam van afspeellijst",
-    "create": "Maken",
-    "save": "Opslaan",
-    "rename": "Afspeellijst hernoemen",
-    "delete": "Afspeellijst verwijderen",
-    "deleteConfirm": "\"{{title}}\" verwijderen? Dit kan niet ongedaan worden gemaakt.",
-    "addSongs": "Nummers toevoegen",
-    "addToPlaylist": "Aan afspeellijst toevoegen",
-    "newPlaylist": "Nieuwe afspeellijst",
-    "removeFromPlaylist": "Verwijderen uit deze afspeellijst",
-    "songCount": "{{count}} nummers",
-    "empty": "Nog geen muziek",
-    "emptyHint": "Tik op ‘Nummers toevoegen’ om muziek aan deze afspeellijst toe te voegen.",
-    "notFound": "Afspeellijst niet gevonden."
-  },
   "stub": {
     "comingSoon": "Binnenkort",
     "description": "Dit gedeelte is gekoppeld aan de app-architectuur en klaar om te worden uitgebouwd."

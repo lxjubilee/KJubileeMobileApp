@@ -185,23 +185,6 @@
     "artistNotFound": "Artis tidak ditemukan.",
     "generic": "Terjadi kesalahan. Coba lagi."
   },
-  "playlist": {
-    "namePrompt": "Beri nama playlist Anda",
-    "namePlaceholder": "Nama playlist",
-    "create": "Buat",
-    "save": "Simpan",
-    "rename": "Ganti nama playlist",
-    "delete": "Hapus playlist",
-    "deleteConfirm": "Hapus \"{{title}}\"? Ini tidak dapat dibatalkan.",
-    "addSongs": "Tambah lagu",
-    "addToPlaylist": "Tambahkan ke playlist",
-    "newPlaylist": "Playlist baru",
-    "removeFromPlaylist": "Hapus dari playlist ini",
-    "songCount": "{{count}} lagu",
-    "empty": "Belum ada musik",
-    "emptyHint": "Ketuk “Tambah lagu” untuk menambahkan musik ke playlist ini.",
-    "notFound": "Playlist tidak ditemukan."
-  },
   "stub": {
     "comingSoon": "Segera hadir",
     "description": "Area ini terhubung ke arsitektur aplikasi dan siap dikembangkan."

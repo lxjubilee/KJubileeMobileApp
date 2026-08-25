@@ -185,23 +185,6 @@
     "artistNotFound": "Artisten hittades inte.",
     "generic": "Något gick fel. Försök igen."
   },
-  "playlist": {
-    "namePrompt": "Namnge din spellista",
-    "namePlaceholder": "Spellistans namn",
-    "create": "Skapa",
-    "save": "Spara",
-    "rename": "Byt namn på spellista",
-    "delete": "Ta bort spellista",
-    "deleteConfirm": "Ta bort \"{{title}}\"? Detta kan inte ångras.",
-    "addSongs": "Lägg till låtar",
-    "addToPlaylist": "Lägg till i spellista",
-    "newPlaylist": "Ny spellista",
-    "removeFromPlaylist": "Ta bort från denna spellista",
-    "songCount": "{{count}} låtar",
-    "empty": "Ingen musik ännu",
-    "emptyHint": "Tryck på ”Lägg till låtar” för att lägga till musik i den här spellistan.",
-    "notFound": "Spellistan hittades inte."
-  },
   "stub": {
     "comingSoon": "Kommer snart",
     "description": "Det här området är kopplat till appens arkitektur och redo att byggas ut."

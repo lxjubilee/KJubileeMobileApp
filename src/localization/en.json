@@ -19,9 +19,10 @@
   },
   "tabs": {
     "home": "Home",
+    "dial": "Dial",
     "browse": "Browse",
     "search": "Search",
-    "playlists": "Playlists"
+    "profile": "Profile"
   },
   "home": {
     "greetingMorning": "Good morning",
@@ -324,25 +325,6 @@
     "albumNotFound": "Album not found.",
     "artistNotFound": "Artist not found.",
     "generic": "Something went wrong. Please try again."
-  },
-  "playlist": {
-    "namePrompt": "Name your playlist",
-    "namePlaceholder": "Playlist name",
-    "create": "Create",
-    "save": "Save",
-    "rename": "Rename playlist",
-    "reorder": "Reorder",
-    "delete": "Delete playlist",
-    "deleteConfirm": "Delete \"{{title}}\"? This can't be undone.",
-    "addSongs": "Add songs",
-    "addToPlaylist": "Add to playlist",
-    "inPlaylist": "In a playlist",
-    "newPlaylist": "New playlist",
-    "removeFromPlaylist": "Remove from this playlist",
-    "songCount": "{{count}} songs",
-    "empty": "There is no music yet",
-    "emptyHint": "Tap “Add songs” to add music to this playlist.",
-    "notFound": "Playlist not found."
   },
   "contributions": {
     "title": "My Contributions",

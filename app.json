@@ -44,10 +44,21 @@
           "action": "VIEW",
           "autoVerify": true,
           "data": [
-            { "scheme": "https", "host": "kjubilee.com", "pathPrefix": "/album" },
-            { "scheme": "https", "host": "www.kjubilee.com", "pathPrefix": "/album" }
+            {
+              "scheme": "https",
+              "host": "kjubilee.com",
+              "pathPrefix": "/album"
+            },
+            {
+              "scheme": "https",
+              "host": "www.kjubilee.com",
+              "pathPrefix": "/album"
+            }
           ],
-          "category": ["BROWSABLE", "DEFAULT"]
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
         }
       ]
     },
@@ -69,7 +80,8 @@
       "authBaseUrl": "https://api.kjubilee.com",
       "mobileConfigBaseUrl": "https://api.kjubilee.com",
       "turnstileSiteKey": "0x4AAAAAADJah9FpwSaEzlLP",
-      "turnstileBaseUrl": "https://jubileeinspire.com"
+      "turnstileBaseUrl": "https://jubileeinspire.com",
+      "devSkipAuth": true
     },
     "owner": "gabeungureanu"
   }

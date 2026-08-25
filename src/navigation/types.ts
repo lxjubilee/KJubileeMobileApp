@@ -3,12 +3,14 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { CompositeScreenProps } from '@react-navigation/native';
 
-/** Bottom-tab routes. PlaylistsTab nests its own stack, so it carries those params. */
+/** Bottom-tab routes. ProfileTab nests its own stack, so it carries those params. */
 export type MainTabParamList = {
   HomeTab: undefined;
+  /** The Dial — the tuner surface, and radio's signature screen. */
+  DialTab: undefined;
   BrowseTab: undefined;
   SearchTab: undefined;
-  PlaylistsTab: NavigatorScreenParams<PlaylistsStackParamList>;
+  ProfileTab: NavigatorScreenParams<ProfileStackParamList>;
 };
 
 /**
@@ -32,13 +34,17 @@ export type RootStackParamList = {
     genreByItem?: Record<string, string>;
     showAlbumGenre?: boolean;
   };
+  /** Full grid behind a Home shelf's "See all". Slugs are carried in shelf order
+   *  and re-resolved against the catalog by the screen, so the params stay small. */
+  StationList: {
+    title: string;
+    slugs: string[];
+  };
   /** Full grid behind an artist rail's "See all". Ids are carried in rail order. */
   ArtistList: {
     title: string;
     artistIds: string[];
   };
-  PlaylistDetails: { playlistId: string };
-  PlaylistAddSongs: { playlistId: string };
   MusicPlayer: undefined;
 };
 
@@ -60,15 +66,13 @@ export type AuthStackParamList = {
 };
 
 /**
- * Per-tab inner stack for the Playlists tab. Profile nests here, and it now owns
- * the entry points to LikedSongs / FollowedArtists (previously on the Library
- * screen, which the playlists-only tab replaced).
+ * Per-tab inner stack for the Profile tab, which owns account settings, the
+ * legal screens, and the entry points to LikedSongs / FollowedArtists.
  */
-export type PlaylistsStackParamList = {
-  Playlists: undefined;
+export type ProfileStackParamList = {
+  Profile: undefined;
   LikedSongs: undefined;
   FollowedArtists: undefined;
-  Profile: undefined;
   ChangePassword: undefined;
   PrivacyPolicy: undefined;
   TermsOfUse: undefined;
@@ -90,8 +94,8 @@ export type MainTabScreenProps<T extends keyof MainTabParamList> = CompositeScre
   RootStackScreenProps<keyof RootStackParamList>
 >;
 
-export type PlaylistsStackScreenProps<T extends keyof PlaylistsStackParamList> =
-  NativeStackScreenProps<PlaylistsStackParamList, T>;
+export type ProfileStackScreenProps<T extends keyof ProfileStackParamList> =
+  NativeStackScreenProps<ProfileStackParamList, T>;
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace

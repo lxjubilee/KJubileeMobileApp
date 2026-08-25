@@ -16,7 +16,7 @@ export const linking: LinkingOptions<RootStackParamList> = {
           HomeTab: 'home',
           BrowseTab: 'browse',
           SearchTab: 'search',
-          PlaylistsTab: 'playlists',
+          ProfileTab: 'profile',
         },
       },
       AlbumDetails: 'album/:albumId',

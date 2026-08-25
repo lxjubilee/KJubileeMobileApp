@@ -185,23 +185,6 @@
     "artistNotFound": "Hindi nahanap ang artist.",
     "generic": "May nangyaring mali. Pakisubukan ulit."
   },
-  "playlist": {
-    "namePrompt": "Pangalanan ang iyong playlist",
-    "namePlaceholder": "Pangalan ng playlist",
-    "create": "Gumawa",
-    "save": "I-save",
-    "rename": "Palitan ang pangalan ng playlist",
-    "delete": "Tanggalin ang playlist",
-    "deleteConfirm": "Tanggalin ang \"{{title}}\"? Hindi ito maaaring bawiin.",
-    "addSongs": "Magdagdag ng mga kanta",
-    "addToPlaylist": "Idagdag sa playlist",
-    "newPlaylist": "Bagong playlist",
-    "removeFromPlaylist": "Alisin sa playlist na ito",
-    "songCount": "{{count}} na kanta",
-    "empty": "Wala pang musika",
-    "emptyHint": "I-tap ang “Magdagdag ng mga kanta” para magdagdag ng musika sa playlist na ito.",
-    "notFound": "Hindi nahanap ang playlist."
-  },
   "stub": {
     "comingSoon": "Malapit nang dumating",
     "description": "Naka-konekta ang lugar na ito sa arkitektura ng app at handa nang paunlarin."

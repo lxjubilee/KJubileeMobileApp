@@ -45,3 +45,7 @@ yarn-error.*
 # local dev notes / decoded artifacts (not part of the app source)
 SignIn Machinism/
 gradle.decoded.txt
+
+# Client meeting transcript — kept local. It is a raw auto-transcription that
+# names individuals candidly, and this repository is public.
+docs/RadioAppRequirement.txt

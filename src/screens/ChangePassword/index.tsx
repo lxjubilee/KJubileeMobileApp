@@ -7,9 +7,9 @@ import { Screen, AppText, IconButton, PasswordInput } from '@/components/common'
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { changePassword } from '@/redux';
 import { passwordsMatch } from '@/utils';
-import type { PlaylistsStackParamList } from '@/navigation/types';
+import type { ProfileStackParamList } from '@/navigation/types';
 
-type Nav = NativeStackNavigationProp<PlaylistsStackParamList>;
+type Nav = NativeStackNavigationProp<ProfileStackParamList>;
 const ACCENT = '#007FFF'; // Azure blue accent
 
 /**

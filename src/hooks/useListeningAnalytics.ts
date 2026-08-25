@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useAppSelector } from '@/redux';
 import type { Track } from '@/types';
-import { trackSongUuid } from '@/services/playlists';
+import { trackSongUuid } from '@/services/catalogIds';
 import { analyticsApi } from '@/services/analytics';
 import { isExpoGo, Event, State, useTrackPlayerEvents } from '@/services/music';
 

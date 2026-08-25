@@ -24,14 +24,15 @@ import {
   useAppSelector,
 } from '@/hooks';
 import { setupPlayer } from '@/services/music';
+import { initRadio } from '@/services/radio';
 import { initAuthClient } from '@/services/auth';
 import { getManifest, onCatalogUpdated, invalidateCatalogIndex } from '@/services/catalog';
 import { getMobileConfig, onMobileConfigUpdated } from '@/services/mobileConfig';
-import { CONFIG } from '@/constants';
+import { CONFIG, ENV } from '@/constants';
 import { SplashScreen } from '@/components/SplashScreen';
 import { PlaybackLimitGate } from '@/components/PlaybackLimitGate';
 import { AppUpdateGate } from '@/components/AppUpdateGate';
-import { PlaylistMenuProvider } from '@/components/playlists';
+import { TrackMenuProvider } from '@/components/TrackMenuProvider';
 import { i18n } from '@/localization'; // initialize i18next
 
 /** Apply the persisted language to i18next once redux-persist has rehydrated. */
@@ -51,6 +52,11 @@ const PlayerSyncGate: React.FC = () => {
   useListeningAnalytics();
   usePlaybackGate();
 
+  // The radio engine watches the app lifecycle: returning to the foreground has
+  // to rejoin the live broadcast rather than resume a track that went stale
+  // while the phone slept. Mounted here so it is wired once, near the root.
+  useEffect(() => initRadio(), []);
+
   const dispatch = useAppDispatch();
   const authed = useAppSelector((s) => s.auth.user != null);
   useEffect(() => {
@@ -68,6 +74,12 @@ const PlayerSyncGate: React.FC = () => {
 const RootGate: React.FC = () => {
   const status = useAppSelector((s) => s.auth.status);
   const isAuthenticated = useAppSelector((s) => s.auth.user != null);
+
+  // TEMPORARY (auth API unavailable): open the app without a session so the
+  // radio surfaces can be built and reviewed. Dev bundles only — see
+  // ENV.DEV_SKIP_AUTH. Checked before `restoring` because a session restore
+  // that cannot reach the API would otherwise hold this at null forever.
+  if (ENV.DEV_SKIP_AUTH) return <RootNavigator />;
 
   if (status === 'restoring') return null;
 
@@ -136,9 +148,9 @@ export default function App() {
           <SafeAreaProvider>
             <ThemeProvider>
               <PlayerSyncGate />
-              <PlaylistMenuProvider>
+              <TrackMenuProvider>
                 {fontsLoaded ? <RootGate /> : null}
-              </PlaylistMenuProvider>
+              </TrackMenuProvider>
               {/* Free-plan daily-limit popup (shown when playback hits the cap). */}
               <PlaybackLimitGate />
               {/* Post-splash "update available" prompt (checks once per launch). */}

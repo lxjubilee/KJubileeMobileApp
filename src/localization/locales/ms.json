@@ -185,23 +185,6 @@
     "artistNotFound": "Artis tidak dijumpai.",
     "generic": "Ada sesuatu yang tidak kena. Cuba lagi."
   },
-  "playlist": {
-    "namePrompt": "Namakan senarai main anda",
-    "namePlaceholder": "Nama senarai main",
-    "create": "Cipta",
-    "save": "Simpan",
-    "rename": "Namakan semula senarai main",
-    "delete": "Padam senarai main",
-    "deleteConfirm": "Padam \"{{title}}\"? Ini tidak boleh dibatalkan.",
-    "addSongs": "Tambah lagu",
-    "addToPlaylist": "Tambah ke senarai main",
-    "newPlaylist": "Senarai main baharu",
-    "removeFromPlaylist": "Alih keluar daripada senarai main ini",
-    "songCount": "{{count}} lagu",
-    "empty": "Belum ada muzik",
-    "emptyHint": "Ketik “Tambah lagu” untuk menambah muzik ke senarai main ini.",
-    "notFound": "Senarai main tidak dijumpai."
-  },
   "stub": {
     "comingSoon": "Akan datang",
     "description": "Kawasan ini disambungkan ke seni bina apl dan sedia untuk dibangunkan."

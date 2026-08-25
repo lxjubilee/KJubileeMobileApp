@@ -185,23 +185,6 @@
     "artistNotFound": "Kunstneren blev ikke fundet.",
     "generic": "Noget gik galt. Prøv igen."
   },
-  "playlist": {
-    "namePrompt": "Navngiv din afspilningsliste",
-    "namePlaceholder": "Afspilningslistens navn",
-    "create": "Opret",
-    "save": "Gem",
-    "rename": "Omdøb afspilningsliste",
-    "delete": "Slet afspilningsliste",
-    "deleteConfirm": "Slet \"{{title}}\"? Dette kan ikke fortrydes.",
-    "addSongs": "Tilføj sange",
-    "addToPlaylist": "Tilføj til afspilningsliste",
-    "newPlaylist": "Ny afspilningsliste",
-    "removeFromPlaylist": "Fjern fra denne afspilningsliste",
-    "songCount": "{{count}} sange",
-    "empty": "Ingen musik endnu",
-    "emptyHint": "Tryk på “Tilføj sange” for at tilføje musik til denne afspilningsliste.",
-    "notFound": "Afspilningslisten blev ikke fundet."
-  },
   "stub": {
     "comingSoon": "Kommer snart",
     "description": "Dette område er koblet til appens arkitektur og klar til at blive bygget ud."
