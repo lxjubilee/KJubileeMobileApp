@@ -1,118 +1,182 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Dimensions, FlatList, StyleSheet, TextInput, View } from 'react-native';
+import React, { useCallback, useMemo, useState } from 'react';
+import { FlatList, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useTranslation } from 'react-i18next';
+import { Screen, AppText } from '@/components/common';
 import { useTheme } from '@/context';
-import { Screen, AppText, Loader, IconButton } from '@/components/common';
-import { AlbumCard } from '@/components/cards';
-import { useVisibleAlbums } from '@/hooks';
-import { AlbumRepository } from '@/repositories';
-import { Album } from '@/types';
+import { useRadio } from '@/hooks';
+import { getAllStations, getSections } from '@/services/radio';
+import { tune } from '@/services/radio';
+import type { RadioStation } from '@/services/radio';
 import type { RootStackParamList } from '@/navigation/types';
+import { StationRow, ROW_HEIGHT } from './components/StationRow';
+
+/**
+ * Browse — every station on the band, in frequency order.
+ *
+ * This was a grid of albums from the music app. It is now the mobile version of
+ * the website's `stations.html`, which exists alongside the dial for a reason:
+ * Home answers "what's good", the Dial answers "what else is out there", and
+ * this answers "where is the specific one I want". A shelf of four visible tiles
+ * is bad at "every Spanish-language station" or "what sits on 332.16".
+ *
+ * Frequency order, not alphabetical — that is how a band is read, and it is what
+ * the website's list does.
+ */
 
 type Nav = NativeStackNavigationProp<RootStackParamList>;
-const { width } = Dimensions.get('window');
-const GAP = 16;
-const CARD_W = (width - GAP * 3) / 2;
+
+/** Sentinels for the two filters that are not sections. */
+const ALL = '__all__';
+const ON_AIR = '__onair__';
 
 export const BrowseScreen: React.FC = () => {
-  const navigation = useNavigation<Nav>();
   const theme = useTheme();
-  const { t } = useTranslation();
-  const [albums, setAlbums] = useState<Album[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState('');
-  const visibleAlbums = useVisibleAlbums(albums);
+  const navigation = useNavigation<Nav>();
+  const radio = useRadio();
 
-  // Browse already holds the whole album list in memory, so filtering is local:
-  // no network round-trip, works offline, and updates on every keystroke.
-  const term = query.trim().toLowerCase();
-  const results = useMemo(() => {
-    if (!term) return visibleAlbums;
-    return visibleAlbums.filter(
-      (a) =>
-        a.title.toLowerCase().includes(term) || a.artistName.toLowerCase().includes(term),
+  const [term, setTerm] = useState('');
+  const [chip, setChip] = useState<string>(ALL);
+
+  const stations = useMemo(() => getAllStations(), []);
+  const sections = useMemo(() => getSections(), []);
+
+  /** section id -> the slugs it holds, so a chip can filter without a lookup. */
+  const bySection = useMemo(() => {
+    const map = new Map<string, Set<string>>();
+    sections.forEach((s) =>
+      map.set(s.id, new Set(s.shelves.flatMap((shelf) => shelf.stations))),
     );
-  }, [visibleAlbums, term]);
+    return map;
+  }, [sections]);
 
-  useEffect(() => {
-    let active = true;
-    AlbumRepository.list()
-      .then((a) => {
-        if (!active) return;
-        // Dedupe by id — the catalog can list the same album in multiple places,
-        // which would otherwise produce duplicate FlatList keys.
-        const unique = Array.from(new Map(a.map((album) => [album.id, album])).values());
-        setAlbums(unique);
-      })
-      .finally(() => active && setLoading(false));
-    return () => {
-      active = false;
-    };
-  }, []);
+  const chips = useMemo(
+    () => [
+      { key: ALL, label: 'All' },
+      { key: ON_AIR, label: 'On Air' },
+      ...sections.map((s) => ({ key: s.id, label: s.label })),
+    ],
+    [sections],
+  );
 
-  if (loading) {
-    return (
-      <Screen>
-        <Loader />
-      </Screen>
-    );
-  }
+  const filtered = useMemo(() => {
+    const q = term.trim().toLowerCase();
+    return stations.filter((s) => {
+      if (chip === ON_AIR && !s.live) return false;
+      if (chip !== ALL && chip !== ON_AIR && !bySection.get(chip)?.has(s.slug)) return false;
+      if (!q) return true;
+      // Frequency is part of the search on purpose: on a dial, the number is a
+      // name. Typing "332" should find Jubilee Praise (Română).
+      return (
+        s.name.toLowerCase().includes(q) ||
+        s.format.toLowerCase().includes(q) ||
+        s.hm.includes(q) ||
+        s.lang.toLowerCase().includes(q) ||
+        (s.host?.name.toLowerCase().includes(q) ?? false)
+      );
+    });
+  }, [stations, term, chip, bySection]);
+
+  const onPress = useCallback(
+    (station: RadioStation) => {
+      if (!station.live) return;
+      void tune(station.slug);
+      navigation.navigate('MainTabs', { screen: 'DialTab' });
+    },
+    [navigation],
+  );
+
+  const c = theme.colors;
+  const playingSlug = radio.playing ? radio.slug : null;
+  const liveCount = filtered.filter((s) => s.live).length;
 
   return (
     <Screen>
-      {/* Pinned outside the FlatList so the title and search box stay put while
-          the album grid scrolls underneath. */}
+      {/* Pinned outside the list so the title, search and chips stay put while
+          a hundred rows scroll under them. */}
       <View style={styles.header}>
-        <AppText variant="display">{t('tabs.browse')}</AppText>
-        <View
-          style={[
-            styles.searchBox,
-            { backgroundColor: theme.colors.surface, borderRadius: theme.radius.md },
-          ]}
-        >
-          <Ionicons name="search" size={20} color={theme.colors.iconMuted} />
+        <AppText variant="display" style={styles.title}>
+          All Stations
+        </AppText>
+
+        <View style={[styles.searchBox, { backgroundColor: c.surface, borderRadius: theme.radius.md }]}>
+          <Ionicons name="search" size={19} color={c.iconMuted} />
           <TextInput
-            value={query}
-            onChangeText={setQuery}
-            placeholder={t('browse.searchPlaceholder')}
-            placeholderTextColor={theme.colors.textMuted}
-            style={[styles.input, { color: theme.colors.text }]}
-            returnKeyType="search"
+            value={term}
+            onChangeText={setTerm}
+            placeholder="Search name, format, host, frequency…"
+            placeholderTextColor={c.textMuted}
+            style={[styles.input, { color: c.text }]}
             autoCorrect={false}
+            returnKeyType="search"
           />
-          {query.length ? (
-            <IconButton
-              name="close-circle"
-              size={20}
-              color={theme.colors.iconMuted}
-              onPress={() => setQuery('')}
-            />
+          {term ? (
+            <Pressable onPress={() => setTerm('')} hitSlop={10}>
+              <Ionicons name="close-circle" size={18} color={c.iconMuted} />
+            </Pressable>
           ) : null}
         </View>
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.chipRow}
+        >
+          {chips.map((ch) => {
+            const on = ch.key === chip;
+            return (
+              <Pressable
+                key={ch.key}
+                onPress={() => setChip(ch.key)}
+                accessibilityRole="button"
+                accessibilityState={{ selected: on }}
+                style={[
+                  styles.chip,
+                  { backgroundColor: on ? c.text : c.surface, borderColor: c.border },
+                ]}
+              >
+                <AppText style={[styles.chipText, { color: on ? c.background : c.textSecondary }]}>
+                  {ch.label}
+                </AppText>
+              </Pressable>
+            );
+          })}
+        </ScrollView>
+
+        <AppText style={[styles.count, { color: c.textMuted }]}>
+          {`${filtered.length} station${filtered.length === 1 ? '' : 's'} · ${liveCount} on air`}
+        </AppText>
       </View>
 
       <FlatList
-        data={results}
-        keyExtractor={(a) => a.id}
-        numColumns={2}
-        columnWrapperStyle={styles.column}
-        contentContainerStyle={styles.content}
+        data={filtered}
+        keyExtractor={(s) => s.slug}
+        contentContainerStyle={styles.listContent}
         keyboardShouldPersistTaps="handled"
+        initialNumToRender={12}
+        maxToRenderPerBatch={12}
+        windowSize={9}
+        removeClippedSubviews
+        // Every row is a fixed height, so the list can skip measurement.
+        getItemLayout={(_, index) => ({
+          length: ROW_HEIGHT,
+          offset: ROW_HEIGHT * index,
+          index,
+        })}
+        ItemSeparatorComponent={() => (
+          <View style={[styles.sep, { backgroundColor: c.border }]} />
+        )}
         ListEmptyComponent={
-          term ? (
-            <AppText variant="body" color="textMuted" style={styles.noResults}>
-              {t('search.noResults', { query: query.trim() })}
-            </AppText>
-          ) : null
+          <AppText style={[styles.empty, { color: c.textMuted }]}>
+            No station matches that search.
+          </AppText>
         }
         renderItem={({ item }) => (
-          <AlbumCard
-            album={item}
-            width={CARD_W}
-            onPress={(al) => navigation.navigate('AlbumDetails', { albumId: al.id })}
+          <StationRow
+            station={item}
+            playing={item.slug === playingSlug}
+            onPress={onPress}
           />
         )}
       />
@@ -121,12 +185,30 @@ export const BrowseScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  content: { paddingHorizontal: GAP, paddingBottom: 24 },
-  header: { paddingHorizontal: GAP, paddingTop: 8, paddingBottom: 16 },
-  searchBox: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, height: 46, marginTop: 16 },
-  input: { flex: 1, marginLeft: 8, fontSize: 15 },
-  noResults: { paddingTop: 24 },
-  column: { gap: GAP, marginBottom: GAP },
+  header: { paddingHorizontal: 16, paddingBottom: 8 },
+  title: { marginTop: 8, marginBottom: 14 },
+  searchBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 9,
+    paddingHorizontal: 12,
+    height: 44,
+  },
+  input: { flex: 1, fontSize: 15, paddingVertical: 0 },
+  chipRow: { gap: 8, paddingVertical: 14, paddingRight: 16 },
+  chip: {
+    paddingHorizontal: 14,
+    height: 32,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  chipText: { fontSize: 13 },
+  count: { fontSize: 12 },
+  listContent: { paddingTop: 6, paddingBottom: 24 },
+  sep: { height: StyleSheet.hairlineWidth, marginLeft: 96 },
+  empty: { fontSize: 14, textAlign: 'center', marginTop: 40 },
 });
 
 export default BrowseScreen;
