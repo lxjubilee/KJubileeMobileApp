@@ -2,8 +2,6 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   ProfileScreen,
-  LikedSongsScreen,
-  FollowedArtistsScreen,
   ChangePasswordScreen,
   PrivacyPolicyScreen,
   TermsOfUseScreen,
@@ -24,8 +22,6 @@ const Stack = createNativeStackNavigator<ProfileStackParamList>();
 export const ProfileStackNavigator: React.FC = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Profile" component={ProfileScreen} />
-    <Stack.Screen name="LikedSongs" component={LikedSongsScreen} />
-    <Stack.Screen name="FollowedArtists" component={FollowedArtistsScreen} />
     <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
     <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen} />
     <Stack.Screen name="TermsOfUse" component={TermsOfUseScreen} />

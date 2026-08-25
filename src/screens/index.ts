@@ -7,8 +7,6 @@ export { AlbumDetailsScreen } from './AlbumDetails';
 export { AlbumReviewsScreen } from './AlbumReviews';
 export { ArtistDetailsScreen } from './ArtistDetails';
 export { MusicPlayerScreen } from './MusicPlayer';
-export { LikedSongsScreen } from './LikedSongs';
-export { FollowedArtistsScreen } from './FollowedArtists';
 // DownloadsScreen is intentionally not exported — feature hidden for v1.
 export { ProfileScreen } from './Profile';
 export { ChangePasswordScreen } from './ChangePassword';

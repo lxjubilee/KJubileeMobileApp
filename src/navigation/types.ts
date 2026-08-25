@@ -66,12 +66,10 @@ export type AuthStackParamList = {
 
 /**
  * Per-tab inner stack for the Profile tab, which owns account settings, the
- * legal screens, and the entry points to LikedSongs / FollowedArtists.
+ * legal screens.
  */
 export type ProfileStackParamList = {
   Profile: undefined;
-  LikedSongs: undefined;
-  FollowedArtists: undefined;
   ChangePassword: undefined;
   PrivacyPolicy: undefined;
   TermsOfUse: undefined;
