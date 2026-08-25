@@ -71,6 +71,7 @@ export const StationTile: React.FC<Props> = React.memo(
             source={art}
             style={[StyleSheet.absoluteFill, !live && styles.dimmed]}
             contentFit="cover"
+            contentPosition="top"
             transition={160}
             cachePolicy="memory-disk"
           />

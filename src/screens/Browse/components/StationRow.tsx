@@ -55,6 +55,7 @@ export const StationRow: React.FC<Props> = React.memo(({ station, playing, onPre
             source={art}
             style={[StyleSheet.absoluteFill, !live && styles.dimmed]}
             contentFit="cover"
+            contentPosition="top"
             transition={140}
             cachePolicy="memory-disk"
           />

@@ -55,6 +55,7 @@ export const FeaturedStation: React.FC<Props> = React.memo(
               source={art}
               style={[StyleSheet.absoluteFill, !live && styles.dimmed]}
               contentFit="cover"
+              contentPosition="top"
               transition={180}
               cachePolicy="memory-disk"
             />
