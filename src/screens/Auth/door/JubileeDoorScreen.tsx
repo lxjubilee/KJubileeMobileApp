@@ -5,8 +5,8 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { AuthBanner, AuthScreenShell } from '@/components/auth';
 import { useAppDispatch } from '@/hooks';
-import { signIn, verify2FA, verifySignup } from '@/redux';
-import { authService, readAuthError, type LookupResponseDTO } from '@/services/auth';
+import { sessionEstablished } from '@/redux';
+import { ssoService, SsoError, toAuthUser, type DoorOutcome } from '@/services/auth';
 import { CONFIG } from '@/constants';
 import {
   fromIsoDate,
@@ -23,15 +23,14 @@ import { EmailStep } from './steps/EmailStep';
 import { PasswordStep } from './steps/PasswordStep';
 import { CreateLinkedStep } from './steps/CreateLinkedStep';
 import { CreateJubileeIdStep } from './steps/CreateJubileeIdStep';
-import { CodeStep } from './steps/CodeStep';
 
 type Nav = NativeStackNavigationProp<AuthStackParamList, 'JubileeDoor'>;
 type Route = RouteProp<AuthStackParamList, 'JubileeDoor'>;
 
-type Busy = null | 'lookup' | 'submit' | 'resend';
+type Busy = null | 'lookup' | 'submit';
 
 /**
- * The Jubilee Door — one screen, six steps, mirroring kjubilee.com.
+ * The Jubilee Door — one screen, five steps, mirroring kjubilee.com.
  *
  * Everything lives in ONE route rather than six. Three reasons:
  *
@@ -60,9 +59,9 @@ export const JubileeDoorScreen: React.FC = () => {
   /** The Jubilee ID password from the confirm step, replayed to provision. */
   const heldSsoPassword = useRef('');
 
-  // Turnstile is shown with the email field, matching the web. The token it
-  // mints is not read by /api/auth/lookup — it is carried forward and spent on
-  // the /signin the next step makes.
+  // Turnstile is shown with the email field, matching the web. Unlike the old
+  // API, /api/sso/signup/lookup CONSUMES this token itself — it 403s without
+  // one — so it is spent on the lookup rather than carried to the next step.
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaReady, setCaptchaReady] = useState(!CONFIG.TURNSTILE_SITE_KEY);
   const [captchaKey, setCaptchaKey] = useState(0);
@@ -79,7 +78,7 @@ export const JubileeDoorScreen: React.FC = () => {
 
   const scrollRef = useRef<ScrollView>(null);
   /** Answers already paid for, so re-entering an address doesn't re-probe. */
-  const lookupMemo = useRef(new Map<string, LookupResponseDTO>());
+  const lookupMemo = useRef(new Map<string, DoorOutcome>());
   const lookupInFlight = useRef(false);
 
   const fail = useCallback((message: string) => {
@@ -145,13 +144,6 @@ export const JubileeDoorScreen: React.FC = () => {
     scrollRef.current?.scrollTo({ y: 0, animated: false });
   }, [state.step]);
 
-  // Resend cooldown ticker.
-  useEffect(() => {
-    if (state.cooldown <= 0) return;
-    const id = setTimeout(() => send({ type: 'tickCooldown' }), 1000);
-    return () => clearTimeout(id);
-  }, [state.cooldown]);
-
   // --- step 1: which door? ---------------------------------------------------
 
   const submitEmail = async () => {
@@ -176,32 +168,30 @@ export const JubileeDoorScreen: React.FC = () => {
     lookupInFlight.current = true;
     setBusy('lookup');
     try {
-      const res = await authService.lookupEmail(email);
+      // The lookup route 403s without a Turnstile token — it is the gate that
+      // stops the door being an unauthenticated way to ask whether an address
+      // holds a Jubilee ID.
+      const res = await ssoService.lookup(email, captchaToken ?? '');
       lookupMemo.current.set(key, res);
       send({ type: 'route', to: routeFor(res) });
     } catch (e) {
-      const meta = readAuthError(e);
-      logger.warn('door: lookup failed', meta.status, meta.message);
+      const err = e instanceof SsoError ? e : null;
+      logger.warn('door: lookup failed', err?.message);
       // Never advance on a failure: "no account found" and "couldn't ask" are
       // indistinguishable here, and guessing wrong pushes an existing member
-      // into a registration they cannot complete.
-      fail(
-        meta.rateLimited
-          ? t('auth.door.errors.rateLimited')
-          : t('auth.door.errors.lookupFailed'),
-      );
+      // into a registration they cannot complete. A spent Turnstile token also
+      // has to be replaced before the next attempt.
+      resetCaptcha();
+      fail(err?.message ?? t('auth.door.errors.lookupFailed'));
     } finally {
       lookupInFlight.current = false;
       setBusy(null);
     }
   };
 
-  /** existsLocally → sign in; existsInSso → confirm; neither → register. */
-  const routeFor = (r: LookupResponseDTO): 'welcome' | 'confirm' | 'form' => {
-    if (r.existsLocally) return 'welcome';
-    if (r.existsInSso) return 'confirm';
-    return 'form';
-  };
+  /** The service already reduced the lookup to one of the three outcomes. */
+  const routeFor = (r: DoorOutcome): 'welcome' | 'confirm' | 'form' =>
+    r.kind === 'password' ? 'welcome' : r.kind === 'confirm-id' ? 'confirm' : 'form';
 
   // --- steps 2A / 2B-1: password ---------------------------------------------
 
@@ -218,54 +208,42 @@ export const JubileeDoorScreen: React.FC = () => {
 
     setBusy('submit');
     try {
-      const result = await dispatch(
-        signIn({
-          email: state.email,
-          password,
-          rememberMe: state.rememberMe,
-          cfTurnstileToken: captchaToken ?? undefined,
-          ...(preview ? { preview: true as const } : null),
-        }),
-      );
+      const res = await ssoService.signIn({
+        email: state.email,
+        password,
+        rememberMe: state.rememberMe,
+      });
 
-      if (!signIn.fulfilled.match(result)) {
-        // The token is single-use and has now been spent. Surface the challenge
-        // on this step so the next attempt has a fresh one.
-        setCaptchaRetry(true);
-        resetCaptcha();
-        return fail((result.payload as string) ?? t('auth.door.errors.generic'));
-      }
-
-      switch (result.payload.kind) {
-        case 'authenticated':
-          return; // RootGate swaps the navigator out from under us
-        case '2fa':
-          setPassword('');
-          return send({
-            type: 'challenge',
-            mode: 'login',
-            verificationGuid: result.payload.verificationGuid,
-            info: t('auth.door.info.loginCodeSent'),
-          });
-        case 'needsProfile': {
-          const { profile } = result.payload;
-          // A date the authority sent but we could not read would silently show
-          // an empty field and ask the user to retype what the server knows.
-          if (profile.dateOfBirth && !fromIsoDate(profile.dateOfBirth)) {
-            logger.warn('door: unparseable date_of_birth from the identity authority', profile.dateOfBirth);
-          }
+      switch (res.kind) {
+        case 'signed-in':
+          // RootGate swaps the navigator out from under us the moment this lands.
+          dispatch(sessionEstablished(toAuthUser(res.user)));
+          return;
+        case 'create-linked': {
+          // The Jubilee ID checked out but there is no local account yet. Hold
+          // the password: it is replayed to create the account on the next step.
           heldSsoPassword.current = password;
           setPassword('');
-          return send({ type: 'needsProfile', profile });
+          return send({
+            type: 'needsProfile',
+            profile: {
+              firstName: res.firstName,
+              lastName: res.lastName,
+              dateOfBirth: res.dob,
+            },
+          });
         }
-        case 'redirectSignup':
+        case 'no-account':
           setPassword('');
           return send({ type: 'redirectSignup' });
-        default:
-          setCaptchaRetry(true);
-          resetCaptcha();
-          return fail(t('auth.door.errors.generic'));
       }
+    } catch (e) {
+      const message = e instanceof SsoError ? e.message : t('auth.door.errors.generic');
+      // The Turnstile token is single-use and has now been spent; surface the
+      // challenge again so a retry carries a fresh one.
+      setCaptchaRetry(true);
+      resetCaptcha();
+      return fail(message);
     } finally {
       setBusy(null);
     }
@@ -283,21 +261,19 @@ export const JubileeDoorScreen: React.FC = () => {
 
     setBusy('submit');
     try {
-      const result = await dispatch(
-        signIn({
-          email: state.email,
-          password: heldSsoPassword.current,
-          rememberMe: state.rememberMe,
-          provision: true,
-          firstName: state.firstName.trim(),
-          lastName: state.lastName.trim(),
-          dateOfBirth: state.dob ? toIsoDate(state.dob) : undefined,
-        }),
-      );
-      if (!signIn.fulfilled.match(result)) {
-        return fail((result.payload as string) ?? t('auth.door.errors.createFailed'));
-      }
-      if (result.payload.kind !== 'authenticated') fail(t('auth.door.errors.createFailed'));
+      const user = await ssoService.createLinked({
+        email: state.email,
+        // Re-verified server-side, so the creation cannot be forged from the
+        // client having merely reached this screen.
+        password: heldSsoPassword.current,
+        first_name: state.firstName.trim(),
+        last_name: state.lastName.trim(),
+        date_of_birth: state.dob ? toIsoDate(state.dob) : '',
+        rememberMe: state.rememberMe,
+      });
+      dispatch(sessionEstablished(toAuthUser(user)));
+    } catch (e) {
+      fail(e instanceof SsoError ? e.message : t('auth.door.errors.createFailed'));
     } finally {
       setBusy(null);
     }
@@ -320,90 +296,27 @@ export const JubileeDoorScreen: React.FC = () => {
 
     setBusy('submit');
     try {
-      // Called directly rather than through the thunk: this creates no session,
-      // so redux owns nothing here, and the door needs the 409 status that the
-      // thunk flattens into a message.
-      const challenge = await authService.requestSignup(
-        `${state.firstName.trim()} ${state.lastName.trim()}`,
-        state.email,
+      const user = await ssoService.createAccount({
+        email: state.email,
         password,
-      );
-      send({
-        type: 'challenge',
-        mode: 'signup',
-        verificationGuid: challenge.verificationGuid,
-        info: t('auth.door.info.signupCodeSent'),
+        first_name: state.firstName.trim(),
+        last_name: state.lastName.trim(),
+        date_of_birth: toIsoDate(state.dob),
+        rememberMe: state.rememberMe,
       });
+      // The Jubilee ID and the local account are created together and the
+      // listener is signed straight in — there is no emailed code to wait for.
+      dispatch(sessionEstablished(toAuthUser(user)));
     } catch (e) {
-      const meta = readAuthError(e);
-      if (meta.status === 409) {
+      const err = e instanceof SsoError ? e : null;
+      // 409 is "you already have an account" — bounce to the top with that copy
+      // rather than leaving them on a form that can never succeed.
+      if (err && /already exists/i.test(err.message)) {
         setPassword('');
         setConfirmPassword('');
-        return send({ type: 'accountExists', message: t('auth.door.errors.accountExists') });
+        return send({ type: 'accountExists', message: err.message });
       }
-      fail(meta.message || t('auth.door.errors.signupFailed'));
-    } finally {
-      setBusy(null);
-    }
-  };
-
-  // --- step 3: the emailed code ----------------------------------------------
-
-  const submitCode = async () => {
-    if (busy || state.otp.length !== 6 || !state.verificationGuid) return;
-    setBusy('submit');
-    try {
-      const result =
-        state.codeMode === 'signup'
-          ? await dispatch(
-              verifySignup({
-                verificationGuid: state.verificationGuid,
-                verificationCode: state.otp,
-                rememberMe: state.rememberMe,
-              }),
-            )
-          : await dispatch(verify2FA({ code: state.otp, rememberMe: state.rememberMe }));
-
-      const ok =
-        state.codeMode === 'signup'
-          ? verifySignup.fulfilled.match(result)
-          : verify2FA.fulfilled.match(result);
-      if (!ok) fail((result.payload as string) ?? t('auth.door.errors.verifyFailed'));
-    } finally {
-      setBusy(null);
-    }
-  };
-
-  const resendCode = async () => {
-    if (busy || state.cooldown > 0 || state.resendLocked || !state.verificationGuid) return;
-    setBusy('resend');
-    try {
-      const res =
-        state.codeMode === 'signup'
-          ? await authService.resendSignup(state.verificationGuid)
-          : await authService.resendLoginCode(state.email, state.verificationGuid);
-      send({ type: 'startCooldown', seconds: 60 });
-      send({
-        type: 'info',
-        message:
-          typeof res.resendsRemaining === 'number'
-            ? t('auth.door.info.resentWithCount', { count: res.resendsRemaining })
-            : t('auth.door.info.resent'),
-      });
-    } catch (e) {
-      const meta = readAuthError(e);
-      if (meta.locked) {
-        // The sign-in resend cap answers 423 and locks the account for an hour.
-        // Stop offering the button rather than inviting a retry that cannot work.
-        send({ type: 'lockResend' });
-        return fail(t('auth.door.errors.accountLocked'));
-      }
-      if (meta.exhausted) return fail(t('auth.door.errors.resendFailed'));
-      if (typeof meta.cooldownSeconds === 'number') {
-        send({ type: 'startCooldown', seconds: meta.cooldownSeconds });
-        return;
-      }
-      fail(meta.rateLimited ? t('auth.door.errors.rateLimited') : t('auth.door.errors.resendFailed'));
+      fail(err?.message ?? t('auth.door.errors.signupFailed'));
     } finally {
       setBusy(null);
     }
@@ -417,7 +330,6 @@ export const JubileeDoorScreen: React.FC = () => {
     confirm: 'auth.door.confirm.title',
     createlinked: 'auth.door.createLinked.title',
     form: 'auth.door.create.title',
-    code: 'auth.door.code.title',
   };
 
   const submitting = busy === 'submit';
@@ -507,22 +419,6 @@ export const JubileeDoorScreen: React.FC = () => {
           onSubmit={submitCreateJubileeId}
           busy={submitting}
           disabled={busy !== null}
-        />
-      ) : null}
-
-      {state.step === 'code' ? (
-        <CodeStep
-          mode={state.codeMode}
-          email={state.email.trim()}
-          otp={state.otp}
-          onChangeOtp={(v) => send({ type: 'setOtp', value: v })}
-          onSubmit={submitCode}
-          onResend={resendCode}
-          onStepBack={goBack}
-          cooldown={state.cooldown}
-          resendLocked={state.resendLocked}
-          busy={submitting}
-          disabled={state.otp.length !== 6 || busy !== null}
         />
       ) : null}
     </AuthScreenShell>

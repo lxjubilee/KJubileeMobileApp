@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { authService } from '@/services/auth';
+import { authService, ssoService, tokenStore } from '@/services/auth';
 import type { AuthUser, SignInArgs } from '@/services/auth';
 import type { ApiError } from '@/services/api';
 
@@ -28,10 +28,30 @@ const initialState: AuthState = {
 const errMessage = (e: unknown): string =>
   (e as ApiError)?.message ?? (e as Error)?.message ?? 'Something went wrong';
 
-/** Cold-start: rebuild the session from secure storage (validates via /me). */
-export const restoreSession = createAsyncThunk('auth/restore', () =>
-  authService.restoreSession(),
-);
+/**
+ * Cold-start: rebuild the session from secure storage, validated against
+ * `/api/auth/me`.
+ *
+ * Goes through `ssoService`, not the old `authService.restoreSession`: that one
+ * tested a `me.authenticated` flag the Jubilee ID API does not send, so it read
+ * every live session as signed-out and cleared the store.
+ *
+ * A 401 is definitive and clears the session. A network failure falls back to
+ * the cached profile — never sign someone out over a blip.
+ */
+export const restoreSession = createAsyncThunk('auth/restore', async () => {
+  try {
+    const user = await ssoService.restore();
+    if (!user) {
+      await authService.signOut();
+      return null;
+    }
+    void tokenStore.saveUser(user);
+    return user;
+  } catch {
+    return tokenStore.getUser();
+  }
+});
 
 /**
  * Email + password sign-in. May resolve to a 2FA challenge, or to one of the
@@ -88,8 +108,10 @@ export const resendSignup = createAsyncThunk(
 /** Request a password-reset email (redeemed on the website). Returns its message. */
 export const forgotPassword = createAsyncThunk(
   'auth/forgotPassword',
-  (email: string, { rejectWithValue }) =>
-    authService.forgotPassword(email).catch((e) => rejectWithValue(errMessage(e))),
+  (args: { email: string; turnstileToken: string }, { rejectWithValue }) =>
+    authService
+      .forgotPassword(args.email, args.turnstileToken)
+      .catch((e) => rejectWithValue(errMessage(e))),
 );
 
 /** Change the signed-in user's password (Bearer-authed; keeps this session, revokes others). */
@@ -112,6 +134,16 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    /**
+     * A door sign-in that has already completed. `ssoService` persists the JWT
+     * itself, so nothing is left to await — this only lifts the user into the
+     * store, which is what flips RootGate over to the main app.
+     */
+    sessionEstablished(state, action: { payload: AuthUser }) {
+      state.user = action.payload;
+      state.status = 'authenticated';
+      state.error = null;
+    },
     /**
      * Clears auth locally without a network call (used on refresh failure).
      *
@@ -236,5 +268,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { clearSession, clearAuthError } = authSlice.actions;
+export const { clearSession, clearAuthError, sessionEstablished } = authSlice.actions;
 export default authSlice.reducer;

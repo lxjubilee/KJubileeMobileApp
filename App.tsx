@@ -12,7 +12,6 @@ import {
   fetchHomeFeed,
   restoreSession,
   clearSession,
-  fetchEntitlement,
 } from '@/redux';
 import { ThemeProvider } from '@/context';
 import { RootNavigator, AuthNavigator } from '@/navigation';
@@ -57,11 +56,9 @@ const PlayerSyncGate: React.FC = () => {
   // while the phone slept. Mounted here so it is wired once, near the root.
   useEffect(() => initRadio(), []);
 
-  const dispatch = useAppDispatch();
-  const authed = useAppSelector((s) => s.auth.user != null);
-  useEffect(() => {
-    if (authed) void dispatch(fetchEntitlement());
-  }, [authed, dispatch]);
+  // The plan-entitlement refresh on sign-in is gone: /api/subscriptions/me does
+  // not exist on the Jubilee ID API, so it 404'd immediately after every
+  // sign-in. Re-add when the radio API grows a subscription surface.
 
   return null;
 };

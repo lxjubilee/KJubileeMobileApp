@@ -1,8 +1,8 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Track } from '@/types';
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import { fetchLikes, toggleSongLike } from '@/redux';
+import { useAppDispatch } from '@/hooks';
+import { toggleSongLike } from '@/redux';
 import { useIsSongLiked } from '@/hooks';
 import { TrackOptionsModal, TrackOption } from '@/components/modals';
 
@@ -25,20 +25,16 @@ export function useTrackMenu(): TrackMenu {
  * managing its own modal.
  *
  * Was `PlaylistMenuProvider`. Playlists are gone — radio has no playlists — but
- * the sheet itself was never playlist machinery: it also carries Like, and it
- * is where the user's likes are warmed on sign-in so the heart state is right
- * from any track list. Only the "add to playlist" option and its picker went.
+ * the sheet itself was never playlist machinery: it also carries Like. Only the
+ * "add to playlist" option and its picker went.
  */
 export const TrackMenuProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const userId = useAppSelector((s) => s.auth.user?.id);
 
-  // Load the user's likes once signed in, so the heart state is ready from any
-  // track list without visiting a particular screen first.
-  useEffect(() => {
-    if (userId) void dispatch(fetchLikes());
-  }, [userId, dispatch]);
+  // The likes warm-up on sign-in is gone: /api/me/likes/ids does not exist on
+  // the Jubilee ID API, so it 404'd on every sign-in and opened a red box. The
+  // heart still toggles optimistically; there is simply nothing to prefetch.
 
   const [optionsTrack, setOptionsTrack] = useState<Track | null>(null);
 

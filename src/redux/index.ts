@@ -46,5 +46,6 @@ export {
   deleteAccount,
   clearSession,
   clearAuthError,
+  sessionEstablished,
 } from './slices/authSlice';
 export type { AuthUser, AuthStatus } from './slices/authSlice';

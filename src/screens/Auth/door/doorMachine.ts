@@ -2,20 +2,21 @@ import type { LinkedProfile } from '@/services/auth';
 import { fromIsoDate } from '@/utils';
 
 /**
- * The Jubilee Door's six steps, mirroring the web's single-component flow.
+ * The Jubilee Door's five steps, mirroring the web's single-component flow.
  * Entry is ALWAYS `email` — there is no separate "sign in" or "sign up" entry.
  *
  *   email ──lookup──┬─ existsLocally ──► welcome      (returning member)
  *                   ├─ existsInSso ────► confirm      (Jubilee ID, new here)
  *                   └─ neither ────────► form         (brand new)
  *   confirm ──────────────────────────► createlinked  (or back to form)
- *   welcome / code(login)  ───────────► signed in
- *   form ─────────────────────────────► code(signup) ─► signed in
+ *   welcome ──────────────────────────► signed in
+ *   form ─────────────────────────────► signed in
+ *
+ * There is no emailed code step. The old API challenged sign-in and sign-up with
+ * a 6-digit OTP; the Jubilee ID door does not — a correct password is the whole
+ * proof, and both create paths sign the listener straight in.
  */
-export type DoorStep = 'email' | 'welcome' | 'confirm' | 'createlinked' | 'form' | 'code';
-
-/** Which challenge the code step is completing. */
-export type CodeMode = 'login' | 'signup';
+export type DoorStep = 'email' | 'welcome' | 'confirm' | 'createlinked' | 'form';
 
 /**
  * Everything the door needs EXCEPT the passwords, which stay in the screen's own
@@ -32,16 +33,8 @@ export interface DoorState {
   dob: Date | null;
   rememberMe: boolean;
   agreed: boolean;
-  otp: string;
-  codeMode: CodeMode;
-  /** Identifies the emailed challenge; needed to verify and to resend it. */
-  verificationGuid: string | null;
   error: string | null;
   info: string | null;
-  /** Resend is hard-locked (the 423 that locks the account for an hour). */
-  resendLocked: boolean;
-  /** Seconds until the resend link re-enables. */
-  cooldown: number;
 }
 
 export const initialDoorState = (email = ''): DoorState => ({
@@ -54,13 +47,8 @@ export const initialDoorState = (email = ''): DoorState => ({
   // The web checks "Keep me signed in on this device" by default.
   rememberMe: true,
   agreed: false,
-  otp: '',
-  codeMode: 'login',
-  verificationGuid: null,
   error: null,
   info: null,
-  resendLocked: false,
-  cooldown: 0,
 });
 
 export type DoorEvent =
@@ -70,34 +58,26 @@ export type DoorEvent =
   | { type: 'setDob'; value: Date | null }
   | { type: 'setRememberMe'; value: boolean }
   | { type: 'setAgreed'; value: boolean }
-  | { type: 'setOtp'; value: string }
   /** The lookup resolved — go to the branch it chose. */
   | { type: 'route'; to: Extract<DoorStep, 'welcome' | 'confirm' | 'form'> }
   /** The Jubilee ID checked out but there is no local account yet. */
   | { type: 'needsProfile'; profile: LinkedProfile }
   /** Preview found no Jubilee ID either — fall through to full registration. */
   | { type: 'redirectSignup' }
-  /** A 6-digit code was emailed. */
-  | { type: 'challenge'; mode: CodeMode; verificationGuid: string; info: string }
   /** Signup hit a 409 — bounce to the top with the "you already have one" copy. */
   | { type: 'accountExists'; message: string }
   | { type: 'useDifferentEmail' }
   | { type: 'back' }
   | { type: 'error'; message: string }
   | { type: 'info'; message: string }
-  | { type: 'clearFeedback' }
-  | { type: 'startCooldown'; seconds: number }
-  | { type: 'tickCooldown' }
-  | { type: 'lockResend' };
+  | { type: 'clearFeedback' };
 
 /**
  * Where the back affordance goes from each step.
  *
  * `null` means "leave the door" (the caller pops the navigator). Note
  * `createlinked` returns to `confirm` rather than `email`: the password typed
- * there is what provisions the account, so the user must be able to re-enter it.
- * From `code`, back mirrors the web's "Use a different account" / "Edit details"
- * links rather than unwinding to the email step.
+ * there is what creates the account, so the user must be able to re-enter it.
  */
 export const backTargetFor = (state: DoorState): DoorStep | null => {
   switch (state.step) {
@@ -109,8 +89,6 @@ export const backTargetFor = (state: DoorState): DoorStep | null => {
       return 'email';
     case 'createlinked':
       return 'confirm';
-    case 'code':
-      return state.codeMode === 'signup' ? 'form' : 'welcome';
   }
 };
 
@@ -136,8 +114,6 @@ export function doorReducer(state: DoorState, event: DoorEvent): DoorState {
       return { ...state, rememberMe: event.value };
     case 'setAgreed':
       return { ...state, agreed: event.value, error: null };
-    case 'setOtp':
-      return { ...state, otp: event.value.replace(/\D/g, '').slice(0, 6), error: null };
 
     case 'route':
       return { ...enter(state, event.to), emailLocked: true };
@@ -155,17 +131,6 @@ export function doorReducer(state: DoorState, event: DoorEvent): DoorState {
     case 'redirectSignup':
       return enter(state, 'form');
 
-    case 'challenge':
-      return {
-        ...enter(state, 'code'),
-        codeMode: event.mode,
-        verificationGuid: event.verificationGuid,
-        otp: '',
-        info: event.info,
-        resendLocked: false,
-        cooldown: 60,
-      };
-
     case 'accountExists':
       return { ...initialDoorState(state.email), error: event.message };
 
@@ -177,8 +142,8 @@ export function doorReducer(state: DoorState, event: DoorEvent): DoorState {
       const target = backTargetFor(state);
       if (!target) return state;
       if (target === 'email') return initialDoorState(state.email);
-      // code → welcome/form and createlinked → confirm keep the form contents.
-      return { ...enter(state, target), otp: '', resendLocked: false, cooldown: 0 };
+      // createlinked → confirm keeps the form contents.
+      return enter(state, target);
     }
 
     case 'error':
@@ -187,12 +152,5 @@ export function doorReducer(state: DoorState, event: DoorEvent): DoorState {
       return { ...state, info: event.message, error: null };
     case 'clearFeedback':
       return { ...state, error: null, info: null };
-
-    case 'startCooldown':
-      return { ...state, cooldown: Math.max(0, event.seconds) };
-    case 'tickCooldown':
-      return state.cooldown > 0 ? { ...state, cooldown: state.cooldown - 1 } : state;
-    case 'lockResend':
-      return { ...state, resendLocked: true, cooldown: 0 };
   }
 }

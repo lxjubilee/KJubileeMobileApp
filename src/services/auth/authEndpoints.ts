@@ -70,9 +70,14 @@ export const authEndpoints = {
   logoutAll: () => authClient.post('/api/auth/logout-all').then((r) => r.data),
 
   // --- Password / account ---
-  forgotPassword: (email: string) =>
+  /**
+   * Request a reset link. Turnstile is REQUIRED — the route 403s without a
+   * token. Unlike the sign-in gate, this one guards a cost as well as a secret:
+   * every request sends a real email, at an address the requester chooses.
+   */
+  forgotPassword: (email: string, turnstileToken: string) =>
     authClient
-      .post<ForgotPasswordResponseDTO>('/api/auth/forgot-password', { email })
+      .post<ForgotPasswordResponseDTO>('/api/auth/forgot-password', { email, turnstileToken })
       .then((r) => r.data),
 
   changePassword: (body: ChangePasswordRequest) =>

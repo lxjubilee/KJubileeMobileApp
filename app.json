@@ -77,11 +77,10 @@
       "apiBaseUrl": "https://api.kjubilee.com/v1",
       "useMock": false,
       "dataSource": "manifest",
-      "authBaseUrl": "https://api.kjubilee.com",
-      "mobileConfigBaseUrl": "https://api.kjubilee.com",
+      "authBaseUrl": "https://kjubilee.com",
+      "mobileConfigBaseUrl": "https://kjubilee.com",
       "turnstileSiteKey": "0x4AAAAAAEP1RePvfYIIioIf",
-      "turnstileBaseUrl": "https://jubileeinspire.com",
-      "devSkipAuth": true
+      "turnstileBaseUrl": "https://kjubilee.com"
     },
     "owner": "gabeungureanu"
   }

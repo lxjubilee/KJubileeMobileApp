@@ -190,8 +190,8 @@ export const authService = {
   // --- Password / account ---
 
   /** Request a password-reset email (redeemed on the website). Always succeeds. */
-  async forgotPassword(email: string): Promise<string> {
-    const res = await authEndpoints.forgotPassword(email.trim());
+  async forgotPassword(email: string, turnstileToken: string): Promise<string> {
+    const res = await authEndpoints.forgotPassword(email.trim(), turnstileToken);
     return res.message;
   },
 
@@ -273,15 +273,22 @@ export const authService = {
     }
   },
 
+  /**
+   * Sign out.
+   *
+   * Purely local, and correctly so. The Jubilee ID session is a stateless
+   * 30-day JWT: there is no server-side session to invalidate, and
+   * `/api/auth/logout` does not exist on that API — it 404'd on every sign-out.
+   *
+   * That 404 was not harmless in a dev build. The response interceptor logs
+   * `AUTH ✗` at error level BEFORE rejecting, so even though the call was
+   * wrapped in try/catch and the sign-out completed, `console.error` had already
+   * opened a red box — a working action that looked like a crash.
+   *
+   * Restore the call if the API grows real session revocation.
+   */
   async signOut(): Promise<void> {
-    // Drop the session cookie first so the logout POST isn't seen as a cookie
-    // request (which would demand CSRF and 403). We authenticate via Bearer.
     await clearSessionCookies();
-    try {
-      await authEndpoints.logout(tokenStore.getRefreshToken() ?? undefined);
-    } catch {
-      // best-effort; clear locally regardless
-    }
     await tokenStore.clear();
   },
 };
