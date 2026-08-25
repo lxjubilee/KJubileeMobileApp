@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import {
   Animated,
-  FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
   ScrollView,
@@ -9,7 +8,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Screen, AppText, LanguagePanel } from '@/components/common';
@@ -17,7 +16,7 @@ import { useAppSelector, useRadio } from '@/hooks';
 import { getFeatured, getSections, getStationsBySlugs, tune, toggle } from '@/services/radio';
 import type { RadioStation } from '@/services/radio';
 import type { RootStackParamList } from '@/navigation/types';
-import { FeaturedStation } from './components/FeaturedStation';
+import { FeaturedCarousel } from './components/FeaturedCarousel';
 import { StationShelf } from './components/StationShelf';
 import { HomeHeader, HomeFilter, HOME_FILTER_ALL, CHIP_ROW_HEIGHT } from './components/HomeHeader';
 
@@ -43,6 +42,7 @@ type Nav = NativeStackNavigationProp<RootStackParamList>;
 
 export const HomeScreen: React.FC = () => {
   const navigation = useNavigation<Nav>();
+  const isFocused = useIsFocused();
   const radio = useRadio();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
@@ -165,23 +165,14 @@ export const HomeScreen: React.FC = () => {
         scrollEventThrottle={16}
       >
         {filter === HOME_FILTER_ALL ? (
-          <FlatList
-            horizontal
-            data={featured}
-            keyExtractor={(s) => s.slug}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.featuredRow}
-            snapToInterval={heroW + 12}
-            decelerationRate="fast"
-            snapToAlignment="start"
-            renderItem={({ item }) => (
-              <FeaturedStation
-                station={item}
-                width={heroW}
-                playing={item.slug === playingSlug}
-                onPress={onPickFeatured}
-              />
-            )}
+          <FeaturedCarousel
+            stations={featured}
+            width={heroW}
+            playingSlug={playingSlug}
+            // Only advance while Home is the visible tab and the strip is
+            // actually rendered — a timer ticking behind the Dial is waste.
+            active={isFocused}
+            onPress={onPickFeatured}
           />
         ) : null}
 
@@ -221,7 +212,6 @@ export const HomeScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   scrollContent: { paddingBottom: 28 },
-  featuredRow: { paddingHorizontal: 16 },
   footnote: { fontSize: 12, textAlign: 'center', marginTop: 34, paddingHorizontal: 24 },
 });
 
