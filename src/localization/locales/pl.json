@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Zmień hasło",
     "instruction": "Wprowadź obecne hasło i wybierz nowe (co najmniej 8 znaków).",
-    "currentPlaceholder": "Obecne hasło",
     "newPlaceholder": "Nowe hasło (min. 8 znaków)",
     "confirmPlaceholder": "Potwierdź nowe hasło",
     "mismatch": "Hasła nie są takie same.",

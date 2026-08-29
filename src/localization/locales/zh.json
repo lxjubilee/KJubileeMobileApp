@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "修改密码",
     "instruction": "输入你的当前密码并设置一个新密码（至少 8 个字符）。",
-    "currentPlaceholder": "当前密码",
     "newPlaceholder": "新密码（至少 8 个字符）",
     "confirmPlaceholder": "确认新密码",
     "mismatch": "两次密码不一致。",

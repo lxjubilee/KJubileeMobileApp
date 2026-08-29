@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "パスワードを変更",
     "instruction": "現在のパスワードを入力し、新しいパスワード（8文字以上）を設定してください。",
-    "currentPlaceholder": "現在のパスワード",
     "newPlaceholder": "新しいパスワード（8文字以上）",
     "confirmPlaceholder": "新しいパスワードを確認",
     "mismatch": "パスワードが一致しません。",

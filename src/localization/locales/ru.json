@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Изменить пароль",
     "instruction": "Введите текущий пароль и выберите новый (не менее 8 символов).",
-    "currentPlaceholder": "Текущий пароль",
     "newPlaceholder": "Новый пароль (мин. 8 символов)",
     "confirmPlaceholder": "Подтвердите новый пароль",
     "mismatch": "Пароли не совпадают.",

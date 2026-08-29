@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "پاس ورڈ تبدیل کریں",
     "instruction": "اپنا موجودہ پاس ورڈ درج کریں اور ایک نیا منتخب کریں (کم از کم 8 حروف)۔",
-    "currentPlaceholder": "موجودہ پاس ورڈ",
     "newPlaceholder": "نیا پاس ورڈ (کم از کم 8 حروف)",
     "confirmPlaceholder": "نئے پاس ورڈ کی تصدیق کریں",
     "mismatch": "پاس ورڈ مماثل نہیں ہیں۔",

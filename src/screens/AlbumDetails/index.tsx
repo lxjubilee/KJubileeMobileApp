@@ -26,6 +26,7 @@ import { toggleAlbumLike, toggleSongLike } from '@/redux';
 import { AlbumRepository, ArtistRepository } from '@/repositories';
 import { Album, MyReview, ReviewTargetType, Track } from '@/types';
 import type { RootStackParamList, RootStackScreenProps } from '@/navigation/types';
+import { darkColors } from '@/theme';
 
 type Nav = NativeStackNavigationProp<RootStackParamList>;
 const { width } = Dimensions.get('window');
@@ -42,7 +43,7 @@ const MAX_ASPECT = 1.9; // landscape limit (h ≈ 0.53×w)
 const HEADER_HEIGHT = 38;
 // Green used for the primary-genre pill (border + text), matching the web album
 // header — not the app's purple `primary` accent.
-const GENRE_GREEN = '#3FA45C';
+const GENRE_GREEN = darkColors.success;
 
 /** "·" separator between items in the one-line album metadata row. */
 const MetaDot: React.FC = () => (

@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Смяна на паролата",
     "instruction": "Въведете текущата си парола и изберете нова (поне 8 знака).",
-    "currentPlaceholder": "Текуща парола",
     "newPlaceholder": "Нова парола (мин. 8 знака)",
     "confirmPlaceholder": "Потвърдете новата парола",
     "mismatch": "Паролите не съвпадат.",

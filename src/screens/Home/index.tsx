@@ -18,7 +18,13 @@ import type { RadioStation } from '@/services/radio';
 import type { RootStackParamList } from '@/navigation/types';
 import { FeaturedCarousel } from './components/FeaturedCarousel';
 import { StationShelf } from './components/StationShelf';
-import { HomeHeader, HomeFilter, HOME_FILTER_ALL, CHIP_ROW_HEIGHT } from './components/HomeHeader';
+import {
+  HomeHeader,
+  HomeFilter,
+  HOME_FILTER_ALL,
+  CHIP_ROW_HEIGHT,
+  HEADER_TOP_BLOCK,
+} from './components/HomeHeader';
 
 /**
  * Home — the station browser.
@@ -150,8 +156,13 @@ export const HomeScreen: React.FC = () => {
     [animate, bgAnim, chipsAnim],
   );
 
-  const heroW = width - 32;
+  // Full-bleed, like the website banner — the hero is the one thing on Home
+  // that is not inset to the page gutter.
+  const heroW = width;
   const playingSlug = radio.playing ? radio.slug : null;
+  // Only while it is actually sounding — a paused station should read as the
+  // station again, not as a track frozen mid-play.
+  const nowPlaying = radio.playing ? radio.track : null;
 
   return (
     <Screen safeArea={false}>
@@ -160,7 +171,7 @@ export const HomeScreen: React.FC = () => {
         contentContainerStyle={[
           styles.scrollContent,
           // The header is fixed and overlays the top; push content clear of it.
-          { paddingTop: insets.top + 64 + CHIP_ROW_HEIGHT },
+          { paddingTop: insets.top + HEADER_TOP_BLOCK + CHIP_ROW_HEIGHT },
         ]}
         onScroll={onScroll}
         scrollEventThrottle={16}
@@ -170,6 +181,7 @@ export const HomeScreen: React.FC = () => {
             stations={featured}
             width={heroW}
             playingSlug={playingSlug}
+            nowPlaying={nowPlaying}
             // Only advance while Home is the visible tab and the strip is
             // actually rendered — a timer ticking behind the Dial is waste.
             active={isFocused}

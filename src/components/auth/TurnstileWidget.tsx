@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { AppText } from '@/components/common';
 import { CONFIG } from '@/constants';
 import { logger } from '@/utils';
+import { darkColors } from '@/theme';
 
 interface TurnstileWidgetProps {
   /** Called with a fresh CAPTCHA token once the challenge is solved. */
@@ -127,7 +128,7 @@ export const TurnstileWidget: React.FC<TurnstileWidgetProps> = ({ onToken, onErr
       {status !== 'ready' ? (
         <View style={styles.overlay} pointerEvents={status === 'error' ? 'auto' : 'none'}>
           {status === 'loading' ? (
-            <ActivityIndicator color="#8A8A99" />
+            <ActivityIndicator color={darkColors.textMuted} />
           ) : (
             <Pressable hitSlop={8} onPress={retry} accessibilityRole="button">
               <AppText variant="bodySm" color="textMuted">

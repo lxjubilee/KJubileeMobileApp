@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Změnit heslo",
     "instruction": "Zadejte své současné heslo a zvolte nové (alespoň 8 znaků).",
-    "currentPlaceholder": "Současné heslo",
     "newPlaceholder": "Nové heslo (min. 8 znaků)",
     "confirmPlaceholder": "Potvrďte nové heslo",
     "mismatch": "Hesla se neshodují.",

@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Endre passord",
     "instruction": "Skriv inn nåværende passord og velg et nytt (minst 8 tegn).",
-    "currentPlaceholder": "Nåværende passord",
     "newPlaceholder": "Nytt passord (minst 8 tegn)",
     "confirmPlaceholder": "Bekreft nytt passord",
     "mismatch": "Passordene samsvarer ikke.",

@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "비밀번호 변경",
     "instruction": "현재 비밀번호를 입력하고 새 비밀번호(8자 이상)를 선택하세요.",
-    "currentPlaceholder": "현재 비밀번호",
     "newPlaceholder": "새 비밀번호(8자 이상)",
     "confirmPlaceholder": "새 비밀번호 확인",
     "mismatch": "비밀번호가 일치하지 않습니다.",

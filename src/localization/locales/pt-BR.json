@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Alterar senha",
     "instruction": "Digite sua senha atual e escolha uma nova (pelo menos 8 caracteres).",
-    "currentPlaceholder": "Senha atual",
     "newPlaceholder": "Nova senha (mín. 8 caracteres)",
     "confirmPlaceholder": "Confirmar nova senha",
     "mismatch": "As senhas não coincidem.",

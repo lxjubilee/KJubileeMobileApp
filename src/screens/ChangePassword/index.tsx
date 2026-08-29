@@ -5,40 +5,54 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { Screen, AppText, IconButton, PasswordInput } from '@/components/common';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { changePassword } from '@/redux';
+import { changePassword, clearSession } from '@/redux';
 import { passwordsMatch } from '@/utils';
 import type { ProfileStackParamList } from '@/navigation/types';
+import { darkColors } from '@/theme';
 
 type Nav = NativeStackNavigationProp<ProfileStackParamList>;
-const ACCENT = '#007FFF'; // Azure blue accent
+
 
 /**
  * Change the signed-in user's password. Authenticated by the current Bearer
  * session; the server keeps this session alive and signs out other devices.
+ *
+ * The current-password field was removed by request. Nothing is substituted for
+ * it — no empty string, no placeholder — because `POST /api/account/password`
+ * still verifies it server-side (`lib/account.js` -> `verifyPassword`), and
+ * faking the value would be defeating that check rather than removing it. Until
+ * the backend offers a path that re-authenticates some other way, this screen
+ * will surface the server's own 400. See the note on ChangePasswordRequest.
  */
 export const ChangePasswordScreen: React.FC = () => {
   const navigation = useNavigation<Nav>();
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const [current, setCurrent] = useState('');
   const [next, setNext] = useState('');
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  /**
+   * The password changed but no replacement session came back, so the old one —
+   * revoked with all the others — cannot be used. Distinguished from the normal
+   * success because the two ask different things of the person next.
+   */
+  const [reauth, setReauth] = useState(false);
 
   const matches = passwordsMatch(next, confirm);
-  const canSubmit = current.length > 0 && matches && !submitting;
+  const canSubmit = matches && !submitting;
 
   const onSubmit = async () => {
     if (!canSubmit) return;
     setSubmitting(true);
     setError(null);
     try {
-      await dispatch(
-        changePassword({ currentPassword: current, newPassword: next }),
+      const res = await dispatch(
+        changePassword({ newPassword: next }),
       ).unwrap();
+      setReauth(Boolean(res?.reauthenticate));
       setDone(true);
     } catch (e) {
       setError(typeof e === 'string' ? e : t('changePassword.error'));
@@ -63,10 +77,12 @@ export const ChangePasswordScreen: React.FC = () => {
           {done ? (
             <>
               <AppText variant="body" color="textSecondary" style={styles.subtitle}>
-                {t('changePassword.success')}
+                {t(reauth ? 'changePassword.successReauth' : 'changePassword.success')}
               </AppText>
               <Pressable
-                onPress={() => navigation.goBack()}
+                // Signing out is deferred to this tap rather than done on arrival,
+                // so the news is read before the screen is taken away.
+                onPress={() => (reauth ? dispatch(clearSession()) : navigation.goBack())}
                 style={({ pressed }) => [styles.cta, { opacity: pressed ? 0.85 : 1 }]}
               >
                 <AppText variant="h3" style={styles.ctaLabel}>
@@ -80,15 +96,6 @@ export const ChangePasswordScreen: React.FC = () => {
                 {t('changePassword.instruction')}
               </AppText>
 
-              <PasswordInput
-                value={current}
-                onChangeText={(v) => {
-                  setCurrent(v);
-                  clearError();
-                }}
-                placeholder={t('changePassword.currentPlaceholder')}
-                containerStyle={styles.field}
-              />
               <PasswordInput
                 value={next}
                 onChangeText={(v) => {
@@ -150,10 +157,10 @@ const styles = StyleSheet.create({
   content: { paddingHorizontal: 16, paddingTop: 8, paddingBottom: 40 },
   subtitle: { marginBottom: 8, lineHeight: 22 },
   field: { marginTop: 14 },
-  error: { marginTop: 12, color: '#FF4D5E' },
+  error: { marginTop: 12, color: darkColors.danger },
   cta: {
     marginTop: 24,
-    backgroundColor: ACCENT,
+    backgroundColor: darkColors.accent,
     height: 52,
     borderRadius: 6,
     alignItems: 'center',

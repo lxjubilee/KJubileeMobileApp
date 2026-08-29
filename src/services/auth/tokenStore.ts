@@ -25,7 +25,12 @@ const EXPIRY_SKEW_MS = 60 * 1000;
 
 export interface StoredTokens {
   accessToken: string;
-  refreshToken: string;
+  /**
+   * Optional on purpose. A session can exist without one — the door's own
+   * session model is the access JWT alone. Requiring it here is what used to make
+   * `load()` throw away a live session on every launch.
+   */
+  refreshToken?: string;
   expiresAt?: string;
 }
 
@@ -41,7 +46,10 @@ function applyAccessToken(token: string | null): void {
 export const tokenStore = {
   /** In-memory accessors (sync) used by the auth client. */
   getAccessToken: (): string | null => memo?.accessToken ?? null,
-  getRefreshToken: (): string | null => memo?.refreshToken ?? null,
+  // Normalised to null when absent OR empty. A session with no refresh token
+  // stores `''`, and callers ask this one question to decide whether renewal is
+  // even possible — so an empty string must never read as "we have one".
+  getRefreshToken: (): string | null => memo?.refreshToken || null,
   getExpiresAt: (): string | null => memo?.expiresAt ?? null,
 
   /**
@@ -84,8 +92,16 @@ export const tokenStore = {
       if (user) {
         try { memoUser = JSON.parse(user) as AuthUser; } catch { memoUser = null; }
       }
-      if (accessToken && refreshToken) {
-        memo = { accessToken, refreshToken, expiresAt: expiresAt ?? undefined };
+      // The access token alone constitutes a session. Gating on `refreshToken`
+      // here discarded every live session at launch — the door stored it as `''`
+      // — and sent the listener back to sign in. That was the cold-start
+      // sign-out bug.
+      if (accessToken) {
+        memo = {
+          accessToken,
+          refreshToken: refreshToken ?? undefined,
+          expiresAt: expiresAt ?? undefined,
+        };
         applyAccessToken(accessToken);
         return memo;
       }
@@ -101,7 +117,12 @@ export const tokenStore = {
     try {
       await Promise.all([
         SecureStore.setItemAsync(KEY_ACCESS, tokens.accessToken),
-        SecureStore.setItemAsync(KEY_REFRESH, tokens.refreshToken),
+        // Clear the slot rather than writing `undefined` — SecureStore rejects a
+        // non-string value, and a stale key left behind would outlive the session
+        // it belonged to.
+        tokens.refreshToken
+          ? SecureStore.setItemAsync(KEY_REFRESH, tokens.refreshToken)
+          : SecureStore.deleteItemAsync(KEY_REFRESH),
         tokens.expiresAt
           ? SecureStore.setItemAsync(KEY_EXPIRES, tokens.expiresAt)
           : SecureStore.deleteItemAsync(KEY_EXPIRES),
@@ -117,13 +138,15 @@ export const tokenStore = {
    * future move to rotation needs no client change. `expiresAt` MUST be kept
    * current — it is what drives the proactive refresh.
    */
-  async updateTokens(accessToken: string, refreshToken: string, expiresAt?: string): Promise<void> {
+  async updateTokens(accessToken: string, refreshToken?: string, expiresAt?: string): Promise<void> {
     memo = { accessToken, refreshToken, expiresAt: expiresAt ?? memo?.expiresAt };
     applyAccessToken(accessToken);
     try {
       await Promise.all([
         SecureStore.setItemAsync(KEY_ACCESS, accessToken),
-        SecureStore.setItemAsync(KEY_REFRESH, refreshToken),
+        refreshToken
+          ? SecureStore.setItemAsync(KEY_REFRESH, refreshToken)
+          : SecureStore.deleteItemAsync(KEY_REFRESH),
         expiresAt
           ? SecureStore.setItemAsync(KEY_EXPIRES, expiresAt)
           : Promise.resolve(),

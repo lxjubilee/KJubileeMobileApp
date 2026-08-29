@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { authService, ssoService, tokenStore } from '@/services/auth';
+import { authService, refreshSession, ssoService, tokenStore } from '@/services/auth';
 import type { AuthUser, SignInArgs } from '@/services/auth';
 import type { ApiError } from '@/services/api';
 
@@ -36,10 +36,38 @@ const errMessage = (e: unknown): string =>
  * tested a `me.authenticated` flag the Jubilee ID API does not send, so it read
  * every live session as signed-out and cleared the store.
  *
+ * The load MUST come first. `tokenStore` keeps the bearer token in memory and
+ * only `load()` fills it from the keychain; without that call `/api/auth/me` goes
+ * out with no Authorization header, earns a 401, and the 401 handler "signs out"
+ * a session that still had weeks to run. That was the every-launch sign-out.
+ *
  * A 401 is definitive and clears the session. A network failure falls back to
  * the cached profile — never sign someone out over a blip.
  */
 export const restoreSession = createAsyncThunk('auth/restore', async () => {
+  const tokens = await tokenStore.load();
+  // Nothing stored: a genuinely signed-out launch. Returning here keeps it silent
+  // — asking /me who we are with no token would answer 401 and look like a
+  // rejected session in the logs.
+  if (!tokens) return null;
+
+  // The door's JWT is the whole session, so once it lapses there is nothing to
+  // validate. Renew first when a refresh token exists; otherwise stop here rather
+  // than spending a round-trip to be told what we already know.
+  if (tokenStore.isAccessTokenExpired()) {
+    if (!tokenStore.getRefreshToken()) {
+      await authService.signOut();
+      return null;
+    }
+    const outcome = await refreshSession();
+    if (outcome.result === 'invalid') {
+      await authService.signOut();
+      return null;
+    }
+    // Transient (offline, 5xx): keep the tokens and show the cached profile.
+    if (outcome.result === 'error') return tokenStore.getUser();
+  }
+
   try {
     const user = await ssoService.restore();
     if (!user) {
@@ -49,6 +77,7 @@ export const restoreSession = createAsyncThunk('auth/restore', async () => {
     void tokenStore.saveUser(user);
     return user;
   } catch {
+    // `ssoService.restore` only throws for non-401 failures, so this is a blip.
     return tokenStore.getUser();
   }
 });
@@ -117,17 +146,39 @@ export const forgotPassword = createAsyncThunk(
 /** Change the signed-in user's password (Bearer-authed; keeps this session, revokes others). */
 export const changePassword = createAsyncThunk(
   'auth/changePassword',
-  (args: { currentPassword: string; newPassword: string }, { rejectWithValue }) =>
+  (args: { newPassword: string }, { rejectWithValue }) =>
     authService
-      .changePassword(args.currentPassword, args.newPassword)
+      .changePassword(args.newPassword)
       .catch((e) => rejectWithValue(errMessage(e))),
 );
 
-/** Permanently delete the signed-in user's account (Bearer-authed), then sign out. */
+/**
+ * Permanently delete this site's membership (Bearer-authed), then sign out.
+ *
+ * Both arguments are the server's checks, not decoration: it verifies the
+ * password — at the Jubilee ID authority when the credential lives there — and
+ * requires the literal word DELETE. Resolves with `keptJubileeId` so the screen
+ * can say whether the listener's Jubilee ID survived, which it always does.
+ */
 export const deleteAccount = createAsyncThunk(
   'auth/deleteAccount',
-  (_: void, { rejectWithValue }) =>
-    authService.deleteAccount().catch((e) => rejectWithValue(errMessage(e))),
+  (args: { password: string; confirm: string }, { rejectWithValue }) =>
+    authService.deleteAccount(args).catch((e) =>
+      /**
+       * Rejects with a SHAPE, not the bare string the other thunks use, because
+       * this screen has to tell two failures apart that read identically once
+       * flattened: a request the server refused (show its sentence) and one that
+       * never arrived (say so, and promise nothing about the account).
+       *
+       * Safe to differ here — nothing reduces `deleteAccount.rejected`; the only
+       * consumer is the Profile screen's own `unwrap()`. `status: 0` is
+       * `toApiError`'s marker for "no response at all".
+       */
+      rejectWithValue({
+        message: errMessage(e),
+        status: (e as ApiError)?.status ?? -1,
+      }),
+    ),
 );
 
 const authSlice = createSlice({

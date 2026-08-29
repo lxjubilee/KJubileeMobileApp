@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Vaihda salasana",
     "instruction": "Anna nykyinen salasanasi ja valitse uusi (vähintään 8 merkkiä).",
-    "currentPlaceholder": "Nykyinen salasana",
     "newPlaceholder": "Uusi salasana (väh. 8 merkkiä)",
     "confirmPlaceholder": "Vahvista uusi salasana",
     "mismatch": "Salasanat eivät täsmää.",

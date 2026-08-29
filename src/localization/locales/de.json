@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Passwort ändern",
     "instruction": "Gib dein aktuelles Passwort ein und wähle ein neues (mindestens 8 Zeichen).",
-    "currentPlaceholder": "Aktuelles Passwort",
     "newPlaceholder": "Neues Passwort (mind. 8 Zeichen)",
     "confirmPlaceholder": "Neues Passwort bestätigen",
     "mismatch": "Die Passwörter stimmen nicht überein.",

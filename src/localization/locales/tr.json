@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Şifreyi değiştir",
     "instruction": "Mevcut şifrenizi girin ve yeni bir tane seçin (en az 8 karakter).",
-    "currentPlaceholder": "Mevcut şifre",
     "newPlaceholder": "Yeni şifre (en az 8 karakter)",
     "confirmPlaceholder": "Yeni şifreyi onayla",
     "mismatch": "Şifreler eşleşmiyor.",

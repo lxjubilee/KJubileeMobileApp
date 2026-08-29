@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Mutare tesseram",
     "instruction": "Insere tesseram praesentem et novam elige (saltem 8 litterae).",
-    "currentPlaceholder": "Tessera praesens",
     "newPlaceholder": "Nova tessera (min. 8 litterae)",
     "confirmPlaceholder": "Confirmare novam tesseram",
     "mismatch": "Tesserae non congruunt.",

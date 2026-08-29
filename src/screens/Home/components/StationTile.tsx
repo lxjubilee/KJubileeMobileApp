@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
-import { AppText } from '@/components/common';
+import { AppText, OnAirBadge } from '@/components/common';
 import { useTheme } from '@/context';
 import { stationArt } from '@/assets/radio/stationArt';
 import type { RadioStation } from '@/services/radio';
@@ -86,14 +86,10 @@ export const StationTile: React.FC<Props> = React.memo(
 
         <View style={styles.overlay}>
           <View style={styles.top}>
-            <View style={[styles.badge, { backgroundColor: playing ? c.accent : '#00000073' }]}>
-              {live ? (
-                <View style={[styles.dot, { backgroundColor: playing ? '#FFFFFF' : c.danger }]} />
-              ) : null}
-              <AppText style={styles.badgeText}>
-                {playing ? 'PLAYING' : live ? 'LIVE' : 'SOON'}
-              </AppText>
-            </View>
+            <OnAirBadge
+              state={playing ? 'playing' : live ? 'onAir' : 'soon'}
+              label={playing ? 'PLAYING' : live ? 'ON AIR' : 'COMING SOON'}
+            />
           </View>
 
           {/* Orbitron carries its own weight — a fontWeight here makes Android
@@ -127,16 +123,6 @@ const styles = StyleSheet.create({
   dimmed: { opacity: 0.38 },
   overlay: { flex: 1, padding: 9, justifyContent: 'space-between' },
   top: { flexDirection: 'row' },
-  badge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-    paddingHorizontal: 7,
-    height: 19,
-    borderRadius: 10,
-  },
-  dot: { width: 5, height: 5, borderRadius: 3 },
-  badgeText: { fontSize: 8.5, letterSpacing: 1.1, color: '#FFFFFF' },
   hm: {
     fontFamily: 'Orbitron_600SemiBold',
     fontSize: 19,

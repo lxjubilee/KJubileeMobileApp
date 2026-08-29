@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Wachtwoord wijzigen",
     "instruction": "Voer je huidige wachtwoord in en kies een nieuw wachtwoord (minstens 8 tekens).",
-    "currentPlaceholder": "Huidig wachtwoord",
     "newPlaceholder": "Nieuw wachtwoord (min. 8 tekens)",
     "confirmPlaceholder": "Nieuw wachtwoord bevestigen",
     "mismatch": "Wachtwoorden komen niet overeen.",

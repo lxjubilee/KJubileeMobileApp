@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "更改密碼",
     "instruction": "輸入你嘅現有密碼並設定一個新密碼（最少 8 個字元）。",
-    "currentPlaceholder": "現有密碼",
     "newPlaceholder": "新密碼（最少 8 個字元）",
     "confirmPlaceholder": "確認新密碼",
     "mismatch": "兩次密碼唔一致。",

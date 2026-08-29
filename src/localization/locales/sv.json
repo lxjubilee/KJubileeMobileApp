@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Ändra lösenord",
     "instruction": "Ange ditt nuvarande lösenord och välj ett nytt (minst 8 tecken).",
-    "currentPlaceholder": "Nuvarande lösenord",
     "newPlaceholder": "Nytt lösenord (minst 8 tecken)",
     "confirmPlaceholder": "Bekräfta nytt lösenord",
     "mismatch": "Lösenorden matchar inte.",

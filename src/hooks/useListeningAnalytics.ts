@@ -44,6 +44,21 @@ export function useListeningAnalytics(): void {
   const queueRef = useRef<Track[]>(queue);
   const authedRef = useRef(authed);
   const currentRef = useRef<CurrentPlay | null>(null);
+  /**
+   * Whether presence was ever announced for this session.
+   *
+   * Load-bearing for radio. `stopNowPlaying()` takes no arguments, so it used to
+   * fire on every pause and stop even when nothing had been announced — and a
+   * radio segment never announces, because `trackSongUuid()` needs an album id
+   * and a track number that a day-file entry does not have. The result was a
+   * stream of "presence cleared" beacons for presence that was never set, all of
+   * them against an endpoint that does not exist.
+   *
+   * Radio has no telemetry of its own by decision — not an omission. If it ever
+   * gains any, it belongs in the radio engine, which knows the station and the
+   * segment; this hook only understands the music catalog.
+   */
+  const announcedRef = useRef(false);
   const heartbeatRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -60,11 +75,21 @@ export function useListeningAnalytics(): void {
     }
   };
 
+  /** Clear presence, but only if presence was ever announced. */
+  const clearPresence = () => {
+    if (!announcedRef.current || !authedRef.current) return;
+    announcedRef.current = false;
+    analyticsApi.stopNowPlaying();
+  };
+
   const startHeartbeat = () => {
     stopHeartbeat();
     const ping = () => {
       const cur = currentRef.current;
-      if (cur && authedRef.current) analyticsApi.pingNowPlaying(cur.songUuid);
+      if (cur && authedRef.current) {
+        announcedRef.current = true;
+        analyticsApi.pingNowPlaying(cur.songUuid);
+      }
     };
     ping();
     heartbeatRef.current = setInterval(ping, HEARTBEAT_MS);
@@ -122,14 +147,14 @@ export function useListeningAnalytics(): void {
           // Queue drained: nothing new is active.
           currentRef.current = null;
           stopHeartbeat();
-          if (authedRef.current) analyticsApi.stopNowPlaying();
+          clearPresence();
         }
         return;
       }
       if (event.type === Event.PlaybackQueueEnded) {
         flush(event.position);
         stopHeartbeat();
-        if (authedRef.current) analyticsApi.stopNowPlaying();
+        clearPresence();
         return;
       }
       if (event.type === Event.PlaybackState) {
@@ -141,7 +166,7 @@ export function useListeningAnalytics(): void {
           event.state === State.Ended
         ) {
           stopHeartbeat();
-          if (authedRef.current) analyticsApi.stopNowPlaying();
+          clearPresence();
         }
       }
     });
@@ -152,7 +177,7 @@ export function useListeningAnalytics(): void {
   useEffect(() => {
     return () => {
       stopHeartbeat();
-      if (authedRef.current) analyticsApi.stopNowPlaying();
+      clearPresence();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

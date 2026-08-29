@@ -9,6 +9,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { darkColors } from '@/theme';
 
 interface PasswordInputProps extends Omit<TextInputProps, 'secureTextEntry' | 'style'> {
   /** Box style override (margins, border color) applied to the field container. */
@@ -29,11 +30,11 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({ containerStyle, ..
         secureTextEntry={!visible}
         autoCapitalize="none"
         autoCorrect={false}
-        placeholderTextColor={rest.placeholderTextColor ?? '#8A8A99'}
+        placeholderTextColor={rest.placeholderTextColor ?? darkColors.textMuted}
         style={styles.input}
       />
       <Pressable onPress={() => setVisible((v) => !v)} hitSlop={10} style={styles.eye}>
-        <Ionicons name={visible ? 'eye-off-outline' : 'eye-outline'} size={22} color="#8A8A99" />
+        <Ionicons name={visible ? 'eye-off-outline' : 'eye-outline'} size={22} color={darkColors.textMuted} />
       </Pressable>
     </View>
   );

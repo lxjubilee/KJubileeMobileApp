@@ -56,3 +56,38 @@ export function formatCount(n?: number): string {
   if (n < 1_000_000) return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}K`;
   return `${(n / 1_000_000).toFixed(1).replace(/\.0$/, '')}M`;
 }
+
+/**
+ * Exact number with thousands separators, e.g. 1749 -> "1,749".
+ *
+ * Distinct from `formatCount`, which abbreviates. The website's hero prints a
+ * station's track total in full ("1,749 tracks") because the exact size of a
+ * catalog is the claim being made — "1.7K tracks" reads as an estimate.
+ */
+export function formatThousands(n?: number): string {
+  if (n == null) return '';
+  return `${n}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+/**
+ * Lowercased and stripped of accents, for search matching.
+ *
+ * Without the fold, typing "Romana" finds nothing: the station is spelled
+ * "Jubilee Praise (Română)", and `ă` is not `a` to `includes()`. The catalog is
+ * full of these — ñ ê ç â ă ế ệ ù á — and a listener typing on a plain keyboard
+ * has no way to reach them.
+ *
+ * NFD splits an accented letter into its base plus a combining mark, and the
+ * range below is the Combining Diacritical Marks block. Non-Latin scripts
+ * (Chinese, Arabic, Amharic, Bengali…) are untouched, which is correct: those
+ * are searched in their own script, not transliterated.
+ *
+ * `normalize` is guarded because Hermes has not always shipped it; without it
+ * the fold degrades to a plain lowercase rather than throwing.
+ */
+const CAN_NORMALIZE = typeof String.prototype.normalize === 'function';
+
+export function foldForSearch(value: string): string {
+  const base = CAN_NORMALIZE ? value.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : value;
+  return base.toLowerCase();
+}

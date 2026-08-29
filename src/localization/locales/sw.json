@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Badilisha nenosiri",
     "instruction": "Weka nenosiri lako la sasa na uchague jipya (angalau herufi 8).",
-    "currentPlaceholder": "Nenosiri la sasa",
     "newPlaceholder": "Nenosiri jipya (angalau herufi 8)",
     "confirmPlaceholder": "Thibitisha nenosiri jipya",
     "mismatch": "Manenosiri hayalingani.",

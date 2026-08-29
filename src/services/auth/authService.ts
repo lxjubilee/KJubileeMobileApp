@@ -2,7 +2,12 @@ import { logger } from '@/utils';
 import { configureApiClient } from '@/services/api/client';
 import { authEndpoints } from './authEndpoints';
 import { classifySignin, type LinkedProfile } from './authOutcome';
-import type { LookupResponseDTO } from './authDto';
+import type {
+  AccountUserDTO,
+  DeleteAccountRequest,
+  LibraryCountsDTO,
+  LookupResponseDTO,
+} from './authDto';
 import { AuthUser, mapUser } from './authMappers';
 import { tokenStore } from './tokenStore';
 import { buildDeviceInfo } from './deviceInfo';
@@ -189,31 +194,109 @@ export const authService = {
 
   // --- Password / account ---
 
-  /** Request a password-reset email (redeemed on the website). Always succeeds. */
-  async forgotPassword(email: string, turnstileToken: string): Promise<string> {
+  /**
+   * Request a password-reset email (redeemed on the website).
+   *
+   * Returns nothing. There is nothing to return: the route answers
+   * `{ success: true }`, and the reply is deliberately identical whether or not
+   * the address has an account, so it carries no information a caller could act
+   * on. Resolving is the whole answer; throwing is the other one.
+   *
+   * `success` IS checked rather than assumed. Both of the server's failure
+   * paths are non-2xx today (403 Turnstile, 503 mail/DB), so axios throws before
+   * this line and the check looks redundant — but "the server cannot fail with a
+   * 200" is an assumption about someone else's code, and the cost of it being
+   * wrong is telling a locked-out user their reset link is on the way when it is
+   * not. That is the one failure this screen must never produce.
+   */
+  async forgotPassword(email: string, turnstileToken: string): Promise<void> {
     const res = await authEndpoints.forgotPassword(email.trim(), turnstileToken);
-    return res.message;
+    if (!res?.success) {
+      throw new Error(res?.error || 'We could not send the reset email just now.');
+    }
   },
 
   /**
-   * Change the signed-in user's password (Bearer-authed). The server revokes the
-   * user's other sessions; we pass the current refresh token so this session
-   * stays alive. Cross-platform password sync to JubileeInspire is handled
-   * server-side by the change-password handler — the mobile client never touches
-   * JI's admin endpoints. See `API docs/API.md`.
+   * Change the signed-in user's password (Bearer-authed).
+   *
+   * `POST /api/account/password` revokes EVERY session on the account — this
+   * device's included — and hands back a replacement pair. So the reply is not
+   * an acknowledgement to discard: persisting those tokens is the only thing
+   * standing between a successful change and being signed out for succeeding.
+   *
+   * Password sync to the Jubilee ID authority is the server's job
+   * (`lib/account.js` -> `sso.ssoChangePasswordByEmail`); the client never
+   * touches it. `scope` reports how far the change reached.
    */
-  async changePassword(currentPassword: string, newPassword: string): Promise<void> {
-    await authEndpoints.changePassword({
-      current_password: currentPassword,
-      new_password: newPassword,
-      refreshToken: tokenStore.getRefreshToken() ?? undefined,
-    });
+  async changePassword(
+    newPassword: string,
+  ): Promise<{ scope?: 'jubilee-id' | 'local'; reauthenticate: boolean }> {
+    // `currentPassword` is deliberately absent, not blank — see the note on
+    // ChangePasswordRequest. The server still requires it and will answer 400
+    // until it offers another way to re-authenticate the caller.
+    const res = await authEndpoints.changePassword({ newPassword });
+
+    // A 200 that still says success:false is not a shape this route produces,
+    // but reading the flag costs nothing and beats reporting a silent failure.
+    if (!res?.success) throw new Error(res?.error || 'Could not change your password.');
+
+    if (res.token) {
+      await tokenStore.save({
+        accessToken: res.token,
+        refreshToken: res.refreshToken,
+        expiresAt: res.expiresAt,
+      });
+      return { scope: res.scope, reauthenticate: false };
+    }
+
+    // `reauthenticate` — the password DID change, but no replacement session came
+    // back. The old one is revoked, so holding on to it would leave the app
+    // believing in a session the server has already discarded.
+    await tokenStore.clear();
+    return { scope: res.scope, reauthenticate: true };
   },
 
-  /** Permanently delete the signed-in user's account (Bearer-authed, irreversible). */
-  async deleteAccount(): Promise<void> {
-    await authEndpoints.deleteAccount();
-    await tokenStore.clear(); // session is revoked server-side; drop local tokens
+  /**
+   * The account as its settings screen needs it: where the password lives,
+   * whether a Jubilee ID is linked, and what a deletion would take with it.
+   *
+   * Advisory, never load-bearing. The delete flow must still work when this
+   * fails — `libraryCounts` on the server takes the same view, returning zeroes
+   * rather than letting a failed count keep someone out of their own settings.
+   */
+  async getAccount(): Promise<{ user: AccountUserDTO; library: LibraryCountsDTO }> {
+    const res = await authEndpoints.getAccount();
+    if (!res?.success || !res.user) throw new Error(res?.error || 'Could not load your account.');
+    return {
+      user: res.user,
+      library: res.library ?? { stations_favorited: 0, stations_followed: 0, albums_followed: 0 },
+    };
+  },
+
+  /**
+   * Permanently delete this site's membership. Bearer-authed, irreversible.
+   *
+   * Both fields are the server's, not ours: it verifies the password (at the
+   * Jubilee ID authority when the credential lives there) and requires the typed
+   * word. Neither may be faked to get past a check that exists on purpose.
+   *
+   * The token clear happens ONLY on a confirmed success. A failed attempt — a
+   * wrong password above all — must leave the session exactly as it was, or a
+   * typo becomes a sign-out.
+   *
+   * There is no sign-out call to make afterwards: deleting the `kj_users` row
+   * cascades to `kj_sessions`, so every device is already revoked server-side.
+   */
+  async deleteAccount(body: DeleteAccountRequest): Promise<{ keptJubileeId: boolean }> {
+    const res = await authEndpoints.deleteAccount(body);
+
+    // Read the flag, not the status. The door's `/api/sso/login` answers a
+    // meaningful `success:false` with a 200, and trusting 2xx there would have
+    // left the app "signed in" with no token. Cheap insurance for the same shape.
+    if (!res?.success) throw new Error(res?.error || 'Your account could not be deleted.');
+
+    await tokenStore.clear();
+    return { keptJubileeId: Boolean(res.kept_jubilee_id) };
   },
 
   /**

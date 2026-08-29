@@ -11,6 +11,7 @@ import { tune } from '@/services/radio';
 import type { RadioStation } from '@/services/radio';
 import type { RootStackParamList } from '@/navigation/types';
 import { StationRow, ROW_HEIGHT } from './components/StationRow';
+import { foldForSearch } from '@/utils';
 
 /**
  * Browse — every station on the band, in frequency order.
@@ -61,19 +62,22 @@ export const BrowseScreen: React.FC = () => {
   );
 
   const filtered = useMemo(() => {
-    const q = term.trim().toLowerCase();
+    const q = foldForSearch(term.trim());
     return stations.filter((s) => {
       if (chip === ON_AIR && !s.live) return false;
       if (chip !== ALL && chip !== ON_AIR && !bySection.get(chip)?.has(s.slug)) return false;
       if (!q) return true;
       // Frequency is part of the search on purpose: on a dial, the number is a
       // name. Typing "332" should find Jubilee Praise (Română).
+      // Both sides are folded, so "Romana" reaches "Jubilee Praise (Română)"
+      // and "Espanol" reaches "Español" — the accented spelling is the one on
+      // screen, and a plain keyboard cannot type it.
       return (
-        s.name.toLowerCase().includes(q) ||
-        s.format.toLowerCase().includes(q) ||
+        foldForSearch(s.name).includes(q) ||
+        foldForSearch(s.format).includes(q) ||
         s.hm.includes(q) ||
-        s.lang.toLowerCase().includes(q) ||
-        (s.host?.name.toLowerCase().includes(q) ?? false)
+        foldForSearch(s.lang).includes(q) ||
+        (s.host ? foldForSearch(s.host.name).includes(q) : false)
       );
     });
   }, [stations, term, chip, bySection]);

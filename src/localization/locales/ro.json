@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Schimbă parola",
     "instruction": "Introdu parola actuală și alege una nouă (cel puțin 8 caractere).",
-    "currentPlaceholder": "Parola actuală",
     "newPlaceholder": "Parolă nouă (min. 8 caractere)",
     "confirmPlaceholder": "Confirmă parola nouă",
     "mismatch": "Parolele nu se potrivesc.",

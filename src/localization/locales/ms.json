@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Tukar kata laluan",
     "instruction": "Masukkan kata laluan semasa anda dan pilih yang baharu (sekurang-kurangnya 8 aksara).",
-    "currentPlaceholder": "Kata laluan semasa",
     "newPlaceholder": "Kata laluan baharu (min. 8 aksara)",
     "confirmPlaceholder": "Sahkan kata laluan baharu",
     "mismatch": "Kata laluan tidak sepadan.",

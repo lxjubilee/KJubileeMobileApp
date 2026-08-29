@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Jelszó módosítása",
     "instruction": "Add meg a jelenlegi jelszavadat, és válassz egy újat (legalább 8 karakter).",
-    "currentPlaceholder": "Jelenlegi jelszó",
     "newPlaceholder": "Új jelszó (min. 8 karakter)",
     "confirmPlaceholder": "Új jelszó megerősítése",
     "mismatch": "A jelszavak nem egyeznek.",

@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "पासवर्ड बदलें",
     "instruction": "अपना वर्तमान पासवर्ड दर्ज करें और एक नया चुनें (कम से कम 8 वर्ण).",
-    "currentPlaceholder": "वर्तमान पासवर्ड",
     "newPlaceholder": "नया पासवर्ड (न्यूनतम 8 वर्ण)",
     "confirmPlaceholder": "नए पासवर्ड की पुष्टि करें",
     "mismatch": "पासवर्ड मेल नहीं खाते.",

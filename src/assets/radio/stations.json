@@ -10,6 +10,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Devotional · 24/7 Scripture",
+    "reach": "350M",
     "gradient": [
       "#1A2840",
       "#335D8F"
@@ -32,6 +34,8 @@
     "flag": "es",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Familia · Spanish-Language",
+    "reach": "450M",
     "gradient": [
       "#161D2E",
       "#344873"
@@ -54,6 +58,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Devotional · Wisdom Literature",
+    "reach": "800M",
     "gradient": [
       "#1C2C44",
       "#356294"
@@ -76,6 +82,8 @@
     "flag": "es",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Oración · Spanish-Language",
+    "reach": "380M",
     "gradient": [
       "#182232",
       "#365078"
@@ -98,6 +106,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Mainstream Pop",
+    "reach": "2500M",
     "gradient": [
       "#242114",
       "#63592C"
@@ -111,15 +121,17 @@
   },
   {
     "slug": "jubilee-praise",
-    "hm": "305.12",
+    "hm": "305.40",
     "name": "Torah Sings",
     "format": "Angel Songs",
     "description": "Angel Songs flagship — Torah-rooted worship voiced by Zev, the family workhorse station.",
-    "tenant": "HM305.12-EN",
+    "tenant": "HM305.40-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 1749,
+    "listeners": "Angel Songs · 1,749 tracks · Genesis to Revelation",
+    "reach": "480M",
     "gradient": [
       "#46283E",
       "#824975"
@@ -142,6 +154,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Stewardship · Biblical Finance",
+    "reach": "320M",
     "gradient": [
       "#38371C",
       "#6E692E"
@@ -164,6 +178,8 @@
     "flag": "br",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Brasil · Portuguese-Language",
+    "reach": "250M",
     "gradient": [
       "#224046",
       "#40818D"
@@ -186,6 +202,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Sunrise Devotional · 24/7",
+    "reach": "700M",
     "gradient": [
       "#152433",
       "#2E5F81"
@@ -208,6 +226,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Recovery · Freedom Walk",
+    "reach": "380M",
     "gradient": [
       "#1C3631",
       "#2F6B5F"
@@ -230,6 +250,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Prayer · Continuous Intercession",
+    "reach": "180M",
     "gradient": [
       "#2A1932",
       "#633B74"
@@ -252,6 +274,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Kids Universal",
+    "reach": "1800M",
     "gradient": [
       "#201512",
       "#5E3A2A"
@@ -274,6 +298,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Marriage · Couples Walk",
+    "reach": "380M",
     "gradient": [
       "#2F3018",
       "#65652A"
@@ -296,6 +322,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Healing · Restoration Walk",
+    "reach": "290M",
     "gradient": [
       "#203E34",
       "#33745C"
@@ -318,6 +346,8 @@
     "flag": "cn",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Asia · Mandarin-Language",
+    "reach": "350M",
     "gradient": [
       "#223746",
       "#406F8D"
@@ -331,15 +361,17 @@
   },
   {
     "slug": "jubilee-ccm",
-    "hm": "313.12",
+    "hm": "304.80",
     "name": "Celebrate Yeshua!",
     "format": "Biblical Music",
     "description": "Biblical Music — Scripture-rooted songs in the contemporary style that has grown 60% over five years to become the #2 genre globally.",
-    "tenant": "HM313.12-EN",
+    "tenant": "HM304.80-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 48,
+    "listeners": "Biblical Music · Mainstream Christian",
+    "reach": "420M",
     "gradient": [
       "#3A2228",
       "#764353"
@@ -362,6 +394,8 @@
     "flag": "cn",
     "pill": "International",
     "tracks": 0,
+    "listeners": "祷告 · Mandarin-Language",
+    "reach": "280M",
     "gradient": [
       "#223C46",
       "#40798D"
@@ -375,15 +409,17 @@
   },
   {
     "slug": "yes-and-amen",
-    "hm": "314.88",
+    "hm": "303.10",
     "name": "Yes and Amen",
     "format": "Covenant Worship",
     "description": "The SingItDone declaration albums — all twelve of the Inspire Family, one record each, singing who they already are before Yahuah. Every promise of Elohim is Yes and Amen in Him.",
-    "tenant": "HM314.88-EN",
+    "tenant": "HM303.10-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 191,
+    "listeners": "Covenant Worship · Inspire Family · 191 tracks",
+    "reach": "210M",
     "gradient": [
       "#42262C",
       "#7E4756"
@@ -406,6 +442,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Cafe Ambient",
+    "reach": "1500M",
     "gradient": [
       "#302C1A",
       "#6F6832"
@@ -428,6 +466,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Parenting · Family Discipleship",
+    "reach": "290M",
     "gradient": [
       "#3C3C1E",
       "#726F30"
@@ -450,6 +490,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Sobriety · Daily Discipline",
+    "reach": "420M",
     "gradient": [
       "#182E25",
       "#2B624C"
@@ -472,6 +514,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Online Church · All Traditions",
+    "reach": "250M",
     "gradient": [
       "#1E3A36",
       "#316F65"
@@ -494,6 +538,8 @@
     "flag": "in",
     "pill": "International",
     "tracks": 0,
+    "listeners": "India · Hindi-Language",
+    "reach": "600M",
     "gradient": [
       "#202C42",
       "#3E5988"
@@ -516,6 +562,8 @@
     "flag": "in",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Prarthana · Hindi-Language",
+    "reach": "320M",
     "gradient": [
       "#223346",
       "#40668D"
@@ -538,6 +586,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Men's Ministry · Brotherhood",
+    "reach": "310M",
     "gradient": [
       "#1A3032",
       "#2D6467"
@@ -551,15 +601,17 @@
   },
   {
     "slug": "inspire-active",
-    "hm": "320.19",
+    "hm": "376.20",
     "name": "Inspire Active",
     "format": "Workout",
     "description": "Fitness and workout station — high-BPM clean energy tracks tuned for gyms and home workouts; B2B fitness-facility distribution.",
-    "tenant": null,
+    "tenant": "HM376.20-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Fitness BPM",
+    "reach": "1200M",
     "gradient": [
       "#2C1E18",
       "#6B4530"
@@ -569,7 +621,7 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": false
+    "live": true
   },
   {
     "slug": "jubilee-teaching",
@@ -582,6 +634,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Bible Teaching · Continuous",
+    "reach": "220M",
     "gradient": [
       "#2C2516",
       "#614E29"
@@ -604,6 +658,8 @@
     "flag": "sa",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Crown · Arabic-Language",
+    "reach": "400M",
     "gradient": [
       "#1C263A",
       "#3A5280"
@@ -626,6 +682,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Identity · Yeshua-Centered",
+    "reach": "410M",
     "gradient": [
       "#2C2216",
       "#614629"
@@ -648,6 +706,8 @@
     "flag": "sa",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Salat · Arabic-Language",
+    "reach": "250M",
     "gradient": [
       "#202842",
       "#3E5188"
@@ -661,15 +721,17 @@
   },
   {
     "slug": "gods-little-lambs",
-    "hm": "325.18",
+    "hm": "360.30",
     "name": "God's Little Lambs",
     "format": "Kids",
     "description": "Bible songs and instrumentals for the youngest listeners — warm, parent-attractive.",
-    "tenant": "HM325.18-EN",
+    "tenant": "HM360.30-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 357,
+    "listeners": "Kids 3–5 · My Tiny Tiggles",
+    "reach": "140M",
     "gradient": [
       "#143C41",
       "#2D878D"
@@ -692,6 +754,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Focus Instrumental",
+    "reach": "1400M",
     "gradient": [
       "#342E1C",
       "#736534"
@@ -714,6 +778,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Women's Ministry · Sisterhood",
+    "reach": "330M",
     "gradient": [
       "#224242",
       "#357875"
@@ -736,6 +802,8 @@
     "flag": "fr",
     "pill": "International",
     "tracks": 0,
+    "listeners": "France · French-Language",
+    "reach": "220M",
     "gradient": [
       "#1A3236",
       "#38737C"
@@ -758,6 +826,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Restoration · After-Trial",
+    "reach": "220M",
     "gradient": [
       "#382A1C",
       "#6E4C2E"
@@ -771,15 +841,17 @@
   },
   {
     "slug": "jubilee-kids-party",
-    "hm": "329.12",
+    "hm": "361.90",
     "name": "Jubilee Kids Party",
     "format": "Kids Praise",
     "description": "Family-celebratory programming — multiplies through parent-driven discovery and household co-listening.",
-    "tenant": "HM329.12-EN",
+    "tenant": "HM361.90-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 338,
+    "listeners": "Kids 6–8 · Family Party",
+    "reach": "165M",
     "gradient": [
       "#152A46",
       "#2E5E92"
@@ -802,6 +874,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Grief · Pastoral Companion",
+    "reach": "240M",
     "gradient": [
       "#182E29",
       "#2B6255"
@@ -824,6 +898,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Lullaby · Universal Sleep",
+    "reach": "2000M",
     "gradient": [
       "#191737",
       "#322D6A"
@@ -846,6 +922,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Drive-Time",
+    "reach": "900M",
     "gradient": [
       "#34331C",
       "#727334"
@@ -859,15 +937,17 @@
   },
   {
     "slug": "jubilee-praise-romana",
-    "hm": "332.16",
+    "hm": "326.20",
     "name": "Jubilee Praise (Română)",
     "format": "Praise & Worship",
     "description": "Romanian-language Christian flagship — first language edition reaching ~16M Romanian-speaking Christians including the diaspora across Europe and North America.",
-    "tenant": "HM332.16-RO",
+    "tenant": "HM326.20-RO",
     "lang": "Romanian",
     "flag": "ro",
     "pill": "International",
     "tracks": 262,
+    "listeners": "Lăudați · Romanian-Language",
+    "reach": "18M",
     "gradient": [
       "#1A2B36",
       "#38637C"
@@ -890,6 +970,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Calling · Purpose Walk",
+    "reach": "350M",
     "gradient": [
       "#444422",
       "#7B7833"
@@ -912,6 +994,8 @@
     "flag": "pt",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Oração · Portuguese-Language",
+    "reach": "200M",
     "gradient": [
       "#1A3036",
       "#38707C"
@@ -925,15 +1009,17 @@
   },
   {
     "slug": "country-gospel",
-    "hm": "335.16",
+    "hm": "309.30",
     "name": "Gospel Country",
     "format": "Christian Country",
     "description": "Bible Belt anchor — Christian Country reaches 30% of religious radio listeners (vs. 17% nationally).",
-    "tenant": "HM335.16-EN",
+    "tenant": "HM309.30-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 370,
+    "listeners": "Gospel Country · Elias & Eliana Inspire · 370 tracks",
+    "reach": "95M",
     "gradient": [
       "#321D23",
       "#6E3E4E"
@@ -956,6 +1042,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Trauma · Whole-Person Healing",
+    "reach": "280M",
     "gradient": [
       "#1C3628",
       "#2F6B4A"
@@ -978,6 +1066,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Celebrations",
+    "reach": "800M",
     "gradient": [
       "#30241A",
       "#6F5032"
@@ -1000,6 +1090,8 @@
     "flag": "kr",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Korea · Korean-Language",
+    "reach": "60M",
     "gradient": [
       "#182232",
       "#365078"
@@ -1022,6 +1114,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Discernment · Crossroads Counsel",
+    "reach": "180M",
     "gradient": [
       "#3A3C1E",
       "#707230"
@@ -1035,15 +1129,17 @@
   },
   {
     "slug": "jubilee-gospel-fire",
-    "hm": "339.18",
+    "hm": "302.50",
     "name": "Pentecostal Shout",
     "format": "Praise & Worship",
     "description": "Energetic gospel — cross-denominational appeal in Pentecostal, charismatic, and Black-church contexts.",
-    "tenant": "HM339.18-EN",
+    "tenant": "HM302.50-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 331,
+    "listeners": "Pentecostal Shout · Imani & Zariah Inspire · 331 tracks",
+    "reach": "155M",
     "gradient": [
       "#3A222B",
       "#764359"
@@ -1066,6 +1162,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Anxiety · Peace Walk",
+    "reach": "410M",
     "gradient": [
       "#224230",
       "#357850"
@@ -1088,6 +1186,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Chill Downtempo",
+    "reach": "1000M",
     "gradient": [
       "#281F16",
       "#674E2E"
@@ -1110,6 +1210,8 @@
     "flag": "de",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Deutschland · German-Language",
+    "reach": "160M",
     "gradient": [
       "#222F46",
       "#405C8D"
@@ -1132,6 +1234,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Leadership · Servant-Hearted",
+    "reach": "260M",
     "gradient": [
       "#2A2C16",
       "#5F6129"
@@ -1154,6 +1258,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Hymns · Heritage Worship",
+    "reach": "110M",
     "gradient": [
       "#3E2436",
       "#7A456D"
@@ -1176,6 +1282,8 @@
     "flag": "fr",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Prière · French-Language",
+    "reach": "180M",
     "gradient": [
       "#161F2E",
       "#344D73"
@@ -1189,15 +1297,17 @@
   },
   {
     "slug": "ancient-paths",
-    "hm": "345.24",
+    "hm": "313.80",
     "name": "The Ancient Paths",
     "format": "Middle Eastern",
     "description": "Arabic and Middle Eastern worship — Amir Inspire's maqam-based catalogue and acoustic lament, sounding like home to the Arabic-speaking believer and the seeker alike.",
-    "tenant": "HM345.24-EN",
+    "tenant": "HM313.80-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 92,
+    "listeners": "Middle Eastern · Amir Inspire · 92 tracks",
+    "reach": "210M",
     "gradient": [
       "#321D27",
       "#6E3E57"
@@ -1220,6 +1330,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Classical Instrumental",
+    "reach": "1000M",
     "gradient": [
       "#282416",
       "#675C2E"
@@ -1233,15 +1345,17 @@
   },
   {
     "slug": "riddim-and-rhyme",
-    "hm": "347.14",
+    "hm": "311.50",
     "name": "Riddim and Rhyme",
     "format": "Afro-Caribbean",
     "description": "Afro-Caribbean fusion worship — Zariah Inspire's reggae, dancehall, soca and Afrobeats catalogue married to teaching hymnody and gospel-soul.",
-    "tenant": "HM347.14-EN",
+    "tenant": "HM311.50-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 251,
+    "listeners": "Afro-Caribbean · Zariah & Santiago Inspire · 251 tracks",
+    "reach": "180M",
     "gradient": [
       "#462840",
       "#82497A"
@@ -1264,6 +1378,8 @@
     "flag": "ru",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Russia · Russian-Language",
+    "reach": "280M",
     "gradient": [
       "#223E46",
       "#407D8D"
@@ -1286,6 +1402,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Roundtable · Iron-Sharpening",
+    "reach": "240M",
     "gradient": [
       "#38311C",
       "#6E5D2E"
@@ -1308,6 +1426,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Comeback · Prodigal's Walk",
+    "reach": "260M",
     "gradient": [
       "#1C362E",
       "#2F6B57"
@@ -1321,15 +1441,17 @@
   },
   {
     "slug": "radiant-stones-radio",
-    "hm": "351.16",
+    "hm": "301.90",
     "name": "Radiant Stones Radio",
     "format": "Praise & Worship",
     "description": "Female trio celebration — Sandi Patty / Avalon era, modernized. Female 25–55 audience.",
-    "tenant": null,
+    "tenant": "HM301.90-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Female Trio Worship · Modern",
+    "reach": "120M",
     "gradient": [
       "#362023",
       "#72414A"
@@ -1339,7 +1461,7 @@
       "name": "Jubilee Inspire",
       "focus": "The whole house sings"
     },
-    "live": false
+    "live": true
   },
   {
     "slug": "inspire-throwback",
@@ -1352,6 +1474,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Throwback Hits",
+    "reach": "800M",
     "gradient": [
       "#241714",
       "#633B2C"
@@ -1374,6 +1498,8 @@
     "flag": "it",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Italia · Italian-Language",
+    "reach": "70M",
     "gradient": [
       "#1E343E",
       "#3C7084"
@@ -1396,6 +1522,8 @@
     "flag": "ru",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Молитва · Russian-Language",
+    "reach": "220M",
     "gradient": [
       "#223C46",
       "#40798D"
@@ -1418,6 +1546,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Soaking · Healing Rest",
+    "reach": "1200M",
     "gradient": [
       "#151633",
       "#2C2B66"
@@ -1440,6 +1570,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Jazz",
+    "reach": "600M",
     "gradient": [
       "#38251E",
       "#784936"
@@ -1462,6 +1594,8 @@
     "flag": "ph",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Pilipinas · Tagalog-Language",
+    "reach": "90M",
     "gradient": [
       "#1E2D3E",
       "#3C5E84"
@@ -1484,6 +1618,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Women · Royal Identity",
+    "reach": "340M",
     "gradient": [
       "#2A2C16",
       "#5E6129"
@@ -1506,6 +1642,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Soaking · Intimate Worship",
+    "reach": "95M",
     "gradient": [
       "#172237",
       "#2D406A"
@@ -1528,6 +1666,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Fellowship · Walking Together",
+    "reach": "350M",
     "gradient": [
       "#1A2F32",
       "#2D6167"
@@ -1550,6 +1690,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Latin Hits",
+    "reach": "1100M",
     "gradient": [
       "#34281C",
       "#735634"
@@ -1572,6 +1714,8 @@
     "flag": "vn",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Vietnam · Vietnamese-Language",
+    "reach": "25M",
     "gradient": [
       "#1C223A",
       "#3A4B80"
@@ -1594,6 +1738,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Kids · Bedtime Bible",
+    "reach": "105M",
     "gradient": [
       "#195254",
       "#32A09F"
@@ -1616,6 +1762,8 @@
     "flag": "kr",
     "pill": "International",
     "tracks": 0,
+    "listeners": "기도 · Korean-Language",
+    "reach": "80M",
     "gradient": [
       "#1E273E",
       "#3C5384"
@@ -1638,6 +1786,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Country Hits",
+    "reach": "950M",
     "gradient": [
       "#342E1C",
       "#736534"
@@ -1660,6 +1810,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Pentecostal · Spirit-Filled Prayer",
+    "reach": "145M",
     "gradient": [
       "#1E1D3A",
       "#423F7C"
@@ -1682,6 +1834,8 @@
     "flag": "tz",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Africa · Kiswahili-Language",
+    "reach": "200M",
     "gradient": [
       "#1A2136",
       "#384C7C"
@@ -1704,6 +1858,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "A-Cappella Worship · Vocal-Only",
+    "reach": "50M",
     "gradient": [
       "#422629",
       "#7E4750"
@@ -1726,6 +1882,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · 80s & 90s",
+    "reach": "700M",
     "gradient": [
       "#302F1A",
       "#6E6F32"
@@ -1748,6 +1906,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Wilderness · Honest Faith",
+    "reach": "280M",
     "gradient": [
       "#302618",
       "#654B2A"
@@ -1770,6 +1930,8 @@
     "flag": "ng",
     "pill": "International",
     "tracks": 0,
+    "listeners": "West Africa · Yorùbá-Language",
+    "reach": "50M",
     "gradient": [
       "#182D32",
       "#366C78"
@@ -1792,6 +1954,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Talk · Podcast Aggregator",
+    "reach": "110M",
     "gradient": [
       "#3B2525",
       "#764645"
@@ -1805,15 +1969,17 @@
   },
   {
     "slug": "latin-worship",
-    "hm": "376.15",
+    "hm": "310.90",
     "name": "Latin Worship (Sung in English)",
     "format": "Latin Worship",
     "description": "Latin and South American worship sung in English — Santiago Inspire's Latin ballad, cumbia, samba and theatrical-liturgical catalogue for English-speaking listeners.",
-    "tenant": "HM376.15-EN",
+    "tenant": "HM310.90-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 470,
+    "listeners": "Latin Worship · Santiago Inspire · 470 tracks",
+    "reach": "620M",
     "gradient": [
       "#3A2235",
       "#76436D"
@@ -1827,15 +1993,17 @@
   },
   {
     "slug": "hebraic-celebrations",
-    "hm": "377.70",
+    "hm": "306.20",
     "name": "Hebraic Celebrations",
     "format": "Messianic Worship",
     "description": "Messianic and Hebraic worship — Zev Inspire's feast-day celebration catalogue, Hebraic chant and modern fusion for the Hebrew-Roots family.",
-    "tenant": "HM377.70-EN",
+    "tenant": "HM306.20-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 283,
+    "listeners": "Messianic · Zev Inspire · 283 tracks",
+    "reach": "310M",
     "gradient": [
       "#4A2B3B",
       "#864C6C"
@@ -1849,15 +2017,17 @@
   },
   {
     "slug": "midnight-praise",
-    "hm": "379.14",
+    "hm": "314.40",
     "name": "Midnight Praise",
     "format": "Ambient Worship",
     "description": "Celtic and European ambient worship — Nova Inspire's contemplative cinematic and ambient-healing catalogue, for the long night, the overnight watch and the ones still awake.",
-    "tenant": "HM379.14-EN",
+    "tenant": "HM314.40-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 100,
+    "listeners": "Ambient Worship · Nova Inspire · 100 tracks",
+    "reach": "120M",
     "gradient": [
       "#321D29",
       "#6E3E5B"
@@ -1880,6 +2050,8 @@
     "flag": "tz",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Maombi · Swahili-Language",
+    "reach": "170M",
     "gradient": [
       "#182532",
       "#365978"
@@ -1902,6 +2074,8 @@
     "flag": "et",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Ethiopia · Amharic-Language",
+    "reach": "35M",
     "gradient": [
       "#1A2C36",
       "#38657C"
@@ -1924,6 +2098,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Wellness Ambient",
+    "reach": "850M",
     "gradient": [
       "#38341E",
       "#787236"
@@ -1946,6 +2122,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Prophetic · Fire Teaching",
+    "reach": "85M",
     "gradient": [
       "#382B1C",
       "#6E4E2E"
@@ -1968,6 +2146,8 @@
     "flag": "pl",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Polska · Polish-Language",
+    "reach": "45M",
     "gradient": [
       "#16232E",
       "#345973"
@@ -1990,6 +2170,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Hebrew Roots · Messianic",
+    "reach": "28M",
     "gradient": [
       "#293621",
       "#57733E"
@@ -2012,6 +2194,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Holiday Seasonal",
+    "reach": "1000M",
     "gradient": [
       "#34241C",
       "#734C34"
@@ -2034,6 +2218,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Renewal · Restored Walk",
+    "reach": "270M",
     "gradient": [
       "#1A322C",
       "#2D6758"
@@ -2047,15 +2233,17 @@
   },
   {
     "slug": "jubilee-radio",
-    "hm": "388.70",
+    "hm": "308.70",
     "name": "KJubilee",
     "format": "Jubilee Praise",
     "description": "KJubilee — continuous worship and teaching from the Inspire Family catalog.",
-    "tenant": "HM388.70-EN",
+    "tenant": "HM308.70-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 1502,
+    "listeners": "Inspire Family · 1,502 tracks",
+    "reach": "Featured",
     "gradient": [
       "#36202C",
       "#72415F"
@@ -2078,6 +2266,8 @@
     "flag": "id",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Indonesia · Bahasa-Language",
+    "reach": "30M",
     "gradient": [
       "#202842",
       "#3E5188"
@@ -2100,6 +2290,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Five-Fold · Apostolic Teaching",
+    "reach": "35M",
     "gradient": [
       "#233924",
       "#427740"
@@ -2122,6 +2314,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Audio Stories",
+    "reach": "600M",
     "gradient": [
       "#38341E",
       "#787036"
@@ -2144,6 +2338,8 @@
     "flag": "jp",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Japan · Japanese-Language",
+    "reach": "5M",
     "gradient": [
       "#1E343E",
       "#3C7084"
@@ -2166,6 +2362,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "Audio Drama · Family Stories",
+    "reach": "75M",
     "gradient": [
       "#241420",
       "#5F3451"
@@ -2188,6 +2386,8 @@
     "flag": "ph",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Panalangin · Tagalog-Language",
+    "reach": "75M",
     "gradient": [
       "#1E3A3E",
       "#3C7D84"
@@ -2210,6 +2410,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Live Performances",
+    "reach": "750M",
     "gradient": [
       "#282316",
       "#675A2E"
@@ -2232,6 +2434,8 @@
     "flag": "bd",
     "pill": "International",
     "tracks": 0,
+    "listeners": "Bengal · Bengali-Language",
+    "reach": "8M",
     "gradient": [
       "#202642",
       "#3E4E88"
@@ -2254,6 +2458,8 @@
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 0,
+    "listeners": "JSV · Paleo-Hebrew Deep Dive",
+    "reach": "18M",
     "gradient": [
       "#1E2E1C",
       "#426B3A"
@@ -2267,15 +2473,17 @@
   },
   {
     "slug": "island-hallelujah",
-    "hm": "399.18",
+    "hm": "312.10",
     "name": "Island Hallelujah",
     "format": "Hawaiian Praise",
     "description": "Pacific Island worship — Tahoma Inspire's slack-key, 'ukulele and island-reggae catalogue, Christ lifted up in the language of the islands.",
-    "tenant": "HM399.18-EN",
+    "tenant": "HM312.10-EN",
     "lang": "English",
     "flag": "us",
     "pill": "Five-Fold",
     "tracks": 599,
+    "listeners": "Hawaiian Praise · Tahoma Inspire · 599 tracks",
+    "reach": "240M",
     "gradient": [
       "#422633",
       "#7E4763"
@@ -2298,6 +2506,8 @@
     "flag": "us",
     "pill": "Mainstream",
     "tracks": 0,
+    "listeners": "Family-Safe · Emerging Artists",
+    "reach": "900M",
     "gradient": [
       "#30281A",
       "#6F5B32"

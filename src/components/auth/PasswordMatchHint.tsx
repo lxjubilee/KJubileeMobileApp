@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { AppText } from '@/components/common';
+import { darkColors } from '@/theme';
 
 /** Live match feedback, mirroring the web's `.door-match` line. */
-const MATCH_OK = '#4ADE80';
-const MATCH_NO = '#FF6B6B';
+const MATCH_OK = darkColors.success;
+const MATCH_NO = darkColors.danger;
 
 interface PasswordMatchHintProps {
   password: string;

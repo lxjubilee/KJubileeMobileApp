@@ -1,7 +1,10 @@
 import { authClient } from './authClient';
 import {
+  AccountSettingsDTO,
   ChangePasswordRequest,
   ChangePasswordResponseDTO,
+  DeleteAccountRequest,
+  DeleteAccountResponseDTO,
   ForgotPasswordResponseDTO,
   LookupResponseDTO,
   MeResponseDTO,
@@ -80,10 +83,36 @@ export const authEndpoints = {
       .post<ForgotPasswordResponseDTO>('/api/auth/forgot-password', { email, turnstileToken })
       .then((r) => r.data),
 
+  /**
+   * Note the path: `/api/account/password`, not `/api/auth/change-password`.
+   * The latter has never existed on any server — it is what the app used to ask
+   * for, and every request 404'd.
+   */
   changePassword: (body: ChangePasswordRequest) =>
     authClient
-      .post<ChangePasswordResponseDTO>('/api/auth/change-password', body)
+      .post<ChangePasswordResponseDTO>('/api/account/password', body)
       .then((r) => r.data),
 
-  deleteAccount: () => authClient.delete('/api/auth/account').then((r) => r.data),
+  /**
+   * The settings view of the account, for the delete screen: where the password
+   * lives, whether a Jubilee ID is linked, and what a deletion would take.
+   */
+  getAccount: () => authClient.get<AccountSettingsDTO>('/api/account').then((r) => r.data),
+
+  /**
+   * Note the path and the verb: `POST /api/account/delete`, not
+   * `DELETE /api/auth/account`.
+   *
+   * The latter is the last survivor of the same mistake annotated on
+   * `changePassword` above — both were written from `API docs/API.md`, which
+   * describes an API that no longer exists. It answered an HTML 404 on every
+   * request, so the button could never have worked.
+   *
+   * Both fields are required; see DeleteAccountRequest for why `confirm` must
+   * not be localized.
+   */
+  deleteAccount: (body: DeleteAccountRequest) =>
+    authClient
+      .post<DeleteAccountResponseDTO>('/api/account/delete', body)
+      .then((r) => r.data),
 };

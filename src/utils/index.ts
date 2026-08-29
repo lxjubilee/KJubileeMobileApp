@@ -1,5 +1,12 @@
 export { cdnUrl } from './cdn';
-export { formatDuration, formatCount, truncateTitle, userInitials } from './format';
+export {
+  formatDuration,
+  formatCount,
+  formatThousands,
+  foldForSearch,
+  truncateTitle,
+  userInitials,
+} from './format';
 export { logger } from './logger';
 export {
   EMAIL_RE,

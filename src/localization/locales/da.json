@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Skift adgangskode",
     "instruction": "Indtast din nuværende adgangskode, og vælg en ny (mindst 8 tegn).",
-    "currentPlaceholder": "Nuværende adgangskode",
     "newPlaceholder": "Ny adgangskode (mindst 8 tegn)",
     "confirmPlaceholder": "Bekræft ny adgangskode",
     "mismatch": "Adgangskoderne stemmer ikke overens.",

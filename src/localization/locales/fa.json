@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "تغییر رمز عبور",
     "instruction": "رمز عبور فعلی خود را وارد کنید و رمز جدیدی انتخاب کنید (حداقل ۸ نویسه).",
-    "currentPlaceholder": "رمز عبور فعلی",
     "newPlaceholder": "رمز عبور جدید (حداقل ۸ نویسه)",
     "confirmPlaceholder": "تأیید رمز عبور جدید",
     "mismatch": "رمزهای عبور مطابقت ندارند.",

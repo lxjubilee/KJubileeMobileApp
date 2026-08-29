@@ -29,12 +29,23 @@ export interface SsoLookupDTO {
   ssoConfigured?: boolean;
 }
 
-/** The canonical signed-in body — `respondSignedIn` in server.js. */
+/** The canonical signed-in body — `respondSignedIn` in lib/sso-door.js. */
 export interface SsoSessionDTO {
   success: true;
-  /** HS256 JWT. Thirty days by default, and there is no refresh endpoint. */
+  /**
+   * HS256 JWT, thirty days by default (a year with `rememberMe`). This alone is
+   * the session — `respondSignedIn` returns no refresh token.
+   */
   token: string;
   expiresAt: string;
+  /**
+   * Not sent by the KJubilee.com door as of this writing, but `/api/auth/refresh`
+   * does resolve on the live host (it answers a structured 401 rather than the
+   * Next 404 that unknown `/api/auth/*` paths return), so the deployed server may
+   * be ahead of the checked-out source. Captured when present and ignored when
+   * not, so a server that starts issuing one needs no client change.
+   */
+  refreshToken?: string;
   user: SsoUserDTO;
 }
 

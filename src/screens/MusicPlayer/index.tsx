@@ -110,7 +110,7 @@ export const MusicPlayerScreen: React.FC = () => {
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background, paddingTop: insets.top + 8 }]}>
       <Artwork uri={currentTrack.artwork} style={StyleSheet.absoluteFill} blurRadius={60} iconSize={0} />
-      <LinearGradient colors={['rgba(11,11,15,0.4)', '#0B0B0F']} style={StyleSheet.absoluteFill} />
+      <LinearGradient colors={['rgba(11,11,15,0.4)', theme.colors.background]} style={StyleSheet.absoluteFill} />
 
       <View style={styles.header}>
         <IconButton name="chevron-down" size={28} onPress={() => navigation.goBack()} />

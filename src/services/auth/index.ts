@@ -3,6 +3,8 @@ export type { SignInResult, SignInArgs, SignupChallenge } from './authService';
 export { classifySignin, readAuthError } from './authOutcome';
 export type { SigninOutcome, LinkedProfile, AuthErrorMeta } from './authOutcome';
 export { tokenStore } from './tokenStore';
+export { refreshSession } from './authClient';
+export type { RefreshOutcome } from './authClient';
 export type { AuthUser } from './authMappers';
 export * from './authDto';
 export { ssoService, SsoError, toAuthUser } from './ssoService';

@@ -11,6 +11,7 @@ import type {
 } from './ssoDto';
 import { tokenStore } from './tokenStore';
 import type { AuthUser } from './authMappers';
+import type { ApiError } from '@/services/api';
 
 /**
  * The Jubilee ID door, as three outcomes.
@@ -24,11 +25,17 @@ import type { AuthUser } from './authMappers';
  *   - "No account anywhere" arrives as **404**, which is a route to the create
  *     screen, not an error to show.
  *
- * Session model: one HS256 JWT, thirty days, and no refresh endpoint. It is
- * stored in the existing token store with an EMPTY refresh token, which is not
- * a placeholder but the correct wiring — `authClient.refreshSession` returns
- * `invalid` when there is no refresh token, so a 401 signs the listener out
- * instead of attempting a renewal that cannot exist.
+ * Session model, as the LIVE server actually behaves (the checked-out
+ * KJubilee.com source is older and issues no refresh token at all):
+ * `/api/sso/login` returns `token`, `expiresAt`, `refreshToken` and
+ * `refreshExpiresAt`. The access token is short-lived — minutes, not days — so
+ * the refresh token is what actually keeps someone signed in, and dropping it
+ * (this module used to store `''`) meant a new sign-in every time it lapsed.
+ *
+ * That is only correct once the JWT has actually been loaded. Restoring a session
+ * MUST call `tokenStore.load()` before asking `/api/auth/me` who the listener is;
+ * without it the request goes out unauthenticated, earns a 401, and the resulting
+ * "sign out" discards a session that had thirty days left on it.
  */
 
 export type DoorOutcome =
@@ -58,17 +65,31 @@ export class SsoError extends Error {
   }
 }
 
-/** Turn any axios failure into the server's own message where it sent one. */
+/**
+ * HTTP status off a failure, whichever shape it arrived in.
+ *
+ * Calls through `authClient` reject with a normalized `ApiError` (the response
+ * interceptor converts before rejecting), while a bare axios call rejects with an
+ * `AxiosError`. Code that checked only the latter silently mis-read every real
+ * status as "no status at all".
+ */
+function statusOf(e: unknown): number | undefined {
+  if (axios.isAxiosError(e)) return e.response?.status;
+  const status = (e as ApiError | undefined)?.status;
+  // `toApiError` uses 0 for "never reached the server" — not a real status.
+  return typeof status === 'number' && status > 0 ? status : undefined;
+}
+
+/** Turn any failure into the server's own message where it sent one. */
 function toSsoError(e: unknown, fallback: string): SsoError {
-  if (axios.isAxiosError(e)) {
-    const status = e.response?.status;
-    const body = e.response?.data as { error?: string } | undefined;
-    const message = body?.error || fallback;
-    // 400/401/403/409 are all "try again differently"; 5xx and network are not.
-    const recoverable = status != null && status >= 400 && status < 500;
-    return new SsoError(message, recoverable);
-  }
-  return new SsoError(fallback, false);
+  const status = statusOf(e);
+  const body = axios.isAxiosError(e)
+    ? (e.response?.data as { error?: string } | undefined)
+    : ((e as ApiError | undefined)?.raw as { error?: string } | undefined);
+  const message = body?.error || fallback;
+  // 400/401/403/409 are all "try again differently"; 5xx and network are not.
+  const recoverable = status != null && status >= 400 && status < 500;
+  return new SsoError(message, recoverable);
 }
 
 /**
@@ -94,8 +115,10 @@ export function toAuthUser(u: SsoUserDTO): AuthUser {
 async function persist(session: SsoSessionDTO): Promise<SsoUserDTO> {
   await tokenStore.save({
     accessToken: session.token,
-    // Deliberately empty — see the note above. There is no refresh endpoint.
-    refreshToken: '',
+    // Usually absent: the door's session is the JWT alone. Stored when the server
+    // does send one so renewal starts working without a client change — see the
+    // note on SsoSessionDTO.refreshToken.
+    refreshToken: session.refreshToken,
     expiresAt: session.expiresAt,
   });
   return session.user;
@@ -176,7 +199,12 @@ export const ssoService = {
       const data = (await ssoEndpoints.me()) as { user?: SsoUserDTO };
       return data?.user ? toAuthUser(data.user) : null;
     } catch (e) {
-      if (axios.isAxiosError(e) && e.response?.status === 401) return null;
+      // `authClient`'s response interceptor rejects with a normalized ApiError,
+      // NOT the original AxiosError — so `axios.isAxiosError` is always false
+      // here and a real 401 used to escape as a throw, which the caller reads as
+      // "network blip, keep the cached profile". Read the status off whichever
+      // shape arrived.
+      if (statusOf(e) === 401) return null;
       throw e;
     }
   },

@@ -33,8 +33,12 @@ const TabBarWithMiniPlayer: React.FC<BottomTabBarProps> = (props) => {
   // `getFocusedRouteNameFromRoute` reports undefined for a stack sitting on its
   // initial route. Matching the name alone would therefore have quietly stopped
   // hiding it; the tab has to be checked too.
-  const hideMiniPlayer =
+  const hideProfile =
     activeRoute.name === 'ProfileTab' && (focusedNested == null || focusedNested === 'Profile');
+  // Hidden on the Dial too. The Dial is itself the radio's player surface — it
+  // carries the same station, the same transport, and the tap target the bar
+  // would offer — so the bar there is a second copy of the screen behind it.
+  const hideMiniPlayer = hideProfile || activeRoute.name === 'DialTab';
 
   return (
     <View>
@@ -55,7 +59,8 @@ export const MainTabNavigator: React.FC = () => {
       tabBar={(props) => <TabBarWithMiniPlayer {...props} />}
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarActiveTintColor: theme.colors.text,
+        // Blue marks the current place, as the site's active nav link does.
+        tabBarActiveTintColor: theme.colors.accent,
         tabBarInactiveTintColor: theme.colors.iconMuted,
         tabBarStyle: {
           backgroundColor: theme.colors.tabBar,

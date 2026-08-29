@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
-import { AppText } from '@/components/common';
+import { AppText, OnAirBadge } from '@/components/common';
 import { useTheme } from '@/context';
 import { stationArt } from '@/assets/radio/stationArt';
 import type { RadioStation } from '@/services/radio';
@@ -81,16 +81,19 @@ export const StationRow: React.FC<Props> = React.memo(({ station, playing, onPre
         </View>
       </View>
 
-      {live ? (
-        <View style={[styles.badge, { backgroundColor: playing ? c.accent : 'transparent', borderColor: playing ? c.accent : c.border }]}>
-          <View style={[styles.dot, { backgroundColor: playing ? '#FFFFFF' : c.danger }]} />
-          <AppText style={[styles.badgeText, { color: playing ? '#FFFFFF' : c.textSecondary }]}>
-            {playing ? 'PLAYING' : 'LIVE'}
-          </AppText>
-        </View>
-      ) : (
-        <AppText style={[styles.soon, { color: c.textMuted }]}>SOON</AppText>
-      )}
+      {/* The shared badge, identical to Home's and to the site's `.cover-live`.
+          This row used to draw its own — a static dot in `danger` red — so the
+          same station reported ON AIR in red here and in green one tab away.
+          Red also said the wrong thing: it is the palette's ERROR colour, and
+          the site's on-air green (#46D07A) is a different token for a reason.
+
+          `alignSelf` because the component defaults to `flex-start` for the
+          overlay it was built for; in a 72pt row it needs centring. */}
+      <OnAirBadge
+        state={playing ? 'playing' : live ? 'onAir' : 'soon'}
+        label={playing ? 'PLAYING' : live ? 'ON AIR' : 'COMING SOON'}
+        style={styles.badge}
+      />
     </Pressable>
   );
 });
@@ -117,16 +120,5 @@ const styles = StyleSheet.create({
   metaRow: { flexDirection: 'row', alignItems: 'center', marginTop: 3 },
   hm: { fontFamily: 'Orbitron_600SemiBold', fontSize: 12, lineHeight: 16, marginRight: 5 },
   meta: { fontSize: 12, flexShrink: 1 },
-  badge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-    paddingHorizontal: 8,
-    height: 22,
-    borderRadius: 11,
-    borderWidth: StyleSheet.hairlineWidth,
-  },
-  dot: { width: 5, height: 5, borderRadius: 3 },
-  badgeText: { fontSize: 9, letterSpacing: 1 },
-  soon: { fontSize: 9, letterSpacing: 1 },
+  badge: { alignSelf: 'center' },
 });

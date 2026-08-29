@@ -36,6 +36,15 @@ export interface RadioStation {
   flag: string;
   pill: string;
   tracks: number;
+  /**
+   * The hero's blue strapline, pre-composed by the web catalog — e.g.
+   * "Angel Songs · 1,749 tracks · Genesis to Revelation". Ported verbatim from
+   * `stations-data.js` (`listeners`) rather than assembled here, because the
+   * separators and what each station chooses to mention vary per row.
+   */
+  listeners?: string;
+  /** Audience figure as published, e.g. "480M" — or "Featured" for the flagship. */
+  reach?: string;
   /** Two-stop colour pair the web uses for station art; drives the tile wash here. */
   gradient: [string, string];
   host: StationHost | null;

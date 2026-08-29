@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Cambiar contraseña",
     "instruction": "Introduce tu contraseña actual y elige una nueva (al menos 8 caracteres).",
-    "currentPlaceholder": "Contraseña actual",
     "newPlaceholder": "Nueva contraseña (mín. 8 caracteres)",
     "confirmPlaceholder": "Confirmar nueva contraseña",
     "mismatch": "Las contraseñas no coinciden.",

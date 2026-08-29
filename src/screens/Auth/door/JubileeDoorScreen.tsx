@@ -336,7 +336,11 @@ export const JubileeDoorScreen: React.FC = () => {
 
   return (
     <AuthScreenShell
-      onBack={goBack}
+      // No arrow on the email step: it is the door's first step and the root of
+      // the auth stack, so there is nothing behind it — `backTargetFor` returns
+      // null and the press was a no-op. Hardware back already deferred to the
+      // navigator here for the same reason.
+      onBack={state.step === 'email' ? undefined : goBack}
       backLabel={t('auth.door.a11y.back')}
       title={t(titleKey[state.step], { site: 'KJubilee' })}
       scrollRef={scrollRef}

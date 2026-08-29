@@ -22,13 +22,33 @@ export type HomeFilter = string;
 /** Height the chips row collapses from / expands to. */
 export const CHIP_ROW_HEIGHT = 48;
 
+/**
+ * Height of the brand row block below the safe-area inset: `inner`'s 6pt top
+ * padding, the tallest the row itself gets (the 49pt two-line brand stack, which
+ * outgrows both the mark and the 32pt action circles), `topRow`'s 12pt bottom
+ * margin and `inner`'s 8pt — plus a little slack.
+ *
+ * Home overlays this header on its scroll view and pads the content by this, so
+ * the two must move together.
+ */
+export const HEADER_TOP_BLOCK = 80;
+
 /** Diameter shared by both round header actions (language flag + profile),
  *  so the two circles always match. */
 const ACTION_SIZE = 32;
 /** Spacing between the two round actions. */
 const ACTION_GAP = 8;
-/** Diameter of the circular brand logo in the header. */
-const BRAND_LOGO = 34;
+/**
+ * Horizontal slot reserved for the brand mark in the width maths below.
+ *
+ * BrandLogo now sizes its own mark from the height of the text beside it, which
+ * depends on `brandFontSize` — which depends on this. The cycle is broken by
+ * reserving the largest the mark can get (at BRAND_FONT_MAX, a 49pt two-line
+ * block scaled to 88% lands on 43). Narrow phones therefore reserve a couple of
+ * points more than the mark ends up needing, which costs a little wordmark size
+ * and never lets it collide with the flag.
+ */
+const BRAND_MARK_SLOT = 44;
 /** Smallest allowed space between the wordmark and the language flag. */
 const BRAND_CLEARANCE = 14;
 
@@ -45,7 +65,7 @@ const brandFontSize = (screenWidth: number): number => {
   const free =
     screenWidth -
     32 - // `inner` horizontal padding
-    (BRAND_LOGO + 8) - // logo plus its trailing margin
+    (BRAND_MARK_SLOT + 8) - // logo plus its trailing margin
     (ACTION_SIZE * 2 + ACTION_GAP) - // language flag + profile avatar
     BRAND_CLEARANCE;
   return Math.max(BRAND_FONT_MIN, Math.min(BRAND_FONT_MAX, Math.floor(free / WORDMARK_WIDTH_EM)));
@@ -107,9 +127,8 @@ export const HomeHeader: React.FC<HomeHeaderProps> = ({
       <View style={[styles.inner, { paddingTop: insets.top + 6 }]}>
         <View style={styles.topRow}>
           <BrandLogo
-            size={BRAND_LOGO}
+            tagline
             textStyle={[
-              styles.brand,
               styles.brandText,
               { fontSize: brandSize, lineHeight: Math.round(brandSize * 1.15) },
             ]}
@@ -162,14 +181,18 @@ export const HomeHeader: React.FC<HomeHeaderProps> = ({
                   style={[
                     styles.chip,
                     {
-                      borderColor: active ? '#FFFFFF' : 'rgba(255,255,255,0.18)',
-                      backgroundColor: active ? '#FFFFFF' : 'rgba(255,255,255,0.08)',
+                      // The site marks the active nav link with colour, not fill:
+                      //   .nav-link.is-active{color:var(--accent);
+                      //     border-color:var(--accent);background:transparent}
+                      // This used to invert it — a white fill with black text.
+                      borderColor: active ? theme.colors.accent : 'rgba(255,255,255,0.18)',
+                      backgroundColor: active ? 'transparent' : 'rgba(255,255,255,0.08)',
                     },
                   ]}
                 >
                   <AppText
                     variant="label"
-                    style={{ color: active ? '#000' : theme.colors.text }}
+                    style={{ color: active ? theme.colors.accent : theme.colors.text }}
                   >
                     {getLabel ? getLabel(filter) : filter}
                   </AppText>
@@ -196,7 +219,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   solidBg: { backgroundColor: '#000' },
-  brand: { color: '#007FFF' },
+  // colour applied at the call site from the theme
   // Bold mixed-case wordmark ("KJubilee").
   // fontSize/lineHeight come from `brandFontSize` at render — see the top row.
   brandText: { fontWeight: '900', letterSpacing: 0.5 },
@@ -231,7 +254,8 @@ const styles = StyleSheet.create({
   chip: {
     height: 40,
     paddingHorizontal: 18,
-    borderRadius: 8,
+    // `.nav-link` is 4px, not the 8 this had.
+    borderRadius: 4,
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',

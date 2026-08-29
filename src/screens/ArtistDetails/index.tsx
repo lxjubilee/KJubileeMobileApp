@@ -9,6 +9,7 @@ import { Screen, Loader, AppText, Artwork, Button, IconButton, SectionHeader } f
 import { AlbumCard } from '@/components/cards';
 import { FloatingMiniPlayer } from '@/components/player';
 import { useAppDispatch, useAppSelector, usePlayer, useVisibleAlbums, useVisibleTracks } from '@/hooks';
+import { useTheme } from '@/context';
 import { toggleFollowArtist } from '@/redux';
 import { AlbumRepository, ArtistRepository } from '@/repositories';
 import { Album, Artist, Track } from '@/types';
@@ -30,6 +31,7 @@ export const ArtistDetailsScreen: React.FC = () => {
   const navigation = useNavigation<Nav>();
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
+  const theme = useTheme();
   const dispatch = useAppDispatch();
   const { playTracks, currentTrack, isPlaying, toggle } = usePlayer();
 
@@ -175,7 +177,7 @@ export const ArtistDetailsScreen: React.FC = () => {
              keep their size and position. */
           <View style={[styles.hero, { height: HERO, marginTop: insets.top }]}>
             <Artwork uri={artist.image} source={personaImage(artist.id)} style={StyleSheet.absoluteFill} iconSize={72} />
-            <LinearGradient colors={['transparent', 'transparent', '#0B0B0F']} locations={[0, 0.5, 1]} style={StyleSheet.absoluteFill} />
+            <LinearGradient colors={['transparent', 'transparent', theme.colors.background]} locations={[0, 0.5, 1]} style={StyleSheet.absoluteFill} />
             <View style={styles.heroText}>
               <AppText
                 variant="displayLg"
@@ -211,7 +213,7 @@ export const ArtistDetailsScreen: React.FC = () => {
           <IconButton
             name={isThisArtistPlaying ? 'pause-circle' : 'play-circle'}
             size={52}
-            color="#007FFF"
+            color={theme.colors.accent}
             onPress={onPlayPause}
           />
         </View>
@@ -327,7 +329,7 @@ export const ArtistDetailsScreen: React.FC = () => {
 const styles = StyleSheet.create({
   content: { paddingBottom: 96 },
   hero: { width: '100%', justifyContent: 'flex-end' },
-  banner: { width: '100%', justifyContent: 'flex-end', backgroundColor: '#0B0B0F' },
+  banner: { width: '100%', justifyContent: 'flex-end' },
   // Name overlays the banner's empty left side; capped so it stays off the
   // right-side portrait.
   bannerText: { paddingHorizontal: 16, paddingBottom: 12, maxWidth: '62%' },

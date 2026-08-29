@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Easing, Image, StyleSheet, Text } from 'react-native';
 import { useFonts, Orbitron_600SemiBold } from '@expo-google-fonts/orbitron';
+import { darkColors } from '@/theme';
 
 interface SplashScreenProps {
   /** Called once the intro animation completes and the app should be revealed. */
@@ -9,7 +10,9 @@ interface SplashScreenProps {
 
 /** Wordmark span colors — "K" + ".com" white, "Jubilee" blue (matches header). */
 const WHITE = '#FFFFFF';
-const BLUE = '#007FFF';
+// This mounts OUTSIDE ThemeProvider (App.tsx renders it as a sibling), so the
+// palette is imported rather than read from the hook.
+const BLUE = darkColors.accent;
 
 /**
  * Netflix-style intro splash: the KJubilee logo and "KJubilee.com" wordmark

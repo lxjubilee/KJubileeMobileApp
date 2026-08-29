@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Ubah kata sandi",
     "instruction": "Masukkan kata sandi Anda saat ini dan pilih yang baru (minimal 8 karakter).",
-    "currentPlaceholder": "Kata sandi saat ini",
     "newPlaceholder": "Kata sandi baru (min. 8 karakter)",
     "confirmPlaceholder": "Konfirmasi kata sandi baru",
     "mismatch": "Kata sandi tidak cocok.",

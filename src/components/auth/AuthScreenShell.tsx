@@ -31,8 +31,10 @@ interface AuthScreenShellProps {
  * Chrome shared by every auth screen: status bar, safe area, the back-arrow +
  * brand header, and the keyboard-aware scroll column.
  *
- * The header row height is unconditional so content does not jump between steps
- * of the Jubilee Door as the back arrow appears and disappears.
+ * The header row height holds steady across steps of the Jubilee Door as the
+ * back arrow appears and disappears, so the content below never shifts. The
+ * wordmark does move: it slides to the gutter on the steps with no arrow rather
+ * than holding a gap where one would have been.
  */
 export const AuthScreenShell: React.FC<AuthScreenShellProps> = ({
   onBack,
@@ -50,6 +52,10 @@ export const AuthScreenShell: React.FC<AuthScreenShellProps> = ({
       <StatusBar style="light" />
       <SafeAreaView style={styles.flex} edges={['top', 'bottom']}>
         <View style={styles.header}>
+          {/* No spacer when the arrow is absent: the wordmark takes the gutter
+              itself rather than sitting in the arrow's empty slot. The row keeps
+              its height from BrandLogo's 28px mark, which already exceeds the
+              26px glyph the arrow contributes. */}
           {onBack ? (
             <IconButton
               name="arrow-back"
@@ -57,12 +63,10 @@ export const AuthScreenShell: React.FC<AuthScreenShellProps> = ({
               onPress={onBack}
               accessibilityLabel={backLabel}
             />
-          ) : (
-            <View style={styles.backSpacer} />
-          )}
+          ) : null}
           {/* BrandLogo strips `color`/`fontWeight` from textStyle — the wordmark
               spans set their own colors and Orbitron encodes the weight. */}
-          <BrandLogo textStyle={styles.logo} />
+          <BrandLogo tagline textStyle={styles.logo} />
         </View>
 
         <KeyboardAvoidingView
@@ -110,9 +114,6 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     paddingBottom: 6,
   },
-  // Matches IconButton's 26px glyph + its padding, so the brand mark holds its
-  // position whether or not a back arrow is rendered.
-  backSpacer: { width: 26, height: 26 },
   logo: { fontSize: 20, lineHeight: 26, fontWeight: '900', letterSpacing: 1 },
   content: {
     flexGrow: 1,

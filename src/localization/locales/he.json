@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "שנה סיסמה",
     "instruction": "הזן את הסיסמה הנוכחית שלך ובחר סיסמה חדשה (לפחות 8 תווים).",
-    "currentPlaceholder": "סיסמה נוכחית",
     "newPlaceholder": "סיסמה חדשה (לפחות 8 תווים)",
     "confirmPlaceholder": "אשר סיסמה חדשה",
     "mismatch": "הסיסמאות אינן תואמות.",

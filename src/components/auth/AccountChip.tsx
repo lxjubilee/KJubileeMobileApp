@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import { AppText } from '@/components/common';
 import { useTheme } from '@/context';
 import { AUTH_BORDER, AUTH_METRICS } from './authStyles';
@@ -9,6 +9,8 @@ interface AccountChipProps {
   /** "Use a different email" — returns to the email step. */
   actionLabel: string;
   onAction: () => void;
+  /** Spacing from whatever sits above; the chip carries no margin of its own. */
+  style?: StyleProp<ViewStyle>;
 }
 
 /**
@@ -20,11 +22,11 @@ interface AccountChipProps {
  * address unreadable, while a middle ellipsis keeps the local part and the
  * domain, which is what the user checks.
  */
-export const AccountChip: React.FC<AccountChipProps> = ({ email, actionLabel, onAction }) => {
+export const AccountChip: React.FC<AccountChipProps> = ({ email, actionLabel, onAction, style }) => {
   const theme = useTheme();
 
   return (
-    <View style={styles.chip}>
+    <View style={[styles.chip, style]}>
       <AppText
         variant="bodySm"
         color="textSecondary"
@@ -61,8 +63,13 @@ const styles = StyleSheet.create({
     borderColor: AUTH_BORDER.idle,
     borderRadius: AUTH_METRICS.radius,
     backgroundColor: AUTH_BORDER.fill,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
+    // Same box as AuthTextField, so the chip and the password field below it
+    // read as one stack. `minHeight` rather than `height` for the same reason
+    // the field uses it: a two-line email still grows the box instead of
+    // clipping.
+    minHeight: AUTH_METRICS.fieldHeight,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
   },
   email: { flex: 1 },
   action: { fontWeight: '700', textDecorationLine: 'underline' },

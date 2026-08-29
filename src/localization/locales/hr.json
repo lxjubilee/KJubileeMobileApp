@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Promijeni lozinku",
     "instruction": "Unesi trenutnu lozinku i odaberi novu (najmanje 8 znakova).",
-    "currentPlaceholder": "Trenutna lozinka",
     "newPlaceholder": "Nova lozinka (min. 8 znakova)",
     "confirmPlaceholder": "Potvrdi novu lozinku",
     "mismatch": "Lozinke se ne podudaraju.",

@@ -81,8 +81,28 @@ const REFRESH_EXEMPT = [
   '/api/auth/send-signup-verification',
   '/api/auth/send-login-verification',
   '/api/auth/refresh',
+  // The Jubilee ID door. `/api/sso/login` answers 401 for a WRONG PASSWORD — a
+  // pre-auth answer, not a lapsed session. Without this the door's own rejection
+  // drove a refresh attempt and, finding no refresh token, fired `onAuthFailure`
+  // and logged a session that never existed as "signed out".
+  '/api/sso/',
+  // Account settings, for the same reason one layer up. `POST /api/account/password`
+  // answers 401 with "That password doesn't match" when the CURRENT password is
+  // wrong — the session behind it is perfectly good. Treating that as a lapsed
+  // session would turn a typo into a sign-out, i.e. Change Password would work
+  // as a logout button.
+  '/api/account/',
 ];
 const isExempt = (url?: string) => !!url && REFRESH_EXEMPT.some((p) => url.includes(p));
+
+/**
+ * Endpoints whose failures are already handled by their caller and must not be
+ * logged at error level. Nothing here affects control flow — the promise still
+ * rejects and the caller still catches.
+ */
+const QUIET_ON_FAILURE = ['/api/analytics/'];
+const isQuiet = (config?: { url?: string }) =>
+  !!config?.url && QUIET_ON_FAILURE.some((p) => config.url!.includes(p));
 
 authClient.interceptors.request.use(async (config) => {
   // We are a pure Bearer client. RN's native cookie jar would otherwise replay a
@@ -107,6 +127,18 @@ authClient.interceptors.request.use(async (config) => {
   return config;
 });
 
+/**
+ * Both refresh response shapes the server has been observed to use — nested
+ * under `tokens` per `API docs/API.md`, and flat like `/api/sso/login`.
+ */
+interface RefreshResponseBody {
+  tokens?: { accessToken?: string; refreshToken?: string; expiresAt?: string };
+  accessToken?: string;
+  token?: string;
+  refreshToken?: string;
+  expiresAt?: string;
+}
+
 // Single-flight refresh: concurrent 401s share one refresh round-trip.
 let refreshPromise: Promise<RefreshOutcome> | null = null;
 
@@ -117,10 +149,15 @@ async function runRefresh(): Promise<RefreshOutcome> {
   // the cookie here too, since the request interceptor doesn't run for it.
   await clearSessionCookies();
   try {
-    // The API nests both tokens under `tokens`. It does NOT rotate the refresh
-    // token (it echoes the same one back), so fall back to the token we sent if a
-    // response ever omits it rather than dropping the session.
-    const res = await axios.post<{ tokens?: { accessToken?: string; refreshToken?: string; expiresAt?: string } }>(
+    // Two response shapes are accepted, because the deployed endpoint does not
+    // match the one `API docs/API.md` describes:
+    //   nested — { tokens: { accessToken, refreshToken, expiresAt } }   (API.md)
+    //   flat   — { token, refreshToken, expiresAt }                     (live, and
+    //            the same shape /api/sso/login returns)
+    // Reading only the nested form made a SUCCESSFUL 200 refresh look like a
+    // failure: `tokens.accessToken` was undefined, so this returned `error`, the
+    // caller treated it as a network blip, and the session was dropped anyway.
+    const res = await axios.post<RefreshResponseBody>(
       `${CONFIG.API_AUTH_BASE}/api/auth/refresh`,
       { refreshToken },
       {
@@ -133,19 +170,28 @@ async function runRefresh(): Promise<RefreshOutcome> {
     );
     // 401 = the refresh token was rejected; 400 = it was malformed. Both are
     // definitive — no amount of retrying will help.
+    logger.debug('AUTH refresh ->', res.status);
     if (res.status === 401 || res.status === 400) return { result: 'invalid' };
     if (res.status < 200 || res.status >= 300) return { result: 'error' };
 
-    const accessToken = res.data?.tokens?.accessToken;
-    if (!accessToken) return { result: 'error' };
-    const expiresAt = res.data?.tokens?.expiresAt;
-    setAccessToken(accessToken);
+    const body = res.data ?? {};
+    const nextAccess = body.tokens?.accessToken ?? body.accessToken ?? body.token;
+    if (!nextAccess) {
+      // 2xx with nothing usable: a contract change, not a dead session. Keep the
+      // tokens so the next launch can try again rather than signing the user out.
+      logger.warn('AUTH refresh: 2xx with no access token — keys:', Object.keys(body).join(','));
+      return { result: 'error' };
+    }
+    const expiresAt = body.tokens?.expiresAt ?? body.expiresAt;
+    setAccessToken(nextAccess);
     handlers?.persistTokens({
-      accessToken,
-      refreshToken: res.data?.tokens?.refreshToken ?? refreshToken,
+      accessToken: nextAccess,
+      // Non-rotating today (it echoes the same token back), but store whatever
+      // came back so a move to rotation needs no client change.
+      refreshToken: body.tokens?.refreshToken ?? body.refreshToken ?? refreshToken,
       expiresAt,
     });
-    return { result: 'ok', accessToken };
+    return { result: 'ok', accessToken: nextAccess };
   } catch (e) {
     // Network error / timeout — transient. Keep the tokens.
     logger.warn('AUTH refresh transient failure — keeping session', e);
@@ -188,7 +234,15 @@ authClient.interceptors.response.use(
       // through to the normal error path with the tokens left intact, so the next
       // request (or the next launch) can try again.
       if (outcome.result === 'invalid') {
-        logger.warn('AUTH refresh token rejected — signing out');
+        // Say which of the two it was. "Refresh token rejected" on a session that
+        // never had a refresh token sent a real diagnosis down the wrong path for
+        // a long time: the actual fault was an unauthenticated request, because
+        // the stored JWT had not been loaded yet.
+        logger.warn(
+          handlers.getRefreshToken()
+            ? 'AUTH refresh token rejected by server — signing out'
+            : `AUTH 401 with no refresh token (session token absent or expired) — signing out: ${original.url}`,
+        );
         handlers.onAuthFailure();
       } else {
         logger.warn('AUTH refresh unavailable — keeping session', original.url);
@@ -208,7 +262,16 @@ authClient.interceptors.response.use(
     }
 
     const apiError = toApiError(error);
-    logger.error('AUTH ✗', apiError.status, apiError.message, error.code ?? '', original?.url ?? '');
+    // Fire-and-forget callers opt out of the red box. `logger.error` opens LogBox
+    // in a dev build, so a swallowed failure on a best-effort endpoint still looks
+    // like a crash — the trap `authService.signOut` documents, met again by the
+    // analytics beacons against an endpoint that does not exist yet. The request
+    // still rejects; only the volume changes.
+    if (isQuiet(original)) {
+      logger.debug('AUTH ✗ (quiet)', apiError.status, original?.url ?? '');
+    } else {
+      logger.error('AUTH ✗', apiError.status, apiError.message, error.code ?? '', original?.url ?? '');
+    }
     return Promise.reject(apiError);
   },
 );

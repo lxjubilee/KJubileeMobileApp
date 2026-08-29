@@ -74,6 +74,7 @@ export const PasswordStep: React.FC<PasswordStepProps> = ({
       ) : null}
 
       <AccountChip
+        style={mode === 'welcome' ? styles.chip : undefined}
         email={email}
         actionLabel={t('auth.door.account.useDifferentEmail')}
         onAction={onUseDifferentEmail}
@@ -131,6 +132,10 @@ export const PasswordStep: React.FC<PasswordStepProps> = ({
 
 const styles = StyleSheet.create({
   subtitle: { marginTop: 10, marginBottom: 18, lineHeight: 20 },
+  // `welcome` has no subtitle, so without this the chip butts straight against
+  // the "Welcome back" title. Matches the gap `confirm` gets from its subtitle's
+  // marginBottom, so both password steps open on the same rhythm.
+  chip: { marginTop: 18 },
   field: { marginTop: 18 },
   remember: { marginTop: 14 },
   captcha: { marginTop: 14 },

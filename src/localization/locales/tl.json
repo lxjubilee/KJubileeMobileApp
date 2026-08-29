@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Palitan ang password",
     "instruction": "Ilagay ang iyong kasalukuyang password at pumili ng bago (hindi bababa sa 8 character).",
-    "currentPlaceholder": "Kasalukuyang password",
     "newPlaceholder": "Bagong password (min. 8 character)",
     "confirmPlaceholder": "Kumpirmahin ang bagong password",
     "mismatch": "Hindi tugma ang mga password.",

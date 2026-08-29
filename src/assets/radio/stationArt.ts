@@ -118,7 +118,37 @@ const ART: Record<string, ImageSourcePropType> = {
   'yes-and-amen': require('./stations/yes-and-amen.webp'),
 };
 
+/**
+ * Full-resolution copies for the full-bleed surfaces — the featured hero and
+ * the station page — which would otherwise upscale a 640px tile asset by ~4x.
+ * Only live stations have one; see heroWanted in the build script.
+ */
+const HERO: Record<string, ImageSourcePropType> = {
+  'ancient-paths': require('./stations-hero/ancient-paths.webp'),
+  'country-gospel': require('./stations-hero/country-gospel.webp'),
+  'gods-little-lambs': require('./stations-hero/gods-little-lambs.webp'),
+  'hebraic-celebrations': require('./stations-hero/hebraic-celebrations.webp'),
+  'inspire-active': require('./stations-hero/inspire-active.webp'),
+  'island-hallelujah': require('./stations-hero/island-hallelujah.webp'),
+  'jubilee-ccm': require('./stations-hero/jubilee-ccm.webp'),
+  'jubilee-gospel-fire': require('./stations-hero/jubilee-gospel-fire.webp'),
+  'jubilee-kids-party': require('./stations-hero/jubilee-kids-party.webp'),
+  'jubilee-praise': require('./stations-hero/jubilee-praise.webp'),
+  'jubilee-praise-romana': require('./stations-hero/jubilee-praise-romana.webp'),
+  'jubilee-radio': require('./stations-hero/jubilee-radio.webp'),
+  'latin-worship': require('./stations-hero/latin-worship.webp'),
+  'midnight-praise': require('./stations-hero/midnight-praise.webp'),
+  'radiant-stones-radio': require('./stations-hero/radiant-stones-radio.webp'),
+  'riddim-and-rhyme': require('./stations-hero/riddim-and-rhyme.webp'),
+  'yes-and-amen': require('./stations-hero/yes-and-amen.webp'),
+};
+
 /** Cover art for a station, or undefined when the catalog has none. */
 export function stationArt(slug: string): ImageSourcePropType | undefined {
   return ART[slug];
+}
+
+/** Hero-resolution art, falling back to the tile copy for a station with none. */
+export function heroArt(slug: string): ImageSourcePropType | undefined {
+  return HERO[slug] ?? ART[slug];
 }

@@ -105,7 +105,6 @@
   "changePassword": {
     "title": "Verander wagwoord",
     "instruction": "Voer jou huidige wagwoord in en kies 'n nuwe een (minstens 8 karakters).",
-    "currentPlaceholder": "Huidige wagwoord",
     "newPlaceholder": "Nuwe wagwoord (min. 8 karakters)",
     "confirmPlaceholder": "Bevestig nuwe wagwoord",
     "mismatch": "Wagwoorde stem nie ooreen nie.",
