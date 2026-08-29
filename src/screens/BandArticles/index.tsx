@@ -91,9 +91,14 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     top: 0,
-    justifyContent: 'flex-end',
-    paddingHorizontal: 8,
     backgroundColor: '#000',
+    // A ROW. Without this the header is a column, `alignItems` defaults to
+    // stretch, and the back button spans the full width — it then centres its
+    // own glyph, so the chevron sat in the middle of the screen. Same two lines
+    // StationList uses.
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 8,
   },
 });
 

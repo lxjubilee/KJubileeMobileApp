@@ -196,7 +196,7 @@ export const BandArticleDetailScreen: React.FC = () => {
             )
           ) : failed ? (
             <View style={styles.bodyState}>
-              <AppText style={[styles.story, { color: c.textMuted }]}>
+              <AppText style={[styles.story, styles.statusText, { color: c.textMuted }]}>
                 This article could not be loaded.
               </AppText>
               <Pressable
@@ -216,7 +216,7 @@ export const BandArticleDetailScreen: React.FC = () => {
           ) : (
             <View style={styles.bodyState}>
               <ActivityIndicator size="small" color={c.textMuted} />
-              <AppText style={[styles.story, { color: c.textMuted }]}>
+              <AppText style={[styles.story, styles.statusText, { color: c.textMuted }]}>
                 Fetching the article…
               </AppText>
             </View>
@@ -342,7 +342,12 @@ const styles = StyleSheet.create({
   needLabel: { fontWeight: '700' },
 
   body: { paddingHorizontal: GUTTER, marginTop: 22 },
-  lead: { fontSize: 16, lineHeight: 25 },
+  // JUSTIFIED, like the long-form column it is. Android only honours this from
+  // 8.0 (API 26) and quietly falls back to left below that, which is the right
+  // failure: ragged-right prose is normal, and nothing else about the layout
+  // depends on it. The last line of a paragraph stays left on both platforms,
+  // so there are no stretched orphans.
+  lead: { fontSize: 16, lineHeight: 25, textAlign: 'justify' },
   // Not a true drop cap: RN has no float, so the letter sits large and
   // accent-blue on the same line and the rest flows past it.
   //
@@ -351,9 +356,12 @@ const styles = StyleSheet.create({
   // the paragraph apart, not just its own, which opened a visible gap mid
   // sentence. Same values the station article uses.
   dropCap: { fontSize: 30, lineHeight: 25, fontWeight: '800' },
-  story: { fontSize: 14.5, lineHeight: 22 },
+  story: { fontSize: 14.5, lineHeight: 22, textAlign: 'justify' },
   storyGap: { marginTop: 14 },
   bodyState: { marginTop: 18, alignItems: 'center', gap: 12 },
+  // These borrow `story` for its size but are one-line notices, not prose —
+  // they must not inherit the column's justification.
+  statusText: { textAlign: 'center' },
   retry: { borderWidth: 1, borderRadius: 6, paddingHorizontal: 16, paddingVertical: 9 },
 
   callout: {
