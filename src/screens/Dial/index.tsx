@@ -14,11 +14,13 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRoute, type RouteProp } from '@react-navigation/native';
 import { Screen, AppText } from '@/components/common';
 import { useTheme } from '@/context';
 import { useRadio } from '@/hooks';
 import { storage, STORAGE_KEYS } from '@/services/storage';
-import { getStations, toggle, tune, BAND_LO, BAND_HI } from '@/services/radio';
+import { getAllStations, getStations, toggle, tune, BAND_LO, BAND_HI } from '@/services/radio';
+import type { MainTabParamList } from '@/navigation/types';
 import { DialScale, PX_PER_HZ, DIAL_HEIGHT } from './components/DialScale';
 import { DialMarks } from './components/DialMarks';
 import { RotaryDial } from './components/RotaryDial';
@@ -60,6 +62,8 @@ export const DialScreen: React.FC = () => {
   const theme = useTheme();
   const radio = useRadio();
   const { width } = useWindowDimensions();
+  const route = useRoute<RouteProp<MainTabParamList, 'DialTab'>>();
+  const askedHm = route.params?.hm;
 
   const stations = useMemo(() => getStations(), []);
   const scrollRef = useRef<ScrollView>(null);
@@ -82,6 +86,11 @@ export const DialScreen: React.FC = () => {
   });
   /** The frequency under the needle mid-sweep, or null when settled. */
   const [sweep, setSweep] = useState<number | null>(null);
+  /**
+   * Said under the readout when the frequency someone asked for is not the one
+   * the needle ended up on, and cleared as soon as they tune anywhere else.
+   */
+  const [notOnAir, setNotOnAir] = useState<string | null>(null);
 
   const station = stations[index] ?? stations[0];
   const here = radio.slug === station.slug;
@@ -125,6 +134,7 @@ export const DialScreen: React.FC = () => {
 
   const step = useCallback(
     (delta: number) => {
+      setNotOnAir(null);
       const s = goTo(index + delta, true);
       void tune(s.slug);
     },
@@ -133,6 +143,7 @@ export const DialScreen: React.FC = () => {
 
   const pick = useCallback(
     (i: number) => {
+      setNotOnAir(null);
       const s = goTo(i, true);
       void tune(s.slug);
     },
@@ -164,6 +175,49 @@ export const DialScreen: React.FC = () => {
     },
     [goTo, radio.playing, radio.slug, stations],
   );
+
+  // ---- opening on a frequency someone asked for --------------------------
+
+  /** Acted on once per arrival, so a re-render does not re-tune the radio. */
+  const handledHm = useRef<string | null>(null);
+
+  /**
+   * `kjubilee.com/hm308.70` — the address a station is given on air.
+   *
+   * Resolved against the WHOLE catalogue rather than the tunable subset, because
+   * the two answers a listener can get differ in kind and only one is an error.
+   * A frequency that is assigned but still in build is not a broken link — it is
+   * a real station that has not signed on — and silently parking them elsewhere
+   * would read as the app losing their tap. So it is named, and the dial settles
+   * on the nearest frequency that can actually play, which leaves back and next
+   * meaningful from there.
+   *
+   * A frequency the network does not assign at all is left alone: the dial keeps
+   * whatever it opened on, which is the station already sounding.
+   */
+  useEffect(() => {
+    if (!askedHm || handledHm.current === askedHm) return;
+    handledHm.current = askedHm;
+
+    const hz = parseFloat(askedHm);
+    if (!Number.isFinite(hz)) return;
+
+    const asked = getAllStations().find((s) => Math.abs(parseFloat(s.hm) - hz) < 0.005);
+    if (!asked) return;
+
+    const live = stations.findIndex((s) => s.slug === asked.slug);
+    if (live >= 0) {
+      setNotOnAir(null);
+      // `false`: this is where the dial OPENS, so there is nothing to animate
+      // from — sliding across the band on arrival would look like a glitch.
+      const s = goTo(live, false);
+      void tune(s.slug);
+      return;
+    }
+
+    setNotOnAir(`HM ${asked.hm} ${asked.name} is assigned but not on air yet.`);
+    settleAt(hz);
+  }, [askedHm, goTo, settleAt, stations]);
 
   // ---- linear face: sweeping --------------------------------------------
 
@@ -379,6 +433,14 @@ export const DialScreen: React.FC = () => {
             </AppText>
           </View>
         </View>
+
+        {/* Said once, under the readout, and only when the frequency asked for
+            is not the one now under the needle. */}
+        {notOnAir ? (
+          <AppText style={[styles.notOnAir, { color: c.textMuted }]}>
+            {notOnAir} The dial is on the nearest frequency that is playing.
+          </AppText>
+        ) : null}
 
         {/* ---- the tuner ---- */}
         {face === 'linear' ? (
@@ -641,6 +703,16 @@ const styles = StyleSheet.create({
   },
   station: { fontSize: 24, marginTop: 12, textAlign: 'center' },
   sub: { fontSize: 14, marginTop: 5, textAlign: 'center' },
+
+  // Sits between the readout and the glass, where the eye already is after
+  // reading the frequency it did not ask for.
+  notOnAir: {
+    fontSize: 13,
+    lineHeight: 18,
+    textAlign: 'center',
+    paddingHorizontal: 24,
+    marginTop: 10,
+  },
 
   pill: {
     flexDirection: 'row',

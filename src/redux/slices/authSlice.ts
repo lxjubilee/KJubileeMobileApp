@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { authService, refreshSession, ssoService, tokenStore } from '@/services/auth';
-import type { AuthUser, SignInArgs } from '@/services/auth';
+import type { AccountUserDTO, AuthUser, SignInArgs } from '@/services/auth';
 import type { ApiError } from '@/services/api';
 
 export type { AuthUser };
@@ -153,6 +153,28 @@ export const changePassword = createAsyncThunk(
 );
 
 /**
+ * Rename the account (Bearer-authed; no password — see UpdateNameRequest).
+ *
+ * Resolves with the saved row so the reducer can take the server's version of
+ * the name rather than the typed one: it trims, and builds `name` from the two
+ * parts itself.
+ */
+export const updateName = createAsyncThunk<
+  AccountUserDTO,
+  { firstName: string; lastName: string },
+  { rejectValue: string }
+>('auth/updateName', async (args, { rejectWithValue }) => {
+  try {
+    return await authService.updateName({
+      first_name: args.firstName,
+      last_name: args.lastName,
+    });
+  } catch (e) {
+    return rejectWithValue(errMessage(e));
+  }
+});
+
+/**
  * Permanently delete this site's membership (Bearer-authed), then sign out.
  *
  * Both arguments are the server's checks, not decoration: it verifies the
@@ -230,6 +252,20 @@ const authSlice = createSlice({
       .addCase(restoreSession.rejected, (state) => {
         state.user = null;
         state.status = 'idle';
+      })
+      // updateName — the only writer of a name outside sign-in. Merged into the
+      // session user so the Profile heading and the header initials both follow
+      // immediately; nothing else about the session changes.
+      .addCase(updateName.fulfilled, (state, action) => {
+        if (!state.user) return;
+        const u = action.payload;
+        state.user = {
+          ...state.user,
+          firstName: u.first_name,
+          lastName: u.last_name,
+          displayName:
+            u.name || [u.first_name, u.last_name].filter(Boolean).join(' ') || state.user.email,
+        };
       })
       // signIn
       .addCase(signIn.pending, (state) => {

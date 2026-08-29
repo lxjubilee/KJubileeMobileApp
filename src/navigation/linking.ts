@@ -14,6 +14,10 @@ export const linking: LinkingOptions<RootStackParamList> = {
       MainTabs: {
         screens: {
           HomeTab: 'home',
+          // The site calls this surface both /dial and /player; the app answers
+          // to the first, and frequency links (…/hm308.70) reach it through
+          // useShareDeepLinks, which resolves them before this table is consulted.
+          DialTab: 'dial',
           BrowseTab: 'browse',
           MapTab: 'map',
           ProfileTab: 'profile',

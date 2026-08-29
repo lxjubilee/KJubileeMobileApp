@@ -12,6 +12,7 @@ export { MusicPlayerScreen } from './MusicPlayer';
 // DownloadsScreen is intentionally not exported — feature hidden for v1.
 export { ProfileScreen } from './Profile';
 export { ChangePasswordScreen } from './ChangePassword';
+export { EditNameScreen } from './EditName';
 export { PrivacyPolicyScreen, TermsOfUseScreen } from './Legal';
 export { JubileeDoorScreen } from './Auth';
 export { DialScreen } from './Dial';

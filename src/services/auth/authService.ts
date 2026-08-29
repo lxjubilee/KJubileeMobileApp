@@ -7,6 +7,7 @@ import type {
   DeleteAccountRequest,
   LibraryCountsDTO,
   LookupResponseDTO,
+  UpdateNameRequest,
 } from './authDto';
 import { AuthUser, mapUser } from './authMappers';
 import { tokenStore } from './tokenStore';
@@ -271,6 +272,22 @@ export const authService = {
       user: res.user,
       library: res.library ?? { stations_favorited: 0, stations_followed: 0, albums_followed: 0 },
     };
+  },
+
+  /**
+   * Rename the account. Bearer-authed; no password, by the server's design.
+   *
+   * Resolves with the saved row rather than the values that were sent — the
+   * server trims, and derives `name` from the two parts, so echoing the input
+   * back would drift from what was actually stored.
+   */
+  async updateName(body: UpdateNameRequest): Promise<AccountUserDTO> {
+    const res = await authEndpoints.updateName(body);
+    // Same reasoning as deleteAccount below: read the flag, not the status.
+    if (!res?.success || !res.user) {
+      throw new Error(res?.error || 'Your name could not be saved.');
+    }
+    return res.user;
   },
 
   /**

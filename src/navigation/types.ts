@@ -6,8 +6,14 @@ import type { CompositeScreenProps } from '@react-navigation/native';
 /** Bottom-tab routes. ProfileTab nests its own stack, so it carries those params. */
 export type MainTabParamList = {
   HomeTab: undefined;
-  /** The Dial — the tuner surface, and radio's signature screen. */
-  DialTab: undefined;
+  /**
+   * The Dial — the tuner surface, and radio's signature screen.
+   *
+   * `hm` is a frequency to open on, as `'308.70'`, arriving from a
+   * `kjubilee.com/hm308.70` link. Undefined on a normal tab press, where the
+   * dial opens on whatever is already sounding.
+   */
+  DialTab: { hm?: string } | undefined;
   BrowseTab: undefined;
   /** The broadcast map — every HM transmit city on earth. */
   MapTab: undefined;
@@ -74,6 +80,7 @@ export type AuthStackParamList = {
  */
 export type ProfileStackParamList = {
   Profile: undefined;
+  EditName: undefined;
   ChangePassword: undefined;
   PrivacyPolicy: undefined;
   TermsOfUse: undefined;

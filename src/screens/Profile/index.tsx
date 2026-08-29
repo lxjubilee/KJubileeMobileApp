@@ -179,6 +179,11 @@ export const ProfileScreen: React.FC = () => {
         {/* Account options. */}
         <View style={styles.menu}>
           <Row
+            icon="person-outline"
+            label={t('profile.editName')}
+            onPress={() => navigation.navigate('EditName')}
+          />
+          <Row
             icon="lock-closed-outline"
             label={t('profile.changePassword')}
             onPress={() => navigation.navigate('ChangePassword')}

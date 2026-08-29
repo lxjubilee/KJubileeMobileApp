@@ -286,6 +286,31 @@ export interface LibraryCountsDTO {
 }
 
 /**
+ * `PATCH /api/account` — the one field of the account editable here.
+ *
+ * No current password is sent, and that is the server's own position rather
+ * than an omission on this side: "A name is not a credential: getting it wrong
+ * is embarrassing and reversible in one edit, which is a different class of
+ * thing from the two acts that do ask" (`app/api/account/route.js`). Contrast
+ * `ChangePasswordRequest` and `DeleteAccountRequest`, which both ask.
+ *
+ * snake_case, like the rest of `/api/account`, and unlike `/api/account/password`.
+ */
+export interface UpdateNameRequest {
+  /** Required. The server trims and rejects blank with "Enter your first name." */
+  first_name: string;
+  /** Optional at the authority; send '' to clear it. Both are capped at 80. */
+  last_name: string;
+}
+
+/** `PATCH /api/account` — carries the saved row back, in GET /api/account's shape. */
+export interface UpdateNameResponseDTO {
+  success: boolean;
+  user?: AccountUserDTO;
+  error?: string;
+}
+
+/**
  * `POST /api/account/delete` — two locks, because they catch different mistakes.
  *
  * The password catches somebody who is not the owner. The typed word catches the

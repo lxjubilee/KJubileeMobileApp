@@ -43,6 +43,7 @@ export {
   resendSignup,
   forgotPassword,
   changePassword,
+  updateName,
   deleteAccount,
   clearSession,
   clearAuthError,

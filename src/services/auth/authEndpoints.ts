@@ -14,6 +14,8 @@ import {
   SigninResponseDTO,
   SignupRequest,
   SignupResponseDTO,
+  UpdateNameRequest,
+  UpdateNameResponseDTO,
   AuthSuccessDTO,
   VerifyLoginRequest,
   VerifySignupRequest,
@@ -98,6 +100,17 @@ export const authEndpoints = {
    * lives, whether a Jubilee ID is linked, and what a deletion would take.
    */
   getAccount: () => authClient.get<AccountSettingsDTO>('/api/account').then((r) => r.data),
+
+  /**
+   * Rename the account. PATCH, not POST — the only verb this route answers on.
+   *
+   * The authority is written first on the server's side, so a success here means
+   * the Jubilee ID took the change too. That matters: the server refreshes name
+   * from the authority on every sign-in, so a name that only reached `kj_users`
+   * would silently revert (`lib/account.js` -> `changeName`).
+   */
+  updateName: (body: UpdateNameRequest) =>
+    authClient.patch<UpdateNameResponseDTO>('/api/account', body).then((r) => r.data),
 
   /**
    * Note the path and the verb: `POST /api/account/delete`, not
