@@ -9,7 +9,7 @@
   ],
   "sections": [
     {
-      "id": "home",
+      "id": "music",
       "label": "Christian Music",
       "shelves": [
         {
@@ -17,28 +17,117 @@
           "stations": [
             "jubilee-radio",
             "jubilee-praise",
-            "jubilee-gospel-fire",
+            "jubilee-ccm",
+            "hebraic-celebrations",
+            "yes-and-amen",
             "latin-worship",
-            "riddim-and-rhyme",
+            "country-gospel",
             "island-hallelujah",
-            "jubilee-kids-party",
+            "riddim-and-rhyme",
+            "jubilee-gospel-fire",
             "ancient-paths",
             "midnight-praise",
-            "hebraic-celebrations",
-            "inspire-hymns-heritage",
-            "country-gospel",
-            "yes-and-amen",
-            "jubilee-ccm",
             "radiant-stones-radio",
-            "inspire-acapella",
-            "gods-little-lambs"
+            "inspire-hymns-heritage",
+            "inspire-acapella"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intl",
+      "label": "International Stations",
+      "shelves": [
+        {
+          "title": "",
+          "stations": [
+            "familia-inspire-espanol",
+            "brasil-inspire-portugues",
+            "france-inspire-francais",
+            "jubilee-praise-romana",
+            "deutschland-inspire-deutsch",
+            "russia-inspire-russkiy",
+            "italia-inspire-italiano",
+            "polska-inspire-polski",
+            "africa-inspire-kiswahili",
+            "west-africa-inspire-yoruba",
+            "ethiopia-inspire-amharic",
+            "inspire-crown-arabic",
+            "inspire-india-hindi",
+            "bengal-inspire-bangla",
+            "asia-inspire-zhongwen",
+            "korea-inspire-hangugeo",
+            "pilipinas-inspire-tagalog",
+            "vietnam-inspire-tieng-viet",
+            "indonesia-inspire-bahasa",
+            "japan-inspire-nihongo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prayer",
+      "label": "Prayer Rooms",
+      "shelves": [
+        {
+          "title": "",
+          "stations": [
+            "upper-room",
+            "pentecostal-fire",
+            "jubilee-prayers-spanish",
+            "jubilee-prayers-mandarin",
+            "jubilee-prayers-hindi",
+            "jubilee-prayers-arabic",
+            "jubilee-prayers-portuguese",
+            "jubilee-prayers-french",
+            "jubilee-prayers-russian",
+            "jubilee-prayers-korean",
+            "jubilee-prayers-swahili",
+            "jubilee-prayers-tagalog"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kids",
+      "label": "Family Friendly",
+      "shelves": [
+        {
+          "title": "",
+          "stations": [
+            "jubilee-kids-party",
+            "inspire-active",
+            "gods-little-lambs",
+            "inspire-lullaby",
+            "inspire-kids",
+            "inspire-family-pop",
+            "inspire-focus",
+            "inspire-classical",
+            "inspire-latin",
+            "stillwater",
+            "inspire-cafe",
+            "inspire-celebrations",
+            "inspire-jazz",
+            "inspire-country",
+            "inspire-holiday",
+            "bedtime-blessings",
+            "inspire-drive",
+            "inspire-chill",
+            "inspire-throwback",
+            "inspire-wellness",
+            "inspire-live",
+            "inspire-rising",
+            "shalom-be-still",
+            "inspire-80s-90s",
+            "inspire-stories",
+            "story-hour"
           ]
         }
       ]
     },
     {
       "id": "teaching",
-      "label": "Bible Studies & Prayers",
+      "label": "Bible Teachings",
       "shelves": [
         {
           "title": "",
@@ -63,7 +152,6 @@
             "iron-sharpening-iron",
             "restored-renewed",
             "wisdom-channel",
-            "upper-room",
             "after-the-storm",
             "grief-walked",
             "lead-like-yeshua",
@@ -73,113 +161,9 @@
             "jubilee-sanctuary",
             "word-of-fire",
             "inspire-talk",
-            "pentecostal-fire",
             "shema-roots",
             "apostolic-five-fold",
             "the-hidden-manna"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "kids",
-      "label": "Family Friendly",
-      "shelves": [
-        {
-          "title": "",
-          "stations": [
-            "jubilee-kids-party",
-            "gods-little-lambs",
-            "inspire-lullaby",
-            "inspire-kids",
-            "inspire-family-pop",
-            "inspire-focus",
-            "inspire-classical",
-            "inspire-latin",
-            "stillwater",
-            "inspire-cafe",
-            "inspire-celebrations",
-            "inspire-jazz",
-            "inspire-country",
-            "inspire-holiday",
-            "bedtime-blessings",
-            "inspire-active",
-            "inspire-drive",
-            "inspire-chill",
-            "inspire-throwback",
-            "inspire-wellness",
-            "inspire-live",
-            "inspire-rising",
-            "shalom-be-still",
-            "inspire-80s-90s",
-            "inspire-stories",
-            "story-hour"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "intl",
-      "label": "International Stations",
-      "shelves": [
-        {
-          "title": "Americas",
-          "stations": [
-            "familia-inspire-espanol",
-            "brasil-inspire-portugues"
-          ]
-        },
-        {
-          "title": "Europe",
-          "stations": [
-            "france-inspire-francais",
-            "jubilee-praise-romana",
-            "deutschland-inspire-deutsch",
-            "russia-inspire-russkiy",
-            "italia-inspire-italiano",
-            "polska-inspire-polski"
-          ]
-        },
-        {
-          "title": "Africa",
-          "stations": [
-            "africa-inspire-kiswahili",
-            "west-africa-inspire-yoruba",
-            "ethiopia-inspire-amharic"
-          ]
-        },
-        {
-          "title": "Middle East & South Asia",
-          "stations": [
-            "inspire-crown-arabic",
-            "inspire-india-hindi",
-            "bengal-inspire-bangla"
-          ]
-        },
-        {
-          "title": "East & Southeast Asia",
-          "stations": [
-            "asia-inspire-zhongwen",
-            "korea-inspire-hangugeo",
-            "pilipinas-inspire-tagalog",
-            "vietnam-inspire-tieng-viet",
-            "indonesia-inspire-bahasa",
-            "japan-inspire-nihongo"
-          ]
-        },
-        {
-          "title": "Jubilee Prayers",
-          "stations": [
-            "jubilee-prayers-spanish",
-            "jubilee-prayers-mandarin",
-            "jubilee-prayers-hindi",
-            "jubilee-prayers-arabic",
-            "jubilee-prayers-portuguese",
-            "jubilee-prayers-french",
-            "jubilee-prayers-russian",
-            "jubilee-prayers-korean",
-            "jubilee-prayers-swahili",
-            "jubilee-prayers-tagalog"
           ]
         }
       ]

@@ -19,7 +19,16 @@ import { Screen, AppText } from '@/components/common';
 import { useTheme } from '@/context';
 import { useRadio } from '@/hooks';
 import { storage, STORAGE_KEYS } from '@/services/storage';
-import { getAllStations, getStations, toggle, tune, BAND_LO, BAND_HI } from '@/services/radio';
+import {
+  getAllStations,
+  getStations,
+  getBandTotals,
+  groupThousands,
+  toggle,
+  tune,
+  BAND_LO,
+  BAND_HI,
+} from '@/services/radio';
 import type { MainTabParamList } from '@/navigation/types';
 import { DialScale, PX_PER_HZ, DIAL_HEIGHT } from './components/DialScale';
 import { DialMarks } from './components/DialMarks';
@@ -58,6 +67,24 @@ import { RotaryDial } from './components/RotaryDial';
 
 type DialStyle = 'linear' | 'rotary';
 
+/**
+ * The band's numbers — outreach, towers, songs, stations on air — are built and
+ * ready (see `services/radio/bandTotals.ts` and `scripts/build-totals.mjs`) but
+ * not shown yet.
+ *
+ * WHY THEY ARE OFF. "Stations on air" is derived from this app's own tunable
+ * list, which is the only honest way to print it — the site learned that when
+ * its own figure sat at 41 while its dial carried 43. But the app's catalog is
+ * behind the network: it tunes 17 frequencies where the site broadcasts 43,
+ * because 15 stations carry `tenant: null` here and 11 more are not in the
+ * catalog at all. So the figure would read "17 ON AIR" beside a website saying
+ * 43 — correct about the app, and wrong about the band.
+ *
+ * Flip to `true` once the catalog is re-synced from production; nothing else
+ * needs to change, and the other three figures are already live-sourced.
+ */
+const SHOW_BAND_NUMBERS = false;
+
 export const DialScreen: React.FC = () => {
   const theme = useTheme();
   const radio = useRadio();
@@ -66,6 +93,12 @@ export const DialScreen: React.FC = () => {
   const askedHm = route.params?.hm;
 
   const stations = useMemo(() => getStations(), []);
+  /**
+   * The band's own numbers. Computed once: none of it changes as the dial
+   * turns, because it describes the band rather than a station, and the
+   * outreach figure is pinned to the UTC date so it must not move mid-session.
+   */
+  const totals = useMemo(() => getBandTotals(), []);
   const scrollRef = useRef<ScrollView>(null);
   const settleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   /** Latest scroll offset. A ref, not state — every frame would re-render. */
@@ -625,6 +658,33 @@ export const DialScreen: React.FC = () => {
               {radio.track ? `${radio.track.title} — ${radio.track.artist}` : 'Nothing on air'}
             </AppText>
           </View>
+
+          {/* The band's numbers, as the site prints them in the dial's corners.
+              Portrait has no corners to spare and the stage is a fixed column,
+              so they close the screen instead — and the three counts share one
+              line rather than stacking as they do on the web, which is the
+              difference between fitting on a 360dp phone and being cut off by
+              the tab bar. Order is the web's: towers lead, being the largest and
+              the one describing the whole band's reach; stations on air closes,
+              being the modest one. */}
+          {SHOW_BAND_NUMBERS ? (
+            <View style={styles.bandNumbers}>
+              <AppText allowFontScaling={false} style={[styles.reachNum, { color: c.accent }]}>
+                {groupThousands(totals.potentialOutreach)}
+              </AppText>
+              <AppText style={[styles.reachLabel, { color: c.textMuted }]}>
+                POTENTIAL OUTREACH
+              </AppText>
+              <AppText
+                allowFontScaling={false}
+                numberOfLines={1}
+                style={[styles.countLine, { color: c.textMuted }]}
+              >
+                {groupThousands(totals.towers)} TOWERS  ·  {groupThousands(totals.songs)} SONGS  ·{' '}
+                {groupThousands(totals.stationsOnAir)} ON AIR
+              </AppText>
+            </View>
+          ) : null}
         </View>
       </View>
     </Screen>
@@ -706,6 +766,12 @@ const styles = StyleSheet.create({
 
   // Sits between the readout and the glass, where the eye already is after
   // reading the frequency it did not ask for.
+  bandNumbers: { marginTop: 14, alignItems: 'center', paddingHorizontal: 16 },
+  // Not Orbitron: it is the dial's own face, but a wide display family puts a
+  // 13-digit figure past the edge of a 360dp screen at any readable size.
+  reachNum: { fontSize: 24, letterSpacing: 0.5, fontWeight: '800' },
+  reachLabel: { fontSize: 10, letterSpacing: 2, marginTop: 1 },
+  countLine: { fontSize: 11, letterSpacing: 1, marginTop: 8 },
   notOnAir: {
     fontSize: 13,
     lineHeight: 18,

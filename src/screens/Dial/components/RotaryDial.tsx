@@ -269,17 +269,25 @@ export const RotaryDial: React.FC<Props> = ({
                   width: knobR * 0.66,
                   height: knobR * 0.66,
                   borderRadius: knobR,
-                  backgroundColor: colors.active,
-                  shadowColor: colors.glow,
                   opacity: pressed ? 0.8 : 1,
                 },
               ]}
             >
+              {/* The glyph carries the colour, not a disc behind it. The knob's
+                  own brushed face is the surface here; a filled circle on top of
+                  it read as a second control sitting on the knob rather than as
+                  the knob's centre. The glow moves to the glyph for the same
+                  reason — there is no longer a solid shape to cast one, and the
+                  readout above is lit the same way. */}
               <Ionicons
                 name={playing ? 'pause' : 'play'}
-                size={knobR * 0.4}
-                color="#FFFFFF"
-                style={playing ? undefined : styles.playGlyph}
+                size={knobR * 0.46}
+                color={colors.active}
+                style={[
+                  styles.glyphGlow,
+                  { textShadowColor: colors.glow },
+                  playing ? null : styles.playGlyph,
+                ]}
               />
             </Pressable>
           </LinearGradient>
@@ -294,14 +302,10 @@ const styles = StyleSheet.create({
   knobLayer: { ...StyleSheet.absoluteFillObject, alignItems: 'center', justifyContent: 'center' },
   knob: { alignItems: 'center', justifyContent: 'center' },
   knobInner: { alignItems: 'center', justifyContent: 'center' },
-  power: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowOpacity: 0.9,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 0 },
-    elevation: 8,
-  },
+  // No fill and no elevation: a shadow cast by a transparent view draws
+  // nothing on iOS and a faint artefact on Android.
+  power: { alignItems: 'center', justifyContent: 'center' },
+  glyphGlow: { textShadowOffset: { width: 0, height: 0 }, textShadowRadius: 14 },
   // The play triangle's own bearing sits it left of centre in the circle.
   playGlyph: { marginLeft: 2 },
 });
