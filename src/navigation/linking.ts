@@ -26,6 +26,11 @@ export const linking: LinkingOptions<RootStackParamList> = {
       AlbumDetails: 'album/:albumId',
       ArtistDetails: 'artist/:artistId',
       MusicPlayer: 'player',
+      // The site routes these through a hash (/#hm and /#hm/<slug>), which a
+      // native link cannot carry — a fragment never leaves the browser. These
+      // are the app's own paths for the same two destinations.
+      BandArticles: 'band',
+      BandArticleDetail: 'band/:slug',
     },
   },
 };

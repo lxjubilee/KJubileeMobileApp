@@ -3,6 +3,8 @@ export { BrowseScreen } from './Browse';
 export { AlbumListScreen } from './AlbumList';
 export { ArtistListScreen } from './ArtistList';
 export { StationListScreen } from './StationList';
+export { BandArticlesScreen } from './BandArticles';
+export { BandArticleDetailScreen } from './BandArticleDetail';
 export { StationDetailScreen } from './StationDetail';
 export { MapScreen } from './Map';
 export { AlbumDetailsScreen } from './AlbumDetails';

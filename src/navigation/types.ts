@@ -54,6 +54,11 @@ export type RootStackParamList = {
     title: string;
     artistIds: string[];
   };
+  /** The Heavenly Band's essays — the site's right-hand nav item. */
+  BandArticles: undefined;
+  /** One essay. Only the slug travels; the index and the body are both resolved
+   *  by the screen, the first from the bundle and the second over the network. */
+  BandArticleDetail: { slug: string };
   MusicPlayer: undefined;
 };
 

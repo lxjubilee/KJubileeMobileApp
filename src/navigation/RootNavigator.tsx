@@ -15,6 +15,8 @@ import {
   ArtistListScreen,
   StationListScreen,
   StationDetailScreen,
+  BandArticlesScreen,
+  BandArticleDetailScreen,
   MusicPlayerScreen,
 } from '@/screens';
 import { MainTabNavigator } from './MainTabNavigator';
@@ -52,6 +54,9 @@ export const RootNavigator: React.FC = () => {
         <Stack.Screen name="ArtistList" component={ArtistListScreen} />
         <Stack.Screen name="StationList" component={StationListScreen} />
         <Stack.Screen name="StationDetail" component={StationDetailScreen} />
+        {/* The Heavenly Band — the written half of the network. */}
+        <Stack.Screen name="BandArticles" component={BandArticlesScreen} />
+        <Stack.Screen name="BandArticleDetail" component={BandArticleDetailScreen} />
         {/* Player + the song picker slide up as modals. */}
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
           <Stack.Screen name="MusicPlayer" component={MusicPlayerScreen} />

@@ -22,6 +22,7 @@ import {
   HomeHeader,
   HomeFilter,
   HOME_FILTER_ALL,
+  HOME_FILTER_BAND,
   CHIP_ROW_HEIGHT,
   HEADER_TOP_BLOCK,
 } from './components/HomeHeader';
@@ -60,8 +61,26 @@ export const HomeScreen: React.FC = () => {
   const sections = useMemo(() => getSections(), []);
   const featured = useMemo(() => getFeatured(), []);
   const filters = useMemo<HomeFilter[]>(
-    () => [HOME_FILTER_ALL, ...sections.map((s) => s.label)],
+    // Last, as the site puts it last. Unlike every other chip this one is not a
+    // filter — see onPickFilter.
+    () => [HOME_FILTER_ALL, ...sections.map((s) => s.label), HOME_FILTER_BAND],
     [sections],
+  );
+
+  /**
+   * The chip row does two different things.
+   *
+   * All but one narrow the shelves below; The Heavenly Band leaves for the
+   * band's essays instead. Branching here rather than inside HomeHeader keeps
+   * the header a presentation component that only reports which chip was
+   * pressed.
+   */
+  const onPickFilter = useCallback(
+    (next: HomeFilter) => {
+      if (next === HOME_FILTER_BAND) navigation.navigate('BandArticles');
+      else setFilter(next);
+    },
+    [navigation],
   );
 
   /** Shelves to render: everything in site order, or one section when filtered. */
@@ -208,7 +227,7 @@ export const HomeScreen: React.FC = () => {
       <HomeHeader
         filters={filters}
         selected={filter}
-        onSelect={setFilter}
+        onSelect={onPickFilter}
         chipsAnim={chipsAnim}
         bgAnim={bgAnim}
         onPressProfile={openProfile}

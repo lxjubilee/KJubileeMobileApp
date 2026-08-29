@@ -16,6 +16,13 @@ import { langFlagUrl } from '@/localization';
 /** The "show everything" chip, always first in the filter row. */
 export const HOME_FILTER_ALL = 'Home';
 
+/**
+ * The one chip that navigates instead of filtering — the band's essays, last in
+ * the row as they are last in the site's nav. A label rather than an id because
+ * this row is keyed by section label; Home branches on it in `onPickFilter`.
+ */
+export const HOME_FILTER_BAND = 'The Heavenly Band';
+
 /** A Home filter is the "Home" sentinel or a catalog category label. */
 export type HomeFilter = string;
 
