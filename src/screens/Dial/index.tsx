@@ -12,6 +12,7 @@ import {
   type NativeScrollEvent,
   type NativeSyntheticEvent,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRoute, type RouteProp } from '@react-navigation/native';
@@ -68,6 +69,28 @@ import { RotaryDial } from './components/RotaryDial';
 type DialStyle = 'linear' | 'rotary';
 
 /**
+ * FITTING THE DIAL ONTO A SHORT SCREEN.
+ *
+ * This screen is a fixed column — it must not scroll, because the sweep and the
+ * knob both want the vertical drag for themselves. So on a short phone it has to
+ * shrink rather than overflow, and at 360x640dp it overflowed badly enough to
+ * push the transport off the bottom: no play button, and no way to reach one.
+ *
+ * These are measured, not guessed. Everything on the screen that is NOT the
+ * tuner comes to about 509dp at full size — against roughly 544dp of usable
+ * height on a 640dp device, which leaves the dial nothing. `COMPACT` trims the
+ * type and the spacing to about 355dp, which buys the face ~190dp and fits.
+ */
+const CHROME_FULL = 509;
+const CHROME_COMPACT = 430;
+/** Bottom tab bar, which is outside this screen's own height. */
+const TAB_BAR = 56;
+/** Below this much usable height the full-size layout cannot fit. */
+const COMPACT_BELOW = 620;
+/** The face never goes under this, however short the screen. */
+const MIN_FACE = 120;
+
+/**
  * The band's numbers — outreach, towers, songs, stations on air — are built and
  * ready (see `services/radio/bandTotals.ts` and `scripts/build-totals.mjs`) but
  * not shown yet.
@@ -88,8 +111,19 @@ const SHOW_BAND_NUMBERS = false;
 export const DialScreen: React.FC = () => {
   const theme = useTheme();
   const radio = useRadio();
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
   const route = useRoute<RouteProp<MainTabParamList, 'DialTab'>>();
+
+  // What this screen actually has to lay out in, once the system bars and the
+  // tab bar underneath have taken theirs.
+  const usable = height - insets.top - insets.bottom - TAB_BAR;
+  const compact = usable < COMPACT_BELOW;
+  /** The face is whatever is left after the chrome, capped at the design size. */
+  const faceH = Math.max(
+    MIN_FACE,
+    Math.min(DIAL_HEIGHT, usable - (compact ? CHROME_COMPACT : CHROME_FULL)),
+  );
   const askedHm = route.params?.hm;
 
   const stations = useMemo(() => getStations(), []);
@@ -377,7 +411,9 @@ export const DialScreen: React.FC = () => {
           ? 'PAUSED'
           : 'OFF';
 
-  const knobSize = Math.min(width - 56, 330);
+  // The knob answers to the same budget as the flat face, so neither can
+  // outgrow the space the transport needs below it.
+  const knobSize = Math.min(width - 56, 330, faceH + (compact ? 40 : 80));
 
   return (
     <Screen>
@@ -391,7 +427,7 @@ export const DialScreen: React.FC = () => {
         style={styles.backdrop}
       />
 
-      <View style={styles.stage}>
+      <View style={[styles.stage, compact && cs.stage]}>
         {/* Which face to tune with. In the flow and labelled rather than a pair
             of icons floating in a corner: two tuner styles is a choice worth
             finding, and an unlabelled glyph over a dark backdrop is neither
@@ -419,33 +455,33 @@ export const DialScreen: React.FC = () => {
 
         {/* ---- readout ---- */}
         <View style={styles.readout}>
-          <AppText style={[styles.band, { color: c.textMuted }]}>HEAVENLY MODULATION</AppText>
+          <AppText style={[styles.band, compact && cs.band, { color: c.textMuted }]}>HEAVENLY MODULATION</AppText>
 
           {/* Plain Text, not AppText: the typography variants carry a fontWeight,
               and a fontWeight alongside a custom family makes Android drop the
               family and fall back to system sans (the trap BrandLogo documents).
               Their lineHeight would also clip a readout this size. */}
           <View style={styles.freqRow}>
-            <Text allowFontScaling={false} style={[styles.hm, { color: c.textMuted }]}>
+            <Text allowFontScaling={false} style={[styles.hm, compact && cs.hm, { color: c.textMuted }]}>
               HM
             </Text>
             <Text
               allowFontScaling={false}
-              style={[styles.freq, { color: c.text, textShadowColor: `${c.accent}80` }]}
+              style={[styles.freq, compact && cs.freq, { color: c.text, textShadowColor: `${c.accent}80` }]}
             >
               {shown.toFixed(2)}
             </Text>
           </View>
 
-          <AppText numberOfLines={1} style={[styles.station, { color: c.text }]}>
+          <AppText numberOfLines={1} style={[styles.station, compact && cs.station, { color: c.text }]}>
             {sweep == null ? station.name : 'Tuning…'}
           </AppText>
-          <AppText numberOfLines={1} style={[styles.sub, { color: c.textSecondary }]}>
+          <AppText numberOfLines={1} style={[styles.sub, compact && cs.sub, { color: c.textSecondary }]}>
             {station.format}
             {station.host ? `  ·  ${station.host.name}` : ''}
           </AppText>
 
-          <View style={[styles.pill, { borderColor: sounding ? `${c.danger}66` : c.border }]}>
+          <View style={[styles.pill, compact && cs.pill, { borderColor: sounding ? `${c.danger}66` : c.border }]}>
             {radio.loading ? (
               <ActivityIndicator size="small" color={c.textMuted} />
             ) : (
@@ -478,7 +514,7 @@ export const DialScreen: React.FC = () => {
         {/* ---- the tuner ---- */}
         {face === 'linear' ? (
           <View style={styles.dialWrap}>
-            <View style={[styles.dial, { borderColor: c.border }]}>
+            <View style={[styles.dial, { height: faceH, borderColor: c.border }]}>
               {/* A lit face: the glass is brighter at the centre, where the
                   needle is, and falls away to the case at the edges. */}
               <LinearGradient
@@ -509,8 +545,8 @@ export const DialScreen: React.FC = () => {
                 onMomentumScrollBegin={clearSettle}
                 onMomentumScrollEnd={settleScroll}
               >
-                <View style={styles.track}>
-                  <DialScale lo={BAND_LO} hi={BAND_HI} colors={scaleColors} />
+                <View style={[styles.track, { height: faceH }]}>
+                  <DialScale lo={BAND_LO} hi={BAND_HI} colors={scaleColors} height={faceH} />
                   <DialMarks
                     stations={stations}
                     activeIndex={index}
@@ -557,8 +593,10 @@ export const DialScreen: React.FC = () => {
                 just landed on an unfamiliar frequency. An error takes the slot
                 when there is one; it matters more. */}
             <AppText
-              numberOfLines={3}
-              style={[styles.story, { color: radio.error ? c.danger : c.textMuted }]}
+              // One line on a short screen: three of these is 57dp, and the
+              // same sentence is on the station's own page.
+              numberOfLines={compact ? 1 : 3}
+              style={[styles.story, compact && cs.story, { color: radio.error ? c.danger : c.textMuted }]}
             >
               {radio.error ?? station.description}
             </AppText>
@@ -589,7 +627,7 @@ export const DialScreen: React.FC = () => {
 
         {/* ---- transport ---- */}
         <View style={styles.bottom}>
-          <View style={styles.controls}>
+          <View style={[styles.controls, compact && cs.controls]}>
             <View style={styles.control}>
               <Pressable
                 onPress={() => step(-1)}
@@ -597,12 +635,13 @@ export const DialScreen: React.FC = () => {
                 accessibilityLabel="Previous station"
                 style={({ pressed }) => [
                   styles.tbtn,
+                  compact && cs.tbtn,
                   { borderColor: c.border, opacity: pressed ? 0.55 : 1 },
                 ]}
               >
                 <Ionicons name="play-skip-back" size={22} color={c.textSecondary} />
               </Pressable>
-              <AppText style={[styles.tbtnLabel, { color: c.textMuted }]}>BACK</AppText>
+              <AppText style={[styles.tbtnLabel, compact && cs.tbtnLabel, { color: c.textMuted }]}>BACK</AppText>
             </View>
 
             {/* The rotary face carries play in the middle of its knob, the way
@@ -617,6 +656,7 @@ export const DialScreen: React.FC = () => {
                   style={({ pressed }) => [
                     styles.tbtn,
                     styles.play,
+                    compact && cs.play,
                     { backgroundColor: c.text, opacity: pressed ? 0.85 : 1 },
                   ]}
                 >
@@ -627,7 +667,7 @@ export const DialScreen: React.FC = () => {
                     style={sounding ? undefined : styles.playGlyph}
                   />
                 </Pressable>
-                <AppText style={[styles.tbtnLabel, { color: c.textMuted }]}>
+                <AppText style={[styles.tbtnLabel, compact && cs.tbtnLabel, { color: c.textMuted }]}>
                   {sounding ? 'PAUSE' : 'PLAY'}
                 </AppText>
               </View>
@@ -640,19 +680,20 @@ export const DialScreen: React.FC = () => {
                 accessibilityLabel="Next station"
                 style={({ pressed }) => [
                   styles.tbtn,
+                  compact && cs.tbtn,
                   { borderColor: c.border, opacity: pressed ? 0.55 : 1 },
                 ]}
               >
                 <Ionicons name="play-skip-forward" size={22} color={c.textSecondary} />
               </Pressable>
-              <AppText style={[styles.tbtnLabel, { color: c.textMuted }]}>NEXT</AppText>
+              <AppText style={[styles.tbtnLabel, compact && cs.tbtnLabel, { color: c.textMuted }]}>NEXT</AppText>
             </View>
           </View>
 
           {/* Now playing. A live broadcast has no scrubber to show, so the bars
               stand in for one — they say "this is moving" where a progress bar
               would, without implying a position the listener could seek to. */}
-          <View style={[styles.nowRow, { borderColor: c.border }]}>
+          <View style={[styles.nowRow, compact && cs.nowRow, { borderColor: c.border }]}>
             {sounding ? <Equalizer color={c.accent} phase={pulse} /> : null}
             <AppText numberOfLines={1} style={[styles.nowText, { color: c.textSecondary }]}>
               {radio.track ? `${radio.track.title} — ${radio.track.artist}` : 'Nothing on air'}
@@ -716,6 +757,28 @@ const Equalizer: React.FC<{ color: string; phase: Animated.Value }> = ({ color, 
     ))}
   </View>
 );
+
+/**
+ * Short-screen overrides, layered on top of `styles` — never a separate layout.
+ *
+ * Only type sizes and spacing: nothing here moves an element or changes what is
+ * on the screen, so the compact dial is the same instrument, read closer.
+ */
+const cs = StyleSheet.create({
+  stage: { paddingTop: 6, paddingBottom: 4 },
+  band: { marginBottom: 8 },
+  hm: { fontSize: 13, lineHeight: 17, marginTop: 10, marginRight: 7 },
+  freq: { fontSize: 44, lineHeight: 52 },
+  station: { fontSize: 19, marginTop: 8 },
+  sub: { fontSize: 12.5, marginTop: 3 },
+  pill: { marginTop: 10 },
+  story: { marginTop: 12, paddingHorizontal: 26 },
+  controls: { gap: 26 },
+  tbtn: { width: 42, height: 42, borderRadius: 21 },
+  play: { width: 60, height: 60, borderRadius: 30 },
+  tbtnLabel: { marginTop: 6 },
+  nowRow: { marginTop: 8 },
+});
 
 const styles = StyleSheet.create({
   backdrop: { position: 'absolute', left: 0, right: 0, top: 0, height: 420 },

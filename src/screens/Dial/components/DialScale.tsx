@@ -33,6 +33,15 @@ const TICK_STEP = 0.2;
 const HEIGHT = 250;
 /** Baseline the ticks hang from; labels sit in the band below it. */
 const BASE = 200;
+/**
+ * How far the baseline sits above the FOOT of the face.
+ *
+ * Expressed from the bottom on purpose: it is the one measurement the face can
+ * be resized around. `DialMarks` already anchors its stems to the bottom by the
+ * same 50, so a shorter face keeps the ticks, the marks and the numbers in
+ * register instead of clipping the labels off the end.
+ */
+export const BASELINE_GAP = HEIGHT - BASE;
 /** Width reserved per label so it can centre without clipping its neighbours. */
 const LABEL_W = 60;
 
@@ -40,13 +49,17 @@ interface Props {
   lo: number;
   hi: number;
   colors: { minor: string; major: string; label: string; text: string };
+  /** Face height. Defaults to the full-size design; short screens pass less. */
+  height?: number;
 }
 
-const Chunk: React.FC<{ from: number; lo: number; colors: Props['colors'] }> = ({
-  from,
-  lo,
-  colors,
-}) => {
+const Chunk: React.FC<{
+  from: number;
+  lo: number;
+  colors: Props['colors'];
+  height: number;
+}> = ({ from, lo, colors, height }) => {
+  const base = height - BASELINE_GAP;
   const width = CHUNK_HZ * PX_PER_HZ;
   const ticks: React.ReactNode[] = [];
 
@@ -68,9 +81,9 @@ const Chunk: React.FC<{ from: number; lo: number; colors: Props['colors'] }> = (
         // A stroke sitting exactly on an integer coordinate straddles the pixel
         // and renders as a soft two-pixel line; the half-offset lands it on one.
         x1={x + 0.5}
-        y1={BASE - h}
+        y1={base - h}
         x2={x + 0.5}
-        y2={BASE}
+        y2={base}
         stroke={stroke}
         strokeWidth={1}
       />,
@@ -78,7 +91,7 @@ const Chunk: React.FC<{ from: number; lo: number; colors: Props['colors'] }> = (
   }
 
   return (
-    <Svg width={width} height={HEIGHT} style={[styles.chunk, { left: (from - lo) * PX_PER_HZ }]}>
+    <Svg width={width} height={height} style={[styles.chunk, { left: (from - lo) * PX_PER_HZ }]}>
       {ticks}
     </Svg>
   );
@@ -92,7 +105,7 @@ const Chunk: React.FC<{ from: number; lo: number; colors: Props['colors'] }> = (
  * five hundred SVG lines and twenty-one labels, which is the difference between
  * a dial that glides and one that stutters.
  */
-export const DialScale: React.FC<Props> = React.memo(({ lo, hi, colors }) => {
+export const DialScale: React.FC<Props> = React.memo(({ lo, hi, colors, height = HEIGHT }) => {
   const chunks: number[] = [];
   for (let from = lo; from < hi; from += CHUNK_HZ) chunks.push(from);
 
@@ -102,13 +115,21 @@ export const DialScale: React.FC<Props> = React.memo(({ lo, hi, colors }) => {
   return (
     <View pointerEvents="none" style={styles.root}>
       {chunks.map((from) => (
-        <Chunk key={from} from={from} lo={lo} colors={colors} />
+        <Chunk key={from} from={from} lo={lo} colors={colors} height={height} />
       ))}
       {labels.map((hz) => (
         <Text
           key={hz}
           allowFontScaling={false}
-          style={[styles.label, { color: colors.text, left: (hz - lo) * PX_PER_HZ - LABEL_W / 2 }]}
+          style={[
+            styles.label,
+            {
+              color: colors.text,
+              left: (hz - lo) * PX_PER_HZ - LABEL_W / 2,
+              // Follows the baseline down when the face is shortened.
+              top: height - BASELINE_GAP + 6,
+            },
+          ]}
         >
           {hz}
         </Text>
@@ -126,7 +147,6 @@ const styles = StyleSheet.create({
   chunk: { position: 'absolute', top: 0 },
   label: {
     position: 'absolute',
-    top: BASE + 6,
     width: LABEL_W,
     textAlign: 'center',
     // Orbitron encodes its own weight — adding fontWeight makes Android drop the
