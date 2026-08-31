@@ -5,7 +5,16 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
-import { Screen, Loader, AppText, Artwork, Button, IconButton, SectionHeader } from '@/components/common';
+import {
+  Screen,
+  Loader,
+  AppText,
+  Artwork,
+  Button,
+  IconButton,
+  NotFound,
+  SectionHeader,
+} from '@/components/common';
 import { AlbumCard } from '@/components/cards';
 import { FloatingMiniPlayer } from '@/components/player';
 import { useAppDispatch, useAppSelector, usePlayer, useVisibleAlbums, useVisibleTracks } from '@/hooks';
@@ -104,11 +113,13 @@ export const ArtistDetailsScreen: React.FC = () => {
 
   if (!artist) {
     return (
-      <Screen>
-        <View style={styles.center}>
-          <AppText color="textMuted">{t('errors.artistNotFound')}</AppText>
-        </View>
-      </Screen>
+      <NotFound
+        message={t('errors.artistNotFound')}
+        action={{
+          label: 'Browse stations',
+          onPress: () => navigation.navigate('MainTabs', { screen: 'BrowseTab' }),
+        }}
+      />
     );
   }
 

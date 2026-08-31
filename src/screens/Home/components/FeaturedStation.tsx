@@ -80,11 +80,20 @@ interface Props {
   nowPlaying?: { title: string; artist: string; album: string } | null;
   /** True for the slide on top of the stack; drives the copy's entrance. */
   active?: boolean;
+  /** Opening the station — the artwork and the card itself. */
   onPress: (station: RadioStation) => void;
+  /**
+   * The transport only. Separate from `onPress` because the two answer
+   * different questions: the card asks "tell me about this station" and goes to
+   * its page, while this button asks "play it" and must not move the listener
+   * anywhere. Sharing one handler meant the first press of Listen now left Home
+   * for the station page, which is not what a play button does.
+   */
+  onToggle: (station: RadioStation) => void;
 }
 
 export const FeaturedStation: React.FC<Props> = React.memo(
-  ({ station, width, playing, nowPlaying = null, active = true, onPress }) => {
+  ({ station, width, playing, nowPlaying = null, active = true, onPress, onToggle }) => {
     const theme = useTheme();
     const c = theme.colors;
     const live = station.live;
@@ -221,7 +230,7 @@ export const FeaturedStation: React.FC<Props> = React.memo(
             <View style={styles.actions}>
               {live ? (
                 <Pressable
-                  onPress={() => onPress(station)}
+                  onPress={() => onToggle(station)}
                   accessibilityRole="button"
                   accessibilityLabel={`${playing ? 'Pause' : 'Listen to'} ${station.name}`}
                   style={({ pressed }) => [
@@ -235,7 +244,9 @@ export const FeaturedStation: React.FC<Props> = React.memo(
                     color={ACCENT_INK}
                     style={playing ? undefined : styles.listenGlyph}
                   />
-                  <AppText style={styles.listenText}>{playing ? 'Pause' : 'Listen now'}</AppText>
+                  <AppText style={styles.listenText}>
+                    {playing ? 'Pause now' : 'Listen now'}
+                  </AppText>
                 </Pressable>
               ) : (
                 <View style={styles.soon}>

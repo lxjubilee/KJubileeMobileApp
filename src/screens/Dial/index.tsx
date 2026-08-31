@@ -109,6 +109,13 @@ const MIN_FACE = 120;
 const SHOW_BAND_NUMBERS = false;
 
 /**
+ * How long BACK / NEXT waits before committing to a tune. Long enough that a
+ * burst of presses collapses into one fetch, short enough that a single press
+ * still feels like it acted immediately.
+ */
+const STEP_SETTLE_MS = 350;
+
+/**
  * The potential-outreach figure's gold, from the site's `.circ`. Deliberately
  * outside the app's palette, as it is on the web: it is an analytics reading
  * rather than part of the station's identity, so the eye should be able to skip
@@ -220,11 +227,38 @@ export const DialScreen: React.FC = () => {
     [stations, xOf],
   );
 
+  /**
+   * BACK / NEXT — move now, tune when the spinning stops.
+   *
+   * Each press used to fire a full `tune`, and a tune is a network round trip
+   * for the day file. Ten quick presses therefore queued ten of them, and the
+   * dial churned through the band for a minute and a half before settling —
+   * every station in between briefly "tuning" and then abandoned. Negative
+   * testing (NEG-102 / 138) is what surfaced it.
+   *
+   * The needle still moves on every press, because that has to feel immediate.
+   * Only the tune waits, and each press cancels the pending one — so a burst
+   * costs exactly one fetch, for the station you actually stopped on. This is
+   * also how a physical tuner behaves: you spin through the band, and it locks
+   * on when you let go.
+   */
+  const tuneSoon = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(
+    () => () => {
+      if (tuneSoon.current) clearTimeout(tuneSoon.current);
+    },
+    [],
+  );
+
   const step = useCallback(
     (delta: number) => {
       setNotOnAir(null);
       const s = goTo(index + delta, true);
-      void tune(s.slug);
+      if (tuneSoon.current) clearTimeout(tuneSoon.current);
+      tuneSoon.current = setTimeout(() => {
+        tuneSoon.current = null;
+        void tune(s.slug);
+      }, STEP_SETTLE_MS);
     },
     [goTo, index],
   );
@@ -232,6 +266,13 @@ export const DialScreen: React.FC = () => {
   const pick = useCallback(
     (i: number) => {
       setNotOnAir(null);
+      // Tapping a mark is a deliberate choice of one station, so it tunes at
+      // once — but it must cancel a pending step, or a queued Next would land
+      // afterwards and overwrite the station just chosen.
+      if (tuneSoon.current) {
+        clearTimeout(tuneSoon.current);
+        tuneSoon.current = null;
+      }
       const s = goTo(i, true);
       void tune(s.slug);
     },

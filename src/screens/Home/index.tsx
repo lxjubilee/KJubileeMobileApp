@@ -121,6 +121,24 @@ export const HomeScreen: React.FC = () => {
     [radio.slug, onPickStation],
   );
 
+  /**
+   * The hero's own Listen / Pause button. Playback only — it stays on Home.
+   *
+   * It used to share `onPickFeatured`, so the FIRST press left for the station
+   * page and only later presses toggled. A play button that navigates on its
+   * first use and not its second is two different controls wearing one label;
+   * this one always does the same thing, and the mini player carries what is
+   * sounding from here on.
+   */
+  const onToggleFeatured = useCallback(
+    (station: RadioStation) => {
+      if (!station.live) return;
+      if (radio.slug === station.slug) void toggle(station.slug);
+      else void tune(station.slug);
+    },
+    [radio.slug],
+  );
+
   /** "See all" — hand the grid the slugs, not the resolved stations. */
   const openSeeAll = useCallback(
     (title: string, stations: RadioStation[]) =>
@@ -205,6 +223,7 @@ export const HomeScreen: React.FC = () => {
             // actually rendered — a timer ticking behind the Dial is waste.
             active={isFocused}
             onPress={onPickFeatured}
+            onToggle={onToggleFeatured}
           />
         ) : null}
 

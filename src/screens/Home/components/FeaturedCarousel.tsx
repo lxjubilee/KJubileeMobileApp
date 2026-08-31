@@ -65,6 +65,8 @@ interface Props {
   /** Paused while Home is off-screen, so the timer does not run on another tab. */
   active: boolean;
   onPress: (station: RadioStation) => void;
+  /** Transport for the slide's own button; never navigates. */
+  onToggle: (station: RadioStation) => void;
 }
 
 export const FeaturedCarousel: React.FC<Props> = ({
@@ -74,6 +76,7 @@ export const FeaturedCarousel: React.FC<Props> = ({
   nowPlaying,
   active,
   onPress,
+  onToggle,
 }) => {
   const theme = useTheme();
   const [index, setIndex] = useState(0);
@@ -163,6 +166,7 @@ export const FeaturedCarousel: React.FC<Props> = ({
             nowPlaying={station.slug === playingSlug ? nowPlaying : null}
             active={i === index}
             onPress={onPress}
+            onToggle={onToggle}
           />
         </Animated.View>
       ))}

@@ -14,7 +14,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Screen, AppText } from '@/components/common';
+import { Screen, AppText, NotFound } from '@/components/common';
 import { FloatingMiniPlayer } from '@/components/player';
 import { personaImage } from '@/assets/personaImages';
 import { stationArticle } from '@/assets/radio/stationArticles';
@@ -156,11 +156,13 @@ export const StationDetailScreen: React.FC = () => {
 
   if (!station) {
     return (
-      <Screen>
-        <View style={styles.center}>
-          <AppText color="textMuted">Station not found.</AppText>
-        </View>
-      </Screen>
+      <NotFound
+        message="Station not found."
+        action={{
+          label: 'Browse stations',
+          onPress: () => navigation.navigate('MainTabs', { screen: 'BrowseTab' }),
+        }}
+      />
     );
   }
 

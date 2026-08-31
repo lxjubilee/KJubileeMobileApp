@@ -13,4 +13,5 @@ export { OtpInput } from './OtpInput';
 export { Loader } from './Loader';
 export { SectionHeader } from './SectionHeader';
 export { Placeholder } from './Placeholder';
+export { NotFound } from './NotFound';
 export { ConfirmDialog } from './ConfirmDialog';

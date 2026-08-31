@@ -33,6 +33,18 @@ import type { DayFile, RadioState, Resolved } from './types';
 /** How often to re-ask the clock while playing. Cheap, and bounds any drift. */
 const REDERIVE_MS = 20_000;
 
+/**
+ * How long a tune may sit in `loading` before it is declared failed.
+ *
+ * A backstop, not a policy: every path that starts a tune is meant to end it,
+ * and the timer should normally be cleared long before it fires. It exists
+ * because a spinner that never resolves is the worst failure this engine can
+ * produce — the listener is told something is about to happen, forever, with no
+ * error to act on and no way back. Negative testing found exactly that
+ * (NEG-101/102/103), so the engine now guarantees a terminal state.
+ */
+const TUNE_TIMEOUT_MS = 25_000;
+
 // ---- state ---------------------------------------------------------------
 
 let state: RadioState = {
@@ -45,7 +57,22 @@ let state: RadioState = {
 
 const listeners = new Set<() => void>();
 
+/** Fires only if a tune neither succeeds nor fails; see TUNE_TIMEOUT_MS. */
+let tuneWatchdog: ReturnType<typeof setTimeout> | null = null;
+
+function clearWatchdog(): void {
+  if (tuneWatchdog) {
+    clearTimeout(tuneWatchdog);
+    tuneWatchdog = null;
+  }
+}
+
 function emit(next: Partial<RadioState>): void {
+  // Any emit that settles `loading` is the end of a tune, whichever path got
+  // there — success, failure, an empty schedule, or a pause that cancelled it.
+  // Clearing here rather than at each call site means a future branch cannot
+  // forget to, which is the mistake that produced the stuck spinner.
+  if (next.loading === false) clearWatchdog();
   state = { ...state, ...next };
   listeners.forEach((l) => l());
 }
@@ -232,6 +259,23 @@ export async function tune(slug: string): Promise<void> {
   loadedIndex = -1;
   emit({ slug, loading: true, playing: false, track: null, error: null });
 
+  // Armed after the emit above; any settling emit disarms it, and a newer tune
+  // replaces it, so at most one is ever pending.
+  //
+  // DELIBERATELY NOT SCOPED TO `gen`. The first version of this fired only when
+  // `gen === generation`, which made it useless for the one case it exists for:
+  // the state is stranded precisely BECAUSE something bumped the generation and
+  // then failed to settle, so the guard was false exactly when it was needed and
+  // the dial still hung on TUNING. If this timer is still pending, no settling
+  // emit has happened since the tune it belongs to — so a `loading` that is
+  // still true is stale whoever owns the current generation.
+  clearWatchdog();
+  tuneWatchdog = setTimeout(() => {
+    if (state.loading) {
+      fail(new Error(`Tuning ${slug} did not settle within ${TUNE_TIMEOUT_MS}ms`));
+    }
+  }, TUNE_TIMEOUT_MS);
+
   try {
     // Re-fetch even for the same tenant: a day republished mid-listen (`rev`
     // changes) would otherwise keep playing yesterday's idea of the programme.
@@ -254,8 +298,17 @@ export async function tune(slug: string): Promise<void> {
 export async function pause(): Promise<void> {
   clearTick();
   generation++; // cancel any tune still in flight
-  if (!isExpoGo) await TrackPlayer.pause();
-  emit({ playing: false });
+  try {
+    if (!isExpoGo) await TrackPlayer.pause();
+  } finally {
+    // In `finally`, and `loading: false` is not cosmetic. Bumping the generation
+    // above makes every in-flight tune return early at its next guard WITHOUT
+    // emitting, so this pause is the only thing left that can end one. If
+    // TrackPlayer.pause() rejects — which it can under a burst of taps — an emit
+    // after the await would never run and the dial would sit on "TUNING"
+    // forever, which is exactly what negative testing found.
+    emit({ loading: false, playing: false });
+  }
 }
 
 /**

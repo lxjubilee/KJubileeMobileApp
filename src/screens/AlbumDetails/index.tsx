@@ -5,7 +5,16 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
-import { Screen, Loader, AppText, Artwork, Button, IconButton, SectionHeader } from '@/components/common';
+import {
+  Screen,
+  Loader,
+  AppText,
+  Artwork,
+  Button,
+  IconButton,
+  NotFound,
+  SectionHeader,
+} from '@/components/common';
 import { useTheme } from '@/context';
 import { TrackRow, AlbumCard } from '@/components/cards';
 import { FloatingMiniPlayer } from '@/components/player';
@@ -225,11 +234,13 @@ export const AlbumDetailsScreen: React.FC = () => {
 
   if (!album) {
     return (
-      <Screen>
-        <View style={styles.center}>
-          <AppText color="textMuted">{t('errors.albumNotFound')}</AppText>
-        </View>
-      </Screen>
+      <NotFound
+        message={t('errors.albumNotFound')}
+        action={{
+          label: 'Browse stations',
+          onPress: () => navigation.navigate('MainTabs', { screen: 'BrowseTab' }),
+        }}
+      />
     );
   }
 

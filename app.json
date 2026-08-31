@@ -51,8 +51,88 @@
             },
             {
               "scheme": "https",
+              "host": "kjubilee.com",
+              "pathPrefix": "/artist"
+            },
+            {
+              "scheme": "https",
+              "host": "kjubilee.com",
+              "pathPrefix": "/hm"
+            },
+            {
+              "scheme": "https",
+              "host": "kjubilee.com",
+              "pathPrefix": "/dial"
+            },
+            {
+              "scheme": "https",
+              "host": "kjubilee.com",
+              "pathPrefix": "/player"
+            },
+            {
+              "scheme": "https",
+              "host": "kjubilee.com",
+              "pathPrefix": "/browse"
+            },
+            {
+              "scheme": "https",
+              "host": "kjubilee.com",
+              "pathPrefix": "/map"
+            },
+            {
+              "scheme": "https",
+              "host": "kjubilee.com",
+              "pathPrefix": "/profile"
+            },
+            {
+              "scheme": "https",
+              "host": "kjubilee.com",
+              "pathPrefix": "/home"
+            },
+            {
+              "scheme": "https",
               "host": "www.kjubilee.com",
               "pathPrefix": "/album"
+            },
+            {
+              "scheme": "https",
+              "host": "www.kjubilee.com",
+              "pathPrefix": "/artist"
+            },
+            {
+              "scheme": "https",
+              "host": "www.kjubilee.com",
+              "pathPrefix": "/hm"
+            },
+            {
+              "scheme": "https",
+              "host": "www.kjubilee.com",
+              "pathPrefix": "/dial"
+            },
+            {
+              "scheme": "https",
+              "host": "www.kjubilee.com",
+              "pathPrefix": "/player"
+            },
+            {
+              "scheme": "https",
+              "host": "www.kjubilee.com",
+              "pathPrefix": "/browse"
+            },
+            {
+              "scheme": "https",
+              "host": "www.kjubilee.com",
+              "pathPrefix": "/map"
+            },
+            {
+              "scheme": "https",
+              "host": "www.kjubilee.com",
+              "pathPrefix": "/profile"
+            },
+            {
+              "scheme": "https",
+              "host": "www.kjubilee.com",
+              "pathPrefix": "/home"
             }
           ],
           "category": [
@@ -70,7 +150,8 @@
       "expo-localization",
       "expo-asset",
       "expo-font",
-      "expo-secure-store"
+      "expo-secure-store",
+      "./plugins/withSafeUserLeaveHint"
     ],
     "extra": {
       "cdnBaseUrl": "https://cdn.kjubilee.com",
