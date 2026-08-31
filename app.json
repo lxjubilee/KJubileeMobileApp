@@ -31,7 +31,7 @@
       "package": "com.kjubilee.app",
       "adaptiveIcon": {
         "backgroundColor": "#000000",
-        "foregroundImage": "./assets/KJubilee-App-Icon.png"
+        "foregroundImage": "./assets/KJubilee-adaptive-foreground.png"
       },
       "permissions": [
         "android.permission.FOREGROUND_SERVICE",
