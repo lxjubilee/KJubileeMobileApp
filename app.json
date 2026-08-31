@@ -80,7 +80,10 @@
       "authBaseUrl": "https://kjubilee.com",
       "mobileConfigBaseUrl": "https://kjubilee.com",
       "turnstileSiteKey": "0x4AAAAAAEP1RePvfYIIioIf",
-      "turnstileBaseUrl": "https://kjubilee.com"
+      "turnstileBaseUrl": "https://kjubilee.com",
+      "eas": {
+        "projectId": "79bcd2c9-7c59-43e7-926a-b32332410a6f"
+      }
     },
     "owner": "gabeungureanu"
   }
