@@ -12,7 +12,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { personaImage } from '@/assets/personaImages';
-import { heroArt } from '@/assets/radio/stationArt';
+import { heroArt, stationArt } from '@/assets/radio/stationArt';
 import { AppText } from '@/components/common';
 import { useTheme } from '@/context';
 import type { RadioStation } from '@/services/radio';
@@ -95,10 +95,14 @@ export const FeaturedStation: React.FC<Props> = React.memo(
 
     // Portraits are keyed by the persona's full manifest slug; a station host id
     // is its short form ("zev" -> "zev-inspire"). Only the twelve Inspire family
-    // personas have one, so a station fronted by a character like Party Giggles
-    // falls through to the initial badge below.
+    // personas have one, so a station fronted by a catalogue act — Party Giggles,
+    // Tiny Tiggles — has no face to show and used to fall through to a letter.
+    // The station's own cover stands in instead: a picture of the act is closer
+    // to what the badge is for than the initial of its name, and every such
+    // station has one. The letter survives only for a station with no art at all.
     const host = station.host;
     const portrait = personaImage(host ? `${host.id}-inspire` : null);
+    const avatarArt = portrait ?? stationArt(station.slug);
 
     // 0 while waiting in the stack, 1 once this slide is the live one.
     const enter = useRef(new Animated.Value(active ? 1 : 0)).current;
@@ -187,20 +191,6 @@ export const FeaturedStation: React.FC<Props> = React.memo(
             ]}
           >
             {/* Eyebrow — the site's FEATURED chip, format, and dial number. */}
-            <View style={styles.eyebrow}>
-              <View style={[styles.featuredPill, { backgroundColor: c.accent }]}>
-                <Text allowFontScaling={false} style={styles.featuredText}>
-                  FEATURED
-                </Text>
-              </View>
-              <AppText numberOfLines={1} style={styles.format}>
-                {station.format.toUpperCase()}
-              </AppText>
-              <Text allowFontScaling={false} style={[styles.hmInline, { color: c.accent }]}>
-                HM {station.hm}
-              </Text>
-            </View>
-
             <AppText numberOfLines={2} style={styles.name}>
               {station.name}
             </AppText>
@@ -255,8 +245,8 @@ export const FeaturedStation: React.FC<Props> = React.memo(
 
               {host ? (
                 <View style={styles.host}>
-                  {portrait ? (
-                    <RNImage source={portrait} style={styles.avatar} />
+                  {avatarArt ? (
+                    <RNImage source={avatarArt} style={styles.avatar} />
                   ) : (
                     <LinearGradient
                       colors={station.gradient}
@@ -289,20 +279,6 @@ export const FeaturedStation: React.FC<Props> = React.memo(
                 This replaces a bare "N tracks" line — the track total is already
                 inside `listeners` for most stations, and printing it twice read
                 as a mistake. */}
-            {station.listeners || station.reach ? (
-              <View style={styles.metaRow}>
-                {station.listeners ? (
-                  <AppText numberOfLines={2} style={[styles.metaTag, { color: c.accent }]}>
-                    {station.listeners}
-                  </AppText>
-                ) : null}
-                {station.reach ? (
-                  <AppText numberOfLines={1} style={styles.metaReach}>
-                    {`Reach ${station.reach}`}
-                  </AppText>
-                ) : null}
-              </View>
-            ) : null}
           </Animated.View>
         </View>
       </Pressable>

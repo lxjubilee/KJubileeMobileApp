@@ -85,7 +85,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ size, tagline = false, tex
           numberOfLines={1}
           style={[textRest, styles.wordmark, { lineHeight: wordLine }]}
         >
-          <Text style={[styles.white, { fontSize: Math.round(base * 0.92) }]}>k</Text>
+          <Text style={[styles.white, { fontSize: Math.round(base * 0.92) }]}>K</Text>
           <Text style={{ color: theme.colors.accent }}>Jubilee</Text>
           <Text style={styles.white}>.com</Text>
         </Text>

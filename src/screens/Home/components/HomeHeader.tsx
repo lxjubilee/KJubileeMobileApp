@@ -14,16 +14,16 @@ import { AppText, BrandLogo, ProfileButton } from '@/components/common';
 import { langFlagUrl } from '@/localization';
 
 /** The "show everything" chip, always first in the filter row. */
-export const HOME_FILTER_ALL = 'Home';
+export const HOME_FILTER_ALL = 'HOME';
 
 /**
  * The one chip that navigates instead of filtering — the band's essays, last in
  * the row as they are last in the site's nav. A label rather than an id because
  * this row is keyed by section label; Home branches on it in `onPickFilter`.
  */
-export const HOME_FILTER_BAND = 'The Heavenly Band';
+export const HOME_FILTER_BAND = 'THE HEAVENLY BAND';
 
-/** A Home filter is the "Home" sentinel or a catalog category label. */
+/** A Home filter is the "HOME" sentinel or a catalog category label. */
 export type HomeFilter = string;
 
 /** Height the chips row collapses from / expands to. */
@@ -79,7 +79,7 @@ const brandFontSize = (screenWidth: number): number => {
 };
 
 interface HomeHeaderProps {
-  /** Chips to render, e.g. ['Home', 'Inspire Family', …] derived from the feed. */
+  /** Chips to render, e.g. ['HOME', 'Inspire Family', …] derived from the feed. */
   filters: HomeFilter[];
   selected: HomeFilter;
   onSelect: (filter: HomeFilter) => void;

@@ -10,7 +10,7 @@
   "sections": [
     {
       "id": "music",
-      "label": "Christian Music",
+      "label": "CHRISTIAN MUSIC",
       "shelves": [
         {
           "title": "",
@@ -36,7 +36,7 @@
     },
     {
       "id": "intl",
-      "label": "International Stations",
+      "label": "INTERNATIONAL STATIONS",
       "shelves": [
         {
           "title": "",
@@ -67,7 +67,7 @@
     },
     {
       "id": "prayer",
-      "label": "Prayer Rooms",
+      "label": "PRAYER ROOMS",
       "shelves": [
         {
           "title": "",
@@ -90,7 +90,7 @@
     },
     {
       "id": "kids",
-      "label": "Family Friendly",
+      "label": "FAMILY FRIENDLY",
       "shelves": [
         {
           "title": "",
@@ -127,7 +127,7 @@
     },
     {
       "id": "teaching",
-      "label": "Bible Teachings",
+      "label": "BIBLE TEACHINGS",
       "shelves": [
         {
           "title": "",
