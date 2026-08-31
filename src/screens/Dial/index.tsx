@@ -108,6 +108,27 @@ const MIN_FACE = 120;
  */
 const SHOW_BAND_NUMBERS = false;
 
+/**
+ * The potential-outreach figure's gold, from the site's `.circ`. Deliberately
+ * outside the app's palette, as it is on the web: it is an analytics reading
+ * rather than part of the station's identity, so the eye should be able to skip
+ * it and find it when it wants it. Never abbreviated — the size of the number
+ * is the point, and "96M" hides exactly what "96,096,000" shows.
+ */
+const CIRC_GOLD = '#EFC44F';
+
+/**
+ * The broadcast cities, written the way the site writes them: "Miami, Los
+ * Angeles, & San Antonio" — serial comma, ampersand rather than "and". Two
+ * cities take the ampersand alone, one stands by itself.
+ */
+const basesLine = (cities: string[]): string =>
+  cities.length <= 1
+    ? (cities[0] ?? '')
+    : cities.length === 2
+      ? `${cities[0]} & ${cities[1]}`
+      : `${cities.slice(0, -1).join(', ')}, & ${cities[cities.length - 1]}`;
+
 export const DialScreen: React.FC = () => {
   const theme = useTheme();
   const radio = useRadio();
@@ -479,7 +500,25 @@ export const DialScreen: React.FC = () => {
           <AppText numberOfLines={1} style={[styles.sub, compact && cs.sub, { color: c.textSecondary }]}>
             {station.format}
             {station.host ? `  ·  ${station.host.name}` : ''}
+            {station.circulation ? (
+              <AppText style={[styles.circ, { color: CIRC_GOLD }]}>
+                {`  (${groupThousands(station.circulation)} c.)`}
+              </AppText>
+            ) : null}
           </AppText>
+          {/* Where the station transmits from, as the site prints it under the
+              readout. In broadcast green rather than the brand blue — these are
+              the towers that are on air, which is the one meaning that colour
+              carries in this app. Hidden mid-sweep with the rest of the copy:
+              the cities belong to the station landed on, not the one passed. */}
+          {sweep == null && station.bases?.length ? (
+            <AppText
+              numberOfLines={1}
+              style={[styles.bases, compact && cs.bases, { color: c.onAir }]}
+            >
+              {basesLine(station.bases)}
+            </AppText>
+          ) : null}
 
           <View style={[styles.pill, compact && cs.pill, { borderColor: sounding ? `${c.danger}66` : c.border }]}>
             {radio.loading ? (
@@ -769,8 +808,9 @@ const cs = StyleSheet.create({
   band: { marginBottom: 8 },
   hm: { fontSize: 13, lineHeight: 17, marginTop: 10, marginRight: 7 },
   freq: { fontSize: 44, lineHeight: 52 },
-  station: { fontSize: 19, marginTop: 8 },
+  station: { fontSize: 19, lineHeight: 24, marginTop: 8 },
   sub: { fontSize: 12.5, marginTop: 3 },
+  bases: { fontSize: 11.5, marginTop: 2 },
   pill: { marginTop: 10 },
   story: { marginTop: 12, paddingHorizontal: 26 },
   controls: { gap: 26 },
@@ -824,15 +864,23 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 22,
   },
-  station: { fontSize: 24, marginTop: 12, textAlign: 'center' },
+  // Explicit lineHeight, and it must stay explicit: AppText spreads the `body`
+  // variant, whose 21 is SHORTER than this type. Without it the glyphs are drawn
+  // at 24 inside a 21pt line box and every descender is sheared off — "Jubilee
+  // Kids Party" lost the tail of its y.
+  station: { fontSize: 24, lineHeight: 30, marginTop: 12, textAlign: 'center' },
   sub: { fontSize: 14, marginTop: 5, textAlign: 'center' },
+  bases: { fontSize: 12.5, marginTop: 3, textAlign: 'center', fontWeight: '700' },
+  // Inline inside `sub`, so it inherits that line's size and only overrides the
+  // things the site's `.circ` overrides.
+  circ: { fontVariant: ['tabular-nums'] },
 
   // Sits between the readout and the glass, where the eye already is after
   // reading the frequency it did not ask for.
   bandNumbers: { marginTop: 14, alignItems: 'center', paddingHorizontal: 16 },
   // Not Orbitron: it is the dial's own face, but a wide display family puts a
   // 13-digit figure past the edge of a 360dp screen at any readable size.
-  reachNum: { fontSize: 24, letterSpacing: 0.5, fontWeight: '800' },
+  reachNum: { fontSize: 24, lineHeight: 30, letterSpacing: 0.5, fontWeight: '800' },
   reachLabel: { fontSize: 10, letterSpacing: 2, marginTop: 1 },
   countLine: { fontSize: 11, letterSpacing: 1, marginTop: 8 },
   notOnAir: {

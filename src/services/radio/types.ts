@@ -45,6 +45,21 @@ export interface RadioStation {
   listeners?: string;
   /** Audience figure as published, e.g. "480M" — or "Featured" for the flagship. */
   reach?: string;
+  /**
+   * Cities the station broadcasts from, anchor first and relays after — ported
+   * from the web's `data/broadcast-bases.json` by
+   * `scripts/build-broadcast-bases.mjs`. The Dial prints them under the
+   * readout. Optional because a station upstream may have no entry yet.
+   */
+  bases?: string[];
+  /**
+   * Potential outreach — the figure the Dial prints as "(96,096,000 c.)".
+   * Ported by `scripts/build-circulation.mjs` from the site's separately
+   * published `/js/circulation-data.js`, and COPIED, never recalculated: the
+   * numbers are de-duplicated across stations sharing a language segment, so
+   * anything derived from city populations here would disagree with the web.
+   */
+  circulation?: number;
   /** Two-stop colour pair the web uses for station art; drives the tile wash here. */
   gradient: [string, string];
   host: StationHost | null;

@@ -21,7 +21,13 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Boston",
+      "Chicago",
+      "Seattle"
+    ],
+    "circulation": 192192000
   },
   {
     "slug": "familia-inspire-espanol",
@@ -45,7 +51,13 @@
       "name": "Santiago Inspire",
       "focus": "Latino heart"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Mexico City",
+      "Los Angeles",
+      "Miami"
+    ],
+    "circulation": 459200000
   },
   {
     "slug": "wisdom-channel",
@@ -69,7 +81,13 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Ashburn",
+      "Dallas",
+      "Portland"
+    ],
+    "circulation": 192192000
   },
   {
     "slug": "jubilee-prayers-spanish",
@@ -93,7 +111,13 @@
       "name": "Santiago Inspire",
       "focus": "Latino heart"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Madrid",
+      "Los Angeles",
+      "Miami"
+    ],
+    "circulation": 459200000
   },
   {
     "slug": "inspire-family-pop",
@@ -117,7 +141,13 @@
       "name": "Jubilee Inspire",
       "focus": "The whole house sings"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Los Angeles",
+      "Nashville",
+      "Atlanta"
+    ],
+    "circulation": 594000000
   },
   {
     "slug": "jubilee-praise",
@@ -141,7 +171,12 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Jerusalem",
+      "Newark"
+    ],
+    "circulation": 82368000
   },
   {
     "slug": "money-faith",
@@ -165,7 +200,13 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Dallas",
+      "Charlotte",
+      "Phoenix"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "brasil-inspire-portugues",
@@ -189,7 +230,13 @@
       "name": "Santiago Inspire",
       "focus": "Latino heart"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "São Paulo",
+      "Newark",
+      "Miami"
+    ],
+    "circulation": 214650000
   },
   {
     "slug": "heavens-dawn",
@@ -213,7 +260,13 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Boston",
+      "Kansas City",
+      "Seattle"
+    ],
+    "circulation": 192192000
   },
   {
     "slug": "freedom-steps",
@@ -237,7 +290,13 @@
       "name": "Tahoma Inspire",
       "focus": "Native voice and healing"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Nashville",
+      "Phoenix",
+      "Cleveland"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "upper-room",
@@ -261,7 +320,17 @@
       "name": "Imani Inspire",
       "focus": "Pentecostal fire"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Jerusalem",
+      "Sacramento",
+      "New York",
+      "London",
+      "Dubai",
+      "Tokyo",
+      "Hong Kong"
+    ],
+    "circulation": 51480000
   },
   {
     "slug": "inspire-kids",
@@ -285,7 +354,13 @@
       "name": "Melody Inspire",
       "focus": "Everyday family faith"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Los Angeles",
+      "Chicago",
+      "Tampa"
+    ],
+    "circulation": 60060000
   },
   {
     "slug": "marriage-matters",
@@ -309,7 +384,13 @@
       "name": "Caleb Inspire",
       "focus": "Young, courageous worship"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Denver",
+      "Atlanta",
+      "Sacramento"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "the-mended-place",
@@ -333,7 +414,13 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Kansas City",
+      "Charlotte",
+      "Portland"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "asia-inspire-zhongwen",
@@ -357,7 +444,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Taipei",
+      "San Jose",
+      "Newark"
+    ],
+    "circulation": 873600000
   },
   {
     "slug": "jubilee-ccm",
@@ -381,7 +474,12 @@
       "name": "Jubilee Inspire",
       "focus": "The whole house sings"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Nashville",
+      "Jerusalem"
+    ],
+    "circulation": 151008000
   },
   {
     "slug": "jubilee-prayers-mandarin",
@@ -405,7 +503,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Taipei",
+      "San Jose",
+      "Los Angeles"
+    ],
+    "circulation": 873600000
   },
   {
     "slug": "yes-and-amen",
@@ -429,7 +533,12 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Boston",
+      "Phoenix"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "inspire-cafe",
@@ -453,7 +562,13 @@
       "name": "Caleb Inspire",
       "focus": "Young, courageous worship"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Seattle",
+      "Austin",
+      "Boston"
+    ],
+    "circulation": 330000000
   },
   {
     "slug": "raising-arrows",
@@ -477,7 +592,13 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Nashville",
+      "Salt Lake City",
+      "Raleigh-Durham"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "strong-sober",
@@ -501,7 +622,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Minneapolis",
+      "Phoenix",
+      "Tampa"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "jubilee-sanctuary",
@@ -525,7 +652,13 @@
       "name": "Melody Inspire",
       "focus": "Everyday family faith"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Atlanta",
+      "Dallas",
+      "Seattle"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "inspire-india-hindi",
@@ -549,7 +682,13 @@
       "name": "Amir Inspire",
       "focus": "South Asian soul"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "New Delhi",
+      "San Jose",
+      "Newark"
+    ],
+    "circulation": 378200000
   },
   {
     "slug": "jubilee-prayers-hindi",
@@ -573,7 +712,13 @@
       "name": "Amir Inspire",
       "focus": "South Asian soul"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Kathmandu",
+      "New Delhi",
+      "Newark"
+    ],
+    "circulation": 378200000
   },
   {
     "slug": "pure-heart-brothers",
@@ -597,12 +742,18 @@
       "name": "Tahoma Inspire",
       "focus": "Native voice and healing"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Salt Lake City",
+      "Dallas",
+      "Columbus"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "inspire-active",
     "hm": "376.20",
-    "name": "Inspire Active",
+    "name": "Melody’s Sparkle",
     "format": "Workout",
     "description": "Fitness and workout station — high-BPM clean energy tracks tuned for gyms and home workouts; B2B fitness-facility distribution.",
     "tenant": "HM376.20-EN",
@@ -621,7 +772,13 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Los Angeles",
+      "Denver",
+      "Miami"
+    ],
+    "circulation": 1122000000
   },
   {
     "slug": "jubilee-teaching",
@@ -645,7 +802,13 @@
       "name": "Jubilee Inspire",
       "focus": "The whole house sings"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Dallas",
+      "Columbus",
+      "Portland"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "inspire-crown-arabic",
@@ -669,7 +832,13 @@
       "name": "Amir Inspire",
       "focus": "South Asian soul"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Dubai",
+      "Detroit",
+      "Los Angeles"
+    ],
+    "circulation": 288000000
   },
   {
     "slug": "identity-in-yeshua",
@@ -693,7 +862,13 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Jerusalem",
+      "Dallas",
+      "Los Angeles"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "jubilee-prayers-arabic",
@@ -717,7 +892,13 @@
       "name": "Amir Inspire",
       "focus": "South Asian soul"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Cairo",
+      "Detroit",
+      "Newark"
+    ],
+    "circulation": 288000000
   },
   {
     "slug": "gods-little-lambs",
@@ -741,7 +922,13 @@
       "name": "Tiny Tiggles",
       "focus": "Little ones, big songs"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Nashville",
+      "Sacramento",
+      "Boston"
+    ],
+    "circulation": 60060000
   },
   {
     "slug": "inspire-focus",
@@ -765,7 +952,13 @@
       "name": "Santiago Inspire",
       "focus": "Latino heart"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "San Jose",
+      "Austin",
+      "Boston"
+    ],
+    "circulation": 396000000
   },
   {
     "slug": "whole-hearted-sisters",
@@ -789,7 +982,13 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Nashville",
+      "Denver",
+      "Raleigh-Durham"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "france-inspire-francais",
@@ -813,7 +1012,13 @@
       "name": "Zariah Inspire",
       "focus": "Caribbean and diaspora"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Paris",
+      "Montréal",
+      "Miami"
+    ],
+    "circulation": 217000000
   },
   {
     "slug": "after-the-storm",
@@ -837,7 +1042,13 @@
       "name": "Caleb Inspire",
       "focus": "Young, courageous worship"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Houston",
+      "Tampa",
+      "Sacramento"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "jubilee-kids-party",
@@ -861,7 +1072,13 @@
       "name": "Party Giggles",
       "focus": "Kids party praise"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Nashville",
+      "Los Angeles",
+      "Tampa"
+    ],
+    "circulation": 30888000
   },
   {
     "slug": "grief-walked",
@@ -885,7 +1102,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Boston",
+      "St. Louis",
+      "Sacramento"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "inspire-lullaby",
@@ -909,7 +1132,13 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Boston",
+      "Chicago",
+      "Seattle"
+    ],
+    "circulation": 34320000
   },
   {
     "slug": "inspire-drive",
@@ -933,7 +1162,13 @@
       "name": "Zariah Inspire",
       "focus": "Caribbean and diaspora"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Los Angeles",
+      "Houston",
+      "Atlanta"
+    ],
+    "circulation": 462000000
   },
   {
     "slug": "jubilee-praise-romana",
@@ -957,7 +1192,13 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Bucharest",
+      "Sacramento",
+      "Chicago"
+    ],
+    "circulation": 21580000
   },
   {
     "slug": "purpose-found",
@@ -981,7 +1222,13 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Atlanta",
+      "Denver",
+      "San Jose"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "jubilee-prayers-portuguese",
@@ -1005,7 +1252,13 @@
       "name": "Santiago Inspire",
       "focus": "Latino heart"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Lisbon",
+      "Boston",
+      "Newark"
+    ],
+    "circulation": 214650000
   },
   {
     "slug": "country-gospel",
@@ -1029,7 +1282,12 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Nashville",
+      "Charlotte"
+    ],
+    "circulation": 151008000
   },
   {
     "slug": "beyond-the-trauma",
@@ -1053,7 +1311,13 @@
       "name": "Melody Inspire",
       "focus": "Everyday family faith"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Denver",
+      "Detroit",
+      "San Diego"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "inspire-celebrations",
@@ -1077,7 +1341,13 @@
       "name": "Tahoma Inspire",
       "focus": "Native voice and healing"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Las Vegas",
+      "Nashville",
+      "Miami"
+    ],
+    "circulation": 164736000
   },
   {
     "slug": "korea-inspire-hangugeo",
@@ -1101,7 +1371,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Seoul",
+      "Los Angeles",
+      "Newark"
+    ],
+    "circulation": 79540000
   },
   {
     "slug": "decisions-that-matter",
@@ -1125,7 +1401,13 @@
       "name": "Jubilee Inspire",
       "focus": "The whole house sings"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Chicago",
+      "Richmond",
+      "Phoenix"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "jubilee-gospel-fire",
@@ -1149,7 +1431,12 @@
       "name": "Imani Inspire",
       "focus": "Pentecostal fire"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Memphis",
+      "Atlanta"
+    ],
+    "circulation": 94380000
   },
   {
     "slug": "anxious-no-more",
@@ -1173,7 +1460,13 @@
       "name": "Tahoma Inspire",
       "focus": "Native voice and healing"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Austin",
+      "Boston",
+      "Portland"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "inspire-chill",
@@ -1197,7 +1490,13 @@
       "name": "Imani Inspire",
       "focus": "Pentecostal fire"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Portland",
+      "Denver",
+      "Miami"
+    ],
+    "circulation": 396000000
   },
   {
     "slug": "deutschland-inspire-deutsch",
@@ -1221,7 +1520,13 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Frankfurt",
+      "Chicago",
+      "Philadelphia"
+    ],
+    "circulation": 125550000
   },
   {
     "slug": "lead-like-yeshua",
@@ -1245,7 +1550,13 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Atlanta",
+      "Dallas",
+      "Seattle"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "inspire-hymns-heritage",
@@ -1269,7 +1580,13 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Nashville",
+      "Chicago",
+      "Portland"
+    ],
+    "circulation": 377520000
   },
   {
     "slug": "jubilee-prayers-french",
@@ -1293,7 +1610,13 @@
       "name": "Zariah Inspire",
       "focus": "Caribbean and diaspora"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Brussels",
+      "Montréal",
+      "Miami"
+    ],
+    "circulation": 217000000
   },
   {
     "slug": "ancient-paths",
@@ -1317,7 +1640,12 @@
       "name": "Amir Inspire",
       "focus": "South Asian soul"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Amman",
+      "Dallas"
+    ],
+    "circulation": 34320000
   },
   {
     "slug": "inspire-classical",
@@ -1341,7 +1669,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Boston",
+      "Chicago",
+      "San Jose"
+    ],
+    "circulation": 264000000
   },
   {
     "slug": "riddim-and-rhyme",
@@ -1365,7 +1699,12 @@
       "name": "Zariah Inspire",
       "focus": "Caribbean and diaspora"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Kingston",
+      "Miami"
+    ],
+    "circulation": 68640000
   },
   {
     "slug": "russia-inspire-russkiy",
@@ -1389,7 +1728,13 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Moscow",
+      "Sacramento",
+      "Newark"
+    ],
+    "circulation": 221850000
   },
   {
     "slug": "iron-sharpening-iron",
@@ -1413,7 +1758,13 @@
       "name": "Caleb Inspire",
       "focus": "Young, courageous worship"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Dallas",
+      "Pittsburgh",
+      "Salt Lake City"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "the-comeback-room",
@@ -1437,12 +1788,18 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Las Vegas",
+      "Memphis",
+      "Cincinnati"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "radiant-stones-radio",
     "hm": "301.90",
-    "name": "Radiant Stones Radio",
+    "name": "Radiant Stones Concerts",
     "format": "Praise & Worship",
     "description": "Female trio celebration — Sandi Patty / Avalon era, modernized. Female 25–55 audience.",
     "tenant": "HM301.90-EN",
@@ -1461,7 +1818,12 @@
       "name": "Jubilee Inspire",
       "focus": "The whole house sings"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Seattle",
+      "Atlanta"
+    ],
+    "circulation": 377520000
   },
   {
     "slug": "inspire-throwback",
@@ -1485,7 +1847,13 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Detroit",
+      "Philadelphia",
+      "Los Angeles"
+    ],
+    "circulation": 396000000
   },
   {
     "slug": "italia-inspire-italiano",
@@ -1509,7 +1877,13 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Rome",
+      "Newark",
+      "Philadelphia"
+    ],
+    "circulation": 59840000
   },
   {
     "slug": "jubilee-prayers-russian",
@@ -1533,7 +1907,13 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Kyiv",
+      "Sacramento",
+      "Newark"
+    ],
+    "circulation": 221850000
   },
   {
     "slug": "stillwater",
@@ -1557,7 +1937,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Portland",
+      "Minneapolis",
+      "Raleigh-Durham"
+    ],
+    "circulation": 137280000
   },
   {
     "slug": "inspire-jazz",
@@ -1581,7 +1967,13 @@
       "name": "Jubilee Inspire",
       "focus": "The whole house sings"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Memphis",
+      "Chicago",
+      "Newark"
+    ],
+    "circulation": 237600000
   },
   {
     "slug": "pilipinas-inspire-tagalog",
@@ -1605,7 +1997,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Manila",
+      "Los Angeles",
+      "Las Vegas"
+    ],
+    "circulation": 67500000
   },
   {
     "slug": "daughters-of-the-king",
@@ -1629,7 +2027,13 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Nashville",
+      "Atlanta",
+      "Portland"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "shalom-be-still",
@@ -1653,7 +2057,13 @@
       "name": "Tahoma Inspire",
       "focus": "Native voice and healing"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Jerusalem",
+      "Boston",
+      "Seattle"
+    ],
+    "circulation": 137280000
   },
   {
     "slug": "walking-together",
@@ -1677,7 +2087,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Omaha",
+      "Richmond",
+      "Portland"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "inspire-latin",
@@ -1701,7 +2117,13 @@
       "name": "Melody Inspire",
       "focus": "Everyday family faith"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Miami",
+      "Los Angeles",
+      "San Antonio"
+    ],
+    "circulation": 264000000
   },
   {
     "slug": "vietnam-inspire-tieng-viet",
@@ -1725,7 +2147,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Ho Chi Minh City",
+      "San Jose",
+      "Houston"
+    ],
+    "circulation": 67940000
   },
   {
     "slug": "bedtime-blessings",
@@ -1749,7 +2177,13 @@
       "name": "Caleb Inspire",
       "focus": "Young, courageous worship"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Boston",
+      "Chicago",
+      "Seattle"
+    ],
+    "circulation": 60060000
   },
   {
     "slug": "jubilee-prayers-korean",
@@ -1773,7 +2207,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Seoul",
+      "Los Angeles",
+      "Chicago"
+    ],
+    "circulation": 79540000
   },
   {
     "slug": "inspire-country",
@@ -1797,7 +2237,13 @@
       "name": "Caleb Inspire",
       "focus": "Young, courageous worship"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Nashville",
+      "Dallas",
+      "Sacramento"
+    ],
+    "circulation": 151008000
   },
   {
     "slug": "pentecostal-fire",
@@ -1821,7 +2267,13 @@
       "name": "Jubilee Inspire",
       "focus": "The whole house sings"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Los Angeles",
+      "Memphis",
+      "Oklahoma City"
+    ],
+    "circulation": 51480000
   },
   {
     "slug": "africa-inspire-kiswahili",
@@ -1845,7 +2297,13 @@
       "name": "Imani Inspire",
       "focus": "Pentecostal fire"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Nairobi",
+      "Minneapolis",
+      "Seattle"
+    ],
+    "circulation": 31500000
   },
   {
     "slug": "inspire-acapella",
@@ -1869,7 +2327,13 @@
       "name": "Caleb Inspire",
       "focus": "Young, courageous worship"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Nashville",
+      "Dallas",
+      "Los Angeles"
+    ],
+    "circulation": 377520000
   },
   {
     "slug": "inspire-80s-90s",
@@ -1893,7 +2357,13 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Los Angeles",
+      "Chicago",
+      "Atlanta"
+    ],
+    "circulation": 396000000
   },
   {
     "slug": "when-faith-feels-hard",
@@ -1917,7 +2387,13 @@
       "name": "Jubilee Inspire",
       "focus": "The whole house sings"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Minneapolis",
+      "Philadelphia",
+      "Portland"
+    ],
+    "circulation": 205920000
   },
   {
     "slug": "west-africa-inspire-yoruba",
@@ -1941,7 +2417,13 @@
       "name": "Imani Inspire",
       "focus": "Pentecostal fire"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Lagos",
+      "Houston",
+      "Newark"
+    ],
+    "circulation": 22500000
   },
   {
     "slug": "inspire-talk",
@@ -1965,12 +2447,18 @@
       "name": "Caleb Inspire",
       "focus": "Young, courageous worship"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Nashville",
+      "Ashburn",
+      "Los Angeles"
+    ],
+    "circulation": 109824000
   },
   {
     "slug": "latin-worship",
     "hm": "310.90",
-    "name": "Latin Worship (Sung in English)",
+    "name": "Latin Worship (English-Spanish)",
     "format": "Latin Worship",
     "description": "Latin and South American worship sung in English — Santiago Inspire's Latin ballad, cumbia, samba and theatrical-liturgical catalogue for English-speaking listeners.",
     "tenant": "HM310.90-EN",
@@ -1989,7 +2477,13 @@
       "name": "Santiago Inspire",
       "focus": "Latino heart"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Miami",
+      "Los Angeles",
+      "San Antonio"
+    ],
+    "circulation": 96096000
   },
   {
     "slug": "hebraic-celebrations",
@@ -2013,7 +2507,13 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Tel Aviv",
+      "Miami",
+      "Los Angeles"
+    ],
+    "circulation": 617760
   },
   {
     "slug": "midnight-praise",
@@ -2037,7 +2537,13 @@
       "name": "Nova Inspire",
       "focus": "For the doubting"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Dublin",
+      "Chicago",
+      "Seattle"
+    ],
+    "circulation": 123552000
   },
   {
     "slug": "jubilee-prayers-swahili",
@@ -2061,7 +2567,13 @@
       "name": "Imani Inspire",
       "focus": "Pentecostal fire"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Dar Es Salaam",
+      "Nairobi",
+      "Minneapolis"
+    ],
+    "circulation": 31500000
   },
   {
     "slug": "ethiopia-inspire-amharic",
@@ -2085,7 +2597,13 @@
       "name": "Imani Inspire",
       "focus": "Pentecostal fire"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Addis Ababa",
+      "Ashburn",
+      "Los Angeles"
+    ],
+    "circulation": 16800000
   },
   {
     "slug": "inspire-wellness",
@@ -2109,7 +2627,13 @@
       "name": "Santiago Inspire",
       "focus": "Latino heart"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Denver",
+      "San Diego",
+      "Minneapolis"
+    ],
+    "circulation": 290400000
   },
   {
     "slug": "word-of-fire",
@@ -2133,7 +2657,13 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Memphis",
+      "Newark",
+      "Las Vegas"
+    ],
+    "circulation": 51480000
   },
   {
     "slug": "polska-inspire-polski",
@@ -2157,7 +2687,13 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Warsaw",
+      "Chicago",
+      "Newark"
+    ],
+    "circulation": 37800000
   },
   {
     "slug": "shema-roots",
@@ -2181,7 +2717,13 @@
       "name": "Zev Inspire",
       "focus": "Hebrew roots and the feasts"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Jerusalem",
+      "Dallas",
+      "Los Angeles"
+    ],
+    "circulation": 720720
   },
   {
     "slug": "inspire-holiday",
@@ -2205,7 +2747,13 @@
       "name": "Zariah Inspire",
       "focus": "Caribbean and diaspora"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Chicago",
+      "Boston",
+      "Salt Lake City"
+    ],
+    "circulation": 462000000
   },
   {
     "slug": "restored-renewed",
@@ -2229,7 +2777,13 @@
       "name": "Melody Inspire",
       "focus": "Everyday family faith"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Buffalo",
+      "Oklahoma City",
+      "San Diego"
+    ],
+    "circulation": 178464000
   },
   {
     "slug": "jubilee-radio",
@@ -2253,7 +2807,15 @@
       "name": "Jubilee Inspire",
       "focus": "The whole house sings"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Sacramento",
+      "Denver",
+      "New Orleans",
+      "Tampa",
+      "Honolulu"
+    ],
+    "circulation": 343200000
   },
   {
     "slug": "indonesia-inspire-bahasa",
@@ -2277,7 +2839,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Jakarta",
+      "Los Angeles",
+      "Philadelphia"
+    ],
+    "circulation": 144000000
   },
   {
     "slug": "apostolic-five-fold",
@@ -2301,7 +2869,13 @@
       "name": "Amir Inspire",
       "focus": "South Asian soul"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Jerusalem",
+      "Atlanta",
+      "Phoenix"
+    ],
+    "circulation": 12012000
   },
   {
     "slug": "inspire-stories",
@@ -2325,7 +2899,13 @@
       "name": "Tahoma Inspire",
       "focus": "Native voice and healing"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Chicago",
+      "Portland",
+      "Raleigh-Durham"
+    ],
+    "circulation": 96096000
   },
   {
     "slug": "japan-inspire-nihongo",
@@ -2349,7 +2929,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Tokyo",
+      "Los Angeles",
+      "Honolulu"
+    ],
+    "circulation": 116250000
   },
   {
     "slug": "story-hour",
@@ -2373,7 +2959,13 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Chicago",
+      "Nashville",
+      "Portland"
+    ],
+    "circulation": 20592000
   },
   {
     "slug": "jubilee-prayers-tagalog",
@@ -2397,7 +2989,13 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Cebu",
+      "San Jose",
+      "Honolulu"
+    ],
+    "circulation": 67500000
   },
   {
     "slug": "inspire-live",
@@ -2421,7 +3019,13 @@
       "name": "Imani Inspire",
       "focus": "Pentecostal fire"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Austin",
+      "Nashville",
+      "Los Angeles"
+    ],
+    "circulation": 89232000
   },
   {
     "slug": "bengal-inspire-bangla",
@@ -2445,7 +3049,13 @@
       "name": "Amir Inspire",
       "focus": "South Asian soul"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Dhaka",
+      "Newark",
+      "Detroit"
+    ],
+    "circulation": 121500000
   },
   {
     "slug": "the-hidden-manna",
@@ -2469,7 +3079,13 @@
       "name": "Elias Inspire",
       "focus": "Appalachian repentance"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Tel Aviv",
+      "Charlotte",
+      "San Diego"
+    ],
+    "circulation": 48048000
   },
   {
     "slug": "island-hallelujah",
@@ -2493,7 +3109,12 @@
       "name": "Tahoma Inspire",
       "focus": "Native voice and healing"
     },
-    "live": true
+    "live": true,
+    "bases": [
+      "Honolulu",
+      "San Diego"
+    ],
+    "circulation": 27456000
   },
   {
     "slug": "inspire-rising",
@@ -2517,6 +3138,12 @@
       "name": "Eliana Inspire",
       "focus": "Folk wisdom, a sister voice"
     },
-    "live": false
+    "live": false,
+    "bases": [
+      "Nashville",
+      "Los Angeles",
+      "Atlanta"
+    ],
+    "circulation": 75504000
   }
 ]

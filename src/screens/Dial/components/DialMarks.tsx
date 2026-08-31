@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import type { RadioStation } from '@/services/radio';
-import { PX_PER_HZ, DIAL_HEIGHT, MARK_BASE } from './DialScale';
+import { PX_PER_HZ, DIAL_HEIGHT, MARK_BASE, FLAGSHIP_MARK } from './DialScale';
 
 /**
  * The stations, as marks on the scale.
@@ -14,6 +14,12 @@ import { PX_PER_HZ, DIAL_HEIGHT, MARK_BASE } from './DialScale';
  * A mark is the only white thing on the scale, so the eye reads it as "there is
  * something here" without a legend saying so. The tuned one is taller and takes
  * the brand accent.
+ *
+ * Two exceptions carry their block's colour instead — the flagships named in
+ * FLAGSHIP_MARK. They are the one station in a block rather than a member of
+ * it, and the colour says so without a legend. Being tuned still wins: the
+ * accent means "this is what you are hearing", which outranks "this one is the
+ * flagship" while it is under the needle.
  */
 
 interface Props {
@@ -33,7 +39,12 @@ export const DialMarks: React.FC<Props> = React.memo(
       {stations.map((s, i) => {
         const on = i === activeIndex;
         const stem = on ? STEM_ON : STEM_IDLE;
-        const tint = on ? colors.active : colors.idle;
+        const flagship = FLAGSHIP_MARK[s.hm];
+        const tint = on ? colors.active : (flagship ?? colors.idle);
+        // A flagship reads at full strength even at rest; the half-opacity is
+        // there to sink the ordinary marks behind the tuned one, and a mark
+        // carrying a colour on purpose must not be dimmed into a grey.
+        const dim = on || flagship ? 1 : 0.5;
         const left = (parseFloat(s.hm) - lo) * PX_PER_HZ;
 
         return (
@@ -62,13 +73,13 @@ export const DialMarks: React.FC<Props> = React.memo(
             <View
               style={[
                 styles.stem,
-                { backgroundColor: tint, height: stem, opacity: on ? 1 : 0.5 },
+                { backgroundColor: tint, height: stem, opacity: dim },
               ]}
             />
             <View
               style={[
                 styles.dot,
-                { backgroundColor: tint, opacity: on ? 1 : 0.5, bottom: BOTTOM + stem - 3 },
+                { backgroundColor: tint, opacity: dim, bottom: BOTTOM + stem - 3 },
               ]}
             />
           </Pressable>

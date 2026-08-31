@@ -45,6 +45,51 @@ export const BASELINE_GAP = HEIGHT - BASE;
 /** Width reserved per label so it can centre without clipping its neighbours. */
 const LABEL_W = 60;
 
+/**
+ * THE FIVE-FOLD ZONES — the band allocated in five twenty-unit blocks, one per
+ * ministry office. Ranges and hues are the site's, which takes them in turn from
+ * the Band Reallocation plan, so the dial and the plan cannot disagree about
+ * where a frequency belongs. The hues are lifted about fifteen percent in
+ * luminance from the canonical palette because that one is set for a white
+ * sheet: on black, #8E2A3A in a five-point strip reads as a smudge.
+ *
+ * Drawn INSIDE the scale rather than over the face, so the colour travels with
+ * the track — whatever sits under the needle is the office the tuned station is
+ * actually in, at any scroll position.
+ */
+export const ZONES = [
+  { lo: 300, hi: 320, key: 'crossing', label: 'The Crossing', color: '#2E86D9' },
+  { lo: 320, hi: 340, key: 'nations', label: 'The Nations', color: '#8257C4' },
+  { lo: 340, hi: 360, key: 'upper', label: 'The Upper Room', color: '#B03849' },
+  { lo: 360, hi: 380, key: 'living', label: 'The Living Room', color: '#4A9459' },
+  { lo: 380, hi: 400, key: 'table', label: 'The Table', color: '#BE8A15' },
+] as const;
+
+/**
+ * The block flagships, keyed by the `hm` the catalog carries — and only these
+ * two. Every other mark stays white.
+ *
+ * Colouring every mark by its block was tried on the web and was wrong: it
+ * turned the scale into five bands of colour, which is what the strip
+ * underneath already says, and left nothing marking the flagship at all. This
+ * is a named list, not a rule — a block gets a coloured mark when somebody
+ * decides it has a flagship, which is why three blocks have none.
+ */
+export const FLAGSHIP_MARK: Record<string, string> = {
+  '308.70': '#2E86D9', // Year of Jubilee — The Crossing
+  '350.00': '#B03849', // The Upper Room  — The Upper Room
+};
+
+/**
+ * The foot of the scale, stacked downward from the baseline: the frequency
+ * numbers, then the office strip, then the office name. Same order and much the
+ * same spacing as the web's, which counts up from the bottom instead.
+ */
+const NUM_TOP = 6;
+const ZONE_TOP = 26;
+const ZONE_H = 5;
+const ZONE_LABEL_TOP = 34;
+
 interface Props {
   lo: number;
   hi: number;
@@ -112,8 +157,46 @@ export const DialScale: React.FC<Props> = React.memo(({ lo, hi, colors, height =
   const labels: number[] = [];
   for (let hz = Math.ceil(lo / 5) * 5; hz <= hi; hz += 5) labels.push(hz);
 
+  const base = height - BASELINE_GAP;
+
   return (
     <View pointerEvents="none" style={styles.root}>
+      {/* First, so every tick and mark paints over the colour rather than under
+          it. Clipped to the drawn band: the zones span the whole 300–400
+          allocation, and a face showing less must not draw past its own end. */}
+      {ZONES.filter((z) => z.hi > lo && z.lo < hi).map((z) => {
+        const from = Math.max(z.lo, lo);
+        const to = Math.min(z.hi, hi);
+        return (
+          <React.Fragment key={z.key}>
+            <View
+              style={[
+                styles.zone,
+                {
+                  backgroundColor: z.color,
+                  left: (from - lo) * PX_PER_HZ,
+                  width: (to - from) * PX_PER_HZ,
+                  top: base + ZONE_TOP,
+                },
+              ]}
+            />
+            {/* Left-aligned to the boundary rather than centred, so the name
+                marks where the office BEGINS. Tiny on purpose: it is a legend
+                for the band, not a label for a station, and anything larger
+                competes with the frequency numbers directly above it. */}
+            <Text
+              allowFontScaling={false}
+              numberOfLines={1}
+              style={[
+                styles.zoneLabel,
+                { color: z.color, left: (from - lo) * PX_PER_HZ, top: base + ZONE_LABEL_TOP },
+              ]}
+            >
+              {z.label.toUpperCase()}
+            </Text>
+          </React.Fragment>
+        );
+      })}
       {chunks.map((from) => (
         <Chunk key={from} from={from} lo={lo} colors={colors} height={height} />
       ))}
@@ -127,7 +210,7 @@ export const DialScale: React.FC<Props> = React.memo(({ lo, hi, colors, height =
               color: colors.text,
               left: (hz - lo) * PX_PER_HZ - LABEL_W / 2,
               // Follows the baseline down when the face is shortened.
-              top: height - BASELINE_GAP + 6,
+              top: base + NUM_TOP,
             },
           ]}
         >
@@ -145,6 +228,16 @@ export const MARK_BASE = BASE;
 const styles = StyleSheet.create({
   root: { ...StyleSheet.absoluteFillObject },
   chunk: { position: 'absolute', top: 0 },
+  zone: { position: 'absolute', height: ZONE_H },
+  zoneLabel: {
+    position: 'absolute',
+    fontFamily: 'Orbitron_600SemiBold',
+    fontSize: 8,
+    lineHeight: 9,
+    letterSpacing: 0.64,
+    paddingLeft: 3,
+    opacity: 0.85,
+  },
   label: {
     position: 'absolute',
     width: LABEL_W,

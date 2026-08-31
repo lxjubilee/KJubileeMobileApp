@@ -221,8 +221,11 @@ export const ProfileScreen: React.FC = () => {
         // Both locks must be satisfied before the button will fire. The server
         // enforces this too — this only spares the listener a round trip.
         confirmDisabled={!canDelete}
-        // Top-anchored so the keyboard cannot cover the buttons.
-        align="top"
+        // Centred, like every other dialog in the app. The keyboard is not a
+        // reason to anchor this one to the top: ConfirmDialog slides a centred
+        // card up by exactly its overlap with the keyboard and back down again,
+        // so the password and confirmation fields stay reachable either way.
+        align="center"
         onConfirm={confirmDelete}
         onCancel={closeDeleteConfirm}
       >

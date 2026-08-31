@@ -31,16 +31,6 @@ type Nav = NativeStackNavigationProp<RootStackParamList>;
 /** Sentinels for the two filters that are not sections. */
 const ALL = '__all__';
 const ON_AIR = '__onair__';
-/**
- * And one that is not a filter at all.
- *
- * Every other chip narrows the list in place; this one leaves for the band's
- * essays. It is a sentinel rather than a section because it has no stations —
- * `build-sections.mjs` drops the site's `hm` entry for exactly that reason, so
- * a real section here would be re-dropped the next time the layout is
- * regenerated.
- */
-const BAND = '__band__';
 
 export const BrowseScreen: React.FC = () => {
   const theme = useTheme();
@@ -67,8 +57,6 @@ export const BrowseScreen: React.FC = () => {
       { key: ALL, label: 'All' },
       { key: ON_AIR, label: 'On Air' },
       ...sections.map((s) => ({ key: s.id, label: s.label })),
-      // Last, as the site puts it last — and on its own side of the nav.
-      { key: BAND, label: 'The Heavenly Band' },
     ],
     [sections],
   );
@@ -144,11 +132,7 @@ export const BrowseScreen: React.FC = () => {
             return (
               <Pressable
                 key={ch.key}
-                onPress={() => {
-                  // The one chip that goes somewhere instead of filtering.
-                  if (ch.key === BAND) navigation.navigate('BandArticles');
-                  else setChip(ch.key);
-                }}
+                onPress={() => setChip(ch.key)}
                 accessibilityRole="button"
                 accessibilityState={{ selected: on }}
                 style={[
