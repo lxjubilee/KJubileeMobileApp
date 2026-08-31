@@ -321,10 +321,16 @@ const Row: React.FC<{
       <AppText variant="body" style={[styles.rowLabel, { color: tint }]}>
         {label}
       </AppText>
+      {/* The chevron takes the row's tint too: an icon and label in danger red
+          beside a neutral chevron reads as an oversight, not a choice. */}
       {loading ? (
         <ActivityIndicator size="small" color={theme.colors.iconMuted} />
       ) : (
-        <Ionicons name="chevron-forward" size={18} color={theme.colors.iconMuted} />
+        <Ionicons
+          name="chevron-forward"
+          size={18}
+          color={destructive ? theme.colors.danger : theme.colors.iconMuted}
+        />
       )}
     </Pressable>
   );

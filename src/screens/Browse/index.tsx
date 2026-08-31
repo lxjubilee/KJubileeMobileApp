@@ -208,7 +208,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  chipText: { fontSize: 13 },
+  // Uppercased here, not in the data. Two of these chips are sentinels typed in
+  // this file and the rest are catalogue section labels; normalising at the
+  // point of render is the only place that holds when the catalogue changes.
+  chipText: { fontSize: 13, textTransform: 'uppercase', letterSpacing: 0.4 },
   count: { fontSize: 12 },
   listContent: { paddingTop: 6, paddingBottom: 24 },
   sep: { height: StyleSheet.hairlineWidth, marginLeft: 96 },

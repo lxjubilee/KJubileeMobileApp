@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import type { NavigationProp, ParamListBase } from '@react-navigation/native';
 import { Screen, AppText, IconButton } from '@/components/common';
@@ -48,6 +49,7 @@ const Block: React.FC<{ block: LegalBlock }> = ({ block }) => {
  */
 export const LegalScreen: React.FC<{ document: LegalDocument }> = ({ document }) => {
   const navigation = useNavigation<Nav>();
+  const insets = useSafeAreaInsets();
 
   return (
     <Screen>
@@ -59,7 +61,11 @@ export const LegalScreen: React.FC<{ document: LegalDocument }> = ({ document })
       </View>
 
       <ScrollView
-        contentContainerStyle={styles.content}
+        // The mini player floats over this screen, so the last paragraph needs
+        // its height cleared — as StationDetail (124) and BandArticles (96) do.
+        // A bare 48 happened to clear it on one handset and would not on a
+        // device with a taller gesture bar.
+        contentContainerStyle={[styles.content, { paddingBottom: 96 + insets.bottom }]}
         showsVerticalScrollIndicator={false}
       >
         <AppText variant="bodySm" color="textMuted" style={styles.effectiveDate}>
@@ -95,7 +101,7 @@ export const LegalScreen: React.FC<{ document: LegalDocument }> = ({ document })
 const styles = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingTop: 8 },
   title: { marginLeft: 8, flexShrink: 1 },
-  content: { paddingHorizontal: 16, paddingTop: 8, paddingBottom: 48 },
+  content: { paddingHorizontal: 16, paddingTop: 8 },
   effectiveDate: { marginBottom: 16 },
   section: { marginTop: 24 },
   sectionHeading: { marginBottom: 8 },

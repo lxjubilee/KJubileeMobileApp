@@ -47,6 +47,15 @@ import type { RootStackParamList, RootStackScreenProps } from '@/navigation/type
  */
 
 type Nav = NativeStackNavigationProp<RootStackParamList>;
+
+/** How many related stations the horizontal rail carries. */
+const RAIL_MAX = 10;
+/**
+ * Past this many matches the rail stops being the whole story, so it earns a
+ * "See All" into the full grid. At three or fewer the link would lead to a page
+ * showing exactly what is already on screen.
+ */
+const RELATED_SEE_ALL_OVER = 3;
 /**
  * Roughly the footer player's height — the site's `--kj-player-h`, which its
  * hero subtracts so the bar never eats into the picture.
@@ -120,16 +129,24 @@ export const StationDetailScreen: React.FC = () => {
   }, [station?.tenant, trackTitle]);
 
   /** Stations that share this one's host, else its format — "more like this". */
-  const related = useMemo(() => {
+  const relatedAll = useMemo(() => {
     if (!station) return [];
     const all = getAllStations().filter((s) => s.slug !== station.slug);
     const byHost = station.host ? all.filter((s) => s.host?.id === station.host?.id) : [];
     const byFormat = all.filter((s) => s.format === station.format);
     const seen = new Set<string>();
-    return [...byHost, ...byFormat]
-      .filter((s) => (seen.has(s.slug) ? false : (seen.add(s.slug), true)))
-      .slice(0, 10);
+    return [...byHost, ...byFormat].filter((s) =>
+      seen.has(s.slug) ? false : (seen.add(s.slug), true),
+    );
   }, [station]);
+
+  /**
+   * The rail is a thumb-length of stations, not the whole match. Ten is what it
+   * has always shown; "See All" is what carries the rest, so the cap stays here
+   * rather than in `relatedAll` — the grid behind the link must not inherit it,
+   * or "see all" would quietly mean "see ten".
+   */
+  const related = useMemo(() => relatedAll.slice(0, RAIL_MAX), [relatedAll]);
 
   const onPlay = useCallback(() => {
     if (!station?.live) return;
@@ -496,7 +513,30 @@ export const StationDetailScreen: React.FC = () => {
           {/* ---- related ---- */}
           {related.length ? (
             <View style={styles.section}>
-              <AppText style={[styles.sectionTitle, { color: c.text }]}>More on the dial</AppText>
+              <View style={styles.sectionHead}>
+                <AppText style={[styles.sectionTitle, styles.sectionHeadTitle, { color: c.text }]}>
+                  More on the dial
+                </AppText>
+                {relatedAll.length > RELATED_SEE_ALL_OVER ? (
+                  <Pressable
+                    onPress={() =>
+                      navigation.navigate('StationList', {
+                        title: 'More on the dial',
+                        slugs: relatedAll.map((s) => s.slug),
+                      })
+                    }
+                    hitSlop={8}
+                    accessibilityRole="button"
+                    accessibilityLabel={`See all ${relatedAll.length} related stations`}
+                    style={({ pressed }) => [styles.seeAll, { opacity: pressed ? 0.6 : 1 }]}
+                  >
+                    <AppText variant="label" style={{ color: c.text }}>
+                      See All
+                    </AppText>
+                    <Ionicons name="chevron-forward" size={16} color={c.text} />
+                  </Pressable>
+                ) : null}
+              </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {related.map((s: RadioStation) => (
                   <StationTile
@@ -596,7 +636,11 @@ const styles = StyleSheet.create({
   dropCap: { fontSize: 30, lineHeight: 25, fontWeight: '700' },
 
   hm: { fontFamily: 'Orbitron_600SemiBold', fontSize: 15, lineHeight: 20, marginTop: 14 },
-  name: { fontSize: 28, marginTop: 4 },
+  // Explicit lineHeight, and it must stay explicit: AppText spreads the `body`
+  // variant, whose 21 is far SHORTER than this type. Without it the glyphs are
+  // drawn at 28 inside a 21pt box and every descender is sheared off — the y of
+  // "Jubilee Kids Party" lost its tail on every station page that has one.
+  name: { fontSize: 28, lineHeight: 34, marginTop: 4 },
   format: { fontSize: 13.5, marginTop: 6 },
 
   playBtn: {
@@ -652,6 +696,11 @@ const styles = StyleSheet.create({
 
   section: { marginTop: 28 },
   sectionTitle: { fontSize: 17, marginBottom: 12 },
+  // The title keeps its own type; only the row around it is new, so this section
+  // still matches the four above it.
+  sectionHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  sectionHeadTitle: { flexShrink: 1 },
+  seeAll: { flexDirection: 'row', alignItems: 'center', gap: 2, marginBottom: 12 },
   row: {
     flexDirection: 'row',
     alignItems: 'center',

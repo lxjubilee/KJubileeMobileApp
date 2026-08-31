@@ -321,6 +321,10 @@ export const MapScreen: React.FC = () => {
             <Pressable
               key={icon}
               onPress={onPress}
+              // The 34pt circle is deliberate against the map, so the target is
+              // widened rather than the button — 34 + 8 either side clears the
+              // 44pt minimum. Same hitSlop pattern the search clear button uses.
+              hitSlop={8}
               accessibilityRole="button"
               accessibilityLabel={label}
               style={({ pressed }) => [
@@ -486,7 +490,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   panelTitleWrap: { flex: 1, marginRight: 12 },
-  panelCity: { fontSize: 20 },
+  // Same reason as StationDetail's title: body's 21 is no line box for 20pt
+  // type, and the broadcast list carries Tokyo, Sydney and Jerusalem.
+  panelCity: { fontSize: 20, lineHeight: 26 },
   panelMeta: { fontSize: 12.5, marginTop: 3 },
   close: { fontSize: 10, letterSpacing: 1.4, marginTop: 6 },
   empty: { fontSize: 13, paddingHorizontal: 16, paddingVertical: 10 },

@@ -670,6 +670,8 @@ export const DialScreen: React.FC = () => {
             <View style={styles.control}>
               <Pressable
                 onPress={() => step(-1)}
+                // 42pt circle, so the target is widened to clear 44.
+                hitSlop={6}
                 accessibilityRole="button"
                 accessibilityLabel="Previous station"
                 style={({ pressed }) => [
@@ -715,6 +717,7 @@ export const DialScreen: React.FC = () => {
             <View style={styles.control}>
               <Pressable
                 onPress={() => step(1)}
+                hitSlop={6}
                 accessibilityRole="button"
                 accessibilityLabel="Next station"
                 style={({ pressed }) => [
