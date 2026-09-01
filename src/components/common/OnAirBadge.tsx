@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { darkColors } from '@/theme';
+import { useAppActive } from '@/hooks/useAppActive';
 
 /**
  * The broadcast-status pill, ported from kjubilee.com.
@@ -60,9 +61,12 @@ export const OnAirBadge: React.FC<Props> = React.memo(({ state, label, style }) 
   const soon = state === 'soon';
   const playing = state === 'playing';
   const opacity = useRef(new Animated.Value(1)).current;
+  // Not merely to save power: an indefinite native-driver loop that spans a
+  // screen-off crashes the app on resume. See `useAppActive`.
+  const appActive = useAppActive();
 
   useEffect(() => {
-    if (soon) return undefined;
+    if (soon || !appActive) return undefined;
     // `useNativeDriver` is the whole reason this is safe to run on every visible
     // card at once: the loop is handed to the UI thread and never touches JS
     // again, so it cannot compete with playback or a scroll gesture.
@@ -87,7 +91,7 @@ export const OnAirBadge: React.FC<Props> = React.memo(({ state, label, style }) 
       loop.stop();
       opacity.setValue(1);
     };
-  }, [soon, opacity]);
+  }, [soon, appActive, opacity]);
 
   const fg = soon ? 'rgba(255,255,255,0.62)' : playing ? ON_AIR_INK : ON_AIR_GREEN;
 

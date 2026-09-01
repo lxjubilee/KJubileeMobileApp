@@ -17,10 +17,10 @@ interface AccountChipProps {
  * The locked-in email plus its escape hatch, shown once the door knows which
  * kind of account it is dealing with.
  *
- * The email is middle-ellipsised rather than character-wrapped (the web uses
- * `word-break: break-all`) — on a 360dp screen breaking mid-word makes an
- * address unreadable, while a middle ellipsis keeps the local part and the
- * domain, which is what the user checks.
+ * The email is middle-ellipsised rather than wrapped or character-broken (the
+ * web uses `word-break: break-all`) — breaking an address across lines makes it
+ * unreadable, while a middle ellipsis keeps the local part and the domain,
+ * which is what the user checks.
  */
 export const AccountChip: React.FC<AccountChipProps> = ({ email, actionLabel, onAction, style }) => {
   const theme = useTheme();
@@ -31,7 +31,12 @@ export const AccountChip: React.FC<AccountChipProps> = ({ email, actionLabel, on
         variant="bodySm"
         color="textSecondary"
         style={styles.email}
-        numberOfLines={2}
+        // ONE line, so the middle ellipsis below is what actually happens.
+        // At two, a long address wraps before it ever ellipsises, and the wrap
+        // point is a break opportunity rather than anything meaningful — which
+        // is how "sandeepaga79@gmail" ended up over ".com" on a 436dp screen.
+        // A short address still shows in full; only one too wide is elided.
+        numberOfLines={1}
         ellipsizeMode="middle"
       >
         {email}
@@ -64,9 +69,8 @@ const styles = StyleSheet.create({
     borderRadius: AUTH_METRICS.radius,
     backgroundColor: AUTH_BORDER.fill,
     // Same box as AuthTextField, so the chip and the password field below it
-    // read as one stack. `minHeight` rather than `height` for the same reason
-    // the field uses it: a two-line email still grows the box instead of
-    // clipping.
+    // read as one stack. `minHeight` rather than `height` so the box still
+    // grows for a larger system font scale instead of clipping.
     minHeight: AUTH_METRICS.fieldHeight,
     paddingHorizontal: 16,
     paddingVertical: 10,

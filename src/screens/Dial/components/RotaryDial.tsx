@@ -22,6 +22,30 @@ import type { RadioStation } from '@/services/radio';
 const START_DEG = 135;
 const SWEEP_DEG = 270;
 
+/**
+ * The diameter the face was drawn at — the size `knobSize` caps out on.
+ *
+ * Every ring, gap and glyph below is expressed against this and scaled by `k`,
+ * so the dial is the SAME DRAWING at every diameter rather than a fixed-size
+ * scale with a proportional knob inside it. It was the latter: the ring offsets
+ * were constants in points while the knob stayed at 0.26 × size, so the clear
+ * air between the numbers and the knob closed as the face shrank — at 200 the
+ * label ring fell 10pt INSIDE the knob.
+ *
+ * That was latent, not what anyone saw. The visible clipping came from the Svg
+ * and the knob having stopped sharing a centre (see the Svg below); the numbers
+ * on one side of the dial were eaten while the other side stayed clear. Both
+ * are fixed, and the guaranteed clearance further down means neither can come
+ * back through some size this screen has not been tried at.
+ */
+const DESIGN_SIZE = 330;
+
+/** Numbers stay readable when the face is small, so they stop shrinking here. */
+const MIN_LABEL_SIZE = 9;
+
+/** Air between the knob's lit rim and the nearest edge of a band number. */
+const LABEL_CLEARANCE = 6;
+
 const rad = (deg: number) => (deg * Math.PI) / 180;
 
 interface Props {
@@ -65,14 +89,48 @@ export const RotaryDial: React.FC<Props> = ({
   // Radii, outermost first. Each ring needs clear air around it: ticks, then
   // the station dots, then the numbers, then the knob. Crowding any two of them
   // together is what makes a printed dial look like a diagram.
+  //
+  // Every offset is × k, so those gaps hold their proportion at any diameter —
+  // see DESIGN_SIZE. At k = 1 these are the original numbers exactly.
   const c = size / 2;
-  const rOuter = c - 2;
-  const rTickOut = c - 8;
-  /** Where a major tick ends; minor ticks stop 8 short of it. */
-  const rTickIn = c - 30;
-  const rDot = c - 40;
-  const rLabel = c - 58;
-  const knobR = size * 0.26;
+  const k = size / DESIGN_SIZE;
+  const rOuter = c - 2 * k;
+  const rTickOut = c - 8 * k;
+  /** Where a major tick ends; minor ticks stop `8 * k` short of it. */
+  const rTickIn = c - 30 * k;
+  const rDot = c - 40 * k;
+  /** Floored so the band numbers stay legible on a short face. */
+  const labelSize = Math.max(MIN_LABEL_SIZE, 12 * k);
+  /**
+   * Half a three-digit label, measured rather than guessed: Orbitron's digits
+   * advance 0.82em, so "320" is 2.46em wide. At the nine- and three-o'clock
+   * ends of the arc that half-width points straight at the knob, which is what
+   * actually has to clear it.
+   */
+  const labelHalfW = labelSize * 1.23;
+  /** Numbers must stay inside the station-dot ring, or they collide with it. */
+  const rLabelMax = rDot - labelSize * 0.5;
+  /**
+   * The knob is never allowed to grow past the room the numbers need.
+   *
+   * At the drawn size this is slack and the knob is exactly 0.26 x size, as it
+   * has always been. It only bites below ~180, where the floor on `labelSize`
+   * means the type has stopped shrinking with the face while the knob has not.
+   */
+  const knobR = Math.min(size * 0.26, rLabelMax - labelHalfW - LABEL_CLEARANCE);
+  /**
+   * The numbers sit where the drawing puts them, unless that would run them
+   * into the knob — then they move out just far enough to clear it, without
+   * ever passing the dot ring.
+   */
+  const rLabel = Math.max(
+    c - 58 * k,
+    Math.min(knobR + labelHalfW + LABEL_CLEARANCE, rLabelMax),
+  );
+  // Strokes scale too, but never below a hairline — a tick that thins to 0.3pt
+  // stops rendering as a line and starts rendering as a smudge.
+  const wTickMajor = Math.max(1, 2 * k);
+  const wTickMinor = Math.max(0.75, k);
 
   const angleOf = useCallback(
     (f: number) => START_DEG + ((f - lo) / (hi - lo)) * SWEEP_DEG,
@@ -150,7 +208,7 @@ export const RotaryDial: React.FC<Props> = ({
       const deg = angleOf(f);
       const major = Math.round(f) % 10 === 0;
       const a = pt(deg, rTickOut);
-      const b = pt(deg, major ? rTickIn : rTickIn + 8);
+      const b = pt(deg, major ? rTickIn : rTickIn + 8 * k);
       t.push(
         <Line
           key={`t${f}`}
@@ -159,7 +217,7 @@ export const RotaryDial: React.FC<Props> = ({
           x2={b.x}
           y2={b.y}
           stroke={major ? colors.tickMajor : colors.tick}
-          strokeWidth={major ? 2 : 1}
+          strokeWidth={major ? wTickMajor : wTickMinor}
           strokeLinecap="round"
         />,
       );
@@ -169,9 +227,12 @@ export const RotaryDial: React.FC<Props> = ({
           <SvgText
             key={`l${f}`}
             x={p.x}
-            y={p.y + 4}
+            // SVG text hangs off its baseline, so it has to be dropped by about
+            // a third of its size to sit on the ring rather than above it. This
+            // was a flat +4, correct only while the type was 12pt.
+            y={p.y + labelSize * 0.34}
             fill={colors.label}
-            fontSize={12}
+            fontSize={labelSize}
             fontFamily="Orbitron_600SemiBold"
             textAnchor="middle"
           >
@@ -181,7 +242,7 @@ export const RotaryDial: React.FC<Props> = ({
       }
     }
     return { ticks: t, labels: l };
-  }, [lo, hi, angleOf, pt, rTickOut, rTickIn, rLabel, colors]);
+  }, [lo, hi, angleOf, pt, rTickOut, rTickIn, rLabel, k, labelSize, wTickMajor, wTickMinor, colors]);
 
   // Every station gets a dot on the arc, so the occupied frequencies are legible
   // before the listener turns anything — the band is mostly empty, and a knob
@@ -196,20 +257,20 @@ export const RotaryDial: React.FC<Props> = ({
             key={s.slug}
             cx={p.x}
             cy={p.y}
-            r={on ? 4.5 : 2.5}
+            r={Math.max(on ? 3 : 1.75, (on ? 4.5 : 2.5) * k)}
             fill={on ? colors.active : colors.station}
             opacity={on ? 1 : 0.55}
           />
         );
       }),
-    [stations, activeSlug, angleOf, pt, rDot, colors],
+    [stations, activeSlug, angleOf, pt, rDot, k, colors],
   );
 
   // The needle spans knob to ticks, passing through the dot ring — so when it
   // rests on a station it visibly points at that station's mark rather than
   // stopping short of it.
-  const needleFrom = pt(angleOf(hz), knobR + 10);
-  const needleTo = pt(angleOf(hz), rTickIn - 4);
+  const needleFrom = pt(angleOf(hz), knobR + 10 * k);
+  const needleTo = pt(angleOf(hz), rTickIn - 4 * k);
 
   return (
     <View
@@ -218,7 +279,15 @@ export const RotaryDial: React.FC<Props> = ({
       style={[styles.wrap, { width: size, height: size }]}
       {...pan.panHandlers}
     >
-      <Svg width={size} height={size} style={StyleSheet.absoluteFill}>
+      {/* NOT absoluteFill. The knob below centres itself in this wrapper, while an
+          absolutely-filled Svg anchors its own `size`-unit drawing at the box's
+          top-left and scales it to whatever box it is given — so the moment the
+          two disagreed, the face and the knob stopped sharing a centre. Measured
+          on a Galaxy S25: the tick ring centred 17dp left and 19dp above the
+          knob, which ate the labels on one side of the dial and left the other
+          side clear. In flow, both are centred by the same wrapper and cannot
+          drift apart, whatever box this ends up in. */}
+      <Svg width={size} height={size}>
         {/* The case the scale is printed on. */}
         <Circle cx={c} cy={c} r={rOuter} fill={colors.face} />
         {ticks}
@@ -230,7 +299,7 @@ export const RotaryDial: React.FC<Props> = ({
           x2={needleTo.x}
           y2={needleTo.y}
           stroke={colors.needle}
-          strokeWidth={3}
+          strokeWidth={Math.max(2, 3 * k)}
           strokeLinecap="round"
         />
       </Svg>

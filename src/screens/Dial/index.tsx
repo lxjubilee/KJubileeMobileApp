@@ -9,6 +9,7 @@ import {
   Text,
   useWindowDimensions,
   View,
+  type LayoutChangeEvent,
   type NativeScrollEvent,
   type NativeSyntheticEvent,
 } from 'react-native';
@@ -18,7 +19,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRoute, type RouteProp } from '@react-navigation/native';
 import { Screen, AppText } from '@/components/common';
 import { useTheme } from '@/context';
-import { useRadio } from '@/hooks';
+import { useRadio, useAppActive } from '@/hooks';
 import { storage, STORAGE_KEYS } from '@/services/storage';
 import {
   getAllStations,
@@ -147,11 +148,66 @@ export const DialScreen: React.FC = () => {
   // tab bar underneath have taken theirs.
   const usable = height - insets.top - insets.bottom - TAB_BAR;
   const compact = usable < COMPACT_BELOW;
+  /**
+   * How much taller the chrome turned out to be than CHROME_* budgeted for.
+   *
+   * Those budgets are measured numbers, not laws: they were taken on one device
+   * at one font scale, and the readout above the tuner is live text — station
+   * names wrap, the broadcast-cities line wraps, the system font scale moves all
+   * of it. When the real chrome exceeds the budget the stage cannot scroll and
+   * cannot shrink, so the surplus simply falls off the bottom, behind the tab
+   * bar. That is what hid the now-playing row under the transport.
+   *
+   * So the budget is treated as a first guess and corrected against what the
+   * layout actually did — see `onBottomLayout`.
+   */
+  const [trim, setTrim] = useState(0);
+  const stageH = useRef(0);
+
   /** The face is whatever is left after the chrome, capped at the design size. */
   const faceH = Math.max(
     MIN_FACE,
-    Math.min(DIAL_HEIGHT, usable - (compact ? CHROME_COMPACT : CHROME_FULL)),
+    Math.min(DIAL_HEIGHT, usable - (compact ? CHROME_COMPACT : CHROME_FULL)) - trim,
   );
+
+  /**
+   * Both edges are needed to know whether the column overflowed, and onLayout
+   * fires child-first — so neither handler can do the sum alone. They record
+   * their own edge and call this, which acts once both are in.
+   */
+  const bottomEnd = useRef(0);
+  const reconcile = useCallback(() => {
+    if (!stageH.current || !bottomEnd.current) return;
+    const over = bottomEnd.current - (stageH.current - (compact ? 4 : 8));
+    if (over > 0.5) setTrim((t) => t + over);
+  }, [compact]);
+
+  const onStageLayout = useCallback(
+    (e: LayoutChangeEvent) => {
+      stageH.current = e.nativeEvent.layout.height;
+      reconcile();
+    },
+    [reconcile],
+  );
+
+  /**
+   * The transport is the stage's last child, so if its bottom edge sits past the
+   * stage's own, the column has overflowed by exactly that much — take it off
+   * the face, which is the only part with any give.
+   *
+   * One step converges: the stage is `space-between`, so it overflows only when
+   * there is no free space left, and giving back `over` puts the last child
+   * exactly on the edge.
+   */
+  const onBottomLayout = useCallback(
+    (e: LayoutChangeEvent) => {
+      const { y, height: h } = e.nativeEvent.layout;
+      bottomEnd.current = y + h;
+      reconcile();
+    },
+    [reconcile],
+  );
+
   const askedHm = route.params?.hm;
 
   const stations = useMemo(() => getStations(), []);
@@ -175,6 +231,17 @@ export const DialScreen: React.FC = () => {
   const dragging = useRef(false);
 
   const [face, setFace] = useState<DialStyle>('linear');
+
+  /**
+   * Re-measure from the budget when what the chrome contains changes.
+   *
+   * Deliberately NOT keyed on the tuned station: the readout's three lines are
+   * all `numberOfLines={1}`, so its height does not move as the dial sweeps —
+   * and keying on it would resize the face on every frequency the needle
+   * crosses. `trim` can only grow within a given layout, which is the safe
+   * direction: it costs the face a point or two, never a clipped transport.
+   */
+  useEffect(() => setTrim(0), [compact, width, height, face]);
   const [index, setIndex] = useState(() => {
     const i = stations.findIndex((s) => s.slug === radio.slug);
     return i >= 0 ? i : Math.max(0, stations.findIndex((s) => s.slug === 'jubilee-radio'));
@@ -409,8 +476,11 @@ export const DialScreen: React.FC = () => {
   // ---- the live pulse ----------------------------------------------------
 
   const pulse = useRef(new Animated.Value(0)).current;
+  // Stopped while backgrounded — an indefinite native-driver loop that spans a
+  // screen-off crashes the app on resume. See `useAppActive`.
+  const appActive = useAppActive();
   useEffect(() => {
-    if (!sounding) {
+    if (!sounding || !appActive) {
       pulse.stopAnimation();
       pulse.setValue(0);
       return undefined;
@@ -433,7 +503,7 @@ export const DialScreen: React.FC = () => {
     );
     loop.start();
     return () => loop.stop();
-  }, [sounding, pulse]);
+  }, [sounding, appActive, pulse]);
 
   // ---- render ------------------------------------------------------------
 
@@ -489,7 +559,7 @@ export const DialScreen: React.FC = () => {
         style={styles.backdrop}
       />
 
-      <View style={[styles.stage, compact && cs.stage]}>
+      <View style={[styles.stage, compact && cs.stage]} onLayout={onStageLayout}>
         {/* Which face to tune with. In the flow and labelled rather than a pair
             of icons floating in a corner: two tuner styles is a choice worth
             finding, and an unlabelled glyph over a dark backdrop is neither
@@ -706,7 +776,7 @@ export const DialScreen: React.FC = () => {
         )}
 
         {/* ---- transport ---- */}
-        <View style={styles.bottom}>
+        <View style={styles.bottom} onLayout={onBottomLayout}>
           <View style={[styles.controls, compact && cs.controls]}>
             <View style={styles.control}>
               <Pressable
