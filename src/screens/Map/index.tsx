@@ -1,7 +1,6 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {
   Image,
-  PanResponder,
   Pressable,
   SectionList,
   StyleSheet,
@@ -19,18 +18,10 @@ import { getStationsBySlugs } from '@/services/radio';
 import type { RootStackParamList } from '@/navigation/types';
 import { StationRow } from '@/screens/Browse/components/StationRow';
 import { MapCanvas } from './MapCanvas';
-import {
-  City,
-  HOME_VIEW,
-  MAX_SCALE,
-  MIN_SCALE,
-  VIEW_H,
-  VIEW_TOP,
-  Viewport,
-  WORLD,
-  ZOOM_STEP,
-  flagUrl,
-} from './types';
+import { MapControls } from './MapControls';
+import { FullscreenMap } from './FullscreenMap';
+import { useMapViewport } from './useMapViewport';
+import { City, WORLD, bandFor, flagUrl, fullSphereHeight } from './types';
 
 /**
  * The broadcast map — every HM transmit location on earth.
@@ -58,12 +49,15 @@ export const MapScreen: React.FC = () => {
 
   const [selected, setSelected] = useState<City | null>(null);
   const [query, setQuery] = useState('');
-  const [view, setView] = useState<Viewport>(HOME_VIEW);
+  const [expanded, setExpanded] = useState(false);
 
-  // Sized to the CROPPED band, not the whole sphere — see VIEW_TOP. Using the
-  // full 2:1 ratio here is what left an empty fifth of the map at each end.
+  // As tall as an all-longitudes map can be: the projection is 2:1, so full
+  // width fixes the height at half of it. Anything taller would have to drop
+  // longitudes, which is what the fullscreen map is for.
   const mapW = width;
-  const mapH = Math.round((mapW * VIEW_H) / WORLD.width);
+  const mapH = fullSphereHeight(mapW);
+  const band = useMemo(() => bandFor(mapW, mapH), [mapW, mapH]);
+  const map = useMapViewport(band, mapW, mapH);
 
   const c = theme.colors;
   const playingSlug = radio.playing ? radio.slug : null;
@@ -78,145 +72,6 @@ export const MapScreen: React.FC = () => {
     [],
   );
 
-  // ---- pan and zoom --------------------------------------------------------
-
-  /**
-   * Keep the map from being dragged off its own edges: at any scale the visible
-   * window has to stay inside the world, and at 1x there is nowhere to go.
-   */
-  const clamp = useCallback((v: Viewport): Viewport => {
-    const scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, v.scale));
-    // A world point y lands at `ty + y * scale`, and the visible band runs from
-    // VIEW_TOP to VIEW_BOTTOM — so the offsets that keep the band covered are
-    // these, and at 1x they collapse to zero, which is exactly right: there is
-    // nowhere to drag to when the whole world already fits.
-    const maxTy = VIEW_TOP * (1 - scale);
-    const minTy = (VIEW_TOP + VIEW_H) * (1 - scale);
-    return {
-      scale,
-      tx: Math.min(0, Math.max(WORLD.width * (1 - scale), v.tx)),
-      ty: Math.min(maxTy, Math.max(minTy, v.ty)),
-    };
-  }, []);
-
-  /** Zoom about the middle of the viewport, so the centre of what you are looking at stays put. */
-  const zoomBy = useCallback(
-    (factor: number) =>
-      setView((v) => {
-        const scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, v.scale * factor));
-        const k = scale / v.scale;
-        const cx = WORLD.width / 2;
-        const cy = VIEW_TOP + VIEW_H / 2;
-        return clamp({ scale, tx: cx - (cx - v.tx) * k, ty: cy - (cy - v.ty) * k });
-      }),
-    [clamp],
-  );
-
-  /**
-   * Drag to pan.
-   *
-   * The responder is claimed only once a finger has actually MOVED — the dots
-   * carry their own onPress inside the SVG, and grabbing the gesture on touch
-   * down would swallow every tap on a transmitter.
-   */
-  const viewRef = useRef(view);
-  viewRef.current = view;
-  const panFrom = useRef(HOME_VIEW);
-  /** The map's position on screen, so a pinch can be anchored where the fingers are. */
-  const mapBox = useRef({ x: 0, y: 0 });
-  const mapRef = useRef<View>(null);
-  /** Set on the first two-finger frame and cleared when a finger lifts. */
-  const pinch = useRef<{ dist: number; view: Viewport; vx: number; vy: number } | null>(null);
-
-  /**
-   * Zoom to `scale` while holding one point of the world still.
-   *
-   * `(vx, vy)` is in viewBox units. The world point under it is
-   * `(vx - tx) / scale`, and after the change it has to land back on `vx` — so
-   * the new offset falls straight out. Anchoring on the finger midpoint rather
-   * than the centre is what makes a pinch feel attached to the map.
-   */
-  const zoomAbout = useCallback(
-    (from: Viewport, scale: number, vx: number, vy: number): Viewport => {
-      const s = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale));
-      return clamp({
-        scale: s,
-        tx: vx - ((vx - from.tx) / from.scale) * s,
-        ty: vy - ((vy - from.ty) / from.scale) * s,
-      });
-    },
-    [clamp],
-  );
-  const pan = useMemo(
-    () =>
-      PanResponder.create({
-        // CAPTURE, not the bubbling phase. Every dot inside the SVG carries its
-        // own onPress, so react-native-svg claims the responder the moment a
-        // finger lands and the parent is never asked. Capture runs top-down, so
-        // this takes the gesture back — but only once the finger has actually
-        // MOVED, which leaves a plain tap on a transmitter untouched.
-        onStartShouldSetPanResponderCapture: () => false,
-        // Two fingers always win, at any zoom — a pinch is how someone zooms IN
-        // from 1x, so gating it on scale > 1 would make it impossible to start.
-        onMoveShouldSetPanResponderCapture: (e, g) =>
-          e.nativeEvent.touches.length >= 2 ||
-          (viewRef.current.scale > 1 && (Math.abs(g.dx) > 6 || Math.abs(g.dy) > 6)),
-        // Once panning, keep it: the SectionList underneath would otherwise
-        // steal a drag that wandered vertically.
-        onPanResponderTerminationRequest: () => false,
-        onPanResponderGrant: () => {
-          panFrom.current = viewRef.current;
-          pinch.current = null;
-          mapRef.current?.measureInWindow((x, y) => {
-            mapBox.current = { x, y };
-          });
-        },
-        onPanResponderMove: (e, g) => {
-          const touches = e.nativeEvent.touches;
-
-          if (touches.length >= 2) {
-            const [a, b] = touches;
-            const dist = Math.hypot(a.pageX - b.pageX, a.pageY - b.pageY);
-            if (!pinch.current) {
-              // Anchor on the midpoint between the fingers, converted from page
-              // pixels into viewBox units.
-              const mx = (a.pageX + b.pageX) / 2 - mapBox.current.x;
-              const my = (a.pageY + b.pageY) / 2 - mapBox.current.y;
-              pinch.current = {
-                dist,
-                view: viewRef.current,
-                vx: mx * (WORLD.width / mapW),
-                vy: VIEW_TOP + my * (VIEW_H / mapH),
-              };
-              return;
-            }
-            const p = pinch.current;
-            // A pinch that has barely moved is a two-finger rest, not a zoom.
-            if (Math.abs(dist - p.dist) < 4) return;
-            setView(zoomAbout(p.view, (p.view.scale * dist) / p.dist, p.vx, p.vy));
-            return;
-          }
-
-          // Back to one finger: the next two-finger frame starts a fresh pinch
-          // rather than resuming one measured against a lifted thumb.
-          pinch.current = null;
-          // Gesture deltas are device pixels; the transform is in viewBox units.
-          const k = WORLD.width / mapW;
-          setView(
-            clamp({
-              scale: panFrom.current.scale,
-              tx: panFrom.current.tx + g.dx * k,
-              ty: panFrom.current.ty + g.dy * k,
-            }),
-          );
-        },
-        onPanResponderRelease: () => {
-          pinch.current = null;
-        },
-      }),
-    [clamp, mapH, mapW, zoomAbout],
-  );
-
   // ---- selection -----------------------------------------------------------
 
   const pick = useCallback(
@@ -228,16 +83,9 @@ export const MapScreen: React.FC = () => {
   const pickFromList = useCallback(
     (city: City) => {
       setSelected(city);
-      setView((v) => {
-        const scale = Math.max(v.scale, 4);
-        return clamp({
-          scale,
-          tx: WORLD.width / 2 - city.x * scale,
-          ty: VIEW_TOP + VIEW_H / 2 - city.y * scale,
-        });
-      });
+      map.centreOn(city);
     },
-    [clamp],
+    [map],
   );
 
   const onPickStation = useCallback(
@@ -295,12 +143,13 @@ export const MapScreen: React.FC = () => {
       </View>
 
       <View style={[styles.mapWrap, { backgroundColor: c.backgroundElevated }]}>
-        <View ref={mapRef} collapsable={false} {...pan.panHandlers}>
+        <View ref={map.mapRef} collapsable={false} {...map.panHandlers}>
           <MapCanvas
             world={WORLD}
             width={mapW}
             height={mapH}
-            view={view}
+            band={band}
+            view={map.view}
             selected={selected}
             playingSlug={playingSlug}
             onPick={pick}
@@ -308,38 +157,17 @@ export const MapScreen: React.FC = () => {
           />
         </View>
 
-        {/* Zoom sits on the map, as it does on the site. Drag is only offered
-            once there is somewhere to drag to — at 1x the world already fits. */}
-        <View style={styles.zoomCol}>
-          {(
-            [
-              ['remove', () => zoomBy(1 / ZOOM_STEP), 'Zoom out'],
-              ['add', () => zoomBy(ZOOM_STEP), 'Zoom in'],
-              ['refresh', () => setView(HOME_VIEW), 'Reset the map'],
-            ] as const
-          ).map(([icon, onPress, label]) => (
-            <Pressable
-              key={icon}
-              onPress={onPress}
-              // The 34pt circle is deliberate against the map, so the target is
-              // widened rather than the button — 34 + 8 either side clears the
-              // 44pt minimum. Same hitSlop pattern the search clear button uses.
-              hitSlop={8}
-              accessibilityRole="button"
-              accessibilityLabel={label}
-              style={({ pressed }) => [
-                styles.zoomBtn,
-                {
-                  backgroundColor: c.backgroundElevated,
-                  borderColor: c.border,
-                  opacity: pressed ? 0.6 : 1,
-                },
-              ]}
-            >
-              <Ionicons name={icon} size={18} color={c.text} />
-            </Pressable>
-          ))}
-        </View>
+        {/* Zoom sits on the map, as it does on the site. Expand is a button and
+            not a tap on the map: every dot here is already a tap target, and
+            taking that gesture would cost the map its selection. */}
+        <MapControls
+          actions={[
+            { icon: 'remove', onPress: map.zoomOut, label: 'Zoom out' },
+            { icon: 'add', onPress: map.zoomIn, label: 'Zoom in' },
+            { icon: 'refresh', onPress: map.reset, label: 'Reset the map' },
+            { icon: 'expand', onPress: () => setExpanded(true), label: 'Open the map fullscreen' },
+          ]}
+        />
       </View>
 
       {selected ? (
@@ -382,9 +210,9 @@ export const MapScreen: React.FC = () => {
         </View>
       ) : (
         <AppText style={[styles.hint, { color: c.textMuted }]}>
-          {view.scale > 1
-            ? 'Drag to pan. Tap a transmitter to see what broadcasts from it.'
-            : 'Tap a transmitter to see what broadcasts from it, or zoom in to pan.'}
+          {map.view.scale > 1
+            ? 'Pinch to zoom, drag to pan. Tap a transmitter to see what broadcasts from it.'
+            : 'Pinch to zoom, or tap a transmitter to see what broadcasts from it.'}
         </AppText>
       )}
 
@@ -417,6 +245,9 @@ export const MapScreen: React.FC = () => {
         sections={sections}
         keyExtractor={(item) => `${item.city}|${item.cc}`}
         ListHeaderComponent={header}
+        // See `gesturing`: the native Android scroller will otherwise take the
+        // second finger of a pinch off the map mid-gesture.
+        scrollEnabled={!map.gesturing}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.content}
@@ -461,6 +292,18 @@ export const MapScreen: React.FC = () => {
           );
         }}
       />
+
+      {/* Mounted only while open, as LanguagePanel is — a Modal kept mounted
+          behind `visible={false}` wedges the Android UI thread. */}
+      {expanded ? (
+        <FullscreenMap
+          selected={selected}
+          playingSlug={playingSlug}
+          onPick={pick}
+          onClose={() => setExpanded(false)}
+          colors={canvasColors}
+        />
+      ) : null}
     </Screen>
   );
 };
@@ -471,15 +314,6 @@ const styles = StyleSheet.create({
   title: { marginTop: 8 },
   sub: { fontSize: 12.5, marginTop: 6, marginBottom: 16, lineHeight: 18 },
   mapWrap: { overflow: 'hidden' },
-  zoomCol: { position: 'absolute', right: 10, top: 10, gap: 8 },
-  zoomBtn: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    borderWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   hint: { fontSize: 13, textAlign: 'center', marginTop: 20, paddingHorizontal: 32 },
   panel: { marginTop: 18 },
   panelHead: {

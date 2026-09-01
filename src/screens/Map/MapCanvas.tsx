@@ -1,13 +1,15 @@
 import React from 'react';
 import Svg, { Circle, G, Path } from 'react-native-svg';
-import type { City, Viewport, World } from './types';
-import { GRATICULE, VIEW_H, VIEW_TOP, radiusFor } from './types';
+import type { Band, City, Viewport, World } from './types';
+import { GRATICULE, radiusFor } from './types';
 import { PulsingHalos } from './PulsingHalos';
 
 interface Props {
   world: World;
   width: number;
   height: number;
+  /** The window of the world the box shows at base zoom — see `bandFor`. */
+  band: Band;
   view: Viewport;
   selected: City | null;
   playingSlug: string | null;
@@ -59,6 +61,7 @@ const MapCanvasInner: React.FC<Props> = ({
   world,
   width,
   height,
+  band,
   view,
   selected,
   playingSlug,
@@ -73,7 +76,7 @@ const MapCanvasInner: React.FC<Props> = ({
   );
 
   return (
-  <Svg width={width} height={height} viewBox={`0 ${VIEW_TOP} ${world.width} ${VIEW_H}`}>
+  <Svg width={width} height={height} viewBox={`${band.x} ${band.y} ${band.w} ${band.h}`}>
     <G transform={`translate(${view.tx} ${view.ty}) scale(${view.scale})`}>
       {/* Lat/lon every 20 degrees, under the land as the site draws it — it
           gives the projection a frame without competing with the markers. */}

@@ -25,17 +25,44 @@ export interface World {
 export const WORLD = map as unknown as World;
 
 /**
- * The band of the projection actually drawn, matching the web's own crop.
- *
- * The equirectangular sphere runs 0..1000, but the top and bottom of it are
- * empty ocean and ice: nothing transmits above ~84N or below ~60S. Drawing the
- * full height spent a fifth of the screen on blank space at both ends. These
- * are the site's VIEW_TOP / VIEW_BOT to the unit, so both maps frame the world
- * identically.
+ * A rectangular window into the world in viewBox units — what an SVG shows at
+ * base zoom, and the frame every pan/zoom offset is measured against.
  */
-export const VIEW_TOP = 34;
-export const VIEW_BOTTOM = 832;
-export const VIEW_H = VIEW_BOTTOM - VIEW_TOP;
+export interface Band {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+/**
+ * The window that exactly fills a `boxW x boxH` box on screen at base zoom.
+ *
+ * The world is always fitted by WIDTH — every longitude stays on screen, which
+ * is the whole point of an overview map, and the 347 towers run from x=123 to
+ * x=1991. The height then follows from the box's aspect, so device pixels per
+ * viewBox unit is `boxW / WORLD.width` whatever the box's shape: making the box
+ * taller reveals more sphere at the SAME scale rather than magnifying anything.
+ *
+ * This replaced a fixed 34..832 crop copied from the web. That crop existed to
+ * skip "empty ocean and ice", but it also pinned the map to 0.4 x its width —
+ * 157dp on a phone, too short a strip to pinch on. Opening the window to the
+ * full sphere buys 25% more height for free, and the space is not empty: it is
+ * where Greenland (y 35..166) and Antarctica (y 851..975) live.
+ *
+ * When the box is taller than 2:1 the window runs past the poles and `y` goes
+ * negative — the world is then centred with slack above and below, which is
+ * what the fullscreen map wants as room to zoom into.
+ */
+export function bandFor(boxW: number, boxH: number): Band {
+  const w = WORLD.width;
+  const h = (w * boxH) / boxW;
+  return { x: 0, y: (WORLD.height - h) / 2, w, h };
+}
+
+/** Box height that shows the whole sphere and nothing beyond it. */
+export const fullSphereHeight = (boxW: number): number =>
+  Math.round((boxW * WORLD.height) / WORLD.width);
 
 /** Pan offset and zoom, in viewBox units. */
 export interface Viewport {
@@ -79,17 +106,22 @@ export function radiusFor(city: City): number {
  * Latitude and longitude lines every 20 degrees, as the site draws under its
  * land. Precomputed once: it never changes, and it is one path either way.
  *
- * Latitudes stop at 80 because the two beyond it are off the cropped band.
+ * The meridians run pole to pole rather than stopping at the old 34..832 crop.
+ * They used to end exactly on the crop edge, which was invisible while the SVG
+ * was cut to that band — but the moment the window opened to the full sphere it
+ * would have drawn a hard rectangle across the map. Latitudes still stop at 80:
+ * 90 is a point, not a line.
  */
 export const GRATICULE = (() => {
-  const W = 2000;
+  const W = WORLD.width;
+  const H = WORLD.height;
   let d = '';
   for (let lon = -180; lon <= 180; lon += 20) {
     const x = (((lon + 180) / 360) * W).toFixed(1);
-    d += `M${x} ${VIEW_TOP}L${x} ${VIEW_BOTTOM}`;
+    d += `M${x} 0L${x} ${H}`;
   }
   for (let lat = -80; lat <= 80; lat += 20) {
-    const y = (((90 - lat) / 180) * 1000).toFixed(1);
+    const y = (((90 - lat) / 180) * H).toFixed(1);
     d += `M0 ${y}L${W} ${y}`;
   }
   return d;
