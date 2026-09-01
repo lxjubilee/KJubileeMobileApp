@@ -67,13 +67,21 @@ const WORDMARK_WIDTH_EM = 'KJubilee.com'.length * 0.72;
 const BRAND_FONT_MAX = 26;
 const BRAND_FONT_MIN = 17;
 
-/** Wordmark size that fits the space left over beside the header actions. */
-const brandFontSize = (screenWidth: number): number => {
+/**
+ * Wordmark size that fits the space left over beside the header actions.
+ *
+ * `actionCount` is how many round actions the row actually renders, so the
+ * wordmark reclaims the flag's width when the language button is hidden rather
+ * than leaving a gap where it used to sit.
+ */
+const brandFontSize = (screenWidth: number, actionCount: number): number => {
+  const actionsWidth =
+    actionCount * ACTION_SIZE + Math.max(0, actionCount - 1) * ACTION_GAP;
   const free =
     screenWidth -
     32 - // `inner` horizontal padding
     (BRAND_MARK_SLOT + 8) - // logo plus its trailing margin
-    (ACTION_SIZE * 2 + ACTION_GAP) - // language flag + profile avatar
+    actionsWidth -
     BRAND_CLEARANCE;
   return Math.max(BRAND_FONT_MIN, Math.min(BRAND_FONT_MAX, Math.floor(free / WORDMARK_WIDTH_EM)));
 };
@@ -119,7 +127,9 @@ export const HomeHeader: React.FC<HomeHeaderProps> = ({
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
-  const brandSize = brandFontSize(width);
+  // The profile button is always there; the language flag only when a handler
+  // is supplied.
+  const brandSize = brandFontSize(width, onPressLanguage ? 2 : 1);
 
   return (
     <View style={styles.container} pointerEvents="box-none">

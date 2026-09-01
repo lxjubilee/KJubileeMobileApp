@@ -11,8 +11,8 @@ import {
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Screen, AppText, LanguagePanel } from '@/components/common';
-import { useAppSelector, useRadio } from '@/hooks';
+import { Screen, AppText } from '@/components/common';
+import { useRadio } from '@/hooks';
 import { getFeatured, getSections, getStationsBySlugs, tune, toggle } from '@/services/radio';
 import type { RadioStation } from '@/services/radio';
 import type { RootStackParamList } from '@/navigation/types';
@@ -53,10 +53,8 @@ export const HomeScreen: React.FC = () => {
   const radio = useRadio();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
-  const language = useAppSelector((s) => s.settings.language);
 
   const [filter, setFilter] = useState<HomeFilter>(HOME_FILTER_ALL);
-  const [langPanelOpen, setLangPanelOpen] = useState(false);
 
   const sections = useMemo(() => getSections(), []);
   const featured = useMemo(() => getFeatured(), []);
@@ -250,13 +248,7 @@ export const HomeScreen: React.FC = () => {
         chipsAnim={chipsAnim}
         bgAnim={bgAnim}
         onPressProfile={openProfile}
-        language={language}
-        onPressLanguage={() => setLangPanelOpen(true)}
       />
-
-      {langPanelOpen ? (
-        <LanguagePanel selected={language} onClose={() => setLangPanelOpen(false)} />
-      ) : null}
     </Screen>
   );
 };
