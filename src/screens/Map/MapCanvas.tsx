@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import Svg, { Circle, G, Path } from 'react-native-svg';
 import type { Band, City, Viewport, World } from './types';
 import { GRATICULE, radiusFor } from './types';
@@ -39,6 +40,43 @@ interface Props {
  */
 const PULSE_HALOS = false;
 
+/**
+ * Stroke widths that survive a small map.
+ *
+ * Every width here is in viewBox units, and a unit is `width / band.w` dp on
+ * screen — `band.w` is always the world's 2000, so the SAME number draws at
+ * very different sizes depending on how wide the box is. Measured on a 2.6x
+ * phone: the fullscreen map turned sideways is 911dp across, so a 1-unit
+ * country border lands at 1.2 device pixels and a 0.6-unit grid line at 0.72.
+ * The inline map is 412dp across, and the same two numbers become 0.54 and
+ * 0.32.
+ *
+ * Under half a pixel a line cannot be drawn consistently: coverage is whatever
+ * fraction of a pixel row the line happens to fall on, so most of the grid
+ * washes out into the background and whichever line lands squarely on a row is
+ * drawn at full strength — one bright rule across an otherwise blurred map,
+ * which is exactly what the portrait map looked like. The land had the same
+ * problem one step less severe, which is why its borders went soft.
+ *
+ * So the width is floored at one device pixel and left alone above it. The
+ * landscape map is already past the floor and is unchanged; the portrait maps
+ * come up to a hairline and draw the same grid and the same coastlines.
+ *
+ * Dividing by `view.scale` is what the group transform costs — see the marker
+ * note below. It cancels out of the floor, so the apparent width is the same at
+ * every zoom, which is the point.
+ */
+const strokes = (width: number, band: Band, scale: number) => {
+  const unitDp = width / band.w;
+  const onePixel = StyleSheet.hairlineWidth / unitDp;
+  return {
+    grid: Math.max(0.6, onePixel) / scale,
+    land: Math.max(1, onePixel) / scale,
+    /** The selection ring, which was 4 units for the same reason. */
+    ring: Math.max(4, onePixel) / scale,
+  };
+};
+
 const isOn = (city: City, sel: City | null) =>
   sel != null && sel.city === city.city && sel.cc === city.cc;
 
@@ -75,6 +113,8 @@ const MapCanvasInner: React.FC<Props> = ({
     [world],
   );
 
+  const stroke = strokes(width, band, view.scale);
+
   return (
   <Svg width={width} height={height} viewBox={`${band.x} ${band.y} ${band.w} ${band.h}`}>
     <G transform={`translate(${view.tx} ${view.ty}) scale(${view.scale})`}>
@@ -83,7 +123,7 @@ const MapCanvasInner: React.FC<Props> = ({
       <Path
         d={GRATICULE}
         stroke={colors.border}
-        strokeWidth={0.6 / view.scale}
+        strokeWidth={stroke.grid}
         fill="none"
         opacity={0.5}
       />
@@ -97,7 +137,7 @@ const MapCanvasInner: React.FC<Props> = ({
             d={country.d}
             fill={colors.surface}
             stroke={colors.border}
-            strokeWidth={1 / view.scale}
+            strokeWidth={stroke.land}
           />
         ))}
       </G>
@@ -161,7 +201,7 @@ const MapCanvasInner: React.FC<Props> = ({
               fill={carries(city, playingSlug) ? colors.danger : colors.accent}
               opacity={on ? 1 : city.stations.length ? 0.85 : 0.5}
               stroke={on ? colors.text : 'none'}
-              strokeWidth={on ? 4 / view.scale : 0}
+              strokeWidth={on ? stroke.ring : 0}
             />
           );
         })}

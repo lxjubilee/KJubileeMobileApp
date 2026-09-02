@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import {
   BottomTabBar,
   createBottomTabNavigator,
@@ -12,6 +12,7 @@ import { useTheme } from '@/context';
 import { MiniPlayer } from '@/components/player';
 import { HomeScreen, BrowseScreen, DialScreen, MapScreen } from '@/screens';
 import { ProfileStackNavigator } from './ProfileStackNavigator';
+import { tabBarStyle } from './tabBarStyle';
 import type { MainTabParamList } from './types';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -40,6 +41,17 @@ const TabBarWithMiniPlayer: React.FC<BottomTabBarProps> = (props) => {
   // would offer — so the bar there is a second copy of the screen behind it.
   const hideMiniPlayer = hideProfile || activeRoute.name === 'DialTab';
 
+  // A screen that hides the tab bar means it wants the whole screen — the Map
+  // does this while its fullscreen map is open. `display: 'none'` is honoured
+  // by BottomTabBar on its own, but the MiniPlayer sits ABOVE it in here and
+  // would be left floating over the bottom of the map, so the whole stack goes.
+  // `tabBarStyle` is typed as an ANIMATED style here, which has no plain
+  // `display` to read — the cast is to the style that was actually set.
+  const tabBarStyle = props.descriptors[activeRoute.key]?.options?.tabBarStyle as
+    | StyleProp<ViewStyle>
+    | undefined;
+  if (StyleSheet.flatten(tabBarStyle)?.display === 'none') return null;
+
   return (
     <View>
       {hideMiniPlayer ? null : (
@@ -62,10 +74,7 @@ export const MainTabNavigator: React.FC = () => {
         // Blue marks the current place, as the site's active nav link does.
         tabBarActiveTintColor: theme.colors.accent,
         tabBarInactiveTintColor: theme.colors.iconMuted,
-        tabBarStyle: {
-          backgroundColor: theme.colors.tabBar,
-          borderTopColor: theme.colors.border,
-        },
+        tabBarStyle: tabBarStyle(theme.colors),
         tabBarIcon: ({ color, size }) => (
           <Ionicons name={ICONS[route.name]} color={color} size={size} />
         ),

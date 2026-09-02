@@ -18,17 +18,19 @@ export interface MapAction {
  * the same actions in the same order, and only the last one differs (expand
  * versus close).
  */
-export const MapControls: React.FC<{ actions: MapAction[]; top?: number }> = ({
+export const MapControls: React.FC<{ actions: MapAction[]; top?: number; right?: number }> = ({
   actions,
   top = 10,
+  right = 10,
 }) => {
   const c = useTheme().colors;
   // `top` is passed rather than inherited: an absolutely positioned child is
   // laid out against its parent's border box, so the fullscreen map's
   // `paddingTop: insets.top` does NOT push this clear of the status bar — the
-  // first button sat under the clock until this became explicit.
+  // first button sat under the clock until this became explicit. `right` is the
+  // same argument for a phone held sideways, where the cutout is down one side.
   return (
-    <View style={[styles.col, { top }]}>
+    <View style={[styles.col, { top, right }]}>
       {actions.map(({ icon, onPress, label }) => (
         <Pressable
           key={icon}
@@ -56,7 +58,7 @@ export const MapControls: React.FC<{ actions: MapAction[]; top?: number }> = ({
 };
 
 const styles = StyleSheet.create({
-  col: { position: 'absolute', right: 10, gap: 8 },
+  col: { position: 'absolute', gap: 8 },
   btn: {
     width: 34,
     height: 34,

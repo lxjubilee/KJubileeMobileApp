@@ -88,26 +88,73 @@ const projX = (lon) => ((lon + 180) / 360) * W;
 const projY = (lat) => ((90 - lat) / 180) * H;
 const r = (n) => Number(n.toFixed(PRECISION));
 
+/**
+ * Break a ring wherever it jumps the antimeridian.
+ *
+ * A country that straddles 180 degrees has points on both sides of it, and
+ * they are neighbours on the globe — Fiji's Vanua Levu at 179.4E and its Lau
+ * group at 179.9W are 40km apart. Flat, they are at opposite ENDS of the map,
+ * and the projection joins them with a straight line: a segment 2000 units
+ * wide across an 1000-unit-tall world. Filled it is invisible; STROKED it is a
+ * bright rule straight across every continent at that latitude, drawn after
+ * the graticule and over the land. Three countries did this — Fiji at 16S,
+ * Russia twice up at 71N — and the Fiji one lands across South America and
+ * southern Africa where nobody can miss it.
+ *
+ * Rings that cross come back in: a polygon that leaves the map at one edge has
+ * to re-enter at the other, so its crossings come in PAIRS. Cutting at each
+ * one and closing the pieces separately leaves each piece on its own side.
+ *
+ * A single crossing is not a crossing at all — it is a ring whose two ends sit
+ * on opposite edges, closed along the map's border. Antarctica is the one that
+ * matters: its 554-point coastline runs 180W to 180E and shuts along a flat
+ * line at 85.6S, which is that border and belongs on the map. Splitting a
+ * one-crossing ring would give one piece with the identical outline anyway, so
+ * this returns it untouched rather than relying on that.
+ */
+function splitAtAntimeridian(pts) {
+  const n = pts.length;
+  const wraps = [];
+  for (let i = 0; i < n; i++) {
+    if (Math.abs(pts[(i + 1) % n][0] - pts[i][0]) > W / 2) wraps.push(i);
+  }
+  if (wraps.length < 2) return [pts];
+
+  const out = [];
+  for (let k = 0; k < wraps.length; k++) {
+    // Each piece runs from just after one crossing up to and including the
+    // next, wrapping around the end of the ring to get there.
+    const start = (wraps[k] + 1) % n;
+    const end = wraps[(k + 1) % wraps.length];
+    const piece = [];
+    for (let i = start; ; i = (i + 1) % n) {
+      piece.push(pts[i]);
+      if (i === end) break;
+    }
+    // Under three points there is no shape left to draw, only the line back —
+    // which is the thing being removed. Russia leaves one such offcut.
+    if (piece.length >= 3) out.push(piece);
+  }
+  return out;
+}
+
 const countries = world.countries
   .map((c) => {
     const d = c.rings
-      .map((ring) => {
-        let out = '';
-        let px = null;
-        let py = null;
+      .flatMap((ring) => {
+        const pts = [];
         for (const [lon, lat] of ring) {
           const x = r(projX(lon));
           const y = r(projY(lat));
           // Drop points that round to the same place as the previous one —
           // at 110m detail with a 2000-unit viewBox there are many.
-          if (x === px && y === py) continue;
-          out += `${out ? 'L' : 'M'}${x} ${y}`;
-          px = x;
-          py = y;
+          const prev = pts[pts.length - 1];
+          if (prev && prev[0] === x && prev[1] === y) continue;
+          pts.push([x, y]);
         }
-        return out ? `${out}Z` : '';
+        return pts.length ? splitAtAntimeridian(pts) : [];
       })
-      .filter(Boolean)
+      .map((piece) => piece.map(([x, y], i) => `${i ? 'L' : 'M'}${x} ${y}`).join('') + 'Z')
       .join('');
     return d ? { id: c.id, name: c.name, d } : null;
   })

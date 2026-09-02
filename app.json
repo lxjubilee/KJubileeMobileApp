@@ -16,6 +16,7 @@
     },
     "ios": {
       "supportsTablet": true,
+      "requireFullScreen": true,
       "bundleIdentifier": "com.kjubilee.app",
       "associatedDomains": [
         "applinks:kjubilee.com",
@@ -151,6 +152,12 @@
       "expo-asset",
       "expo-font",
       "expo-secure-store",
+      [
+        "expo-screen-orientation",
+        {
+          "initialOrientation": "PORTRAIT"
+        }
+      ],
       "./plugins/withSafeUserLeaveHint"
     ],
     "extra": {

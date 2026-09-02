@@ -14,6 +14,15 @@ interface Props {
   onPick: (city: City) => void;
   onClose: () => void;
   colors: React.ComponentProps<typeof MapCanvas>['colors'];
+  /**
+   * Open because the phone is turned, rather than because the expand button was
+   * pressed.
+   *
+   * The difference is that this one cannot be closed from inside: turning the
+   * phone back is the way out, and a close button would shut a map that the
+   * next render would reopen. See `useLandscapeMap`.
+   */
+  landscape: boolean;
 }
 
 /**
@@ -43,6 +52,7 @@ export const FullscreenMap: React.FC<Props> = ({
   onPick,
   onClose,
   colors,
+  landscape,
 }) => {
   const c = useTheme().colors;
   const insets = useSafeAreaInsets();
@@ -79,13 +89,19 @@ export const FullscreenMap: React.FC<Props> = ({
 
   // Back closes the map rather than leaving the tab — a Modal gave this for
   // free through onRequestClose; an overlay has to ask for it.
+  //
+  // Not while the phone is turned: closing would not close anything, and
+  // swallowing back on top of that would leave landscape with no way out at all
+  // except rotating. Left alone, back does its usual thing — off the tab, which
+  // blurs the screen, which locks portrait again.
   useEffect(() => {
+    if (landscape) return;
     const sub = BackHandler.addEventListener('hardwareBackPress', () => {
       onClose();
       return true;
     });
     return () => sub.remove();
-  }, [onClose]);
+  }, [landscape, onClose]);
 
   return (
     <View style={[styles.root, { backgroundColor: c.background }]}>
@@ -115,23 +131,57 @@ export const FullscreenMap: React.FC<Props> = ({
         // The overlay is absolutely positioned inside the screen's SafeAreaView,
         // and an absolute child lays out against the border box — so it covers
         // the status bar rather than starting below it, and these have to be
-        // pushed clear by hand.
+        // pushed clear by hand. Turned, the cutout is down one SIDE instead,
+        // which `Screen` does not inset either.
         top={insets.top + 10}
+        right={insets.right + 10}
         actions={[
           { icon: 'remove', onPress: map.zoomOut, label: 'Zoom out' },
           { icon: 'add', onPress: map.zoomIn, label: 'Zoom in' },
           { icon: 'refresh', onPress: map.reset, label: 'Reset the map' },
-          { icon: 'close', onPress: onClose, label: 'Close the map' },
+          // See `landscape`: there is nothing for close to do while the phone
+          // is turned, so it is not offered.
+          ...(landscape
+            ? []
+            : [{ icon: 'close' as const, onPress: onClose, label: 'Close the map' }]),
         ]}
       />
 
-      <View style={styles.caption}>
-        <AppText style={[styles.captionText, { color: c.textMuted }]}>
-          {selected
-            ? `${selected.city} · ${selected.region}`
-            : 'Drag to move the map, pinch to zoom. Tap a transmitter to select it.'}
-        </AppText>
-      </View>
+      {/* Turned, the caption floats over the map rather than taking a strip off
+          the bottom of it: landscape is short, and every point of height spent
+          on a line of text is height the map does not get. `pointerEvents` is
+          off so the pill is not a hole in the gesture surface — a drag that
+          starts on it still moves the map underneath. */}
+      {landscape ? (
+        <View
+          pointerEvents="none"
+          style={[
+            styles.captionFloatWrap,
+            { bottom: insets.bottom + 10, left: insets.left + 10, right: insets.right + 10 },
+          ]}
+        >
+          <View
+            style={[
+              styles.captionFloat,
+              { backgroundColor: c.backgroundElevated, borderColor: c.border },
+            ]}
+          >
+            <AppText numberOfLines={1} style={[styles.captionText, { color: c.textMuted }]}>
+              {selected
+                ? `${selected.city} · ${selected.region}`
+                : 'Drag to move the map, pinch to zoom. Turn the phone back to leave it.'}
+            </AppText>
+          </View>
+        </View>
+      ) : (
+        <View style={styles.caption}>
+          <AppText style={[styles.captionText, { color: c.textMuted }]}>
+            {selected
+              ? `${selected.city} · ${selected.region}`
+              : 'Drag to move the map, pinch to zoom. Tap a transmitter to select it.'}
+          </AppText>
+        </View>
+      )}
     </View>
   );
 };
@@ -144,5 +194,16 @@ const styles = StyleSheet.create({
   // that starts on empty ocean still moves it.
   stage: { flex: 1, justifyContent: 'center' },
   caption: { paddingHorizontal: 24, paddingTop: 10, paddingBottom: 12 },
+  // Two views, so the pill hugs its text: an absolute box takes its width from
+  // left/right, and one stretched across the screen would be a bar rather than
+  // a caption.
+  captionFloatWrap: { position: 'absolute', alignItems: 'center' },
+  captionFloat: {
+    maxWidth: '100%',
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderRadius: 16,
+    borderWidth: 1,
+  },
   captionText: { fontSize: 12.5, textAlign: 'center' },
 });

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Image,
   Pressable,
@@ -7,6 +7,7 @@ import {
   TextInput,
   useWindowDimensions,
   View,
+  ViewStyle,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -16,11 +17,13 @@ import { useTheme } from '@/context';
 import { useRadio } from '@/hooks';
 import { getStationsBySlugs } from '@/services/radio';
 import type { RootStackParamList } from '@/navigation/types';
+import { tabBarStyle } from '@/navigation/tabBarStyle';
 import { StationRow } from '@/screens/Browse/components/StationRow';
 import { MapCanvas } from './MapCanvas';
 import { MapControls } from './MapControls';
 import { FullscreenMap } from './FullscreenMap';
 import { useMapViewport } from './useMapViewport';
+import { useLandscapeMap } from './useLandscapeMap';
 import { City, WORLD, bandFor, flagUrl, fullSphereHeight } from './types';
 
 /**
@@ -50,6 +53,21 @@ export const MapScreen: React.FC = () => {
   const [selected, setSelected] = useState<City | null>(null);
   const [query, setQuery] = useState('');
   const [expanded, setExpanded] = useState(false);
+  /**
+   * Turning the phone opens the map, and turning it back closes it.
+   *
+   * Only this screen can be turned at all — the rest of the app is portrait,
+   * and `useLandscapeMap` asks for the exception only while the map is focused.
+   * A phone held sideways is a wide short box, which is the worst shape there
+   * is for a screen that is a strip of map above a list of 347 cities and the
+   * best one for the map alone, so the rotation IS the request.
+   *
+   * OR rather than a setState from an effect: `expanded` stays whatever the
+   * expand button last made it, so turning the phone and turning it back leaves
+   * a map opened by hand still open, and one opened by the rotation shut.
+   */
+  const landscape = useLandscapeMap();
+  const fullscreen = expanded || landscape;
 
   // As tall as an all-longitudes map can be: the projection is 2:1, so full
   // width fixes the height at half of it. Anything taller would have to drop
@@ -61,6 +79,27 @@ export const MapScreen: React.FC = () => {
 
   const c = theme.colors;
   const playingSlug = radio.playing ? radio.slug : null;
+
+  /**
+   * Take the tab bar and the MiniPlayer down with the rest of the screen.
+   *
+   * The fullscreen map is an overlay inside this tab, not a Modal (see
+   * FullscreenMap for why), so it fills the tab's content area and stops above
+   * the bar. Portrait that was a strip at the bottom; turned, it is a large
+   * fraction of a short screen. `tabBarStyle` is read by the custom tab bar,
+   * which drops the MiniPlayer with it — `display: 'none'` alone would hide
+   * only the bar underneath it.
+   */
+  useEffect(() => {
+    // `navigation` is typed as the root stack's, for the pushes below; the
+    // object this screen actually holds is the tab's, and `tabBarStyle` is one
+    // of its options. The visible style has to be spelled out to put the bar
+    // back rather than left off — see `tabBarStyle`.
+    const tab = navigation as unknown as {
+      setOptions: (o: { tabBarStyle: ViewStyle }) => void;
+    };
+    tab.setOptions({ tabBarStyle: tabBarStyle(c, fullscreen) });
+  }, [c, fullscreen, navigation]);
 
   const stations = useMemo(
     () => (selected ? getStationsBySlugs(selected.stations) : []),
@@ -295,13 +334,14 @@ export const MapScreen: React.FC = () => {
 
       {/* Mounted only while open, as LanguagePanel is — a Modal kept mounted
           behind `visible={false}` wedges the Android UI thread. */}
-      {expanded ? (
+      {fullscreen ? (
         <FullscreenMap
           selected={selected}
           playingSlug={playingSlug}
           onPick={pick}
           onClose={() => setExpanded(false)}
           colors={canvasColors}
+          landscape={landscape}
         />
       ) : null}
     </Screen>
