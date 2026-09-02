@@ -15,7 +15,7 @@
       "resizeMode": "contain"
     },
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "requireFullScreen": true,
       "bundleIdentifier": "com.kjubilee.app",
       "associatedDomains": [
