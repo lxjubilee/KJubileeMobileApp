@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useReducer, useRef, useState } from 'react';
-import { BackHandler, Keyboard, ScrollView } from 'react-native';
+import { BackHandler, Keyboard, Linking, ScrollView } from 'react-native';
 import { useFocusEffect, useNavigation, useRoute, type RouteProp } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
-import { AuthBanner, AuthScreenShell } from '@/components/auth';
+import { AuthBanner, AuthLinkButton, AuthScreenShell } from '@/components/auth';
 import { useAppDispatch } from '@/hooks';
 import { sessionEstablished } from '@/redux';
 import { ssoService, SsoError, toAuthUser, type DoorOutcome } from '@/services/auth';
@@ -28,6 +28,8 @@ type Nav = NativeStackNavigationProp<AuthStackParamList, 'JubileeDoor'>;
 type Route = RouteProp<AuthStackParamList, 'JubileeDoor'>;
 
 type Busy = null | 'lookup' | 'submit';
+
+const PRIVACY_URL = 'https://kjubilee.com/privacy';
 
 /**
  * The Jubilee Door — one screen, five steps, mirroring kjubilee.com.
@@ -342,6 +344,12 @@ export const JubileeDoorScreen: React.FC = () => {
       // navigator here for the same reason.
       onBack={state.step === 'email' ? undefined : goBack}
       backLabel={t('auth.door.a11y.back')}
+      headerRight={
+        <AuthLinkButton
+          label={t('auth.door.privacyLink')}
+          onPress={() => void Linking.openURL(PRIVACY_URL).catch(() => undefined)}
+        />
+      }
       title={t(titleKey[state.step], { site: 'KJubilee' })}
       scrollRef={scrollRef}
     >

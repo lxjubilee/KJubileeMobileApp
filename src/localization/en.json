@@ -219,6 +219,7 @@
       "retry": "Couldn't load verification. Tap to retry."
     },
     "door": {
+      "privacyLink": "PRIVACY",
       "email": {
         "title": "Sign in with your Jubilee ID",
         "help": "One Jubilee ID works across all our sites.",

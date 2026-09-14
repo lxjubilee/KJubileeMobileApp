@@ -18,6 +18,7 @@
       "supportsTablet": false,
       "requireFullScreen": true,
       "bundleIdentifier": "com.kjubilee.app",
+      "buildNumber": "3",
       "associatedDomains": [
         "applinks:kjubilee.com",
         "applinks:www.kjubilee.com"

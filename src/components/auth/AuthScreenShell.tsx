@@ -19,6 +19,8 @@ interface AuthScreenShellProps {
   onBack?: () => void;
   /** Accessibility label for the back arrow. */
   backLabel?: string;
+  /** Rendered at the right end of the header row (e.g. a Privacy link). */
+  headerRight?: React.ReactNode;
   title?: string;
   subtitle?: string;
   /** Lets the caller scroll back to the banner when a validation error fires. */
@@ -39,6 +41,7 @@ interface AuthScreenShellProps {
 export const AuthScreenShell: React.FC<AuthScreenShellProps> = ({
   onBack,
   backLabel,
+  headerRight,
   title,
   subtitle,
   scrollRef,
@@ -67,6 +70,7 @@ export const AuthScreenShell: React.FC<AuthScreenShellProps> = ({
           {/* BrandLogo strips `color`/`fontWeight` from textStyle — the wordmark
               spans set their own colors and Orbitron encodes the weight. */}
           <BrandLogo tagline textStyle={styles.logo} />
+          {headerRight ? <View style={styles.headerRight}>{headerRight}</View> : null}
         </View>
 
         <KeyboardAvoidingView
@@ -114,6 +118,7 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     paddingBottom: 6,
   },
+  headerRight: { marginLeft: 'auto' },
   logo: { fontSize: 20, lineHeight: 26, fontWeight: '900', letterSpacing: 1 },
   content: {
     flexGrow: 1,
