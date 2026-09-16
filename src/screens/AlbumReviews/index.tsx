@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context';
 import { AppText, IconButton, Screen } from '@/components/common';
 import { AlbumRatingSummary, ReviewComposer, ReviewItem, StarRating } from '@/components/reviews';
-import { useReviews } from '@/hooks';
+import { useRequireAuth, useReviews } from '@/hooks';
 import { reviewsApi } from '@/services/reviews';
 import { albumUuid } from '@/services/catalogIds';
 import type { RatingDistribution, ReviewListItem, ReviewSort } from '@/types';
@@ -51,6 +51,7 @@ export const AlbumReviewsScreen: React.FC = () => {
   const navigation = useNavigation<Nav>();
   const theme = useTheme();
   const { t } = useTranslation();
+  const requireAuth = useRequireAuth();
 
   // The reviews API keys albums by the backend's deterministic uuid; the route
   // carries the catalog code, so convert it here (see songId.ts / albumUuid).
@@ -99,7 +100,7 @@ export const AlbumReviewsScreen: React.FC = () => {
         type={type}
         targetId={id}
         onApplySummary={applySummary}
-        onRate={() => setComposerOpen(true)}
+        onRate={() => requireAuth(() => setComposerOpen(true), 'reviews')}
       />
       {summary && summary.ratingCount > 0 ? (
         <DistributionBars distribution={summary.distribution} total={summary.ratingCount} />

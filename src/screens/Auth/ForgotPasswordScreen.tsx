@@ -14,9 +14,9 @@ import { useAppDispatch } from '@/hooks';
 import { forgotPassword } from '@/redux';
 import { isEmail } from '@/utils';
 import { CONFIG } from '@/constants';
-import type { AuthStackParamList } from '@/navigation/types';
+import type { RootStackParamList } from '@/navigation/types';
 
-type Route = RouteProp<AuthStackParamList, 'ForgotPassword'>;
+type Route = RouteProp<RootStackParamList, 'ForgotPassword'>;
 
 /**
  * Request a password-reset email. The API is anti-enumeration (identical

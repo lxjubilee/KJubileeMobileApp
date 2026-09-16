@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Track } from '@/types';
 import { useAppDispatch } from '@/hooks';
 import { toggleSongLike } from '@/redux';
-import { useIsSongLiked } from '@/hooks';
+import { useIsSongLiked, useRequireAuth } from '@/hooks';
 import { TrackOptionsModal, TrackOption } from '@/components/modals';
 
 interface TrackMenu {
@@ -31,6 +31,7 @@ export function useTrackMenu(): TrackMenu {
 export const TrackMenuProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const requireAuth = useRequireAuth();
 
   // The likes warm-up on sign-in is gone: /api/me/likes/ids does not exist on
   // the Jubilee ID API, so it 404'd on every sign-in and opened a red box. The
@@ -47,7 +48,7 @@ export const TrackMenuProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       key: 'like',
       label: isFavorite ? t('player.removeFromLiked') : t('player.like'),
       icon: isFavorite ? 'heart' : 'heart-outline',
-      onPress: (track) => dispatch(toggleSongLike(track)),
+      onPress: (track) => requireAuth(() => dispatch(toggleSongLike(track)), 'likes'),
     },
   ];
 

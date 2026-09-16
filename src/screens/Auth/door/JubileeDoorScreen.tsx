@@ -4,7 +4,7 @@ import { useFocusEffect, useNavigation, useRoute, type RouteProp } from '@react-
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { AuthBanner, AuthLinkButton, AuthScreenShell } from '@/components/auth';
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks';
 import { sessionEstablished } from '@/redux';
 import { ssoService, SsoError, toAuthUser, type DoorOutcome } from '@/services/auth';
 import { CONFIG } from '@/constants';
@@ -17,15 +17,15 @@ import {
   normalizeEmail,
   toIsoDate,
 } from '@/utils';
-import type { AuthStackParamList } from '@/navigation/types';
+import type { RootStackParamList } from '@/navigation/types';
 import { backTargetFor, doorReducer, initialDoorState } from './doorMachine';
 import { EmailStep } from './steps/EmailStep';
 import { PasswordStep } from './steps/PasswordStep';
 import { CreateLinkedStep } from './steps/CreateLinkedStep';
 import { CreateJubileeIdStep } from './steps/CreateJubileeIdStep';
 
-type Nav = NativeStackNavigationProp<AuthStackParamList, 'JubileeDoor'>;
-type Route = RouteProp<AuthStackParamList, 'JubileeDoor'>;
+type Nav = NativeStackNavigationProp<RootStackParamList, 'JubileeDoor'>;
+type Route = RouteProp<RootStackParamList, 'JubileeDoor'>;
 
 type Busy = null | 'lookup' | 'submit';
 
@@ -54,6 +54,24 @@ export const JubileeDoorScreen: React.FC = () => {
 
   const [state, send] = useReducer(doorReducer, initialDoorState(route.params?.email ?? ''));
   const [busy, setBusy] = useState<Busy>(null);
+
+  const isAuthenticated = useAppSelector((s) => s.auth.user != null);
+  /** Set when `openSignIn(reason)` brought us here rather than a Profile tap. */
+  const gateReason = route.params?.reason;
+
+  /**
+   * Close the door once a session exists.
+   *
+   * The three success paths (sign-in, create-linked, full registration) all end
+   * at `sessionEstablished` and nothing else. This used to need no follow-up:
+   * the door WAS the app while signed out, and RootGate swapped the whole
+   * navigator the moment the store changed. Now the door is a sheet over the
+   * app, so it has to take itself away — and watching the store rather than
+   * dismissing at each call site means a path added later cannot forget to.
+   */
+  useEffect(() => {
+    if (isAuthenticated && navigation.canGoBack()) navigation.goBack();
+  }, [isAuthenticated, navigation]);
 
   // Secrets stay out of the machine so its state can be logged while debugging.
   const [password, setPassword] = useState('');
@@ -218,7 +236,7 @@ export const JubileeDoorScreen: React.FC = () => {
 
       switch (res.kind) {
         case 'signed-in':
-          // RootGate swaps the navigator out from under us the moment this lands.
+          // The effect above closes the door as soon as this reaches the store.
           dispatch(sessionEstablished(toAuthUser(res.user)));
           return;
         case 'create-linked': {
@@ -338,12 +356,19 @@ export const JubileeDoorScreen: React.FC = () => {
 
   return (
     <AuthScreenShell
-      // No arrow on the email step: it is the door's first step and the root of
-      // the auth stack, so there is nothing behind it — `backTargetFor` returns
-      // null and the press was a no-op. Hardware back already deferred to the
-      // navigator here for the same reason.
-      onBack={state.step === 'email' ? undefined : goBack}
-      backLabel={t('auth.door.a11y.back')}
+      // On the inner steps the arrow walks back through the door's own machine.
+      // On the email step it now leaves the door entirely — there IS something
+      // behind it since signing in became optional, and a guest who opened this
+      // by tapping a heart must be able to get back to what they were hearing.
+      // Still undefined when nothing is behind it, which keeps the arrow honest.
+      onBack={
+        state.step === 'email'
+          ? navigation.canGoBack()
+            ? () => navigation.goBack()
+            : undefined
+          : goBack
+      }
+      backLabel={t(state.step === 'email' ? 'auth.door.a11y.close' : 'auth.door.a11y.back')}
       headerRight={
         <AuthLinkButton
           label={t('auth.door.privacyLink')}
@@ -353,6 +378,13 @@ export const JubileeDoorScreen: React.FC = () => {
       title={t(titleKey[state.step], { site: 'KJubilee' })}
       scrollRef={scrollRef}
     >
+      {/* Why the door opened, when something opened it on the listener's behalf.
+          Only on the first step, and only until they act — once they are typing
+          a password the reason is behind them, and the step's own banners
+          (info, then error) are what matter. */}
+      {gateReason && state.step === 'email' && !state.info && !state.error ? (
+        <AuthBanner message={t(`auth.door.gate.${gateReason}`)} tone="info" />
+      ) : null}
       <AuthBanner message={state.info} tone="info" />
       <AuthBanner message={state.error} tone="error" />
 

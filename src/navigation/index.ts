@@ -1,4 +1,5 @@
 export { RootNavigator } from './RootNavigator';
-export { AuthNavigator } from './AuthNavigator';
 export { linking } from './linking';
+export { navigationRef, openSignIn } from './navigationRef';
+export type { AuthGateReason } from './navigationRef';
 export * from './types';

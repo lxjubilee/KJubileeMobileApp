@@ -39,6 +39,10 @@ interface CurrentPlay {
 
 export function useListeningAnalytics(): void {
   const queue = useAppSelector((s) => s.player.queue);
+  // Guests emit nothing. Every beacon here is keyed to an account, and now that
+  // sign-in is optional a good share of listening happens without one — so the
+  // counts these feed are signed-in listening, not all listening. Correct as it
+  // stands; worth remembering before anyone reads them as totals.
   const authed = useAppSelector((s) => s.auth.user != null);
 
   const queueRef = useRef<Track[]>(queue);

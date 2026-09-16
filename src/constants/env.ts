@@ -37,12 +37,6 @@ type AppExtra = {
   turnstileSiteKey: string;
   /** Origin the Turnstile widget runs under (must be allow-listed for the site key). */
   turnstileBaseUrl: string;
-  /**
-   * Development escape hatch: render the main app without a session, so screens
-   * behind the Jubilee Door can be worked on while the auth API is unavailable.
-   * Ignored unless `__DEV__` — see ENV.DEV_SKIP_AUTH below.
-   */
-  devSkipAuth?: boolean;
 };
 
 const extra = (Constants.expoConfig?.extra ?? {}) as Partial<AppExtra>;
@@ -67,15 +61,7 @@ export const ENV = {
   // Cloudflare Turnstile (sign-in CAPTCHA). Empty disables the widget.
   TURNSTILE_SITE_KEY: extra.turnstileSiteKey ?? '',
   TURNSTILE_BASE_URL: extra.turnstileBaseUrl ?? 'https://kjubilee.com',
-  /**
-   * Skip the auth gate. Double-guarded — the flag must be set in app.json AND
-   * the bundle must be a dev bundle — so a release build cannot ship an
-   * unauthenticated app even if the flag is left switched on by mistake.
-   *
-   * Temporary: remove once the auth API is reachable. Anything downstream of a
-   * real session (entitlement, likes, playlists) stays empty or fails under it;
-   * it exists to reach the radio surfaces, not to fake a signed-in user.
-   */
-  DEV_SKIP_AUTH:
-    (typeof __DEV__ !== 'undefined' ? __DEV__ : false) && extra.devSkipAuth === true,
+  // DEV_SKIP_AUTH is gone. It existed to reach the radio surfaces while the
+  // auth API was unavailable, and guest mode now does that for real — in
+  // release builds too, which the dev-only flag deliberately could not.
 } as const;

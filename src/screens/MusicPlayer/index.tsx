@@ -19,7 +19,7 @@ import { AppText, Artwork, IconButton } from '@/components/common';
 import { ProgressBar } from '@/components/player';
 import { TrackRow } from '@/components/cards';
 import { TrackOptionsModal, TrackOption } from '@/components/modals';
-import { useAppDispatch, useIsSongLiked, usePlayer, useSafeProgress } from '@/hooks';
+import { useAppDispatch, useIsSongLiked, usePlayer, useRequireAuth, useSafeProgress } from '@/hooks';
 import { shareAlbum } from '@/services/share';
 import { toggleSongLike } from '@/redux';
 import type { RootStackParamList } from '@/navigation/types';
@@ -34,6 +34,7 @@ export const MusicPlayerScreen: React.FC = () => {
   const navigation = useNavigation<Nav>();
   const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
+  const requireAuth = useRequireAuth();
   const {
     currentTrack,
     queue,
@@ -85,7 +86,7 @@ export const MusicPlayerScreen: React.FC = () => {
       key: 'like',
       label: isFavorite ? t('player.removeFromLiked') : t('player.like'),
       icon: isFavorite ? 'heart' : 'heart-outline',
-      onPress: (track) => dispatch(toggleSongLike(track)),
+      onPress: (track) => requireAuth(() => dispatch(toggleSongLike(track)), 'likes'),
     },
     {
       key: 'album',
@@ -149,7 +150,7 @@ export const MusicPlayerScreen: React.FC = () => {
               name={isFavorite ? 'heart' : 'heart-outline'}
               size={28}
               color={isFavorite ? theme.colors.accent : theme.colors.icon}
-              onPress={() => dispatch(toggleSongLike(currentTrack))}
+              onPress={() => requireAuth(() => dispatch(toggleSongLike(currentTrack)), 'likes')}
             />
           </View>
         </View>

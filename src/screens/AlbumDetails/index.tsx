@@ -24,6 +24,7 @@ import {
   useAppSelector,
   useIsAlbumLiked,
   usePlayer,
+  useRequireAuth,
   useReviews,
   useSongSummaries,
   useVisibleAlbums,
@@ -94,6 +95,7 @@ export const AlbumDetailsScreen: React.FC = () => {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
+  const requireAuth = useRequireAuth();
   const { playTracks, playFrom, currentTrack, isPlaying, toggle } = usePlayer();
 
   const [album, setAlbum] = useState<Album | null>(null);
@@ -318,7 +320,7 @@ export const AlbumDetailsScreen: React.FC = () => {
               name={albumLiked ? 'heart' : 'heart-outline'}
               size={28}
               color={albumLiked ? theme.colors.accent : undefined}
-              onPress={() => dispatch(toggleAlbumLike(album))}
+              onPress={() => requireAuth(() => dispatch(toggleAlbumLike(album)), 'likes')}
             />
             <IconButton name="share-outline" size={26} onPress={onShare} style={styles.share} />
           </View>
@@ -338,12 +340,16 @@ export const AlbumDetailsScreen: React.FC = () => {
           onApplySummary={applyAlbumSummary}
           onRate={() =>
             albumTargetId &&
-            setComposer({
-              type: 'album',
-              targetId: albumTargetId,
-              label: album.title,
-              initial: albumSummary?.mine ?? null,
-            })
+            requireAuth(
+              () =>
+                setComposer({
+                  type: 'album',
+                  targetId: albumTargetId,
+                  label: album.title,
+                  initial: albumSummary?.mine ?? null,
+                }),
+              'reviews',
+            )
           }
           onSeeAll={() =>
             navigation.navigate('AlbumReviews', { albumId: album.id, albumTitle: album.title })
@@ -363,7 +369,9 @@ export const AlbumDetailsScreen: React.FC = () => {
                 isActive={currentTrack?.id === track.id}
                 isFavorite={!!likeKeys[songLikeKey(track) ?? '']}
                 onToggleFavorite={
-                  songLikeKey(track) ? (tr) => dispatch(toggleSongLike(tr)) : undefined
+                  songLikeKey(track)
+                    ? (tr) => requireAuth(() => dispatch(toggleSongLike(tr)), 'likes')
+                    : undefined
                 }
                 onPress={() => playFrom(tracks, track.id)}
                 showDuration
@@ -374,13 +382,17 @@ export const AlbumDetailsScreen: React.FC = () => {
                       targetId={trackSongUuid(track)!}
                       onApplySummary={(s) => applySongSummary(track.id, s)}
                       onRate={() =>
-                        setComposer({
-                          type: 'song',
-                          targetId: trackSongUuid(track)!,
-                          localId: track.id,
-                          label: track.title,
-                          initial: songSummaries[track.id]?.mine ?? null,
-                        })
+                        requireAuth(
+                          () =>
+                            setComposer({
+                              type: 'song',
+                              targetId: trackSongUuid(track)!,
+                              localId: track.id,
+                              label: track.title,
+                              initial: songSummaries[track.id]?.mine ?? null,
+                            }),
+                          'reviews',
+                        )
                       }
                     />
                   ) : null

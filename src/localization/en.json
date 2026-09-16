@@ -135,7 +135,8 @@
     "deleteConfirmAction": "Delete forever",
     "deleteOffline": "We couldn't reach kJubilee. Your account has not been changed.",
     "deletedMessageKeptId": "Your favourites and followed stations are gone with it, and every device has been signed out.\n\nYour Jubilee ID is untouched — it still signs you in everywhere else in the family, and you are welcome back here any time.",
-    "editName": "Edit Name"
+    "editName": "Edit Name",
+    "guestBlurb": "Listening is free and always will be. Sign in with your Jubilee ID — the one account that works across every Jubilee site."
   },
   "player": {
     "queue": "Queue",
@@ -325,7 +326,13 @@
         "dobMonth": "Month",
         "dobYear": "Year",
         "openTerms": "Open Terms of Use",
-        "openPrivacy": "Open Privacy Policy"
+        "openPrivacy": "Open Privacy Policy",
+        "close": "Close"
+      },
+      "gate": {
+        "likes": "Sign in to save this to your favourites.",
+        "reviews": "Sign in to rate and review.",
+        "account": "Sign in to manage your account."
       }
     }
   },

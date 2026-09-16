@@ -56,6 +56,14 @@ export function usePlaybackGate(): void {
     const domain = tpTrack?.id ? queueRef.current.find((t) => t.id === tpTrack.id) : undefined;
     const uuid = domain ? trackSongUuid(domain) : null;
     activeUuidRef.current = uuid;
+    // TODO(backend): guests are UNCAPPED. `/api/listening/intent` is the only
+    // thing that decides full-vs-preview and it is Bearer-authed, so a signed-out
+    // listener asks nobody and is capped by nothing — and since sign-in became
+    // optional, that is now a reachable state rather than a theoretical one.
+    // Closing it needs the endpoint to accept an anonymous device identifier;
+    // until then this is a known, accepted hole, not an oversight. A client-side
+    // counter was considered and rejected: it would be the client deciding its
+    // own entitlement, which is exactly what this gate exists to avoid.
     if (!uuid || !authedRef.current) return;
     // Ask the server whether this track plays in full or as a preview. This is
     // the authoritative gate (and what increments the Free-plan daily counter).

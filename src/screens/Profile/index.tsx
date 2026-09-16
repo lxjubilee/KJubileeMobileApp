@@ -49,6 +49,9 @@ export const ProfileScreen: React.FC = () => {
   const navigation = useNavigation<Nav>();
   const dispatch = useAppDispatch();
   const user = useAppSelector((s) => s.auth.user);
+  // Signing in is optional, so this screen has two shapes: an account to manage,
+  // or an invitation to make one. Everything account-shaped below keys off this.
+  const isSignedIn = user != null;
   const initials = userInitials(user);
   const [mode, setMode] = useState<null | 'confirm' | 'success' | 'error'>(null);
   const [deleting, setDeleting] = useState(false);
@@ -176,18 +179,32 @@ export const ProfileScreen: React.FC = () => {
           </AppText>
         </View>
 
-        {/* Account options. */}
+        {/* What an account is actually FOR. Shown only to guests, and phrased
+            so the offer is the saving, not the signing up — listening is
+            already theirs and the screen should not imply otherwise. */}
+        {isSignedIn ? null : (
+          <AppText variant="bodySm" color="textSecondary" style={styles.guestBlurb}>
+            {t('profile.guestBlurb')}
+          </AppText>
+        )}
+
+        {/* Account options. A guest sees only the legal pair: every other row
+            here acts on an account that does not exist yet. */}
         <View style={styles.menu}>
-          <Row
-            icon="person-outline"
-            label={t('profile.editName')}
-            onPress={() => navigation.navigate('EditName')}
-          />
-          <Row
-            icon="lock-closed-outline"
-            label={t('profile.changePassword')}
-            onPress={() => navigation.navigate('ChangePassword')}
-          />
+          {isSignedIn ? (
+            <>
+              <Row
+                icon="person-outline"
+                label={t('profile.editName')}
+                onPress={() => navigation.navigate('EditName')}
+              />
+              <Row
+                icon="lock-closed-outline"
+                label={t('profile.changePassword')}
+                onPress={() => navigation.navigate('ChangePassword')}
+              />
+            </>
+          ) : null}
           <Row
             icon="shield-checkmark-outline"
             label={t('profile.privacyPolicy')}
@@ -198,16 +215,32 @@ export const ProfileScreen: React.FC = () => {
             label={t('profile.termsOfUse')}
             onPress={() => navigation.navigate('TermsOfUse')}
           />
-          <Row icon="trash-outline" label={t('profile.deleteAccount')} destructive onPress={openDeleteConfirm} />
+          {isSignedIn ? (
+            <Row
+              icon="trash-outline"
+              label={t('profile.deleteAccount')}
+              destructive
+              onPress={openDeleteConfirm}
+            />
+          ) : null}
         </View>
 
-        <Button
-          label={t('profile.signOut')}
-          icon="log-out-outline"
-          variant="ghost"
-          onPress={() => dispatch(signOut())}
-          style={styles.cta}
-        />
+        {isSignedIn ? (
+          <Button
+            label={t('profile.signOut')}
+            icon="log-out-outline"
+            variant="ghost"
+            onPress={() => dispatch(signOut())}
+            style={styles.cta}
+          />
+        ) : (
+          <Button
+            label={t('profile.signIn')}
+            icon="log-in-outline"
+            onPress={() => navigation.navigate('JubileeDoor', { reason: 'account' })}
+            style={styles.cta}
+          />
+        )}
       </ScrollView>
 
       <ConfirmDialog
@@ -378,6 +411,7 @@ const styles = StyleSheet.create({
   email: { alignSelf: 'stretch', textAlign: 'center' },
   shortcut: { flex: 1, alignItems: 'center', paddingVertical: 16, paddingHorizontal: 8 },
   shortcutLabel: { marginTop: 8 },
+  guestBlurb: { marginTop: 28, paddingHorizontal: 24, textAlign: 'center' },
   menu: { marginTop: 36, paddingHorizontal: 16, gap: 10 },
   row: { flexDirection: 'row', alignItems: 'center', paddingVertical: 14, paddingHorizontal: 14 },
   rowLabel: { flex: 1, marginLeft: 12 },

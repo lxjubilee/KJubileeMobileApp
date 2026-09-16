@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  NavigationContainer,
-  DarkTheme,
-  Theme as NavTheme,
-  useNavigationContainerRef,
-} from '@react-navigation/native';
+import { NavigationContainer, DarkTheme, Theme as NavTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTheme } from '@/context';
 import {
@@ -19,8 +14,11 @@ import {
   BandArticleDetailScreen,
   MusicPlayerScreen,
 } from '@/screens';
+import { JubileeDoorScreen, ForgotPasswordScreen } from '@/screens/Auth';
+import { PrivacyPolicyScreen, TermsOfUseScreen } from '@/screens/Legal';
 import { MainTabNavigator } from './MainTabNavigator';
 import { linking } from './linking';
+import { navigationRef } from './navigationRef';
 import { ShareDeepLinks } from './useShareDeepLinks';
 import type { RootStackParamList } from './types';
 
@@ -28,7 +26,6 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigator: React.FC = () => {
   const theme = useTheme();
-  const navigationRef = useNavigationContainerRef<RootStackParamList>();
 
   const navTheme: NavTheme = {
     ...DarkTheme,
@@ -60,7 +57,16 @@ export const RootNavigator: React.FC = () => {
         {/* Player + the song picker slide up as modals. */}
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
           <Stack.Screen name="MusicPlayer" component={MusicPlayerScreen} />
+          {/* The door is a modal because signing in is now something you leave
+              as well as enter: a sheet can be swiped away, and the dismissal
+              lands back on whatever the listener was already doing. */}
+          <Stack.Screen name="JubileeDoor" component={JubileeDoorScreen} />
         </Stack.Group>
+        {/* Pushed from inside the door — cards, not modals, so they stack over
+            it rather than replacing the sheet. */}
+        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen} />
+        <Stack.Screen name="TermsOfUse" component={TermsOfUseScreen} />
       </Stack.Navigator>
       {/* Resolves incoming share/deep links -> play the shared track. */}
       <ShareDeepLinks navRef={navigationRef} />

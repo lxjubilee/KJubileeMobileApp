@@ -14,12 +14,11 @@ import {
   clearSession,
 } from '@/redux';
 import { ThemeProvider } from '@/context';
-import { RootNavigator, AuthNavigator } from '@/navigation';
+import { RootNavigator } from '@/navigation';
 import {
   usePlayerSync,
   useListeningAnalytics,
   usePlaybackGate,
-  useAppDispatch,
   useAppSelector,
 } from '@/hooks';
 import { setupPlayer } from '@/services/music';
@@ -27,7 +26,7 @@ import { initRadio } from '@/services/radio';
 import { initAuthClient } from '@/services/auth';
 import { getManifest, onCatalogUpdated, invalidateCatalogIndex } from '@/services/catalog';
 import { getMobileConfig, onMobileConfigUpdated } from '@/services/mobileConfig';
-import { CONFIG, ENV } from '@/constants';
+import { CONFIG } from '@/constants';
 import { SplashScreen } from '@/components/SplashScreen';
 import { PlaybackLimitGate } from '@/components/PlaybackLimitGate';
 import { AppUpdateGate } from '@/components/AppUpdateGate';
@@ -64,28 +63,27 @@ const PlayerSyncGate: React.FC = () => {
 };
 
 /**
- * Chooses between the unauthenticated flow and the main app, based on the
- * restored session. Renders nothing while that is still resolving (the splash
- * overlay covers that window).
+ * Holds the tree back until the session restore has resolved, then hands over
+ * to the one navigator the app has. Renders nothing while that is still in
+ * flight (the splash overlay covers that window).
+ *
+ * It no longer CHOOSES a navigator. Signing in is optional: KJubilee is a radio
+ * network whose catalog, stations and streams all come from the public CDN
+ * manifest and need no session, so everyone — signed in or not — opens on Home.
+ * The Jubilee Door is a route now (see RootStackParamList), pushed from the
+ * Profile tab or by `openSignIn()` when a guest reaches for something genuinely
+ * account-based. Required by App Store guideline 5.1.1(v), which forbids
+ * gating non-account features behind registration.
+ *
+ * Waiting on `restoring` still matters: a returning member must land on Home as
+ * themselves rather than flashing a signed-out header first.
  */
 const RootGate: React.FC = () => {
   const status = useAppSelector((s) => s.auth.status);
-  const isAuthenticated = useAppSelector((s) => s.auth.user != null);
-
-  // TEMPORARY (auth API unavailable): open the app without a session so the
-  // radio surfaces can be built and reviewed. Dev bundles only — see
-  // ENV.DEV_SKIP_AUTH. Checked before `restoring` because a session restore
-  // that cannot reach the API would otherwise hold this at null forever.
-  if (ENV.DEV_SKIP_AUTH) return <RootNavigator />;
 
   if (status === 'restoring') return null;
 
-  if (isAuthenticated) {
-    return <RootNavigator />;
-  }
-
-  // Signed out / never signed in: straight to the Jubilee Door.
-  return <AuthNavigator />;
+  return <RootNavigator />;
 };
 
 export default function App() {

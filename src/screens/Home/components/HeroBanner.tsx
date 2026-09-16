@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context';
 import { AppText, Artwork } from '@/components/common';
-import { useAppDispatch, useIsAlbumLiked, usePlayer } from '@/hooks';
+import { useAppDispatch, useIsAlbumLiked, usePlayer, useRequireAuth } from '@/hooks';
 import { toggleAlbumLike } from '@/redux';
 import { Album } from '@/types';
 
@@ -36,6 +36,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ album, onPlay, onOpen })
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const requireAuth = useRequireAuth();
   const saved = useIsAlbumLiked(album);
   const { currentTrack, isPlaying, queue, toggle } = usePlayer();
 
@@ -108,7 +109,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ album, onPlay, onOpen })
         </Pressable>
 
         <Pressable
-          onPress={() => dispatch(toggleAlbumLike(album))}
+          onPress={() => requireAuth(() => dispatch(toggleAlbumLike(album)), 'likes')}
           style={({ pressed }) => [
             styles.btn,
             styles.listBtn,

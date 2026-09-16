@@ -2,6 +2,7 @@ import type { NavigatorScreenParams } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { CompositeScreenProps } from '@react-navigation/native';
+import type { AuthGateReason } from './navigationRef';
 
 /** Bottom-tab routes. ProfileTab nests its own stack, so it carries those params. */
 export type MainTabParamList = {
@@ -60,21 +61,30 @@ export type RootStackParamList = {
    *  by the screen, the first from the bundle and the second over the network. */
   BandArticleDetail: { slug: string };
   MusicPlayer: undefined;
-};
 
-/**
- * Unauthenticated flow, rooted at the Jubilee Door.
- *
- * Sign in, sign up, the 2FA challenge and the sign-up verification are all
- * steps INSIDE JubileeDoor rather than routes, so the flow cannot be entered
- * halfway through and the Turnstile WebView is never left mounted under a
- * pushed screen.
- */
-export type AuthStackParamList = {
-  /** The email-first Jubilee Door. `email` pre-fills the first step. */
-  JubileeDoor: { email?: string } | undefined;
+  // --- Sign-in, reached on demand ------------------------------------------
+  // The door used to be a separate navigator that REPLACED this one while
+  // signed out. It lives here now because signing in is optional: the app opens
+  // on Home for everyone, and the door is pushed only when someone asks for it
+  // or reaches for something that genuinely needs an account (App Store
+  // guideline 5.1.1(v) — registration may not gate features that aren't
+  // account-based).
+  //
+  // Sign in, sign up and the 2FA challenge are all steps INSIDE JubileeDoor
+  // rather than routes, so the flow cannot be entered halfway through and the
+  // Turnstile WebView is never left mounted under a pushed screen.
+  /**
+   * The email-first Jubilee Door. `email` pre-fills the first step; `reason`
+   * says which account-only action asked for it, so the door can explain itself.
+   */
+  JubileeDoor: { email?: string; reason?: AuthGateReason } | undefined;
   /** `email` pre-fills the field when the door hands off a typed address. */
   ForgotPassword: { email?: string } | undefined;
+  /**
+   * Also routes in ProfileStackParamList. Registered in both because the door
+   * links to them while signed out, when the Profile tab's stack is behind it
+   * rather than above it — a navigator can only reach its own routes.
+   */
   PrivacyPolicy: undefined;
   TermsOfUse: undefined;
 };
@@ -90,11 +100,6 @@ export type ProfileStackParamList = {
   PrivacyPolicy: undefined;
   TermsOfUse: undefined;
 };
-
-export type AuthStackScreenProps<T extends keyof AuthStackParamList> = NativeStackScreenProps<
-  AuthStackParamList,
-  T
->;
 
 // Typed screen-prop helpers
 export type RootStackScreenProps<T extends keyof RootStackParamList> = NativeStackScreenProps<
