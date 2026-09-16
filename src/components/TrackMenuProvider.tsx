@@ -1,9 +1,5 @@
 import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Track } from '@/types';
-import { useAppDispatch } from '@/hooks';
-import { toggleSongLike } from '@/redux';
-import { useIsSongLiked, useRequireAuth } from '@/hooks';
 import { TrackOptionsModal, TrackOption } from '@/components/modals';
 
 interface TrackMenu {
@@ -29,28 +25,16 @@ export function useTrackMenu(): TrackMenu {
  * "add to playlist" option and its picker went.
  */
 export const TrackMenuProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const requireAuth = useRequireAuth();
-
-  // The likes warm-up on sign-in is gone: /api/me/likes/ids does not exist on
-  // the Jubilee ID API, so it 404'd on every sign-in and opened a red box. The
-  // heart still toggles optimistically; there is simply nothing to prefetch.
-
   const [optionsTrack, setOptionsTrack] = useState<Track | null>(null);
 
   const openTrackOptions = useCallback((track: Track) => setOptionsTrack(track), []);
   const value = useMemo<TrackMenu>(() => ({ openTrackOptions }), [openTrackOptions]);
 
-  const isFavorite = useIsSongLiked(optionsTrack ?? { albumId: '', trackNumber: undefined });
-  const trackOptions: TrackOption[] = [
-    {
-      key: 'like',
-      label: isFavorite ? t('player.removeFromLiked') : t('player.like'),
-      icon: isFavorite ? 'heart' : 'heart-outline',
-      onPress: (track) => requireAuth(() => dispatch(toggleSongLike(track)), 'likes'),
-    },
-  ];
+  // Like is hidden: song likes post to `/api/me/likes`, which kjubilee.com
+  // answers with a 404 — a heart that filled and then silently emptied. Nothing
+  // opens this sheet today either, so it stays empty until a song-likes API
+  // gives it something real to carry.
+  const trackOptions: TrackOption[] = [];
 
   return (
     <Ctx.Provider value={value}>

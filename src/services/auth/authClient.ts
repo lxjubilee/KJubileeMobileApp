@@ -100,7 +100,7 @@ const isExempt = (url?: string) => !!url && REFRESH_EXEMPT.some((p) => url.inclu
  * logged at error level. Nothing here affects control flow — the promise still
  * rejects and the caller still catches.
  */
-const QUIET_ON_FAILURE = ['/api/analytics/'];
+const QUIET_ON_FAILURE = ['/api/analytics/', '/api/radio/feedback'];
 const isQuiet = (config?: { url?: string }) =>
   !!config?.url && QUIET_ON_FAILURE.some((p) => config.url!.includes(p));
 

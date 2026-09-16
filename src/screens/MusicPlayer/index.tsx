@@ -19,9 +19,8 @@ import { AppText, Artwork, IconButton } from '@/components/common';
 import { ProgressBar } from '@/components/player';
 import { TrackRow } from '@/components/cards';
 import { TrackOptionsModal, TrackOption } from '@/components/modals';
-import { useAppDispatch, useIsSongLiked, usePlayer, useRequireAuth, useSafeProgress } from '@/hooks';
+import { usePlayer, useSafeProgress } from '@/hooks';
 import { shareAlbum } from '@/services/share';
-import { toggleSongLike } from '@/redux';
 import type { RootStackParamList } from '@/navigation/types';
 
 type Nav = NativeStackNavigationProp<RootStackParamList>;
@@ -33,8 +32,6 @@ export const MusicPlayerScreen: React.FC = () => {
   const { t } = useTranslation();
   const navigation = useNavigation<Nav>();
   const insets = useSafeAreaInsets();
-  const dispatch = useAppDispatch();
-  const requireAuth = useRequireAuth();
   const {
     currentTrack,
     queue,
@@ -51,7 +48,6 @@ export const MusicPlayerScreen: React.FC = () => {
     playFrom,
   } = usePlayer();
   const { position, duration } = useSafeProgress(250);
-  const isFavorite = useIsSongLiked(currentTrack ?? { albumId: '', trackNumber: undefined });
   const [queueOpen, setQueueOpen] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
 
@@ -81,13 +77,12 @@ export const MusicPlayerScreen: React.FC = () => {
   };
 
   // Overflow ("•••") menu actions for the current track.
+  //
+  // No Like. Song likes post to `/api/me/likes`, which kjubilee.com answers with
+  // a 404, so the heart filled and then silently emptied again. Hidden until a
+  // song-likes API exists; `likesSlice` is kept for that day. Station likes and
+  // favourites are a separate, working feature — see `components/station`.
   const trackOptions: TrackOption[] = [
-    {
-      key: 'like',
-      label: isFavorite ? t('player.removeFromLiked') : t('player.like'),
-      icon: isFavorite ? 'heart' : 'heart-outline',
-      onPress: (track) => requireAuth(() => dispatch(toggleSongLike(track)), 'likes'),
-    },
     {
       key: 'album',
       label: t('player.goToAlbum'),
@@ -144,14 +139,6 @@ export const MusicPlayerScreen: React.FC = () => {
                 {currentTrack.artistName}
               </AppText>
             </Pressable>
-          </View>
-          <View style={styles.titleActions}>
-            <IconButton
-              name={isFavorite ? 'heart' : 'heart-outline'}
-              size={28}
-              color={isFavorite ? theme.colors.accent : theme.colors.icon}
-              onPress={() => requireAuth(() => dispatch(toggleSongLike(currentTrack)), 'likes')}
-            />
           </View>
         </View>
 
@@ -266,7 +253,6 @@ const styles = StyleSheet.create({
   body: { paddingHorizontal: 24 },
   titleRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
   titleText: { flex: 1, marginRight: 12 },
-  titleActions: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   titleAction: { alignItems: 'center', justifyContent: 'center' },
   controls: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 16 },
   playBtn: { width: 72, height: 72, borderRadius: 36, alignItems: 'center', justifyContent: 'center' },

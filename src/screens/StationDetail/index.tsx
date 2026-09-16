@@ -16,6 +16,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Screen, AppText, NotFound } from '@/components/common';
 import { FloatingMiniPlayer } from '@/components/player';
+import { StationActionRow } from '@/components/station';
 import { personaImage } from '@/assets/personaImages';
 import { stationArticle } from '@/assets/radio/stationArticles';
 import { useTheme } from '@/context';
@@ -330,6 +331,11 @@ export const StationDetailScreen: React.FC = () => {
               </AppText>
             </Pressable>
           ) : null}
+
+          {/* Favourite and Like sit under Play, as on the website's card. Shown
+              for a station that is not on air yet too — saving one that is
+              coming soon is exactly what a favourite is for. */}
+          <StationActionRow station={station} />
 
           {/* ---- on now: DELETED ----
               It said station, track, artist and position — and the footer bar,

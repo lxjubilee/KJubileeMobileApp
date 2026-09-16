@@ -19,6 +19,7 @@ import {
   usePlayerSync,
   useListeningAnalytics,
   usePlaybackGate,
+  useStationFavoritesSync,
   useAppSelector,
 } from '@/hooks';
 import { setupPlayer } from '@/services/music';
@@ -49,6 +50,7 @@ const PlayerSyncGate: React.FC = () => {
   usePlayerSync();
   useListeningAnalytics();
   usePlaybackGate();
+  useStationFavoritesSync();
 
   // The radio engine watches the app lifecycle: returning to the foreground has
   // to rejoin the live broadcast rather than resume a track that went stale

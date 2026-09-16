@@ -5,6 +5,8 @@ import { persistReducer } from 'redux-persist';
 import homeReducer from '../slices/homeSlice';
 import libraryReducer from '../slices/librarySlice';
 import likesReducer from '../slices/likesSlice';
+import stationFavoritesReducer from '../slices/stationFavoritesSlice';
+import stationLikesReducer from '../slices/stationLikesSlice';
 import downloadsReducer from '../slices/downloadsSlice';
 import playerReducer from '../slices/playerSlice';
 import authReducer from '../slices/authSlice';
@@ -41,6 +43,19 @@ const persistedLikes = persistReducer(
   likesReducer,
 );
 
+// Station hearts: the membership list only, so they paint on a cold start;
+// fetchStationFavorites() revalidates once the session is back.
+const persistedStationFavorites = persistReducer(
+  { key: 'stationFavorites', storage: AsyncStorage, whitelist: ['slugs'] },
+  stationFavoritesReducer,
+);
+
+// Station thumbs live only on the device — there is no server copy to reload.
+const persistedStationLikes = persistReducer(
+  { key: 'stationLikes', storage: AsyncStorage },
+  stationLikesReducer,
+);
+
 const persistedDownloads = persistReducer(
   { key: 'downloads', storage: AsyncStorage },
   downloadsReducer,
@@ -64,6 +79,8 @@ export const rootReducer = combineReducers({
   home: persistedHome,
   library: persistedLibrary,
   likes: persistedLikes,
+  stationFavorites: persistedStationFavorites,
+  stationLikes: persistedStationLikes,
   downloads: persistedDownloads,
   player: persistedPlayer,
   auth: authReducer,

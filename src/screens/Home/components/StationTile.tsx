@@ -5,6 +5,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { AppText, OnAirBadge } from '@/components/common';
 import { useTheme } from '@/context';
 import { stationArt } from '@/assets/radio/stationArt';
+import { StationTileActions, stationTileA11yProps } from '@/components/station';
+import { useStationEngagement } from '@/hooks';
 import type { RadioStation } from '@/services/radio';
 
 /**
@@ -21,6 +23,10 @@ import type { RadioStation } from '@/services/radio';
  * Most of the network is announced but not on air. Those tiles are dimmed,
  * labelled, and not pressable — showing the breadth of the network without
  * offering a tap that would do nothing.
+ *
+ * The like and favourite glyphs stay live on those tiles all the same: saving a
+ * station that is coming soon is a reasonable thing to want, and the website's
+ * card lets you.
  */
 
 export const TILE_W = 184;
@@ -43,6 +49,7 @@ export const StationTile: React.FC<Props> = React.memo(
   const live = station.live;
   const art = stationArt(station.slug);
   const height = Math.round(width / ASPECT);
+  const engagement = useStationEngagement(station);
 
   return (
     <Pressable
@@ -55,6 +62,7 @@ export const StationTile: React.FC<Props> = React.memo(
           ? `${station.name}, HM ${station.hm}, ${station.format}`
           : `${station.name}, coming soon`
       }
+      {...stationTileA11yProps(engagement)}
       style={({ pressed }) => [styles.wrap, { width, opacity: pressed ? 0.75 : 1 }]}
     >
       <View style={[styles.art, { width, height, borderColor: playing ? c.accent : 'transparent' }]}>
@@ -90,6 +98,7 @@ export const StationTile: React.FC<Props> = React.memo(
               state={playing ? 'playing' : live ? 'onAir' : 'soon'}
               label={playing ? 'PLAYING' : live ? 'ON AIR' : 'COMING SOON'}
             />
+            <StationTileActions engagement={engagement} />
           </View>
 
           {/* Orbitron carries its own weight — a fontWeight here makes Android
@@ -122,7 +131,7 @@ const styles = StyleSheet.create({
   // Announced-but-not-on-air reads as "not yet" rather than "broken".
   dimmed: { opacity: 0.38 },
   overlay: { flex: 1, padding: 9, justifyContent: 'space-between' },
-  top: { flexDirection: 'row' },
+  top: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
   hm: {
     fontFamily: 'Orbitron_600SemiBold',
     fontSize: 19,

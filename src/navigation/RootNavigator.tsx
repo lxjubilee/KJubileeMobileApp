@@ -9,6 +9,7 @@ import {
   AlbumListScreen,
   ArtistListScreen,
   StationListScreen,
+  FavoriteStationsScreen,
   StationDetailScreen,
   BandArticlesScreen,
   BandArticleDetailScreen,
@@ -50,6 +51,7 @@ export const RootNavigator: React.FC = () => {
         <Stack.Screen name="AlbumList" component={AlbumListScreen} />
         <Stack.Screen name="ArtistList" component={ArtistListScreen} />
         <Stack.Screen name="StationList" component={StationListScreen} />
+        <Stack.Screen name="FavoriteStations" component={FavoriteStationsScreen} />
         <Stack.Screen name="StationDetail" component={StationDetailScreen} />
         {/* The Heavenly Band — the written half of the network. */}
         <Stack.Screen name="BandArticles" component={BandArticlesScreen} />

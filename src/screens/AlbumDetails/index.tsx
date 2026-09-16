@@ -20,9 +20,6 @@ import { TrackRow, AlbumCard } from '@/components/cards';
 import { FloatingMiniPlayer } from '@/components/player';
 import { AlbumRatingSummary, ReviewComposer, SongRatingControl } from '@/components/reviews';
 import {
-  useAppDispatch,
-  useAppSelector,
-  useIsAlbumLiked,
   usePlayer,
   useRequireAuth,
   useReviews,
@@ -31,8 +28,6 @@ import {
 } from '@/hooks';
 import { shareAlbum } from '@/services/share';
 import { albumUuid, trackSongUuid } from '@/services/catalogIds';
-import { songLikeKey } from '@/services/likes';
-import { toggleAlbumLike, toggleSongLike } from '@/redux';
 import { AlbumRepository, ArtistRepository } from '@/repositories';
 import { Album, MyReview, ReviewTargetType, Track } from '@/types';
 import type { RootStackParamList, RootStackScreenProps } from '@/navigation/types';
@@ -94,7 +89,6 @@ export const AlbumDetailsScreen: React.FC = () => {
   const { t } = useTranslation();
   const theme = useTheme();
   const insets = useSafeAreaInsets();
-  const dispatch = useAppDispatch();
   const requireAuth = useRequireAuth();
   const { playTracks, playFrom, currentTrack, isPlaying, toggle } = usePlayer();
 
@@ -108,8 +102,6 @@ export const AlbumDetailsScreen: React.FC = () => {
   // artwork's real aspect ratio — exactly like the Home hero image.
   const [posterH, setPosterH] = useState(POSTER_H_DEFAULT);
 
-  const albumLiked = useIsAlbumLiked({ id: params.albumId });
-  const likeKeys = useAppSelector((s) => s.likes.keys);
 
   useEffect(() => {
     let active = true;
@@ -316,13 +308,9 @@ export const AlbumDetailsScreen: React.FC = () => {
 
         <View style={styles.actions}>
           <View style={styles.actionsLeft}>
-            <IconButton
-              name={albumLiked ? 'heart' : 'heart-outline'}
-              size={28}
-              color={albumLiked ? theme.colors.accent : undefined}
-              onPress={() => requireAuth(() => dispatch(toggleAlbumLike(album)), 'likes')}
-            />
-            <IconButton name="share-outline" size={26} onPress={onShare} style={styles.share} />
+            {/* No album heart: album likes post to `/api/me/likes`, which
+                kjubilee.com answers with a 404. Hidden until that API exists. */}
+            <IconButton name="share-outline" size={26} onPress={onShare} />
           </View>
           <View style={styles.actionsRight}>
             <IconButton name="shuffle" size={26} onPress={onShuffle} style={styles.dl} />
@@ -367,12 +355,6 @@ export const AlbumDetailsScreen: React.FC = () => {
                 track={track}
                 index={i + 1}
                 isActive={currentTrack?.id === track.id}
-                isFavorite={!!likeKeys[songLikeKey(track) ?? '']}
-                onToggleFavorite={
-                  songLikeKey(track)
-                    ? (tr) => requireAuth(() => dispatch(toggleSongLike(tr)), 'likes')
-                    : undefined
-                }
                 onPress={() => playFrom(tracks, track.id)}
                 showDuration
                 ratingSlot={
@@ -506,7 +488,6 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   actionsLeft: { flexDirection: 'row', alignItems: 'center' },
-  share: { marginLeft: 18 },
   actionsRight: { flexDirection: 'row', alignItems: 'center' },
   dl: { marginHorizontal: 14 },
   list: { paddingHorizontal: 16 },

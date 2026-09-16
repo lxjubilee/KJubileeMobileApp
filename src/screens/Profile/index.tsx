@@ -20,7 +20,7 @@ import {
   ConfirmDialog,
   PasswordInput,
 } from '@/components/common';
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { useAppDispatch, useAppSelector, useRequireAuth } from '@/hooks';
 import { userInitials, logger } from '@/utils';
 import { signOut, deleteAccount, clearSession } from '@/redux';
 import { authService } from '@/services/auth';
@@ -52,6 +52,8 @@ export const ProfileScreen: React.FC = () => {
   // Signing in is optional, so this screen has two shapes: an account to manage,
   // or an invitation to make one. Everything account-shaped below keys off this.
   const isSignedIn = user != null;
+  const requireAuth = useRequireAuth();
+  const favoriteCount = useAppSelector((s) => s.stationFavorites.slugs.length);
   const initials = userInitials(user);
   const [mode, setMode] = useState<null | 'confirm' | 'success' | 'error'>(null);
   const [deleting, setDeleting] = useState(false);
@@ -188,9 +190,20 @@ export const ProfileScreen: React.FC = () => {
           </AppText>
         )}
 
-        {/* Account options. A guest sees only the legal pair: every other row
-            here acts on an account that does not exist yet. */}
+        {/* Account options. A guest sees favourites and the legal pair: every
+            other row here acts on an account that does not exist yet. */}
         <View style={styles.menu}>
+          {/* Shown to guests too: it is the clearest thing an account is FOR,
+              and tapping it opens the door with that reason on it. */}
+          <Row
+            icon="heart-outline"
+            label={
+              isSignedIn && favoriteCount
+                ? `${t('profile.favoriteStations')} (${favoriteCount})`
+                : t('profile.favoriteStations')
+            }
+            onPress={() => requireAuth(() => navigation.navigate('FavoriteStations'), 'likes')}
+          />
           {isSignedIn ? (
             <>
               <Row

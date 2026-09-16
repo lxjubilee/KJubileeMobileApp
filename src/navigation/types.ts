@@ -50,6 +50,8 @@ export type RootStackParamList = {
     title: string;
     slugs: string[];
   };
+  /** The account's favourite stations, read live from the store. */
+  FavoriteStations: undefined;
   /** Full grid behind an artist rail's "See all". Ids are carried in rail order. */
   ArtistList: {
     title: string;
