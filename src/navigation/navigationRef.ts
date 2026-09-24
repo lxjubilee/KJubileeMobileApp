@@ -9,10 +9,9 @@ import type { RootStackParamList } from './types';
 export type AuthGateReason = 'likes' | 'reviews' | 'account';
 
 /**
- * The root container ref. Module-level rather than per-component because the
- * app has two callers that sit OUTSIDE NavigationContainer and so have no
- * `useNavigation` to reach for: the share/deep-link handler, and the
- * TrackMenuProvider whose sheet carries Like.
+ * The root container ref. Module-level rather than per-component because some
+ * callers sit OUTSIDE NavigationContainer and so have no `useNavigation` to
+ * reach for: the frequency deep-link handler, and `openSignIn()` below.
  */
 export const navigationRef = createNavigationContainerRef<RootStackParamList>();
 

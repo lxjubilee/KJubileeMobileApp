@@ -54,9 +54,7 @@ const TabBarWithMiniPlayer: React.FC<BottomTabBarProps> = (props) => {
 
   return (
     <View>
-      {hideMiniPlayer ? null : (
-        <MiniPlayer onPress={() => props.navigation.getParent()?.navigate('MusicPlayer')} />
-      )}
+      {hideMiniPlayer ? null : <MiniPlayer />}
       <BottomTabBar {...props} />
     </View>
   );

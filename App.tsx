@@ -6,32 +6,15 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import {
-  store,
-  persistor,
-  fetchHomeFeed,
-  restoreSession,
-  clearSession,
-} from '@/redux';
+import { store, persistor, restoreSession, clearSession } from '@/redux';
 import { ThemeProvider } from '@/context';
 import { RootNavigator } from '@/navigation';
-import {
-  usePlayerSync,
-  useListeningAnalytics,
-  usePlaybackGate,
-  useStationFavoritesSync,
-  useAppSelector,
-} from '@/hooks';
+import { useStationFavoritesSync, useAppSelector } from '@/hooks';
 import { setupPlayer } from '@/services/music';
 import { initRadio } from '@/services/radio';
 import { initAuthClient } from '@/services/auth';
-import { getManifest, onCatalogUpdated, invalidateCatalogIndex } from '@/services/catalog';
-import { getMobileConfig, onMobileConfigUpdated } from '@/services/mobileConfig';
-import { CONFIG } from '@/constants';
 import { SplashScreen } from '@/components/SplashScreen';
-import { PlaybackLimitGate } from '@/components/PlaybackLimitGate';
 import { AppUpdateGate } from '@/components/AppUpdateGate';
-import { TrackMenuProvider } from '@/components/TrackMenuProvider';
 import { i18n } from '@/localization'; // initialize i18next
 
 /** Apply the persisted language to i18next once redux-persist has rehydrated. */
@@ -41,15 +24,10 @@ const applyPersistedLanguage = () => {
 };
 
 /**
- * Mounts the engine->Redux bridge, the listening-analytics emitter, and the
- * Free-plan playback gate exactly once, near the root. Also refreshes the user's
- * plan entitlement whenever the session becomes authenticated (cold-start
- * restore, sign-in, 2FA, or sign-up) so the app is plan-aware right after login.
+ * Mounts the app-wide listeners exactly once, near the root: the station
+ * favourites sync and the radio engine's lifecycle watch.
  */
 const PlayerSyncGate: React.FC = () => {
-  usePlayerSync();
-  useListeningAnalytics();
-  usePlaybackGate();
   useStationFavoritesSync();
 
   // The radio engine watches the app lifecycle: returning to the foreground has
@@ -117,27 +95,6 @@ export default function App() {
     void store.dispatch(restoreSession());
   }, []);
 
-  // Warm the catalog so lists are ready before the user navigates, and refresh
-  // the (instantly-rendered, persisted) home feed once a background revalidation
-  // brings newer data.
-  useEffect(() => {
-    if (CONFIG.DATA_SOURCE !== 'manifest') return undefined;
-    void getManifest();
-    return onCatalogUpdated(() => {
-      invalidateCatalogIndex();
-      void store.dispatch(fetchHomeFeed());
-    });
-  }, []);
-
-  // Warm the admin-managed mobile category config, and rebuild the Home feed
-  // when it changes in the background (the overlay is applied in getHomeConfig).
-  useEffect(() => {
-    void getMobileConfig();
-    return onMobileConfigUpdated(() => {
-      void store.dispatch(fetchHomeFeed());
-    });
-  }, []);
-
   return (
     <GestureHandlerRootView style={styles.flex}>
       <Provider store={store}>
@@ -145,11 +102,7 @@ export default function App() {
           <SafeAreaProvider>
             <ThemeProvider>
               <PlayerSyncGate />
-              <TrackMenuProvider>
-                {fontsLoaded ? <RootGate /> : null}
-              </TrackMenuProvider>
-              {/* Free-plan daily-limit popup (shown when playback hits the cap). */}
-              <PlaybackLimitGate />
+              {fontsLoaded ? <RootGate /> : null}
               {/* Post-splash "update available" prompt (checks once per launch). */}
               <AppUpdateGate enabled={!showSplash && fontsLoaded} />
             </ThemeProvider>

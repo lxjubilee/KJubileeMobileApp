@@ -1,31 +1,24 @@
 import React, { useSyncExternalStore } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTheme } from '@/context';
-import { usePlayer, useRadio } from '@/hooks';
-import type { RootStackParamList } from '@/navigation/types';
+import { useRadio } from '@/hooks';
 import { MiniPlayer } from './MiniPlayer';
 import { radioBarDismissal } from './radioBarDismissal';
 
-type Nav = NativeStackNavigationProp<RootStackParamList>;
-
 /**
- * Bottom-pinned MiniPlayer for the full-screen detail screens (AlbumDetails,
- * ArtistDetails, AlbumList) that present over the tab bar — where the tab bar's
- * own MiniPlayer is hidden. Tapping opens the full player.
+ * Bottom-pinned MiniPlayer for the full-screen detail screens (StationDetail,
+ * StationList, BandArticles…) that present over the tab bar — where the tab
+ * bar's own MiniPlayer is hidden. Tapping opens the station's page.
  *
  * The wrap paints an opaque backdrop from the top of the card down through the
- * safe-area/navigation inset, so the scrolling song list never shows through
- * around or below the floating card. It renders nothing when idle so that
- * backdrop only exists while a track is playing.
+ * safe-area/navigation inset, so the scrolling list never shows through around
+ * or below the floating card. It renders nothing when idle so that backdrop
+ * only exists while a station is tuned.
  */
 export const FloatingMiniPlayer: React.FC = () => {
-  const navigation = useNavigation<Nav>();
   const insets = useSafeAreaInsets();
   const theme = useTheme();
-  const { currentTrack } = usePlayer();
   const radio = useRadio();
   const dismissed = useSyncExternalStore(
     radioBarDismissal.subscribe,
@@ -33,15 +26,12 @@ export const FloatingMiniPlayer: React.FC = () => {
     radioBarDismissal.get,
   );
 
-  // Nothing playing → no overlay, so the bottom of the screen stays clear.
-  // "Playing" now means either source: `MiniPlayer` falls back to the tuned
-  // station, so gating on the music queue alone would keep the backdrop — and
-  // therefore the bar — hidden through every broadcast.
+  // Nothing tuned → no overlay, so the bottom of the screen stays clear.
   // The dismissal has to be read HERE as well, not just inside MiniPlayer.
   // This wrap paints an opaque backdrop of its own; leaving it mounted around a
   // bar that returned null would put an empty coloured strip across the foot of
   // the screen — the close button would look like it half-worked.
-  if (!currentTrack && (!radio.slug || dismissed)) return null;
+  if (!radio.slug || dismissed) return null;
 
   return (
     <View
@@ -50,7 +40,7 @@ export const FloatingMiniPlayer: React.FC = () => {
         { paddingBottom: insets.bottom + 8, backgroundColor: theme.colors.background },
       ]}
     >
-      <MiniPlayer onPress={() => navigation.navigate('MusicPlayer')} />
+      <MiniPlayer />
     </View>
   );
 };

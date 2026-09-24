@@ -221,12 +221,10 @@ const authSlice = createSlice({
      * Clears auth locally without a network call (used on refresh failure).
      *
      * DO NOT rename, move or re-create this action (or `signOut` /
-     * `deleteAccount`, or the slice's `name: 'auth'`). Four other modules match
-     * on their generated type strings to tear down the rest of the app:
-     * `redux/store/store.ts` (playback queue), `slices/playerSlice.ts`,
-     * `slices/likesSlice.ts` and `slices/entitlementSlice.ts`. A same-named
+     * `deleteAccount`, or the slice's `name: 'auth'`). `redux/store/store.ts`
+     * matches on their generated type strings to stop playback. A same-named
      * action on a different slice would emit a different type and silently leave
-     * music playing after sign-out.
+     * a station playing after sign-out.
      */
     clearSession(state) {
       state.user = null;

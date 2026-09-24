@@ -3,7 +3,6 @@ export { OnAirBadge, ON_AIR_GREEN } from './OnAirBadge';
 export type { OnAirState } from './OnAirBadge';
 export { BrandLogo } from './BrandLogo';
 export { LanguagePanel } from './LanguagePanel';
-export { Artwork } from './Artwork';
 export { Screen } from './Screen';
 export { Button } from './Button';
 export { IconButton } from './IconButton';

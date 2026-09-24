@@ -3,42 +3,13 @@ export type { RootState, AppDispatch } from './store/store';
 export { useAppDispatch, useAppSelector } from './store/hooks';
 
 // Slice actions/thunks
-export { fetchHomeFeed } from './slices/homeSlice';
-export { toggleFollowArtist } from './slices/librarySlice';
-export {
-  fetchLikes,
-  toggleSongLike,
-  toggleAlbumLike,
-  resetLikes,
-  setLikedLocal,
-} from './slices/likesSlice';
 export {
   fetchStationFavorites,
   toggleStationFavorite,
   setStationFavoriteLocal,
 } from './slices/stationFavoritesSlice';
 export { toggleStationLike, setStationLiked } from './slices/stationLikesSlice';
-export {
-  enqueueDownload,
-  updateDownloadProgress,
-  completeDownload,
-  removeDownload,
-} from './slices/downloadsSlice';
-export { markArtworkMissing } from './slices/artworkSlice';
-export { fetchEntitlement, setLimitReached } from './slices/entitlementSlice';
 export { setLanguage, setAppLanguage } from './slices/settingsSlice';
-export {
-  setQueue,
-  setPlayOrder,
-  setCurrentTrack,
-  setIsPlaying,
-  setIsBuffering,
-  setRepeatMode,
-  cycleRepeatMode,
-  toggleShuffle,
-  stopPlayback,
-} from './slices/playerSlice';
-export type { RepeatMode } from './slices/playerSlice';
 export {
   restoreSession,
   signIn,

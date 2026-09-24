@@ -106,6 +106,12 @@ const MIN_FACE = 120;
  *
  * Flip to `true` once the catalog is re-synced from production; nothing else
  * needs to change, and the other three figures are already live-sourced.
+ *
+ * AND ONLY WITH A LABEL THAT SAYS WHAT THEY ARE. "Potential outreach" is every
+ * connected device on earth, nudged daily by a seeded random drift; "towers" are
+ * the network's transmit cities, not physical transmitters. Printed bare, either
+ * can be read as a measured audience or real infrastructure, which App Store
+ * review treats as misleading (guidelines 2.3 and 1.1.6).
  */
 const SHOW_BAND_NUMBERS = false;
 
@@ -116,14 +122,6 @@ const SHOW_BAND_NUMBERS = false;
  */
 const STEP_SETTLE_MS = 350;
 
-/**
- * The potential-outreach figure's gold, from the site's `.circ`. Deliberately
- * outside the app's palette, as it is on the web: it is an analytics reading
- * rather than part of the station's identity, so the eye should be able to skip
- * it and find it when it wants it. Never abbreviated — the size of the number
- * is the point, and "96M" hides exactly what "96,096,000" shows.
- */
-const CIRC_GOLD = '#EFC44F';
 
 /**
  * The broadcast cities, written the way the site writes them: "Miami, Los
@@ -611,11 +609,11 @@ export const DialScreen: React.FC = () => {
           <AppText numberOfLines={1} style={[styles.sub, compact && cs.sub, { color: c.textSecondary }]}>
             {station.format}
             {station.host ? `  ·  ${station.host.name}` : ''}
-            {station.circulation ? (
-              <AppText style={[styles.circ, { color: CIRC_GOLD }]}>
-                {`  (${groupThousands(station.circulation)} c.)`}
-              </AppText>
-            ) : null}
+            {/* The site prints a potential-outreach figure here — "(96,096,000 c.)",
+                the devices a station's language segment could reach. It is left
+                out on purpose: beside a station name it reads as an audience
+                count, which it is not, and App Store review treats figures that
+                can be mistaken for real usage as misleading (guideline 2.3). */}
           </AppText>
           {/* Where the station transmits from, as the site prints it under the
               readout. In broadcast green rather than the brand blue — these are
@@ -985,9 +983,6 @@ const styles = StyleSheet.create({
   station: { fontSize: 24, lineHeight: 30, marginTop: 12, textAlign: 'center' },
   sub: { fontSize: 14, marginTop: 5, textAlign: 'center' },
   bases: { fontSize: 12.5, marginTop: 3, textAlign: 'center', fontWeight: '700' },
-  // Inline inside `sub`, so it inherits that line's size and only overrides the
-  // things the site's `.circ` overrides.
-  circ: { fontVariant: ['tabular-nums'] },
 
   // Sits between the readout and the glass, where the eye already is after
   // reading the frequency it did not ask for.

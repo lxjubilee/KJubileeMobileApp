@@ -29,6 +29,31 @@ const OUT = path.join(process.cwd(), 'src/assets/radio/stationArticles.json');
 
 const apply = process.argv.includes('--apply');
 
+/**
+ * App-side replacements for website articles that contradict the catalog.
+ *
+ * The website still carries Radiant Stones' placeholder ("assigned, named, and
+ * not yet on air") although the backend has a tenant for it and it plays. On a
+ * page with an ON AIR badge and a working Play button that reads as a broken
+ * app, so the app ships its own copy until the website's is updated. Drop an
+ * entry here once the source article agrees with the catalog.
+ */
+const OVERRIDES = {
+  'radiant-stones-radio': {
+    need: 'For worship that lifts in harmony.',
+    stands: 'Three voices, one song of praise.',
+    sections: [
+      {
+        h: 'What this frequency is',
+        p: [
+          'Radiant Stones Concerts is praise and worship sung in three-part harmony — bright, soaring vocal worship with a modern sound.',
+          'Like every KJubilee station it is a live broadcast: tune in at any hour and you hear exactly what everyone else on HM 301.90 is hearing.',
+        ],
+      },
+    ],
+  },
+};
+
 const src = await readFile(SRC, 'utf8');
 
 // The file assigns one object literal to a browser global. Evaluating it in a
@@ -72,6 +97,10 @@ for (const [slug, a] of Object.entries(articles)) {
       }))
       .filter((s) => s.h || s.p.length),
   };
+}
+
+for (const [slug, a] of Object.entries(OVERRIDES)) {
+  if (slugs.has(slug)) out[slug] = a;
 }
 
 const kept = Object.keys(out).sort();

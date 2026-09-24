@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '@/navigation/types';
 import { useTheme } from '@/context';
-import { usePlayer, useRadio, useSafeProgress } from '@/hooks';
+import { useRadio } from '@/hooks';
 import {
   getSchedule,
   getStationBySlug,
@@ -17,107 +17,30 @@ import {
 import { radioBarDismissal } from './radioBarDismissal';
 import { stationArt } from '@/assets/radio/stationArt';
 import { AppText } from '../common/AppText';
-import { Artwork } from '../common/Artwork';
 import { IconButton } from '../common/IconButton';
 
-interface MiniPlayerProps {
-  /** Opens the full Music Player (wired by the navigation wrapper). */
-  onPress: () => void;
-}
-
 /**
- * Persistent now-playing bar shown above the tab bar on every screen. Renders
- * nothing when nothing is loaded. Tapping it opens the full player.
- *
- * ONE BAR, TWO SOURCES. It used to read `usePlayer()` alone and return null on
- * an empty queue — and radio never fills that queue, so the whole footer simply
- * vanished during a broadcast, which is the state the app is in most of the
- * time. The music queue still wins when it holds something (it is the more
- * specific thing the user just started); radio is the fallback.
- */
-export const MiniPlayer: React.FC<MiniPlayerProps> = ({ onPress }) => {
-  const theme = useTheme();
-  const { currentTrack, isPlaying, isBuffering, toggle, next, stop } = usePlayer();
-  const radio = useRadio();
-  const { position, duration } = useSafeProgress(500);
-
-  if (!currentTrack) return <RadioBar theme={theme} radio={radio} />;
-
-  const pct = duration > 0 ? Math.min(1, position / duration) : 0;
-
-  return (
-    <Pressable
-      onPress={onPress}
-      style={[
-        styles.container,
-        { backgroundColor: theme.colors.miniPlayer, borderRadius: theme.radius.md },
-      ]}
-    >
-      <View style={styles.content}>
-        <Artwork
-          uri={currentTrack.artwork}
-          style={[styles.art, { borderRadius: theme.radius.sm }]}
-          iconSize={20}
-        />
-        <View style={styles.meta}>
-          <AppText variant="h3" numberOfLines={1}>
-            {currentTrack.title}
-          </AppText>
-          <AppText variant="bodySm" color="textMuted" numberOfLines={1}>
-            {currentTrack.artistName}
-          </AppText>
-        </View>
-        {isBuffering ? (
-          <View style={[styles.control, styles.spinner]}>
-            <ActivityIndicator size="small" color={theme.colors.text} />
-          </View>
-        ) : (
-          <IconButton
-            name={isPlaying ? 'pause' : 'play'}
-            size={26}
-            onPress={toggle}
-            style={styles.control}
-          />
-        )}
-        <IconButton name="play-skip-forward" size={22} onPress={next} style={styles.control} />
-        {/* Close: stop playback and dismiss the bar. */}
-        <IconButton name="close" size={22} onPress={stop} style={styles.control} />
-      </View>
-      <View style={[styles.progressTrack, { backgroundColor: theme.colors.border }]}>
-        <View
-          style={[
-            styles.progressFill,
-            { width: `${pct * 100}%`, backgroundColor: theme.colors.text },
-          ]}
-        />
-      </View>
-    </Pressable>
-  );
-};
-
-/**
- * The broadcast half of the bar, laid out after the website's `#kj-player`:
- * artwork with the frequency struck across it, the station in bold, the track
- * as `Title (Album)`, then `HM 305.40 (Angel Songs)`, and a STREAMING lamp.
+ * Persistent now-playing bar shown above the tab bar on every screen, laid out
+ * after the website's `#kj-player`: artwork with the frequency struck across
+ * it, the station in bold, the track as `Title (Album)`, then
+ * `HM 305.40 (Angel Songs)`, and a STREAMING lamp. Renders nothing until a
+ * station is tuned. Tapping it opens the station's own page.
  *
  * Two of the site's controls are deliberately absent. Volume belongs to the
  * hardware keys on a phone, and "fullscreen" is what tapping the bar already
  * does. There is no seek bar either — and that is not an omission: a live
  * broadcast has no position the listener can move.
  */
-const RadioBar: React.FC<{
-  theme: ReturnType<typeof useTheme>;
-  radio: ReturnType<typeof useRadio>;
-}> = ({ theme, radio }) => {
+export const MiniPlayer: React.FC = () => {
+  const theme = useTheme();
+  const radio = useRadio();
   const c = theme.colors;
   const dismissed = useSyncExternalStore(
     radioBarDismissal.subscribe,
     radioBarDismissal.get,
     radioBarDismissal.get,
   );
-  // Not the `onPress` the music bar takes. That one opens MusicPlayer, which
-  // reads the album queue — empty during a broadcast, so it would open onto
-  // nothing. The station's own page is the full view of what is sounding.
+  // The station's own page is the full view of what is sounding.
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const station = radio.slug ? getStationBySlug(radio.slug) : undefined;
 

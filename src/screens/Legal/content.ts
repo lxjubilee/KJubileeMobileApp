@@ -3,8 +3,12 @@
  * Kept as structured data — not hard-coded JSX — so the same `LegalScreen`
  * renderer can present either document and copy edits stay in one place.
  *
- * The text mirrors the KJubilee.com website (`/privacy` and `/terms`); keep the
- * two in sync when either is revised.
+ * DRAFT PENDING LEGAL REVIEW. This text was rewritten on 2026-09-24 to describe
+ * what the KJubilee radio app actually does (it previously mirrored the
+ * website's music-streaming policy, with playlists, ratings and nominations the
+ * app does not have). It must be approved by Jubilee Software's legal owner,
+ * and kjubilee.com/privacy and /terms — which App Store Connect links to —
+ * updated to match, before release.
  */
 
 /** A single rendered block within a section: a paragraph, sub-heading, or list. */
@@ -29,41 +33,54 @@ export interface LegalDocument {
   contactEmail: string;
 }
 
-const EFFECTIVE_DATE = 'June 17, 2026';
+const EFFECTIVE_DATE = 'September 24, 2026';
 
 export const PRIVACY_POLICY: LegalDocument = {
   title: 'Privacy Policy',
   effectiveDate: EFFECTIVE_DATE,
   contactEmail: 'privacy@kjubilee.com',
   intro: [
-    `KJubilee.com ("KJubilee," "we," "us," or "our"), operated by Jubilee Software, Inc., provides a faith-centered music streaming and discovery experience. This Privacy Policy applies to the KJubilee.com website and the services offered through it (the "Service"). By creating an account or using the Service, you agree to the practices described below.`,
+    `KJubilee ("KJubilee," "we," "us," or "our"), operated by Jubilee Software, Inc., is a faith-centered internet radio network. This Privacy Policy explains what information the KJubilee mobile app and the KJubilee.com website (together, the "Service") collect, how we use it, and the choices you have.`,
+    'You can listen to every station without an account. We only ask for personal information if you choose to sign in or create a Jubilee ID.',
   ],
   sections: [
     {
       heading: '1. Information We Collect',
       blocks: [
-        { type: 'subheading', text: 'Information you provide' },
-        {
-          type: 'bullets',
-          items: [
-            'Account details. When you sign up we collect your first and last name, date of birth, and email address. Your password is stored only in a securely hashed form — we never keep it in plain text.',
-            'Content you create. Comments you post, star ratings you give, award nominations (and the reasons you provide), and the playlists you build are stored and associated with your account.',
-            'Communications. If you contact us for support, we keep the messages and contact details you send so we can respond.',
-          ],
-        },
-        { type: 'subheading', text: 'Information collected automatically' },
-        {
-          type: 'bullets',
-          items: [
-            `Security & verification. To confirm your email and protect your account we generate one-time, 6-digit verification codes (used at sign-up and, when enabled, for two-step sign-in), and we record your "keep me signed in" preference.`,
-            'Technical & usage data. Like most websites, our servers automatically log information such as your IP address, browser type and user-agent, the pages you request, and the date and time of each request. This helps us operate, secure, and improve the Service.',
-            'Cookies. We use the cookies described in Section 4 to keep you signed in and to protect requests against forgery.',
-          ],
-        },
-        { type: 'subheading', text: 'Information from sign-in providers' },
+        { type: 'subheading', text: 'When you listen' },
         {
           type: 'paragraph',
-          text: 'If you choose to continue with JubileeInspire Single Sign-On (SSO), we receive basic profile information (such as your name and email address) from your JubileeInspire account so we can create or link your KJubilee profile. Your KJubilee and JubileeInspire accounts may be kept in sync as part of the Jubilee family of services.',
+          text: 'To deliver a station to you, our servers and content delivery network receive standard technical information with each request, such as your IP address, device type and operating system, app version, and the date and time of the request. This happens whether or not you are signed in.',
+        },
+        { type: 'subheading', text: 'If you create a Jubilee ID or sign in' },
+        {
+          type: 'bullets',
+          items: [
+            'Account details. Your first and last name, date of birth, and email address. Your password is sent over an encrypted connection and stored on our servers only in a securely hashed form — we never keep it in plain text.',
+            'Favourite stations. The stations you mark with the heart are saved to your account so they appear on your other devices and on KJubilee.com.',
+            'Sign-in device information. When you sign in, the app sends your platform (iOS or Android), a generic device label, and a random identifier the app creates, so we can manage your signed-in sessions. It is not your device’s hardware or advertising identifier.',
+            'Verification codes. We send one-time codes to your email to confirm your address and, when needed, to verify a sign-in.',
+          ],
+        },
+        { type: 'subheading', text: 'Station likes' },
+        {
+          type: 'paragraph',
+          text: 'When you like or un-like a station (the thumb), we record the station, the action, the time, and a random session identifier that resets each time the app starts. If you are signed in, the event is also linked to your account. Your likes themselves are remembered on your device.',
+        },
+        { type: 'subheading', text: 'Human verification' },
+        {
+          type: 'paragraph',
+          text: 'The sign-in and password-reset screens use Cloudflare Turnstile to tell people from automated abuse. Cloudflare processes technical signals from your device for this purpose under its own privacy policy.',
+        },
+        { type: 'subheading', text: 'Support' },
+        {
+          type: 'paragraph',
+          text: 'If you contact us, we keep your messages and contact details so we can respond.',
+        },
+        { type: 'subheading', text: 'What we do not collect' },
+        {
+          type: 'paragraph',
+          text: 'The app does not access your location, contacts, photos, camera, or microphone. It does not use your device’s advertising identifier, contains no advertising or third-party analytics software, and does not track you across other companies’ apps or websites.',
         },
       ],
     },
@@ -73,130 +90,129 @@ export const PRIVACY_POLICY: LegalDocument = {
         {
           type: 'bullets',
           items: [
-            'Create and manage your account, authenticate you, and keep your session secure.',
-            'Provide the core experience — streaming the catalog and saving your playlists, ratings, comments, and nominations.',
-            'Send you service-related (transactional) email, such as verification codes, password-reset links, and important account or security notices.',
+            'Stream stations to you and keep the broadcast in sync.',
+            'Create and manage your account, sign you in, and keep your session secure.',
+            'Save and sync your favourite stations.',
+            'Understand which stations listeners like, so we can improve programming.',
+            'Send service email, such as verification codes, password-reset links, and important account or security notices.',
             'Detect, prevent, and respond to fraud, abuse, and security incidents.',
-            'Maintain, analyze, and improve the Service.',
             'Comply with legal obligations and enforce our terms.',
           ],
         },
         {
           type: 'paragraph',
-          text: 'We do not use your personal information to serve third-party advertising, and we do not sell your personal information.',
+          text: 'We do not use your personal information for advertising, and we do not sell your personal information.',
         },
       ],
     },
     {
-      heading: '3. Email Communications',
+      heading: '3. Information Stored on Your Device',
       blocks: [
-        {
-          type: 'paragraph',
-          text: 'The emails we send (verification codes, password resets, and security notices) are necessary to operate your account and are delivered on our behalf by a third-party email provider (currently SendGrid). These transactional messages are part of the Service and are not marketing email. If we ever introduce optional newsletters or promotional email, you will be able to opt out at any time.',
-        },
-      ],
-    },
-    {
-      heading: '4. Cookies and Similar Technologies',
-      blocks: [
-        {
-          type: 'paragraph',
-          text: 'We rely on a small number of strictly necessary cookies; we do not use advertising or cross-site tracking cookies.',
-        },
         {
           type: 'bullets',
           items: [
-            'Session cookies. Secure, HTTP-only cookies that keep you signed in as you move between pages.',
-            'CSRF token cookie (jv_csrf). A security cookie used to protect form submissions and other actions against cross-site request forgery.',
-            'Bot-protection. Our sign-in page may use Cloudflare Turnstile to tell humans from automated abuse; Cloudflare may set its own cookie for this purpose.',
+            'Sign-in credentials. When you sign in, the app keeps your session tokens in your device’s secure storage (the iOS Keychain or Android Keystore) so you stay signed in. They are removed when you sign out.',
+            'Preferences. Your language, your station likes, and a copy of your favourite stations are kept in the app’s own storage so they appear instantly.',
+            'Deleting the app removes this information from your device.',
           ],
-        },
-        {
-          type: 'paragraph',
-          text: 'You can block or delete cookies in your browser settings, but disabling the essential cookies above will prevent you from signing in or using account features.',
         },
       ],
     },
     {
-      heading: '5. How We Share Information',
+      heading: '4. Email Communications',
+      blocks: [
+        {
+          type: 'paragraph',
+          text: 'The emails we send (verification codes, password resets, and security notices) are necessary to operate your account and are delivered on our behalf by a third-party email provider (currently SendGrid). These are not marketing emails. If we ever introduce optional newsletters, you will be able to opt out at any time.',
+        },
+      ],
+    },
+    {
+      heading: '5. Cookies',
+      blocks: [
+        {
+          type: 'paragraph',
+          text: 'On KJubilee.com we use a small number of strictly necessary cookies to keep you signed in and to protect forms against cross-site request forgery; Cloudflare may set its own cookie for bot protection. The app keeps the sign-in cookies our server sets for use within the app only. We do not use advertising or cross-site tracking cookies.',
+        },
+      ],
+    },
+    {
+      heading: '6. How We Share Information',
       blocks: [
         { type: 'paragraph', text: 'We share personal information only in these limited situations:' },
         {
           type: 'bullets',
           items: [
-            'Service providers. Vendors who process data on our behalf and under our instructions — for example our email delivery provider (SendGrid), security and content delivery (Cloudflare), and our hosting infrastructure.',
-            'The Jubilee family of services. If you use JubileeInspire SSO, account information is shared with JubileeInspire to provide and synchronize your single sign-on.',
+            'Service providers. Vendors who process data on our behalf and under our instructions — our email provider (SendGrid), security and content delivery (Cloudflare), and our hosting infrastructure.',
+            'The Jubilee family of services. A Jubilee ID works across Jubilee services. If you sign in with an existing Jubilee ID, basic account information (such as your name and email address) is shared with JubileeInspire, which provides Jubilee ID sign-in, to create or link your KJubilee account and keep it in sync.',
             'Legal and safety. When we reasonably believe disclosure is required by law, legal process, or to protect the rights, property, or safety of our users, the public, or KJubilee.',
             'Business transfers. In connection with a merger, acquisition, or sale of assets, in which case we will continue to protect your information consistent with this policy.',
           ],
         },
-        {
-          type: 'paragraph',
-          text: 'Public content you create (such as comments and ratings) may be visible to other users of the Service.',
-        },
       ],
     },
     {
-      heading: '6. Data Retention',
+      heading: '7. Data Retention',
       blocks: [
         {
           type: 'paragraph',
-          text: 'We keep your personal information for as long as your account is active or as needed to provide the Service, comply with our legal obligations, resolve disputes, and enforce our agreements. When you delete your account, we remove your account and its associated data as described in Section 7, except where we are required or permitted by law to retain certain records.',
+          text: 'We keep your account information for as long as your account is active or as needed to provide the Service, comply with our legal obligations, resolve disputes, and enforce our agreements. Technical request logs and station-like records are kept only as long as needed to operate and improve the Service. When you delete your account, we delete your account and its associated data, except where we are required or permitted by law to retain certain records.',
         },
       ],
     },
     {
-      heading: '7. Your Choices and Rights',
+      heading: '8. Your Choices and Rights',
       blocks: [
         {
           type: 'bullets',
           items: [
-            'Access and update. You can view your sign-in email and update your password from your account page.',
-            `Delete your account. You can permanently delete your account and its associated data at any time from the "Danger zone" on your account page. This action cannot be undone.`,
-            'Email. Transactional email is required to operate your account; any optional email will include an unsubscribe link.',
+            'Listen without an account. Every station is available without signing in.',
+            'Update your details. You can change your name and password from Profile in the app, or from your account page on KJubilee.com.',
+            'Delete your account. You can permanently delete your account and its associated data at any time in the app (Profile → Delete account) or on KJubilee.com. This cannot be undone.',
+            'Sign out. Signing out removes your sign-in credentials from the device.',
             'Regional rights. Depending on where you live (for example under the GDPR or CCPA/CPRA), you may have rights to access, correct, delete, port, or restrict the processing of your personal information, and to object to certain uses. To exercise these rights, contact us using the details below.',
           ],
         },
       ],
     },
     {
-      heading: '8. Data Security',
+      heading: '9. Data Security',
       blocks: [
         {
           type: 'paragraph',
-          text: 'We use technical and organizational safeguards designed to protect your information, including encryption of data in transit (HTTPS/TLS), hashed password storage, CSRF protection, and optional two-step verification. No method of transmission or storage is completely secure, however, so we cannot guarantee absolute security.',
+          text: 'We use technical and organizational safeguards designed to protect your information, including encryption in transit (HTTPS/TLS), hashed password storage, secure on-device storage for sign-in credentials, and bot protection on sign-in. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.',
         },
       ],
     },
     {
-      heading: "9. Children's Privacy",
+      heading: "10. Children's Privacy",
       blocks: [
         {
           type: 'paragraph',
-          text: "While our catalog includes music made for children and families, the Service itself is intended for users who are old enough to maintain their own account. We do not knowingly collect personal information from children under the age of 13 (or the minimum age required in your jurisdiction). If you believe a child has provided us personal information, please contact us and we will take steps to delete it. Parents and guardians are encouraged to supervise children's use of the Service.",
+          text: "Our network includes stations made for children and families, and anyone can listen without an account. Creating a Jubilee ID is intended for users who are old enough to maintain their own account. We do not knowingly collect personal information from children under the age of 13 (or the minimum age required in your jurisdiction). If you believe a child has provided us personal information, please contact us and we will delete it. Parents and guardians are encouraged to supervise children's use of the Service.",
         },
       ],
     },
     {
-      heading: '10. International Users',
+      heading: '11. International Users',
       blocks: [
         {
           type: 'paragraph',
-          text: 'KJubilee.com is operated from the United States. If you access the Service from outside the United States, you understand that your information may be transferred to, stored, and processed in the United States and other countries where our service providers operate, which may have data protection laws different from those in your country.',
+          text: 'KJubilee is operated from the United States. If you use the Service from outside the United States, your information may be transferred to, stored, and processed in the United States and other countries where our service providers operate, which may have data protection laws different from those in your country.',
         },
       ],
     },
     {
-      heading: '11. Changes to This Policy',
+      heading: '12. Changes to This Policy',
       blocks: [
         {
           type: 'paragraph',
-          text: `We may update this Privacy Policy from time to time. When we make material changes, we will revise the "Effective" date above and, where appropriate, provide additional notice. Your continued use of the Service after an update takes effect means you accept the revised policy.`,
+          text: `We may update this Privacy Policy from time to time. When we make material changes, we will revise the "Effective" date above and, where appropriate, provide additional notice in the app. Your continued use of the Service after an update takes effect means you accept the revised policy.`,
         },
       ],
     },
     {
-      heading: '12. Contact Us',
+      heading: '13. Contact Us',
       blocks: [
         {
           type: 'paragraph',
@@ -214,7 +230,7 @@ export const TERMS_OF_USE: LegalDocument = {
   effectiveDate: EFFECTIVE_DATE,
   contactEmail: 'legal@kjubilee.com',
   intro: [
-    `Welcome to KJubilee.com. These Terms of Use ("Terms") are a legal agreement between you and Jubilee Software, Inc. ("KJubilee," "we," "us," or "our") governing your access to and use of the KJubilee.com website and the faith-centered music streaming and discovery services offered through it (the "Service"). Please also review our Privacy Policy, which explains how we handle your information and is incorporated into these Terms by reference.`,
+    `Welcome to KJubilee. These Terms of Use ("Terms") are a legal agreement between you and Jubilee Software, Inc. ("KJubilee," "we," "us," or "our") governing your use of the KJubilee mobile app, the KJubilee.com website, and the faith-centered internet radio stations offered through them (the "Service"). Please also review our Privacy Policy, which explains how we handle your information and is incorporated into these Terms by reference.`,
   ],
   sections: [
     {
@@ -222,7 +238,7 @@ export const TERMS_OF_USE: LegalDocument = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'By creating an account, accessing, or using the Service, you confirm that you have read, understood, and agree to be bound by these Terms and our Privacy Policy. If you do not agree, please do not use the Service. If you are using the Service on behalf of an organization, you represent that you are authorized to accept these Terms on its behalf.',
+          text: 'By using the Service or creating an account, you confirm that you have read, understood, and agree to be bound by these Terms and our Privacy Policy. If you do not agree, please do not use the Service.',
         },
       ],
     },
@@ -231,7 +247,7 @@ export const TERMS_OF_USE: LegalDocument = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'You must be at least 13 years old (or the minimum age required in your country) to create an account and use the Service. If you are a minor in your jurisdiction, you may use the Service only with the involvement and consent of a parent or legal guardian. By using the Service, you represent that you meet these requirements.',
+          text: 'Anyone may listen to the Service. You must be at least 13 years old (or the minimum age required in your country) to create an account. If you are a minor in your jurisdiction, you may create an account only with the involvement and consent of a parent or legal guardian.',
         },
       ],
     },
@@ -241,11 +257,12 @@ export const TERMS_OF_USE: LegalDocument = {
         {
           type: 'bullets',
           items: [
+            'An account is optional. It lets you save favourite stations across your devices.',
             'You agree to provide accurate, current, and complete information when you register and to keep it up to date.',
-            'You are responsible for safeguarding your password and for all activity that occurs under your account. We recommend enabling two-step verification where available.',
-            "You may sign in using JubileeInspire Single Sign-On (SSO); your use of that option is also subject to JubileeInspire's own terms.",
-            'Notify us promptly of any unauthorized use of your account or any other breach of security.',
-            'You may manage your password and permanently delete your account at any time from your account page.',
+            'You are responsible for safeguarding your password and for all activity that occurs under your account.',
+            'Your Jubilee ID also works across other Jubilee services; your use of those services is subject to their own terms.',
+            'Notify us promptly of any unauthorized use of your account.',
+            'You may permanently delete your account at any time in the app (Profile → Delete account) or on KJubilee.com.',
           ],
         },
       ],
@@ -255,7 +272,7 @@ export const TERMS_OF_USE: LegalDocument = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'Subject to your compliance with these Terms, we grant you a limited, personal, non-exclusive, non-transferable, revocable license to access and stream the content made available through the Service for your own personal, non-commercial enjoyment. This license does not transfer any ownership to you.',
+          text: 'Subject to your compliance with these Terms, we grant you a limited, personal, non-exclusive, non-transferable, revocable license to use the app and listen to the stations made available through the Service for your own personal, non-commercial enjoyment. This license does not transfer any ownership to you.',
         },
       ],
     },
@@ -264,43 +281,21 @@ export const TERMS_OF_USE: LegalDocument = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'The Service and all of its content — including music, recordings, lyrics, artwork, album titles, artist and persona names, text, graphics, logos, and software — are owned by Jubilee Software, Inc., its affiliates, artists, or licensors and are protected by copyright, trademark, and other laws. Except as expressly permitted by these Terms, you may not copy, download, reproduce, distribute, publicly perform, broadcast, sell, rent, modify, create derivative works from, or otherwise exploit any part of the Service or its content without our prior written permission.',
+          text: 'The Service and all of its content — including broadcasts, music, recordings, lyrics, station names and frequencies, host and persona names, artwork, text, graphics, logos, and software — are owned by Jubilee Software, Inc., its affiliates, artists, or licensors and are protected by copyright, trademark, and other laws. Except as expressly permitted by these Terms, you may not copy, record, reproduce, distribute, rebroadcast, publicly perform, sell, modify, create derivative works from, or otherwise exploit any part of the Service or its content without our prior written permission.',
         },
       ],
     },
     {
-      heading: '6. Your Content',
-      blocks: [
-        {
-          type: 'paragraph',
-          text: `The Service lets you contribute content such as comments, star ratings, award nominations, and playlists ("User Content"). You retain ownership of your User Content, but by submitting it you grant KJubilee a worldwide, royalty-free, non-exclusive license to host, store, display, reproduce, and use that content as needed to operate and improve the Service.`,
-        },
-        { type: 'paragraph', text: 'You are solely responsible for your User Content, and you represent that:' },
-        {
-          type: 'bullets',
-          items: [
-            'you own it or have the rights necessary to submit it; and',
-            "it does not infringe anyone's rights or violate any law or these Terms.",
-          ],
-        },
-        {
-          type: 'paragraph',
-          text: 'We may, but are not obligated to, review, moderate, or remove User Content that we believe violates these Terms or is otherwise objectionable.',
-        },
-      ],
-    },
-    {
-      heading: '7. Acceptable Use',
+      heading: '6. Acceptable Use',
       blocks: [
         { type: 'paragraph', text: 'When using the Service, you agree that you will not:' },
         {
           type: 'bullets',
           items: [
             'use the Service for any unlawful purpose or in violation of these Terms;',
-            'copy, record, download, scrape, or redistribute the music or other content except where a feature expressly allows it;',
-            'circumvent, disable, or interfere with security, authentication, or access-control features (including bot-protection);',
+            'record, download, scrape, or rebroadcast the stations or other content;',
+            'circumvent, disable, or interfere with security, authentication, or access-control features (including bot protection);',
             'attempt to gain unauthorized access to any account, system, or network related to the Service;',
-            "upload or transmit viruses, malicious code, or content that is hateful, harassing, obscene, defamatory, or that infringes others' rights;",
             'use bots, scrapers, or automated means to access the Service in a way that burdens our infrastructure; or',
             'impersonate any person or misrepresent your affiliation with anyone.',
           ],
@@ -308,16 +303,16 @@ export const TERMS_OF_USE: LegalDocument = {
       ],
     },
     {
-      heading: '8. Third-Party Services',
+      heading: '7. Third-Party Services',
       blocks: [
         {
           type: 'paragraph',
-          text: 'The Service relies on, or may link to, third-party services (for example JubileeInspire SSO, Cloudflare for security, and our email provider). Your use of those services may be governed by their own terms and privacy policies, and we are not responsible for their content or practices.',
+          text: 'The Service relies on third-party services (for example Jubilee ID sign-in provided by JubileeInspire, Cloudflare for security and content delivery, and our email provider). Your use of those services may be governed by their own terms and privacy policies, and we are not responsible for their content or practices.',
         },
       ],
     },
     {
-      heading: '9. Suspension and Termination',
+      heading: '8. Suspension and Termination',
       blocks: [
         {
           type: 'paragraph',
@@ -326,16 +321,16 @@ export const TERMS_OF_USE: LegalDocument = {
       ],
     },
     {
-      heading: '10. Disclaimers',
+      heading: '9. Disclaimers',
       blocks: [
         {
           type: 'paragraph',
-          text: `The Service is provided on an "as is" and "as available" basis. To the fullest extent permitted by law, we disclaim all warranties, whether express or implied, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the Service will be uninterrupted, secure, or error-free, or that any content will always be available.`,
+          text: `The Service is provided on an "as is" and "as available" basis. To the fullest extent permitted by law, we disclaim all warranties, whether express or implied, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the Service will be uninterrupted, secure, or error-free, or that any station or content will always be available.`,
         },
       ],
     },
     {
-      heading: '11. Limitation of Liability',
+      heading: '10. Limitation of Liability',
       blocks: [
         {
           type: 'paragraph',
@@ -344,25 +339,25 @@ export const TERMS_OF_USE: LegalDocument = {
       ],
     },
     {
-      heading: '12. Indemnification',
+      heading: '11. Indemnification',
       blocks: [
         {
           type: 'paragraph',
-          text: 'You agree to indemnify and hold harmless KJubilee and its affiliates from any claims, damages, losses, and expenses (including reasonable legal fees) arising out of your use of the Service, your User Content, or your violation of these Terms or applicable law.',
+          text: 'You agree to indemnify and hold harmless KJubilee and its affiliates from any claims, damages, losses, and expenses (including reasonable legal fees) arising out of your use of the Service or your violation of these Terms or applicable law.',
         },
       ],
     },
     {
-      heading: '13. Changes to the Service and These Terms',
+      heading: '12. Changes to the Service and These Terms',
       blocks: [
         {
           type: 'paragraph',
-          text: `We may modify, suspend, or discontinue all or part of the Service at any time. We may also update these Terms from time to time; when we make material changes we will revise the "Effective" date above and, where appropriate, provide additional notice. Your continued use of the Service after an update takes effect means you accept the revised Terms.`,
+          text: `We may modify, suspend, or discontinue all or part of the Service, including individual stations, at any time. We may also update these Terms from time to time; when we make material changes we will revise the "Effective" date above and, where appropriate, provide additional notice. Your continued use of the Service after an update takes effect means you accept the revised Terms.`,
         },
       ],
     },
     {
-      heading: '14. Governing Law',
+      heading: '13. Governing Law',
       blocks: [
         {
           type: 'paragraph',
@@ -371,7 +366,7 @@ export const TERMS_OF_USE: LegalDocument = {
       ],
     },
     {
-      heading: '15. Contact Us',
+      heading: '14. Contact Us',
       blocks: [
         { type: 'paragraph', text: 'If you have any questions about these Terms, please contact us:' },
         { type: 'paragraph', text: 'Jubilee Software, Inc.' },

@@ -3,17 +3,11 @@ import { NavigationContainer, DarkTheme, Theme as NavTheme } from '@react-naviga
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTheme } from '@/context';
 import {
-  AlbumDetailsScreen,
-  AlbumReviewsScreen,
-  ArtistDetailsScreen,
-  AlbumListScreen,
-  ArtistListScreen,
   StationListScreen,
   FavoriteStationsScreen,
   StationDetailScreen,
   BandArticlesScreen,
   BandArticleDetailScreen,
-  MusicPlayerScreen,
 } from '@/screens';
 import { JubileeDoorScreen, ForgotPasswordScreen } from '@/screens/Auth';
 import { PrivacyPolicyScreen, TermsOfUseScreen } from '@/screens/Legal';
@@ -45,20 +39,13 @@ export const RootNavigator: React.FC = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="MainTabs" component={MainTabNavigator} />
         {/* Detail screens push full-screen over the tabs, Netflix-style. */}
-        <Stack.Screen name="AlbumDetails" component={AlbumDetailsScreen} />
-        <Stack.Screen name="AlbumReviews" component={AlbumReviewsScreen} />
-        <Stack.Screen name="ArtistDetails" component={ArtistDetailsScreen} />
-        <Stack.Screen name="AlbumList" component={AlbumListScreen} />
-        <Stack.Screen name="ArtistList" component={ArtistListScreen} />
         <Stack.Screen name="StationList" component={StationListScreen} />
         <Stack.Screen name="FavoriteStations" component={FavoriteStationsScreen} />
         <Stack.Screen name="StationDetail" component={StationDetailScreen} />
         {/* The Heavenly Band — the written half of the network. */}
         <Stack.Screen name="BandArticles" component={BandArticlesScreen} />
         <Stack.Screen name="BandArticleDetail" component={BandArticleDetailScreen} />
-        {/* Player + the song picker slide up as modals. */}
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
-          <Stack.Screen name="MusicPlayer" component={MusicPlayerScreen} />
           {/* The door is a modal because signing in is now something you leave
               as well as enter: a sheet can be swiped away, and the dismissal
               lands back on whatever the listener was already doing. */}
@@ -70,7 +57,7 @@ export const RootNavigator: React.FC = () => {
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen} />
         <Stack.Screen name="TermsOfUse" component={TermsOfUseScreen} />
       </Stack.Navigator>
-      {/* Resolves incoming share/deep links -> play the shared track. */}
+      {/* Resolves incoming frequency links -> open the Dial on that station. */}
       <ShareDeepLinks navRef={navigationRef} />
     </NavigationContainer>
   );

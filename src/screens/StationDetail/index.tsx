@@ -504,16 +504,14 @@ export const StationDetailScreen: React.FC = () => {
               furniture. The site can carry it because it sits in a sidebar the
               eye takes in ALONGSIDE the hero rather than after it.
 
-              Two figures were genuinely new, so they survive as a line. */}
-          {station.tracks || station.reach ? (
+              The rotation size is genuinely new, so it survives as a line. The
+              site's "projected reach" (e.g. "120M") does not: it is a market-size
+              estimate, and beside a station it reads as an audience figure,
+              which App Store review treats as misleading (guideline 2.3). */}
+          {station.tracks ? (
             <View style={styles.section}>
               <AppText style={[styles.factLine, { color: c.textMuted }]}>
-                {[
-                  station.tracks ? `${station.tracks.toLocaleString()} songs in rotation` : null,
-                  station.reach ? `${station.reach} projected reach` : null,
-                ]
-                  .filter(Boolean)
-                  .join('  ·  ')}
+                {`${station.tracks.toLocaleString()} songs in rotation`}
               </AppText>
             </View>
           ) : null}

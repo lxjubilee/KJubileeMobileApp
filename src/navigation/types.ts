@@ -22,26 +22,11 @@ export type MainTabParamList = {
 };
 
 /**
- * Root stack. AlbumDetails/ArtistDetails live here (not inside a tab) so they
- * present full-screen over the tab bar, Netflix-style; MusicPlayer is a modal.
+ * Root stack. Detail screens live here (not inside a tab) so they present
+ * full-screen over the tab bar, Netflix-style; the Jubilee Door is a modal.
  */
 export type RootStackParamList = {
   MainTabs: NavigatorScreenParams<MainTabParamList>;
-  AlbumDetails: { albumId: string };
-  AlbumReviews: { albumId: string; albumTitle: string };
-  ArtistDetails: { artistId: string };
-  /** `genreByItem` is carried from a showGenre section so its "See all" grid
-   *  captions covers the same way the Home rail does. Albums absent from the map
-   *  (the catalog gives them no genre) keep their title.
-   *  `showAlbumGenre` is set when "See all" was opened from the Home page, so the
-   *  grid prints each album's genre under its title like the rail it came from. */
-  AlbumList: {
-    title: string;
-    artistId?: string;
-    albumIds?: string[];
-    genreByItem?: Record<string, string>;
-    showAlbumGenre?: boolean;
-  };
   /** A station's own page: story, host, and the day's programme guide. */
   StationDetail: { slug: string };
   /** Full grid behind a Home shelf's "See all". Slugs are carried in shelf order
@@ -52,17 +37,11 @@ export type RootStackParamList = {
   };
   /** The account's favourite stations, read live from the store. */
   FavoriteStations: undefined;
-  /** Full grid behind an artist rail's "See all". Ids are carried in rail order. */
-  ArtistList: {
-    title: string;
-    artistIds: string[];
-  };
   /** The Heavenly Band's essays — the site's right-hand nav item. */
   BandArticles: undefined;
   /** One essay. Only the slug travels; the index and the body are both resolved
    *  by the screen, the first from the bundle and the second over the network. */
   BandArticleDetail: { slug: string };
-  MusicPlayer: undefined;
 
   // --- Sign-in, reached on demand ------------------------------------------
   // The door used to be a separate navigator that REPLACED this one while

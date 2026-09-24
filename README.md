@@ -1,10 +1,11 @@
 # KJubilee
 
-A premium music-streaming mobile app (React Native + Expo, TypeScript) with a Netflix-style
-experience — dark theme, edge-to-edge artwork, horizontally-scrolling rails, immersive detail
-screens, and a persistent mini-player — for **music, albums, artists, and playlists**.
+The KJubilee radio network on mobile (React Native + Expo, TypeScript): 105 stations on the
+HM 300–399.90 band, tuned with a rotary dial, browsed by category, and placed on a broadcast
+map, with a persistent now-playing bar.
 
-All media is served from **cdn.kjubilee.com** (see `extra.cdnBaseUrl` in [app.json](app.json)).
+Station audio is served from the CDN as clock-resolved day files (see `extra.cdnBaseUrl` in
+[app.json](app.json)).
 
 ## Important: requires a Dev Build (not Expo Go)
 
@@ -25,52 +26,42 @@ Then `npm start` runs the dev server for that build. **Expo Go will not work.**
 
 ```
 src/
-├── assets/mock/        # bundled mock JSON (albums, artists, tracks, home rails)
-├── components/         # common / cards / player / modals — reusable, theme-driven
-├── screens/            # one folder per screen (Home, AlbumDetails, … fully built; rest stubs)
-├── navigation/         # RootNavigator + MainTabNavigator + LibraryStack + types + linking
+├── assets/radio/       # station catalog, sections, artwork, band articles, world map
+├── components/         # common / auth / player / station — reusable, theme-driven
+├── screens/            # one folder per screen (Home, Dial, Browse, Map, StationDetail, …)
+├── navigation/         # RootNavigator + MainTabNavigator + ProfileStack + types + linking
 ├── services/
-│   ├── api/            # axios client, endpoints, DTOs, DTO→model mappers
-│   ├── music/          # track-player setup, playback service, queue helpers
+│   ├── radio/          # station catalog, day-file resolver, schedule, radio player
+│   ├── music/          # track-player setup + background playback service
+│   ├── auth/           # Jubilee ID sign-in, tokens, SSO
+│   ├── stationEngagement/  # station favourites + like/dislike feedback
 │   └── storage/        # AsyncStorage wrapper + keys
-├── repositories/       # DataSource interface + Mock/Api implementations + repositories
-├── redux/              # slices (player, library, home, search, downloads, auth) + store
-├── hooks/              # usePlayer, usePlayerSync, useDebounce, typed redux + theme hooks
+├── redux/              # slices (auth, station favourites, station likes, settings) + store
+├── hooks/              # useRadio, useStationEngagement, typed redux + theme hooks
 ├── context/            # ThemeProvider
 ├── theme/              # colors / typography / spacing tokens (dark default)
-├── localization/       # i18next setup + en.json
+├── localization/       # i18next setup + locales
 ├── utils/              # cdn url builder, formatters, logger
-├── constants/          # env, config flags, route names
-└── types/              # domain models
+└── constants/          # env, config flags, route names
 ```
 
 ### Key patterns
 
-- **Repository + swappable DataSource** — `src/repositories`. Flip `extra.useMock` in
-  [app.json](app.json) (read via `CONFIG.USE_MOCK`) to switch from bundled mock JSON
-  (`MockDataSource`) to the live API (`ApiDataSource`). Nothing above the data source changes.
-- **DTOs decoupled from domain models** — `services/api/dto.ts` + `mappers.ts`. Backend field
-  changes are absorbed in the mappers only.
-- **Single CDN entry point** — `utils/cdn.ts` `cdnUrl()` resolves every relative media path.
+- **Stations are clock-resolved day files**, not live streams: the radio engine picks the
+  entry that should be sounding now and seeks into it, so every listener hears the same thing.
 - **Redux Toolkit, slice-per-domain**, with `redux-persist` persisting only durable data
-  (library, downloads, player prefs, recent searches).
-- **track-player as the engine source of truth**; `usePlayerSync` mirrors it into Redux,
-  `usePlayer` exposes read state + commands to screens.
-- **Typed navigation** — `navigation/types.ts` param lists; deep links in `navigation/linking.ts`.
+  (station favourites and likes, language).
+- **Sign-in is optional** — the Jubilee Door is a modal route, opened only for account features.
+- **Typed navigation** — `navigation/types.ts` param lists; deep links in `navigation/linking.ts`,
+  frequency links (`kjubilee.com/hm308.70`) in `navigation/useShareDeepLinks.ts`.
 - **Path alias** `@/*` → `src/*` (tsconfig + Metro).
 
 ### Navigation
 
 ```
 RootNavigator (native-stack)
-├── MainTabs (Home · Browse · Search · Library)   ← MiniPlayer floats above tab bar
-│   └── LibraryTab stack: Library → Downloads / Profile
-├── AlbumDetails / ArtistDetails   (full-screen push)
-└── MusicPlayer / Auth             (modal, slide-up)
+├── MainTabs (Home · Dial · Browse · Map · Profile)   ← MiniPlayer floats above tab bar
+│   └── ProfileTab stack: Profile → EditName / ChangePassword / Legal
+├── StationDetail / StationList / FavoriteStations / BandArticles   (full-screen push)
+└── JubileeDoor                                                      (modal, slide-up)
 ```
-
-## Notes on mock data
-
-`src/assets/mock` uses absolute sample audio (SoundHelix) and image (picsum) URLs so playback
-and artwork work immediately in development. When the real API is ready, store CDN-relative
-paths and flip `useMock` to `false`.
