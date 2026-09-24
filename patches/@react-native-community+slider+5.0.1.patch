@@ -1,0 +1,16 @@
+diff --git a/node_modules/@react-native-community/slider/react-native-slider.podspec b/node_modules/@react-native-community/slider/react-native-slider.podspec
+index 54d77bd..cf8c101 100644
+--- a/node_modules/@react-native-community/slider/react-native-slider.podspec
++++ b/node_modules/@react-native-community/slider/react-native-slider.podspec
+@@ -23,6 +23,11 @@ Pod::Spec.new do |s|
+         ss.source_files         = "common/cpp/**/*.{cpp,h}"
+         ss.pod_target_xcconfig  = { "HEADER_SEARCH_PATHS" => "\"$(PODS_TARGET_SRCROOT)/common/cpp\"" }
+     end
++  else
++    # The Fabric component view has no #ifdef RCT_NEW_ARCH_ENABLED guard, so on
++    # the old architecture it still compiles and fails on the codegen headers
++    # from the (excluded) "common" subspec. Drop it from old-arch builds.
++    s.exclude_files = "ios/RNCSliderComponentView.{h,mm}"
+   end
+ 
+   if defined?(install_modules_dependencies)

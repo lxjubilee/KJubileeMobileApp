@@ -6,7 +6,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Screen, AppText } from '@/components/common';
 import { useTheme } from '@/context';
 import { useRadio } from '@/hooks';
-import { getAllStations, getSections } from '@/services/radio';
+import { getStations, getSections } from '@/services/radio';
 import { tune } from '@/services/radio';
 import type { RadioStation } from '@/services/radio';
 import type { RootStackParamList } from '@/navigation/types';
@@ -14,7 +14,7 @@ import { StationRow, ROW_HEIGHT } from './components/StationRow';
 import { foldForSearch } from '@/utils';
 
 /**
- * Browse — every station on the band, in frequency order.
+ * Browse — every on-air station on the band, in frequency order.
  *
  * This was a grid of albums from the music app. It is now the mobile version of
  * the website's `stations.html`, which exists alongside the dial for a reason:
@@ -28,9 +28,8 @@ import { foldForSearch } from '@/utils';
 
 type Nav = NativeStackNavigationProp<RootStackParamList>;
 
-/** Sentinels for the two filters that are not sections. */
+/** Sentinel for the one filter that is not a section. */
 const ALL = '__all__';
-const ON_AIR = '__onair__';
 
 export const BrowseScreen: React.FC = () => {
   const theme = useTheme();
@@ -40,7 +39,7 @@ export const BrowseScreen: React.FC = () => {
   const [term, setTerm] = useState('');
   const [chip, setChip] = useState<string>(ALL);
 
-  const stations = useMemo(() => getAllStations(), []);
+  const stations = useMemo(() => getStations(), []);
   const sections = useMemo(() => getSections(), []);
 
   /** section id -> the slugs it holds, so a chip can filter without a lookup. */
@@ -55,7 +54,6 @@ export const BrowseScreen: React.FC = () => {
   const chips = useMemo(
     () => [
       { key: ALL, label: 'All' },
-      { key: ON_AIR, label: 'On Air' },
       ...sections.map((s) => ({ key: s.id, label: s.label })),
     ],
     [sections],
@@ -64,8 +62,7 @@ export const BrowseScreen: React.FC = () => {
   const filtered = useMemo(() => {
     const q = foldForSearch(term.trim());
     return stations.filter((s) => {
-      if (chip === ON_AIR && !s.live) return false;
-      if (chip !== ALL && chip !== ON_AIR && !bySection.get(chip)?.has(s.slug)) return false;
+      if (chip !== ALL && !bySection.get(chip)?.has(s.slug)) return false;
       if (!q) return true;
       // Frequency is part of the search on purpose: on a dial, the number is a
       // name. Typing "332" should find Jubilee Praise (Română).
@@ -93,7 +90,6 @@ export const BrowseScreen: React.FC = () => {
 
   const c = theme.colors;
   const playingSlug = radio.playing ? radio.slug : null;
-  const liveCount = filtered.filter((s) => s.live).length;
 
   return (
     <Screen>
@@ -149,7 +145,7 @@ export const BrowseScreen: React.FC = () => {
         </ScrollView>
 
         <AppText style={[styles.count, { color: c.textMuted }]}>
-          {`${filtered.length} station${filtered.length === 1 ? '' : 's'} · ${liveCount} on air`}
+          {`${filtered.length} station${filtered.length === 1 ? '' : 's'} on air`}
         </AppText>
       </View>
 

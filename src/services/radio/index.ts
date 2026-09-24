@@ -3,6 +3,7 @@ export {
   getAllStations,
   getStationBySlug,
   getStationsBySlugs,
+  getLiveStationsBySlugs,
   getSections,
   getFeatured,
   DEFAULT_STATION_SLUG,

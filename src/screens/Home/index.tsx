@@ -35,11 +35,9 @@ import {
  * featured strip, then the site's own sections — Christian Music, Bible Studies
  * & Prayers, Family Friendly, and International split by region.
  *
- * The whole 105-station network is listed, not just the 15 that can play. Most
- * of the band is announced but not yet on air, and hiding it would misrepresent
- * the network's size; those tiles are dimmed, marked "coming soon", and not
- * pressable. The Dial takes the opposite rule — only tunable stations get a mark
- * there, because a dial that stops on silence teaches you that next is broken.
+ * Only on-air stations are listed, the same rule the Dial follows. Most of the
+ * band is announced but not yet broadcasting, and a Home made mostly of dimmed
+ * "coming soon" tiles reads as an unfinished app — see `getSections`.
  *
  * Tapping a station tunes it and opens the Dial, so playback and the tuner never
  * disagree about what is on.
@@ -237,7 +235,7 @@ export const HomeScreen: React.FC = () => {
         ))}
 
         <AppText style={styles.footnote} color="textMuted">
-          {`${sections.reduce((n, s) => n + s.shelves.reduce((m, sh) => m + sh.stations.length, 0), 0)} stations on the Heavenly Modulation band`}
+          {`${sections.reduce((n, s) => n + s.shelves.reduce((m, sh) => m + sh.stations.length, 0), 0)} stations on air on the Heavenly Modulation band`}
         </AppText>
       </ScrollView>
 

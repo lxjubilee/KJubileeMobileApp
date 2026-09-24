@@ -15,7 +15,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Screen, AppText } from '@/components/common';
 import { useTheme } from '@/context';
 import { useRadio } from '@/hooks';
-import { getStationsBySlugs } from '@/services/radio';
+import { getLiveStationsBySlugs } from '@/services/radio';
 import type { RootStackParamList } from '@/navigation/types';
 import { tabBarStyle } from '@/navigation/tabBarStyle';
 import { StationRow } from '@/screens/Browse/components/StationRow';
@@ -102,12 +102,12 @@ export const MapScreen: React.FC = () => {
   }, [c, fullscreen, navigation]);
 
   const stations = useMemo(
-    () => (selected ? getStationsBySlugs(selected.stations) : []),
+    () => (selected ? getLiveStationsBySlugs(selected.stations) : []),
     [selected],
   );
 
   const totalStations = useMemo(
-    () => new Set(WORLD.cities.flatMap((x) => x.stations)).size,
+    () => getLiveStationsBySlugs([...new Set(WORLD.cities.flatMap((x) => x.stations))]).length,
     [],
   );
 
@@ -177,7 +177,7 @@ export const MapScreen: React.FC = () => {
           AI Towers Map
         </AppText>
         <AppText style={[styles.sub, { color: c.textMuted }]}>
-          {`${WORLD.cities.length} broadcast locations across ${WORLD.countryCount} countries carry the whole dial · ${totalStations} stations on the HM band`}
+          {`${WORLD.cities.length} broadcast locations across ${WORLD.countryCount} countries carry the whole dial · ${totalStations} stations on air on the HM band`}
         </AppText>
       </View>
 

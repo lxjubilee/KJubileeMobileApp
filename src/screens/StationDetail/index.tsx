@@ -23,7 +23,7 @@ import { useTheme } from '@/context';
 import { useRadio } from '@/hooks';
 import {
   getStationBySlug,
-  getAllStations,
+  getStations,
   getSchedule,
   toggle,
   tune,
@@ -132,7 +132,7 @@ export const StationDetailScreen: React.FC = () => {
   /** Stations that share this one's host, else its format — "more like this". */
   const relatedAll = useMemo(() => {
     if (!station) return [];
-    const all = getAllStations().filter((s) => s.slug !== station.slug);
+    const all = getStations().filter((s) => s.slug !== station.slug);
     const byHost = station.host ? all.filter((s) => s.host?.id === station.host?.id) : [];
     const byFormat = all.filter((s) => s.format === station.format);
     const seen = new Set<string>();

@@ -25,15 +25,17 @@ const BY_SLUG = new Map(CATALOG.map((s) => [s.slug, s]));
 /**
  * Stations that can actually be tuned, ascending by dial number.
  *
- * The Dial is built on this rather than the full catalog on purpose: a dial that
- * stops on a frequency carrying nothing teaches the listener that next is
- * unreliable. Home shows the rest as "coming soon" instead.
+ * Every list in the app is built on this, not the full catalog: a station that
+ * is announced but not on air cannot be played, and a screen full of dimmed
+ * "coming soon" tiles reads as an unfinished app (App Review 2.1(a)). The full
+ * catalog is still reachable by slug, so a share link or a saved favourite for a
+ * station that goes quiet still opens its page.
  */
 export function getStations(): RadioStation[] {
   return CATALOG.filter((s) => s.live);
 }
 
-/** The whole network, playable or not — what Home browses. */
+/** The whole network, playable or not. Resolves links and frequencies — never list it. */
 export function getAllStations(): RadioStation[] {
   return CATALOG;
 }
@@ -47,14 +49,33 @@ export function getStationsBySlugs(slugs: string[]): RadioStation[] {
   return slugs.map((s) => BY_SLUG.get(s)).filter((s): s is RadioStation => s != null);
 }
 
-/** Home's shelves, in the site's own order: music, teaching, family, international. */
-export function getSections(): StationSection[] {
-  return (layout as { sections: StationSection[] }).sections;
+/** Resolve slugs to on-air stations only, in the order given. */
+export function getLiveStationsBySlugs(slugs: string[]): RadioStation[] {
+  return getStationsBySlugs(slugs).filter((s) => s.live);
 }
 
-/** Slugs the site features at the top of Home. */
+/**
+ * Home's shelves, in the site's own order, holding on-air stations only. A shelf
+ * left empty is dropped, and so is a section left with no shelves — its chip
+ * would otherwise open onto nothing.
+ */
+export function getSections(): StationSection[] {
+  return (layout as { sections: StationSection[] }).sections
+    .map((section) => ({
+      ...section,
+      shelves: section.shelves
+        .map((shelf) => ({
+          ...shelf,
+          stations: getLiveStationsBySlugs(shelf.stations).map((s) => s.slug),
+        }))
+        .filter((shelf) => shelf.stations.length > 0),
+    }))
+    .filter((section) => section.shelves.length > 0);
+}
+
+/** Slugs the site features at the top of Home, on-air ones only. */
 export function getFeatured(): RadioStation[] {
-  return getStationsBySlugs((layout as { featured: string[] }).featured);
+  return getLiveStationsBySlugs((layout as { featured: string[] }).featured);
 }
 
 /** The station the dial opens on when nothing is playing — the flagship. */
